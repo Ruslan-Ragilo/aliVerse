@@ -71,6 +71,7 @@
 .earth {
   top: 32vw;
   left: 16%;
+  width: 80px;
 
   @include media(1200px) {
     width: 8vw;
