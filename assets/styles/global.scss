@@ -1,0 +1,70 @@
+@font-face {
+	font-family: 'Barcade Brawl';
+	src: url('../fonts/BarcadeBrawl/BarcadeBrawlRegular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Better Vcr';
+	src: url('../fonts/BetterVcr/BetterVcr-regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+body {
+	font-family: $font-family-main;
+	background-image: url('~/assets/images/svg/bgMain.svg');
+	background-size: contain;
+	background-position: center center;
+}
+
+.wrapper-main {
+	max-width: 1440px;
+	padding: 0 75px;
+	width: 100%;
+	margin: 0 auto;
+
+	@include media(1200px) {
+		padding: 0 10px;
+	}
+}
+
+p.heading-title {
+@include media(1200px) {
+	font-size: $font-size-xxl;
+	line-height: $line-height-xxl;
+}
+@include media(744px) {
+	font-size: $font-size-l;
+	line-height: $line-height-l;
+}
+}
+
+.absolute {
+	position: absolute;
+}
+
+.alien-wrapper {
+    max-width: 600px;
+    width: 100%;
+    margin-top: 20px;
+
+	@include media(744px) {
+		max-width: none;
+	}
+
+    p {
+      @include media(1200px) {
+        font-size: $font-size-xxs;
+        line-height: $line-height-xxs;
+      }
+    }
+  }
