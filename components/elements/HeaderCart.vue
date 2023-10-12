@@ -6,10 +6,10 @@
 
 <style scoped lang="scss">
 .cart-button {
-  width: fit-content;
-  height: fit-content;
+  width: 60px;
+  height: 60px;
   border: none;
-  background-color: transparent;
+  border-radius: 20px;
   cursor: pointer;
 }
 </style>
