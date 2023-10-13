@@ -28,7 +28,9 @@
       :cols="40"
       :rows="6"
       :theme="background ? `light` : ``"
-    />
+    >
+      Текст
+    </ElementsCustomInput>
     <ElementsPixelButton color="red" size="middle" class="sumbit-button">
       Отправить
     </ElementsPixelButton>
