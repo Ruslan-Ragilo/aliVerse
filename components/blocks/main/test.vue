@@ -21,11 +21,35 @@
             гобелен le monke uh oh? Проходи тест и пойми наконец, кто ты
             есть!</ElementsText
           >
+          <ElementsPixelButton
+            color="green"
+            size="middle"
+            class="modal-open-button"
+            @click="handleModalOpen"
+          >
+            Пройти тест
+          </ElementsPixelButton>
         </ElementsMessageIcon>
       </div>
+      <BlocksTestModal
+        :is-modal-open="isModalOpen"
+        :on-modal-close="handleModalClose"
+      />
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const isModalOpen = ref(false);
+
+const handleModalOpen = () => {
+  isModalOpen.value = true;
+};
+
+const handleModalClose = () => {
+  isModalOpen.value = false;
+};
+</script>
 
 <style lang="scss" scoped>
 .content {
@@ -41,5 +65,9 @@
   position: absolute;
   right: 0;
   width: 50vw;
+}
+
+.modal-open-button {
+  margin-top: 28px;
 }
 </style>
