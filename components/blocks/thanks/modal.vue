@@ -1,7 +1,7 @@
 <template>
   <div v-if="isModalOpen" class="wrapper-modal">
     <div class="modal" :style="modalStyle">
-      <button class="close-button" @click="handleClose"></button>
+      <ElementsCloseButton class="thanks-close-button" @click="handleClose" />
       <div class="modal-content">
         <div class="modal-header" :class="background ? `light` : ``">
           <ElementsText size="xxxl" transform="upper">Спасибка</ElementsText>
@@ -108,20 +108,7 @@ const modalStyle = computed(() => {
 .light p {
   color: #fff;
 }
-.close-button {
-  position: absolute;
-  top: 41px;
-  right: 41px;
-  margin-left: auto;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  border: none;
-  background-color: #fff;
-  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.2));
-  cursor: pointer;
-  z-index: 3;
-
+.thanks-close-button {
   @include media(1100px) {
     top: -60px;
     right: 0;
@@ -131,25 +118,5 @@ const modalStyle = computed(() => {
     top: 16px;
     right: 16px;
   }
-}
-
-.close-button::before,
-.close-button::after {
-  content: "";
-  display: block;
-  width: 20px;
-  height: 2px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: #333333;
-}
-
-.close-button::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.close-button::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
 }
 </style>
