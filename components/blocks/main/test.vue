@@ -31,7 +31,7 @@
           </ElementsPixelButton>
         </ElementsMessageIcon>
       </div>
-      <BlocksTestModal
+      <BlocksTestopolisModal
         :is-modal-open="isModalOpen"
         :on-modal-close="handleModalClose"
       />

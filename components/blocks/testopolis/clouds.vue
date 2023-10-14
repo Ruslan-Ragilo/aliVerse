@@ -1,13 +1,17 @@
 <template>
-  <img class="cloud-left" src="~/assets/images/png/test/cloudLeft.png" alt="" />
+  <img
+    class="cloud-left"
+    src="~/assets/images/png/testopolis/cloudLeft.png"
+    alt=""
+  />
   <img
     class="cloud-center"
-    src="~/assets/images/png/test/cloudCenter.png"
+    src="~/assets/images/png/testopolis/cloudCenter.png"
     alt=""
   />
   <img
     class="cloud-bottom"
-    src="~/assets/images/png/test/cloudBottom.png"
+    src="~/assets/images/png/testopolis/cloudBottom.png"
     alt=""
   />
 </template>

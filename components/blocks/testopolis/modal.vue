@@ -1,12 +1,12 @@
 <template>
   <div v-if="isModalOpen" class="wrapper-modal">
-    <BlocksTestBorder
+    <BlocksTestopolisBorder
       ><div class="modal">
         <ElementsCloseButton @click="handleClose" />
-        <BlocksTestClouds />
-        <BlocksTestQuestion />
+        <BlocksTestopolisClouds />
+        <BlocksTestopolisContent />
       </div>
-    </BlocksTestBorder>
+    </BlocksTestopolisBorder>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ const handleClose = () => {
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  background-image: url("~/assets/images/png/test/testBg.png");
+  background-image: url("~/assets/images/png/testopolis/testopolisBg.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
