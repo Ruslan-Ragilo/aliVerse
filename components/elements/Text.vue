@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type Themes = "primary" | "secondary" | "light" | "red";
+type Themes = "primary" | "secondary" | "light" | "red" | "mustard";
 type Sizes = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl" | "heading";
 type FontFamily = "Better" | "Barcade";
 type Align = "left" | "center" | "right";
@@ -55,6 +55,10 @@ const classNames = [
 }
 .red {
   color: #ba1c19;
+}
+.mustard {
+  color: #ffd776;
+  text-shadow: 1px 1px #ff2722;
 }
 .light {
   color: $black-light;

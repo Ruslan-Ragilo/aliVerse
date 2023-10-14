@@ -56,6 +56,8 @@ p.heading-title {
     max-width: 600px;
     width: 100%;
     margin-top: 20px;
+	position: relative;
+    z-index: 3;
 
 	@include media(744px) {
 		max-width: none;
