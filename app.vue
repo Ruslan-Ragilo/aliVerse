@@ -12,7 +12,7 @@ onMounted(async () => {
       isLoading.value = false;
     } else {
       isAuth.value = false;
-      navigateTo("/auth");
+      navigateTo("/"); // navigateTo("/auth")
       isLoading.value = false;
     }
   } catch (error) {
@@ -22,7 +22,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <NuxtLayout v-if="!isLoading" :name="isAuth ? 'default' : 'auth'">
+  <NuxtLayout v-if="!isLoading" :name="isAuth ? 'default' : 'default'">
+    <!-- 'auth' : 'default' -->
     <NuxtPage />
   </NuxtLayout>
 </template>

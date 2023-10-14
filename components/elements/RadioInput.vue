@@ -9,7 +9,7 @@
       v-bind="attrs"
       @input="updateModelValue"
     />
-    <label :for="value" class="label">
+    <label :for="value" class="label" :class="labelClass">
       <slot />
     </label>
   </div>
@@ -19,6 +19,7 @@
 defineProps<{
   modelValue: string | null;
   value: string;
+  labelClass?: string;
 }>();
 
 const attrs = useAttrs();
