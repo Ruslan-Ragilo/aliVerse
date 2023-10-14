@@ -47,9 +47,11 @@ const setUrlImage = (url) => {
         @handle-is-valid="handleIsValid"
         @handle-is-show="handleIsShowAvatars"
       />
-
-      <ElementsButtonRegistrationDisabled v-if="!isValidFrom" class="btnReg" />
-      <ElementsButtonRegistration v-else class="btn btnReg" />
+      <NuxtLink to="/auth/registration">
+        <ElementsPixelButton :disabled="!isValidFrom" size="large" color="red"
+          >зарегистрироваться</ElementsPixelButton
+        >
+      </NuxtLink>
     </div>
   </div>
 </template>

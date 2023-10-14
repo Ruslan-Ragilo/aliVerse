@@ -40,6 +40,10 @@ const attrs = useAttrs();
 }
 .large {
   width: 424px;
+
+  @include media(450px) {
+    width: 352px;
+  }
 }
 .red.middle {
   background-image: url("~/assets/images/png/buttons/middle-red.png");
@@ -57,6 +61,9 @@ const attrs = useAttrs();
 }
 .red.large {
   background-image: url("~/assets/images/png/buttons/large-red.png");
+  @include media(450px) {
+    background-image: url("~/assets/images/png/buttons/large-middle-red.png");
+  }
 }
 .purple.large {
   background-image: url("~/assets/images/png/buttons/large-purple.png");

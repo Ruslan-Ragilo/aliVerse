@@ -1,38 +1,5 @@
 <script setup>
 const router = useRouter();
-const inputPinData = ref([
-  { name: 1, value: "" },
-  { name: 2, value: "" },
-  { name: 3, value: "" },
-  { name: 4, value: "" },
-]);
-const handlePin = (e, index) => {
-  const valueInput = e.target.value;
-  const inspectNumber = valueInput.replace(/[^\d.-]+/g, ""); // replace letters and symbol
-  const currentInput = inputPinData.value[index];
-
-  currentInput.value = inspectNumber;
-
-  if (e.code === "Backspace" && index !== 0) {
-    if (index === 3) {
-      if (currentInput.value.length === 0) {
-        e.target.previousSibling.disabled = false;
-        e.target.disabled = true;
-        e.target.previousSibling.focus();
-      }
-    } else {
-      e.target.previousSibling.disabled = false;
-      e.target.disabled = true;
-      e.target.previousSibling.focus();
-    }
-  } else if (currentInput.value.length === 1 && index !== 3) {
-    e.target.nextSibling.disabled = false;
-    e.target.disabled = true;
-    e.target.nextSibling.focus();
-  } else {
-    return null;
-  }
-};
 </script>
 <template>
   <div class="content">

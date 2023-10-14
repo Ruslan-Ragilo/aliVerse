@@ -53,18 +53,18 @@ const handlePin = (e, index) => {
           :disabled="index !== 0"
           maxlength="1"
           @keydown.delete="handlePin($event, index)"
-          @click="
-            item.name === 1 ? ((isActive = true), item.focus === true) : null
-          "
           @input="handlePin($event, index)"
         />
       </div>
     </form>
-    <NuxtLink to="/auth/registration"
-      ><ElementsText transform="upper" themes="secondary"
+    <NuxtLink to="#">
+      <ElementsPixelButton size="middle" color="red">войти</ElementsPixelButton>
+    </NuxtLink>
+    <NuxtLink to="/auth/registration">
+      <ElementsText transform="upper" themes="secondary"
         >зарегистрироваться</ElementsText
-      ></NuxtLink
-    >
+      >
+    </NuxtLink>
     <NuxtLink to="/auth/forgotPin"
       ><ElementsText transform="upper" class="lostPin"
         >забыл pin код</ElementsText
