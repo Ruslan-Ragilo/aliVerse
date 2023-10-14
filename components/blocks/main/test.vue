@@ -2,9 +2,9 @@
   <div class="letter-container">
     <img class="planet" src="@/assets/images/png/test.png" alt="" />
     <div class="wrapper-main content">
-      <div>
+      <div class="alien">
         <ElementsText
-          class="heading"
+          class="heading-title"
           size="heading"
           transform="upper"
           themes="secondary"
@@ -12,7 +12,7 @@
           <br />
           тестополис</ElementsText
         >
-        <ElementsMessageIcon class="letter">
+        <ElementsMessageIcon class="alien-wrapper">
           <ElementsText transform="upper"
             >Welcome to Тестополис! Признайся, ты хотя бы раз задумывался, на
             какой товар с AliExpress ты похож? Мы тоже!<br /><br />
@@ -32,14 +32,28 @@
   padding-top: 20.1vw;
   display: flex;
 }
-.letter {
+.alien {
   max-width: 600px;
   width: 100%;
+
+  @include media(1200px) {
+    margin-top: 40vw;
+  }
 }
 
 .planet {
   position: absolute;
   right: 0;
   width: 50vw;
+  z-index: -1;
+
+  @include media(1200px) {
+    width: 70vw;
+  }
+
+  @include media(744px) {
+    // width: 100vw;
+    // right: -30vw;
+  }
 }
 </style>

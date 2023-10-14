@@ -6,37 +6,56 @@ defineProps({
   },
 });
 
-const isActive = ref(false);
+const emit = defineEmits(["handle-is-valid", "handle-is-show"]);
 
-const inputsData = ref([
-  {
-    name: 1,
-    value: "",
-  },
-  {
-    name: 2,
-    value: "",
-  },
-  {
-    name: 3,
-    value: "",
-  },
-  {
-    name: 4,
-    value: "",
-  },
-]);
+const isActive = ref(false);
+const dataForm = ref({
+  name: "",
+  email: "",
+  inputsData: [
+    {
+      name: 1,
+      value: "",
+    },
+    {
+      name: 2,
+      value: "",
+    },
+    {
+      name: 3,
+      value: "",
+    },
+    {
+      name: 4,
+      value: "",
+    },
+  ],
+});
+
+const handleMobAvatar = () => {
+  if (window.innerWidth < 1211) {
+    emit("handle-is-show", true);
+  }
+};
+
+watch(dataForm.value, (newVal) => {
+  if (
+    newVal.name &&
+    newVal.email &&
+    !newVal.inputsData.some((el) => el.value === "")
+  ) {
+    emit("handle-is-valid", true);
+  } else {
+    emit("handle-is-valid", false);
+  }
+});
 
 const handlePin = (e, index) => {
   const valueInput = e.target.value;
   const inspectNumber = valueInput.replace(/[^\d.-]+/g, ""); // replace letters and symbol
-  const currentInput = inputsData.value[index];
+  const currentInput = dataForm.value.inputsData[index];
 
-  if (index === 3 && inspectNumber.length > 1) {
-    currentInput.value = inspectNumber.slice(0, 1);
-  } else {
-    currentInput.value = inspectNumber;
-  }
+  currentInput.value = inspectNumber;
 
   if (e.code === "Backspace" && index !== 0) {
     if (index === 3) {
@@ -90,7 +109,7 @@ const handlePin = (e, index) => {
       <div class="left-col">
         <ElementsText themes="red">ВЫБЕРИ АВАТАРКУ</ElementsText>
         <div class="top">
-          <div class="wrapper-avatar">
+          <div @click="handleMobAvatar" class="wrapper-avatar">
             <img :src="getImageUrl(urlImg)" alt="" />
           </div>
           <img class="line" src="@/assets/images/svg/lineDecor.svg" />
@@ -102,17 +121,28 @@ const handlePin = (e, index) => {
           удостоверение</ElementsText
         >
         <form action="">
-          <input type="text" class="input" placeholder="ТВОЕ ИМЯ" />
-          <input type="email" class="input" placeholder="ТВОЙ E-MAIL" />
+          <input
+            v-model="dataForm.name"
+            type="text"
+            class="input"
+            placeholder="ТВОЕ ИМЯ"
+          />
+          <input
+            v-model="dataForm.email"
+            type="email"
+            class="input"
+            placeholder="ТВОЙ E-MAIL"
+          />
           <div class="wrapper">
             <input
-              v-for="(item, index) of inputsData"
+              v-for="(item, index) of dataForm.inputsData"
               :key="index"
               v-model="item.value"
               :name="item.name"
               :class="['input-pin', { active: isActive && item.name === 1 }]"
               placeholder="0"
               :disabled="index !== 0"
+              maxlength="1"
               @keydown.delete="handlePin($event, index)"
               @click="
                 item.name === 1
@@ -156,6 +186,7 @@ const handlePin = (e, index) => {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
+        gap: 13px;
       }
     }
     .left-col {

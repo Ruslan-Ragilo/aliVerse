@@ -14,7 +14,7 @@ const next = ref(null);
 
 <template>
   <div class="wrapper">
-    <div class="wrapper-main">
+    <div class="wrapper-main wrap">
       <div class="wrapper-top">
         <ElementsCustomSelect
           :options="[
@@ -65,6 +65,14 @@ const next = ref(null);
 </template>
 
 <style scoped lang="scss">
+.wrap {
+  position: relative;
+  padding-bottom: 100px;
+
+  @include media(590px) {
+    margin-top: 50px;
+  }
+}
 .slide {
   width: 300px;
 }
@@ -94,10 +102,16 @@ const next = ref(null);
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     .wrapper-nav {
       display: flex;
       gap: 20px;
+
+      @include media(590px) {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
 

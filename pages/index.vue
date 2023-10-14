@@ -16,15 +16,15 @@
     <BlocksMainPresents />
     <BlocksMainProgress />
     <BlocksMainGalery />
-    <BlocksMainLetter />
+    <!-- <BlocksMainLetter /> -->
     <BlocksMainMentor />
     <BlocksMainFortuna />
     <BlocksMainMerch />
     <BlocksMainSwiperProducts />
-    <BlocksMainGames />
+    <!-- <BlocksMainGames /> -->
     <BlocksMainTest />
     <BlocksMainQuestion />
-    <BlocksMainFooter />
+    <!-- <BlocksMainFooter /> -->
   </NuxtLayout>
 </template>
 

@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <NuxtLayout>
+  <NuxtLayout name="auth">
     <NuxtPage />
   </NuxtLayout>
 </template>

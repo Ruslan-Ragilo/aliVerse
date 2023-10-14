@@ -9216,11 +9216,6 @@
 </template>
 
 <style scoped>
-svg {
-  max-width: 420px;
-  min-width: 200px;
-}
-
 path {
   transition: 0.3s;
 }

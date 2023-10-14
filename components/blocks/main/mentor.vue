@@ -1,10 +1,18 @@
+<script setup>
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+</script>
+
 <template>
   <div class="letter-container">
     <img class="planet" src="@/assets/images/png/mentorPlanet.png" alt="" />
     <div class="wrapper-main content">
-      <div>
+      <div class="alien">
         <ElementsText
-          class="heading"
+          class="heading-title"
           size="heading"
           transform="upper"
           themes="secondary"
@@ -12,7 +20,7 @@
           <br />
           менторий</ElementsText
         >
-        <ElementsMessageIcon class="letter">
+        <ElementsMessageIcon class="alien-wrapper">
           <ElementsText transform="upper"
             >Чувствуешь, как твоё тело наполняется вдохновением и мотивацией?
             Да, без этого на планете «Менторий» не обойтись. <br /><br />В
@@ -25,15 +33,20 @@
       </div>
     </div>
     <div class="wrapper-main wrapper-top">
-      <div v-for="item in 3" :key="item" class="wrapper-card">
-        <img src="@/assets/images/png/topDir.png" alt="" />
-        <div class="tooltip">
-          <ElementsText align="center" transform="upper"
-            >Александр <br />
-            епифанов</ElementsText
-          >
-        </div>
-      </div>
+      <Swiper class="swiper" slides-per-view="auto" :space-between="20">
+        <SwiperSlide class="slide" v-for="item in 5" :key="item">
+          <div class="wrapper-card">
+            <img src="@/assets/images/png/topDir.png" alt="" />
+            <div class="tooltip">
+              <ElementsText align="center" transform="upper"
+                >Александр <br />
+                епифанов</ElementsText
+              >
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+      <!-- <div v-for="item in 5" :key="item" class="wrapper-card"></div> -->
     </div>
   </div>
 </template>
@@ -44,22 +57,34 @@
   display: flex;
   justify-content: flex-end;
 }
-.letter {
+.alien {
   max-width: 600px;
   width: 100%;
+
+  @include media(1200px) {
+    margin-top: 60vw;
+  }
 }
 
 .planet {
   position: absolute;
   left: 0;
-  max-width: 80vw;
+  width: 62vw;
+  z-index: -1;
+
+  @include media(1200px) {
+    width: 100vw;
+  }
 }
 
 .wrapper-top {
-  display: grid;
-  grid-template-columns: repeat(5, 240px);
   gap: 22px;
   margin-top: 80px;
+}
+
+.slide {
+  width: 240px;
+  padding-bottom: 30px;
 }
 
 .wrapper-card {
