@@ -21,10 +21,34 @@
           Сейчас самое время это сделать! Заполняй форму и отправляй спасибку
           любимым коллегам — обещаем, она заставит их улыбнуться!</ElementsText
         >
+        <ElementsPixelButton
+          color="purple"
+          size="large"
+          class="modal-open-button"
+          @click="handleModalOpen"
+        >
+          Написать спасибку
+        </ElementsPixelButton>
       </ElementsMessageIcon>
+      <BlocksThanksModal
+        :is-modal-open="isModalOpen"
+        :on-modal-close="handleModalClose"
+      />
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const isModalOpen = ref(false);
+
+const handleModalOpen = () => {
+  isModalOpen.value = true;
+};
+
+const handleModalClose = () => {
+  isModalOpen.value = false;
+};
+</script>
 
 <style lang="scss" scoped>
 .letter-container {
@@ -79,5 +103,9 @@
       width: 100%;
     }
   }
+}
+
+.modal-open-button {
+  margin-top: 28px;
 }
 </style>
