@@ -11,6 +11,9 @@ const router = useRouter();
     <form action="">
       <input type="email" class="email" placeholder="ТВОЙ E-MAIL" />
     </form>
+    <ElementsPixelButton class-text="btn-registraion" size="large" color="red"
+      >Отправить pin код</ElementsPixelButton
+    >
     <ElementsText
       class="back"
       transform="upper"
@@ -31,6 +34,9 @@ transparent; -moz-appearance: textfield; padding: 18px 8.9px; }
   margin-top: 30px;
   cursor: pointer;
 }
+form {
+  margin-bottom: 40px;
+}
 input {
   border: 4px solid $red-primary;
   text-align: center;
@@ -38,7 +44,6 @@ input {
   font-family: $font-family-main;
   height: 60px;
   background: $white;
-  margin-top: 40px;
   outline: none;
   color: #710f0d;
   &.active::placeholder {
@@ -62,22 +67,14 @@ input {
 }
 .logo {
   @include media(886px) {
-    width: 60%;
-  }
-
-  @include media(710px) {
-    // margin-bottom: 110px;
-  }
-
-  @include media(600px) {
-    width: 210px;
+    width: 30%;
   }
 }
 .text {
   max-width: 480px;
-  margin-top: 50px;
+  margin: 5% 0;
   @include media(710px) {
-    font-size: 3vw;
+    font-size: 14px;
   }
 }
 </style>

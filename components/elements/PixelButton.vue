@@ -1,6 +1,12 @@
 <template>
   <button class="button" :class="[color, size]" v-bind="attrs">
-    <ElementsText themes="secondary" transform="upper" align="center" size="m">
+    <ElementsText
+      :class="classText"
+      themes="secondary"
+      transform="upper"
+      align="center"
+      size="m"
+    >
       <slot />
     </ElementsText>
   </button>
@@ -10,12 +16,19 @@
 defineProps<{
   color: "red" | "green" | "purple";
   size: "middle" | "large";
+  classText: String;
 }>();
 
 const attrs = useAttrs();
 </script>
 
 <style scoped lang="scss">
+.btn-registraion {
+  @include media(450px) {
+    font-size: $font-size-s;
+    line-height: $line-height-s;
+  }
+}
 .button {
   position: relative;
   height: 70px;
@@ -25,11 +38,12 @@ const attrs = useAttrs();
   cursor: pointer;
 }
 .button p {
+  /* top: 50%; */
   width: 100%;
   position: absolute;
-  top: 13px;
+  /* top: 13px; */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -67%);
 }
 .middle {
   width: 312px;
@@ -84,6 +98,9 @@ const attrs = useAttrs();
 }
 .red.large:hover {
   background-image: url("~/assets/images/png/buttons/large-red-hover.png");
+  @include media(450px) {
+    background-image: url("~/assets/images/png/buttons/large-middle-red-hover.png");
+  }
 }
 .purple.large:hover {
   background-image: url("~/assets/images/png/buttons/large-purple-hover.png");
@@ -107,6 +124,9 @@ const attrs = useAttrs();
 .red.large:active:not(:disabled) {
   top: 7px;
   background-image: url("~/assets/images/png/buttons/large-red-active.png");
+  @include media(450px) {
+    background-image: url("~/assets/images/png/buttons/large-middle-red-active.png");
+  }
 }
 .purple.large:active:not(:disabled) {
   top: 7px;
@@ -123,5 +143,9 @@ const attrs = useAttrs();
 .button.large:disabled {
   cursor: default;
   background-image: url("~/assets/images/png/buttons/large-disabled.png");
+
+  @include media(450px) {
+    background-image: url("~/assets/images/png/buttons/large-middle-disabled.png");
+  }
 }
 </style>

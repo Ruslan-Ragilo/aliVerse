@@ -171,7 +171,8 @@ const handlePin = (e, index) => {
 
   @include media(744px) {
     padding: 30px 10px;
-    width: 100%;
+    width: 95%;
+    margin: 0 auto;
   }
 
   .wrapper-content {

@@ -10,7 +10,7 @@
       отправляемся через 3… 2… 1!
     </ElementsText>
     <NuxtLink to="/auth/registration">
-      <ElementsPixelButton size="large" color="red"
+      <ElementsPixelButton class-text="btn-registraion" size="large" color="red"
         >зарегистрироваться</ElementsPixelButton
       >
     </NuxtLink>
@@ -23,9 +23,6 @@
 </template>
 
 <style scoped lang="scss">
-.btnInto {
-  max-width: 430px;
-}
 .content {
   max-height: 80vh;
   height: 100%;
@@ -40,17 +37,13 @@
 }
 .logo {
   @include media(886px) {
-    width: 60%;
-  }
-
-  @include media(600px) {
-    width: 210px;
+    width: 30%;
   }
 }
 .text {
-  margin: 4vw 0;
+  margin: 5% 0;
   @include media(710px) {
-    font-size: 3vw;
+    font-size: 14px;
   }
 }
 
