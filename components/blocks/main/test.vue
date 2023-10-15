@@ -31,23 +31,16 @@
           </ElementsPixelButton>
         </ElementsMessageIcon>
       </div>
-      <BlocksTestopolisModal
-        :is-modal-open="isModalOpen"
-        :on-modal-close="handleModalClose"
-      />
+      <BlocksTestopolisModal />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const isModalOpen = ref(false);
+const store = useTestopolisStore();
 
 const handleModalOpen = () => {
-  isModalOpen.value = true;
-};
-
-const handleModalClose = () => {
-  isModalOpen.value = false;
+  store.openModal();
 };
 </script>
 

@@ -41,6 +41,10 @@ const currentAnswers = computed(() => store.currentAnswers);
     grid-template-columns: none;
     grid-template-rows: repeat(4, 1fr);
   }
+
+  @include media(500px) {
+    grid-gap: 5px;
+  }
 }
 
 .answer {
@@ -66,6 +70,11 @@ const currentAnswers = computed(() => store.currentAnswers);
   border: 5px solid #ffd776;
   transition: all 0.1s;
   cursor: pointer;
+
+  @include media(500px) {
+    padding: 13px 16px;
+    gap: 5px;
+  }
 }
 
 .label p {
