@@ -1,6 +1,5 @@
 <template>
   <div class="letter-container">
-    <img class="planet" src="@/assets/images/svg/fortuna.svg" alt="" />
     <div class="wrapper-main content">
       <div class="letter">
         <ElementsText
@@ -21,6 +20,10 @@
           >
         </ElementsMessageIcon>
       </div>
+      <div class="planets-wrapper">
+        <BlocksFortuneComets />
+        <BlocksFortuneWheel />
+      </div>
     </div>
   </div>
 </template>
@@ -28,18 +31,24 @@
 <style lang="scss" scoped>
 .content {
   padding-top: 20.1vw;
+  padding-right: 15px;
   display: flex;
+  justify-content: space-between;
+  gap: 30px;
+
+  @include media(1000px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 200px;
+  }
+}
+.planets-wrapper {
+  position: relative;
 }
 .letter {
   max-width: 600px;
   width: 100%;
-
-  @include media(1200px) {
-    margin-top: 55vw;
-  }
-  @include media(744px) {
-    margin-top: 83vw;
-  }
 }
 
 .alien-wrapper {
@@ -47,17 +56,6 @@
     @include media(744px) {
       text-align: right;
     }
-  }
-}
-
-.planet {
-  position: absolute;
-  right: 0;
-  width: 65vw;
-  z-index: -1;
-
-  @include media(1200px) {
-    width: 100vw;
   }
 }
 </style>

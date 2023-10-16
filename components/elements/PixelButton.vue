@@ -16,7 +16,7 @@
 defineProps<{
   color: "red" | "green" | "purple";
   size: "middle" | "large";
-  classText: String;
+  classText?: string;
 }>();
 
 const attrs = useAttrs();
