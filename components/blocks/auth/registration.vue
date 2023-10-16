@@ -35,8 +35,8 @@ const setUrlImage = (url) => {
       class-text="btn-registraion"
       size="large"
       color="red"
-      @click="isShow = false"
       :disabled="urlImage === 'svg/iconProfile/defaultAvatar.svg'"
+      @click="isShow = false"
       >сохранить</ElementsPixelButton
     >
     <div :class="['wrapperImage', { active: isShow }]">

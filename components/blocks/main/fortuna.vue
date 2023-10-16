@@ -19,6 +19,15 @@
             есть 1 попытка в день, чтобы испытать судьбу — крути колесо и
             получай подарки</ElementsText
           >
+          <ElementsPixelButton
+            :is-main-page="true"
+            color="red"
+            size="large"
+            class="alien-button"
+            @click="navigateTo('/gallery')"
+          >
+            крутануть планету
+          </ElementsPixelButton>
         </ElementsMessageIcon>
       </div>
     </div>

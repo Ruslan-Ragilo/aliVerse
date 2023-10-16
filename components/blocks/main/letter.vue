@@ -24,7 +24,7 @@
         <ElementsPixelButton
           color="purple"
           size="large"
-          class="modal-open-button"
+          class="alien-button"
           @click="handleModalOpen"
         >
           Написать спасибку
@@ -103,9 +103,5 @@ const handleModalClose = () => {
       width: 100%;
     }
   }
-}
-
-.modal-open-button {
-  margin-top: 28px;
 }
 </style>

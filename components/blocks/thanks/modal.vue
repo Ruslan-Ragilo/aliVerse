@@ -34,7 +34,7 @@ const modalStyle = computed(() => {
   return background.value
     ? {
         backgroundImage: `url(${getImageUrl(
-          `png/thanks/${background.value}-full.png`,
+          `png/thanks/${background.value}-full.png`
         )})`,
       }
     : "none";

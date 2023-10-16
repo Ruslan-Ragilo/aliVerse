@@ -16,7 +16,6 @@
   border: 20px solid $black;
   background-color: $white;
   padding: 30px;
-  z-index: -1;
   width: 100%;
 
   @include media(744px) {
@@ -58,6 +57,7 @@
     height: 100px;
     bottom: 189px;
     right: 0;
+    z-index: 3;
 
     @include media(744px) {
       width: 60px;

@@ -11,5 +11,13 @@
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  @include media(1200px) {
+    width: 46px;
+    height: 46px;
+  }
+  @include media(1200px) {
+    width: 46px;
+    height: 46px;
+  }
 }
 </style>

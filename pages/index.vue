@@ -1,6 +1,15 @@
 <template>
   <NuxtLayout>
     <div class="wrapper">
+      <div class="wrapper-header">
+        <ElementsHeaderCart />
+        <ElementsHeaderProfile
+          name="Иван Алексеев"
+          :coins="1249"
+          :avatar-id="1"
+        />
+      </div>
+
       <div class="wrapper-bg">
         <img class="bgTop" src="@/assets/images/png/bgMainTop.png" alt="" />
       </div>
@@ -16,7 +25,7 @@
     <BlocksMainPresents />
     <BlocksMainProgress />
     <BlocksMainGalery />
-    <!-- <BlocksMainLetter /> -->
+    <BlocksMainLetter />
     <BlocksMainMentor />
     <BlocksMainFortuna />
     <BlocksMainMerch />
@@ -29,6 +38,18 @@
 </template>
 
 <style lang="scss" scoped>
+.wrapper-header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 35px 70px;
+  z-index: 12;
+
+  @include media(710px) {
+    padding: 20px 16px;
+  }
+}
 .mes {
   width: 40%;
 }

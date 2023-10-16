@@ -6,13 +6,13 @@ onMounted(async () => {
   try {
     const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
     const data = await res.json();
-    if (data.completed) {
+    if (!data.completed) {
       isAuth.value = true;
-      navigateTo("/");
+      // navigateTo("/");
       isLoading.value = false;
     } else {
       isAuth.value = false;
-      navigateTo("/auth");
+      // navigateTo("/auth");
       isLoading.value = false;
     }
   } catch (error) {

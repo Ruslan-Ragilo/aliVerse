@@ -52,7 +52,7 @@ p.heading-title {
 	position: absolute;
 }
 
-.alien-wrapper {
+.wrapper-window {
     max-width: 600px;
     width: 100%;
     margin-top: 20px;
@@ -63,7 +63,7 @@ p.heading-title {
 		max-width: none;
 	}
 
-    p {
+    & > p {
       @include media(1200px) {
         font-size: $font-size-xxs;
         line-height: $line-height-xxs;
@@ -72,4 +72,13 @@ p.heading-title {
   }
   .btn {
 	cursor: pointer;
+  }
+  .alien-button {
+	margin-top: 28px;
+
+	p {
+		@include media (450px) {
+			font-size: 20px;
+		}
+	}
   }

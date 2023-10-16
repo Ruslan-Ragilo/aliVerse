@@ -24,7 +24,7 @@
           <ElementsPixelButton
             color="green"
             size="middle"
-            class="modal-open-button"
+            class="alien-button"
             @click="handleModalOpen"
           >
             Пройти тест
@@ -81,7 +81,7 @@ const handleModalClose = () => {
   }
 }
 
-.modal-open-button {
+.alien-button {
   margin-top: 28px;
 }
 </style>
