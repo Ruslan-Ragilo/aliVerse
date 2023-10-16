@@ -3,19 +3,23 @@
     <ElementsText themes="mustard-light" size="xxxl">
       Поздравляем!
     </ElementsText>
-    <img class="result-image" :src="getImageUrl(results[1].image)" alt="" />
+    <img
+      class="result-image"
+      :src="getImageUrl(results[finalResult].image)"
+      alt=""
+    />
     <ElementsText themes="secondary" size="s" transform="upper" align="center">
       Поздравляем, ты -
-      <a class="result-link" :href="results[1].link" target="_blank">
-        {{ results[1].linkText }} </a
-      >{{ results[1].linkDescription }}!
+      <a class="result-link" :href="results[finalResult].link" target="_blank">
+        {{ results[finalResult].linkText }} </a
+      >{{ results[finalResult].linkDescription }}!
     </ElementsText>
     <ElementsText
       themes="secondary"
       size="xxs"
       transform="upper"
       align="center"
-      >{{ results[2].text }}</ElementsText
+      >{{ results[finalResult].text }}</ElementsText
     >
     <ElementsPixelButton color="red" size="middle" @click="handleModalClose">
       На главную
@@ -26,6 +30,7 @@
 <script setup lang="ts">
 const store = useTestopolisStore();
 const results = computed(() => store.results);
+const finalResult = computed(() => store.finalResult || 1);
 
 const handleModalClose = () => {
   store.closeModal();
@@ -41,7 +46,7 @@ const handleModalClose = () => {
   padding: 30px 10%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.1fr 0.3fr 0.05fr 1fr 0.2fr;
+  grid-template-rows: 0.1fr 0.3fr 0.1fr 1fr 0.2fr;
   grid-row-gap: 20px;
   padding: 10px 34px;
   justify-items: center;
