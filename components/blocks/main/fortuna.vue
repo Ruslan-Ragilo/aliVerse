@@ -31,7 +31,7 @@
       </div>
       <div class="planets-wrapper">
         <BlocksFortuneComets />
-        <BlocksFortuneWheel />
+        <BlocksFortuneWheel :on-mount="getWheelElement" />
       </div>
     </div>
   </div>
@@ -42,11 +42,13 @@ const store = useWheelStore();
 const isAvailable = computed(() => store.isAvailable);
 const isSpinning = computed(() => store.isSpinning);
 
+const wheelElement = ref<HTMLImageElement | undefined>(undefined);
+const getWheelElement = (element: HTMLImageElement | undefined) => {
+  wheelElement.value = element;
+};
+
 const handleSpin = () => {
-  const wheel: HTMLImageElement | null = document.querySelector(".wheel");
-  if (wheel) {
-    store.handleSpin(wheel);
-  }
+  store.handleSpin(wheelElement.value);
 };
 </script>
 

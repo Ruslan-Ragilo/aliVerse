@@ -25,12 +25,19 @@
 </template>
 
 <script setup lang="ts">
+const { onMount } = defineProps<{
+  onMount: (el: HTMLImageElement | undefined) => void;
+}>();
+
 const wheel = ref<HTMLImageElement>();
 const store = useWheelStore();
-
 const isAvailable = computed(() => store.isAvailable);
 const isSpinning = computed(() => store.isSpinning);
 const currentRotation = computed(() => store.currentRotation);
+
+onMounted(() => {
+  onMount(wheel.value);
+});
 
 const handleSpin = () => {
   store.handleSpin(wheel.value);
@@ -41,11 +48,9 @@ const handleSpin = () => {
 .wheel-wrapper {
   position: relative;
 }
-
 .message {
   white-space: pre-line;
 }
-
 .sign {
   position: absolute;
   right: 100px;
@@ -79,12 +84,10 @@ const handleSpin = () => {
   background-repeat: no-repeat;
   cursor: pointer;
 }
-
 .play-button:active:not(:disabled) {
   top: calc(50% + 10px);
   background-image: url("~/assets/images/png/fortune/play-button-active.png");
 }
-
 .play-button:disabled {
   cursor: default;
   filter: grayscale(100%) brightness(1.5);

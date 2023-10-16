@@ -12,7 +12,6 @@ export const useWheelStore = defineStore("wheel", () => {
     // TODO добавить взаимодествие с беком
 
     setTimeout(() => {
-      isSpinning.value = false;
       if (wheelElement) {
         const style = window.getComputedStyle(wheelElement);
         const matrix = new DOMMatrix(style.transform);
@@ -26,6 +25,7 @@ export const useWheelStore = defineStore("wheel", () => {
     }, spinningTime);
 
     setTimeout(() => {
+      isSpinning.value = false;
       showModal.value = true;
     }, spinningTime + 500);
   }
