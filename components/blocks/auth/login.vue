@@ -60,23 +60,35 @@ const handlePin = (e, index) => {
     <NuxtLink to="#">
       <ElementsPixelButton size="middle" color="red">войти</ElementsPixelButton>
     </NuxtLink>
-    <NuxtLink to="/auth/registration">
-      <ElementsText transform="upper" themes="secondary"
-        >зарегистрироваться</ElementsText
+    <div class="wrapperAurhLink">
+      <NuxtLink to="/auth/registration">
+        <ElementsText transform="upper" themes="secondary"
+          >зарегистрироваться</ElementsText
+        >
+      </NuxtLink>
+      <NuxtLink to="/auth/forgotPin"
+        ><ElementsText transform="upper" class="lostPin"
+          >забыл pin код</ElementsText
+        ></NuxtLink
       >
-    </NuxtLink>
-    <NuxtLink to="/auth/forgotPin"
-      ><ElementsText transform="upper" class="lostPin"
-        >забыл pin код</ElementsText
-      ></NuxtLink
-    >
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.wrapperAurhLink {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: center;
+}
+
 a {
   margin-top: 20px;
   text-decoration: none;
+  @include media(710px) {
+    margin-top: 0;
+  }
 }
 .lostPin {
   color: #676079;
@@ -133,22 +145,14 @@ input {
 }
 .logo {
   @include media(886px) {
-    width: 60%;
-  }
-
-  @include media(710px) {
-    // margin-bottom: 110px;
-  }
-
-  @include media(600px) {
-    width: 210px;
+    width: 30%;
   }
 }
 .text {
   max-width: 735px;
   margin-top: 50px;
   @include media(710px) {
-    font-size: 3vw;
+    font-size: 14px;
   }
 }
 </style>

@@ -25,11 +25,20 @@ const setUrlImage = (url) => {
 <template>
   <div class="wrapperRegistration">
     <img
-      @click="isShow = false"
       :class="['close', { show: isShow }]"
       src="@/assets/images/svg/close.svg"
       alt=""
+      @click="isShow = false"
     />
+    <ElementsPixelButton
+      :class="['btnSave', { active: isShow }]"
+      class-text="btn-registraion"
+      size="large"
+      color="red"
+      @click="isShow = false"
+      :disabled="urlImage === 'svg/iconProfile/defaultAvatar.svg'"
+      >сохранить</ElementsPixelButton
+    >
     <div :class="['wrapperImage', { active: isShow }]">
       <img
         v-for="(item, index) of 20"
@@ -40,6 +49,7 @@ const setUrlImage = (url) => {
         @click="setActiveImage(index, `svg/iconProfile/${item}.svg`)"
       />
     </div>
+
     <div :class="['wrapperProfile', { none: isShow }]">
       <ElementsCartProfile
         :data-form="dataForm"
@@ -47,8 +57,12 @@ const setUrlImage = (url) => {
         @handle-is-valid="handleIsValid"
         @handle-is-show="handleIsShowAvatars"
       />
-      <NuxtLink to="/auth/registration">
-        <ElementsPixelButton :disabled="!isValidFrom" size="large" color="red"
+      <NuxtLink class="btnReg" to="/auth/registration">
+        <ElementsPixelButton
+          class-text="btn-registraion"
+          :disabled="!isValidFrom"
+          size="large"
+          color="red"
           >зарегистрироваться</ElementsPixelButton
         >
       </NuxtLink>
@@ -57,9 +71,18 @@ const setUrlImage = (url) => {
 </template>
 
 <style scoped lang="scss">
+.btnSave {
+  display: none;
+  @include media(1266px) {
+    &.active {
+      display: block;
+    }
+  }
+}
 .btnReg {
-  margin-top: 40px;
-  width: 100%;
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
 }
 
 .wrapperProfile {
@@ -67,7 +90,7 @@ const setUrlImage = (url) => {
   // flex-direction: column;
   // justify-content: space-between;
 
-  @include media(1210px) {
+  @include media(1266px) {
     &.none {
       display: none;
     }
@@ -88,7 +111,7 @@ const setUrlImage = (url) => {
     cursor: pointer;
     width: 20%;
     max-width: 100px;
-    @include media(1210px) {
+    @include media(1266px) {
       position: absolute;
       top: -10px;
       right: -10px;
@@ -99,7 +122,7 @@ const setUrlImage = (url) => {
     }
   }
 
-  @include media(1210px) {
+  @include media(1266px) {
     justify-content: center;
     padding: 0 20px;
   }
@@ -114,8 +137,9 @@ const setUrlImage = (url) => {
     flex-wrap: wrap;
     gap: 11px;
     max-width: 600px;
+    position: relative;
 
-    @include media(1210px) {
+    @include media(1266px) {
       display: none;
       grid-template-columns: repeat(4, 1fr);
       gap: 5px;
@@ -131,7 +155,7 @@ const setUrlImage = (url) => {
       cursor: pointer;
       opacity: 1;
 
-      @include media(1210px) {
+      @include media(1266px) {
         width: 100%;
         height: auto;
       }
