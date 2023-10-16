@@ -1,5 +1,8 @@
+<script setup>
+const store = useModalBasked();
+</script>
 <template>
-  <button class="cart-button">
+  <button @click="store.setIsOpen(true)" class="cart-button">
     <img src="~/assets/images/svg/bag.svg" />
   </button>
 </template>

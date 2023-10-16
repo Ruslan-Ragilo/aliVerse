@@ -1,5 +1,6 @@
 <template>
   <NuxtLayout>
+    <BlocksBasketModal />
     <div class="wrapper">
       <div class="wrapper-header">
         <ElementsHeaderCart />
