@@ -1,47 +1,48 @@
 <template>
+  <BlocksFortuneModal />
   <div class="wheel-wrapper">
-    <img class="sign" src="~assets/images/png/fortune/sign.png" alt="" />
     <img
+      class="sign"
+      src="~assets/images/png/fortune/sign.png"
+      alt=""
+      draggable="false"
+    />
+    <img
+      ref="wheel"
       class="wheel"
       :style="{ transform: `rotate(${currentRotation}deg)` }"
       :class="{ spin: isSpinning }"
       src="~assets/images/png/fortune/wheel.png"
       alt="Fortune wheel"
     />
-
-    <button class="play-button" @click="handleSpin"></button>
+    <button
+      class="play-button"
+      :disabled="!isAvailable || isSpinning"
+      @click="handleSpin"
+    ></button>
   </div>
 </template>
 
 <script setup lang="ts">
-const isSpinning = ref(false);
-const currentRotation = ref(0);
-const gainedPoints = ref(0);
+const wheel = ref<HTMLImageElement>();
+const store = useWheelStore();
+
+const isAvailable = computed(() => store.isAvailable);
+const isSpinning = computed(() => store.isSpinning);
+const currentRotation = computed(() => store.currentRotation);
 
 const handleSpin = () => {
-  isSpinning.value = true;
-  const spinningTime = Math.random() * (5000 - 1000) + 1000;
-
-  // TODO добавить взаимодествие с беком
-
-  setTimeout(() => {
-    isSpinning.value = false;
-    const wheel = document.querySelector(".wheel");
-    const style = window.getComputedStyle(wheel!);
-    const matrix = new DOMMatrix(style.transform);
-    const currentAngle =
-      (Math.atan2(matrix.b, matrix.a) * (180 / Math.PI)) % 360;
-    currentRotation.value = currentAngle;
-
-    const points = (Math.round((360 - currentRotation.value) / 36) % 10) * 50;
-    gainedPoints.value = points;
-  }, spinningTime);
+  store.handleSpin(wheel.value);
 };
 </script>
 
 <style lang="scss" scoped>
 .wheel-wrapper {
   position: relative;
+}
+
+.message {
+  white-space: pre-line;
 }
 
 .sign {
@@ -78,8 +79,13 @@ const handleSpin = () => {
   cursor: pointer;
 }
 
-.play-button:active {
+.play-button:active:not(:disabled) {
   top: calc(50% + 10px);
   background-image: url("~/assets/images/png/fortune/play-button-active.png");
+}
+
+.play-button:disabled {
+  cursor: default;
+  filter: grayscale(100%) brightness(1.5);
 }
 </style>
