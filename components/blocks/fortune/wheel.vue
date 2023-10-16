@@ -14,6 +14,7 @@
       :class="{ spin: isSpinning }"
       src="~assets/images/png/fortune/wheel.png"
       alt="Fortune wheel"
+      draggable="false"
     />
     <button
       class="play-button"

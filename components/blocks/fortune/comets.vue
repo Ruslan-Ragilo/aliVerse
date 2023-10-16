@@ -3,46 +3,55 @@
     class="comet comet-1"
     src="~/assets/images/png/fortune/comet-1.png"
     alt=""
+    draggable="false"
   />
   <img
     class="comet comet-2"
     src="~/assets/images/png/fortune/comet-2.png"
     alt=""
+    draggable="false"
   />
   <img
     class="comet comet-3"
     src="~/assets/images/png/fortune/comet-3.png"
     alt=""
+    draggable="false"
   />
   <img
     class="comet comet-4"
     src="~/assets/images/png/fortune/comet-4.png"
     alt=""
+    draggable="false"
   />
   <img
     class="comet comet-5"
     src="~/assets/images/png/fortune/comet-5.png"
     alt=""
+    draggable="false"
   />
   <img
     class="comet comet-6"
     src="~/assets/images/png/fortune/comet-6.png"
     alt=""
+    draggable="false"
   />
   <img
     class="comet comet-7"
     src="~/assets/images/png/fortune/comet-7.png"
     alt=""
+    draggable="false"
   />
   <img
     class="comet comet-8"
     src="~/assets/images/png/fortune/comet-8.png"
     alt=""
+    draggable="false"
   />
   <img
     class="comet comet-9"
     src="~/assets/images/png/fortune/comet-9.png"
     alt=""
+    draggable="false"
   />
 </template>
 
