@@ -39,6 +39,11 @@ defineProps<{
 .avatar {
   width: 54px;
   height: 54px;
+
+  @include media(1200px) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .profile-info {
@@ -48,9 +53,14 @@ defineProps<{
   gap: 4px;
 }
 
-.profile-info p {
-  @include media(710px) {
+.profile-info p:last-child {
+  @include media(1200px) {
     font-size: 14px;
+  }
+}
+.profile-info p:first-child {
+  @include media(1200px) {
+    font-size: 16px;
   }
 }
 </style>

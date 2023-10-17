@@ -19,6 +19,7 @@
             судьбу — крути колесо и получай подарки</ElementsText
           >
           <ElementsPixelButton
+            :is-main-page="true"
             color="red"
             size="large"
             class="spin-button"

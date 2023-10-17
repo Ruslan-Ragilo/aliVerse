@@ -19,6 +19,15 @@
             сдерживай эмоций — мы никому не расскажем об этих
             слезах</ElementsText
           >
+          <ElementsPixelButton
+            :is-main-page="true"
+            color="red"
+            size="large"
+            class="alien-button"
+            @click="navigateTo('/gallery')"
+          >
+            смотреть фото
+          </ElementsPixelButton>
         </ElementsMessageIcon>
       </div>
     </div>

@@ -1,5 +1,9 @@
 <template>
-  <button class="button" :class="[color, size]" v-bind="attrs">
+  <button
+    class="button"
+    :class="[color, size, { ['mini-main']: isMainPage }]"
+    v-bind="attrs"
+  >
     <ElementsText
       :class="classText"
       themes="secondary"
@@ -16,19 +20,14 @@
 defineProps<{
   color: "red" | "green" | "purple";
   size: "middle" | "large";
-  classText?: string;
+  classText?: String;
+  isMainPage?: Boolean;
 }>();
 
 const attrs = useAttrs();
 </script>
 
 <style scoped lang="scss">
-.btn-registraion {
-  @include media(450px) {
-    font-size: $font-size-s;
-    line-height: $line-height-s;
-  }
-}
 .button {
   position: relative;
   height: 70px;
@@ -57,6 +56,7 @@ const attrs = useAttrs();
 
   @include media(450px) {
     width: 352px;
+    // width: 100%;
   }
 }
 .red.middle {
@@ -77,6 +77,15 @@ const attrs = useAttrs();
   background-image: url("~/assets/images/png/buttons/large-red.png");
   @include media(450px) {
     background-image: url("~/assets/images/png/buttons/large-middle-red.png");
+  }
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-red.png");
+      width: 295px;
+      p {
+        bottom: 7px;
+      }
+    }
   }
 }
 .purple.large {
@@ -100,6 +109,15 @@ const attrs = useAttrs();
   background-image: url("~/assets/images/png/buttons/large-red-hover.png");
   @include media(450px) {
     background-image: url("~/assets/images/png/buttons/large-middle-red-hover.png");
+  }
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-red.png");
+      width: 295px;
+      p {
+        bottom: 7px;
+      }
+    }
   }
 }
 .purple.large:hover {
@@ -126,6 +144,15 @@ const attrs = useAttrs();
   background-image: url("~/assets/images/png/buttons/large-red-active.png");
   @include media(450px) {
     background-image: url("~/assets/images/png/buttons/large-middle-red-active.png");
+  }
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-red-active.png");
+      width: 312px;
+      p {
+        bottom: 7px;
+      }
+    }
   }
 }
 .purple.large:active:not(:disabled) {
