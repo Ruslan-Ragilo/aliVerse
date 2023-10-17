@@ -52,6 +52,18 @@ const handleModalClose = () => {
   justify-items: center;
   z-index: 2;
 
+  @media (min-width: 1440px) {
+    grid-template-rows: 0.1fr 0.3fr 0.2fr 1fr 0.2fr;
+
+    p:nth-of-type(2) {
+      font-size: 22px;
+    }
+
+    p:nth-of-type(3) {
+      font-size: 18px;
+    }
+  }
+
   @include media(900px) {
     padding: 10px 0;
   }
