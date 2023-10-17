@@ -3,7 +3,7 @@
     <ElementsPixelBorder />
     <div class="modal">
       <BlocksShadowsBackground />
-      <ElementsCloseButton @click="handleClose" />
+      <BlocksShadowsModalButtons />
       <BlocksShadowsWelcome v-if="gameScreen === 'welcome'" />
       <BlocksShadowsRules v-if="gameScreen === 'rules'" />
     </div>
@@ -14,11 +14,6 @@
 const store = useShadowsStore();
 const isModalOpen = computed(() => store.isModalOpen);
 const gameScreen = computed(() => store.gameScreen);
-
-const handleClose = () => {
-  store.closeModal();
-  store.resetGame();
-};
 </script>
 
 <style scoped lang="scss">
@@ -55,10 +50,5 @@ const handleClose = () => {
 }
 .modal::-webkit-scrollbar {
   display: none;
-}
-.bg-image {
-  position: absolute;
-  height: 100%;
-  aspect-ratio: 3/2;
 }
 </style>
