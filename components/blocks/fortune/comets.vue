@@ -91,7 +91,7 @@
 }
 
 .comet-8 {
-  bottom: -40px;
+  bottom: -100px;
   left: -400px;
 }
 

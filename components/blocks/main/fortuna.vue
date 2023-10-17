@@ -57,6 +57,8 @@ const handleSpin = () => {
 .content {
   padding-top: 20.1vw;
   padding-right: 15px;
+  padding-bottom: 200px;
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   gap: 30px;
@@ -65,7 +67,7 @@ const handleSpin = () => {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 200px;
+    gap: 230px;
   }
 }
 .planets-wrapper {
