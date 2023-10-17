@@ -2,7 +2,7 @@
 const store = useModalBasked();
 </script>
 <template>
-  <button @click="store.setIsOpen(true)" class="cart-button">
+  <button class="cart-button" @click="store.setIsOpen(true)">
     <img src="~/assets/images/svg/bag.svg" />
   </button>
 </template>

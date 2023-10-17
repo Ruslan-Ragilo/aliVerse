@@ -2,16 +2,18 @@
   <div v-if="isModalOpen" class="wrapper-modal">
     <ElementsPixelBorder />
     <div class="modal">
+      <BlocksShadowsBackground />
       <ElementsCloseButton @click="handleClose" />
-      <BlocksTestopolisClouds />
-      <BlocksTestopolisContent />
+      <BlocksShadowsWelcome v-if="gameScreen === 'welcome'" />
+      <BlocksShadowsRules v-if="gameScreen === 'rules'" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const store = useTestopolisStore();
+const store = useShadowsStore();
 const isModalOpen = computed(() => store.isModalOpen);
+const gameScreen = computed(() => store.gameScreen);
 
 const handleClose = () => {
   store.closeModal();
@@ -32,7 +34,6 @@ const handleClose = () => {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 13;
 }
-
 .modal {
   position: relative;
   width: calc(100% - 48px);
@@ -42,7 +43,7 @@ const handleClose = () => {
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  background-image: url("~/assets/images/png/testopolis/testopolisBg.png");
+  background-image: url("~/assets/images/png/shadows/bg.png");
   background-size: cover;
   background-repeat: no-repeat;
   overflow-y: scroll;
@@ -52,26 +53,12 @@ const handleClose = () => {
     height: 100%;
   }
 }
-
 .modal::-webkit-scrollbar {
   display: none;
 }
-
-.cloud-left {
+.bg-image {
   position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.cloud-center {
-  position: absolute;
-  top: 30%;
-  right: 0;
-}
-
-.cloud-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 15%;
+  height: 100%;
+  aspect-ratio: 3/2;
 }
 </style>

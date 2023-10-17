@@ -19,7 +19,7 @@
 <script setup lang="ts">
 defineProps<{
   color: "red" | "green" | "purple";
-  size: "middle" | "large";
+  size: "mini" | "middle" | "large";
   classText?: String;
   isMainPage?: Boolean;
 }>();
@@ -44,6 +44,10 @@ const attrs = useAttrs();
   left: 50%;
   transform: translate(-50%, -60%);
 }
+
+.mini {
+  width: 250px;
+}
 .middle {
   width: 312px;
 
@@ -58,6 +62,26 @@ const attrs = useAttrs();
     width: 352px;
     // width: 100%;
   }
+}
+.red.mini {
+  background-image: url("~/assets/images/png/buttons/mini-red.png");
+}
+.green.mini {
+  background-image: url("~/assets/images/png/buttons/mini-green.png");
+}
+.red.mini:hover {
+  background-image: url("~/assets/images/png/buttons/mini-red-hover.png");
+}
+.green.mini:hover {
+  background-image: url("~/assets/images/png/buttons/mini-green-hover.png");
+}
+.red.mini:active:not(:disabled) {
+  top: 7px;
+  background-image: url("~/assets/images/png/buttons/mini-red-active.png");
+}
+.green.mini:active:not(:disabled) {
+  top: 7px;
+  background-image: url("~/assets/images/png/buttons/mini-green-active.png");
 }
 .red.middle {
   background-image: url("~/assets/images/png/buttons/middle-red.png");
@@ -158,6 +182,11 @@ const attrs = useAttrs();
 .purple.large:active:not(:disabled) {
   top: 7px;
   background-image: url("~/assets/images/png/buttons/large-purple-active.png");
+}
+
+.button.mini:disabled {
+  cursor: default;
+  background-image: url("~/assets/images/png/buttons/mini-disabled.png");
 }
 .button.middle:disabled {
   cursor: default;
