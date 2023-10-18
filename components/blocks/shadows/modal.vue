@@ -6,6 +6,8 @@
       <BlocksShadowsModalButtons />
       <BlocksShadowsWelcome v-if="gameScreen === 'welcome'" />
       <BlocksShadowsRules v-if="gameScreen === 'rules'" />
+      <BlocksShadowsGame v-if="gameScreen === 'game'" />
+      <BlocksShadowsFinish v-if="gameScreen === 'finish'" />
     </div>
   </div>
 </template>
@@ -14,6 +16,11 @@
 const store = useShadowsStore();
 const isModalOpen = computed(() => store.isModalOpen);
 const gameScreen = computed(() => store.gameScreen);
+const gamesRemained = computed(() => store.gamesRemained);
+
+if (gamesRemained.value === 0) {
+  store.finishGame();
+}
 </script>
 
 <style scoped lang="scss">

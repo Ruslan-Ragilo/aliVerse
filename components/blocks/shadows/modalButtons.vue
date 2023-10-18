@@ -1,10 +1,18 @@
 <template>
   <div class="wrapper-buttons">
     <button class="button">
-      <img src="~/assets/images/png/shadows/volume.png" alt="" />
+      <img
+        class="button-image"
+        src="~/assets/images/png/shadows/volume.png"
+        alt=""
+      />
     </button>
     <button class="button" @click="handleClose">
-      <img src="~/assets/images/png/shadows/close.png" alt="" />
+      <img
+        class="button-image"
+        src="~/assets/images/png/shadows/close.png"
+        alt=""
+      />
     </button>
   </div>
 </template>
@@ -28,7 +36,6 @@ const handleClose = () => {
   z-index: 3;
 
   @include media(800px) {
-    top: 20px;
     right: 20px;
   }
 }
@@ -43,5 +50,17 @@ const handleClose = () => {
 }
 .button:active {
   transform: scale(1);
+}
+
+.button-image {
+  @include media(800px) {
+    width: 50px;
+    height: 50px;
+  }
+
+  @include media(500px) {
+    width: 37px;
+    height: 37px;
+  }
 }
 </style>
