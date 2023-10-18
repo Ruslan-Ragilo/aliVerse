@@ -62,6 +62,11 @@ const currentAnswer = computed(() => store.currentAnswer);
   width: 326px;
   height: 140px;
 
+  @include media(750px) {
+    width: 300px;
+    height: 125px;
+  }
+
   @include media(500px) {
     width: 260px;
     height: 84px;

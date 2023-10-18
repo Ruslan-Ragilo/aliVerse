@@ -29,8 +29,10 @@ const currentQuestion = computed(
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding-bottom: 12vh;
 }
 .question-image {
-  height: 300px;
+  max-width: 85vw;
+  max-height: 300px;
 }
 </style>

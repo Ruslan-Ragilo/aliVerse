@@ -47,7 +47,7 @@ const getRemainedText = () => {
   align-items: center;
   z-index: 1;
 
-  @include media(500px) {
+  @include media(620px) {
     left: 22px;
     width: 137px;
     height: 37px;
@@ -62,7 +62,7 @@ const getRemainedText = () => {
   justify-content: center;
   align-items: center;
 
-  @include media(500px) {
+  @include media(620px) {
     width: calc(100% - 10px);
     height: calc(100% - 10px);
   }
@@ -70,7 +70,7 @@ const getRemainedText = () => {
   p {
     font-size: 16px;
 
-    @include media(500px) {
+    @include media(620px) {
       font-size: 10px;
     }
   }
@@ -101,7 +101,7 @@ const getRemainedText = () => {
   width: calc(100% - 15px);
   height: 100%;
 
-  @include media(500px) {
+  @include media(620px) {
     width: calc(100% - 10px);
     height: 100%;
   }
@@ -111,7 +111,7 @@ const getRemainedText = () => {
   width: calc(100% - 7.5px);
   height: calc(100% - 7.5px);
 
-  @include media(500px) {
+  @include media(620px) {
     width: calc(100% - 5px);
     height: calc(100% - 5px);
   }
@@ -121,7 +121,7 @@ const getRemainedText = () => {
   width: 100%;
   height: calc(100% - 15px);
 
-  @include media(500px) {
+  @include media(620px) {
     width: 100%;
     height: calc(100% - 10px);
   }
@@ -131,7 +131,7 @@ const getRemainedText = () => {
   width: calc(100% - 7.5px);
   height: calc(100% - 15px);
 
-  @include media(500px) {
+  @include media(620px) {
     width: calc(100% - 5px);
     height: calc(100% - 10px);
   }
@@ -141,7 +141,7 @@ const getRemainedText = () => {
   width: calc(100% - 15px);
   height: calc(100% - 7.5px);
 
-  @include media(500px) {
+  @include media(620px) {
     width: calc(100% - 10px);
     height: calc(100% - 5px);
   }
@@ -153,7 +153,7 @@ const getRemainedText = () => {
   position: absolute;
   z-index: 3;
 
-  @include media(500px) {
+  @include media(620px) {
     width: 2.5px;
     height: 2.5px;
   }
@@ -162,7 +162,7 @@ const getRemainedText = () => {
   top: 7.5px;
   left: 7.5px;
 
-  @include media(500px) {
+  @include media(620px) {
     top: 5px;
     left: 5px;
   }
@@ -171,7 +171,7 @@ const getRemainedText = () => {
   top: 7.5px;
   right: 7.5px;
 
-  @include media(500px) {
+  @include media(620px) {
     top: 5px;
     right: 5px;
   }
@@ -180,7 +180,7 @@ const getRemainedText = () => {
   bottom: 7.5px;
   left: 7.5px;
 
-  @include media(500px) {
+  @include media(620px) {
     bottom: 5px;
     left: 5px;
   }
@@ -189,7 +189,7 @@ const getRemainedText = () => {
   bottom: 7.5px;
   right: 7.5px;
 
-  @include media(500px) {
+  @include media(620px) {
     bottom: 5px;
     right: 5px;
   }
