@@ -22,7 +22,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <NuxtLayout v-if="!isLoading" :name="isAuth ? 'default' : 'auth'">
+  <NuxtLayout v-if="!isLoading" :name="isAuth ? 'default' : 'default'">
+    <!-- 'auth' : 'default' -->
     <NuxtPage />
   </NuxtLayout>
 </template>

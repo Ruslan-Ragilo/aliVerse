@@ -6,7 +6,12 @@
       </div>
     </div>
     <div class="wrapper-alien">
-      <img class="alien" src="@/assets/images/svg/alien.svg" alt="" />
+      <img
+        class="alien"
+        src="@/assets/images/svg/alien.svg"
+        alt=""
+        draggable="false"
+      />
     </div>
   </div>
 </template>

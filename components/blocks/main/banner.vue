@@ -4,32 +4,65 @@
     src="@/assets/images/svg/gradientPlanet.svg"
     alt=""
   />
-  <img class="absolute crafr" src="@/assets/images/svg/craft.svg" alt="" />
+  <img
+    class="absolute crafr"
+    src="@/assets/images/svg/craft.svg"
+    alt=""
+    draggable="false"
+  />
   <img
     class="absolute greenBall"
     src="@/assets/images/svg/greenBall.svg"
     alt=""
+    draggable="false"
   />
-  <img class="absolute earth" src="@/assets/images/svg/earth.svg" alt="" />
+  <img
+    class="absolute earth"
+    src="@/assets/images/svg/earth.svg"
+    alt=""
+    draggable="false"
+  />
   <img
     class="absolute blueComet"
     src="@/assets/images/svg/blueComet.svg"
     alt=""
+    draggable="false"
   />
 
   <img
     class="absolute blueComet"
     src="@/assets/images/svg/blueComet.svg"
     alt=""
+    draggable="false"
   />
-  <img class="absolute cloud" src="@/assets/images/svg/cloud.svg" alt="" />
+  <img
+    class="absolute cloud"
+    src="@/assets/images/svg/cloud.svg"
+    alt=""
+    draggable="false"
+  />
   <div class="wrapper-frog absolute">
-    <img class="fullCloud" src="@/assets/images/svg/fullCloud.svg" alt="" />
-    <img class="frog" src="@/assets/images/svg/frog.svg" alt="" />
+    <img
+      class="fullCloud"
+      src="@/assets/images/svg/fullCloud.svg"
+      alt=""
+      draggable="false"
+    />
+    <img
+      class="frog"
+      src="@/assets/images/svg/frog.svg"
+      alt=""
+      draggable="false"
+    />
   </div>
 
   <div class="container">
-    <img class="logo" src="@/assets/images/svg/logo.svg" alt="" />
+    <img
+      class="logo"
+      src="@/assets/images/svg/logo.svg"
+      alt=""
+      draggable="false"
+    />
   </div>
 </template>
 

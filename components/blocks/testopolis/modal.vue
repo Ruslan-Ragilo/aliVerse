@@ -1,23 +1,21 @@
 <template>
   <div v-if="isModalOpen" class="wrapper-modal">
-    <BlocksTestopolisBorder
-      ><div class="modal">
-        <ElementsCloseButton @click="handleClose" />
-        <BlocksTestopolisClouds />
-        <BlocksTestopolisContent />
-      </div>
-    </BlocksTestopolisBorder>
+    <BlocksTestopolisBorder />
+    <div class="modal">
+      <ElementsCloseButton @click="handleClose" />
+      <BlocksTestopolisClouds />
+      <BlocksTestopolisContent />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const { onModalClose } = defineProps<{
-  isModalOpen: boolean;
-  onModalClose: () => void;
-}>();
+const store = useTestopolisStore();
+const isModalOpen = computed(() => store.isModalOpen);
 
 const handleClose = () => {
-  onModalClose();
+  store.closeModal();
+  store.resetGame();
 };
 </script>
 
@@ -47,6 +45,16 @@ const handleClose = () => {
   background-image: url("~/assets/images/png/testopolis/testopolisBg.png");
   background-size: cover;
   background-repeat: no-repeat;
+  overflow-y: scroll;
+
+  @include media(800px) {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
 }
 
 .cloud-left {

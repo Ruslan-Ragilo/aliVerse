@@ -42,7 +42,7 @@ const attrs = useAttrs();
   position: absolute;
   /* top: 13px; */
   left: 50%;
-  transform: translate(-50%, -67%);
+  transform: translate(-50%, -60%);
 }
 .middle {
   width: 312px;

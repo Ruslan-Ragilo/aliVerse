@@ -1,17 +1,25 @@
 <template>
-  <div
-    v-if="clickedPhotoIndex !== null"
-    class="swiper-modal"
-    @click.self="closeSwiperModal"
-  >
+  <div v-if="clickedPhotoIndex !== null" class="swiper-modal">
     <swiper-container
       class="swiper-container"
       :navigation="swiperNavigationOptions"
       :initial-slide="clickedPhotoIndex"
     >
-      <swiper-slide v-for="photo in photos" :key="photo" class="swiper-slide"
-        ><img :src="photo" alt="" class="photo"
-      /></swiper-slide>
+      <swiper-slide
+        v-for="photo in photos"
+        :key="photo"
+        class="swiper-slide"
+        @click.self="closeSwiperModal"
+      >
+        <ElementsSpinner v-if="!isLoaded" />
+        <img
+          :style="{ opacity: isLoaded ? 1 : 0 }"
+          :src="photo"
+          alt=""
+          class="photo"
+          @load="load"
+        />
+      </swiper-slide>
     </swiper-container>
     <swiper-button-prev class="swiper-button-prev">
       <img src="~/assets/images/svg/arrowLeft.svg" alt="Previous" />
@@ -35,6 +43,11 @@ const props = defineProps<{
 const { photos, onSwiperClose } = props;
 const clickedPhotoIndex = computed(() => props.clickedPhotoIndex);
 
+const isLoaded = ref(false);
+const load = () => {
+  isLoaded.value = true;
+};
+
 const closeSwiperModal = () => {
   onSwiperClose();
 };
@@ -49,7 +62,6 @@ const swiperNavigationOptions = {
 .swiper-modal {
   width: 100%;
   height: 100vh;
-  padding: 120px;
   position: fixed;
   top: 0;
   left: 0;
@@ -66,6 +78,8 @@ const swiperNavigationOptions = {
 .swiper-slide {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .photo {

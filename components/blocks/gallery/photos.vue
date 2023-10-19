@@ -94,6 +94,7 @@ const onSwiperClose = () => {
 }
 
 .photo {
+  width: 410px;
   cursor: pointer;
 
   @include media(1100px) {

@@ -31,7 +31,7 @@
 .content {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20vw;
+  margin-top: 10vw;
 }
 .letter {
   max-width: 600px;

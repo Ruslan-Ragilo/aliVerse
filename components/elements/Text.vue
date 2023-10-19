@@ -5,7 +5,8 @@ type Themes =
   | "light"
   | "red"
   | "mustard"
-  | "mustard-light";
+  | "mustard-light"
+  | "mustard-dark";
 type Sizes = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl" | "heading";
 type FontFamily = "Better" | "Barcade";
 type Align = "left" | "center" | "right";
@@ -69,6 +70,10 @@ const classNames = [
 .mustard-light {
   color: #ffd776;
   text-shadow: 3px 0 #ffffff;
+}
+.mustard-dark {
+  color: #ffd776;
+  text-shadow: 6px 0 #7e6c3f;
 }
 .light {
   color: $black-light;
