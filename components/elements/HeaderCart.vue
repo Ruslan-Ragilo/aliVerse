@@ -3,7 +3,7 @@ const store = useModalBasked();
 </script>
 <template>
   <button class="cart-button" @click="store.setIsOpen(true)">
-    <img src="~/assets/images/svg/bag.svg" />
+    <img class="cart-icon" src="~/assets/images/png/bag.png" alt="Cart" />
   </button>
 </template>
 
@@ -12,8 +12,9 @@ const store = useModalBasked();
   width: 60px;
   height: 60px;
   border: none;
-  border-radius: 20px;
+  background-color: transparent;
   cursor: pointer;
+
   @include media(1200px) {
     width: 46px;
     height: 46px;
@@ -22,5 +23,10 @@ const store = useModalBasked();
     width: 46px;
     height: 46px;
   }
+}
+
+.cart-icon {
+  width: 100%;
+  height: 100%;
 }
 </style>

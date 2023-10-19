@@ -58,7 +58,7 @@
 
 .window-tail {
   content: "";
-  background: url("@/assets/images/svg/messageEnd.svg") no-repeat;
+  background: url("@/assets/images/png/message-tail.png") no-repeat;
   position: absolute;
   width: 100px;
   height: 100px;
