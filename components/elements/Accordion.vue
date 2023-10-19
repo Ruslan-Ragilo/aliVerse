@@ -36,7 +36,7 @@ const isActive = ref(false);
   .answers {
     visibility: hidden;
     max-height: 0;
-    transition: max-height 0.15s ease-out;
+    transition: all 0.15s ease-out;
 
     &.active {
       visibility: visible;

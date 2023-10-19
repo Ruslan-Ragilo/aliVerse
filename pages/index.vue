@@ -34,7 +34,7 @@
     <BlocksMainGames />
     <BlocksMainTest />
     <BlocksMainQuestion />
-    <!-- <BlocksMainFooter /> -->
+    <BlocksMainFooter />
   </NuxtLayout>
 </template>
 
