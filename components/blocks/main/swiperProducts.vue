@@ -18,11 +18,10 @@ const next = ref(null);
       <div class="wrapper-top">
         <ElementsCustomSelect
           :options="[
-            { option: 'asdadwda' },
-            { option: 'ncvkio' },
-            { option: 'cbhtyjyujyu' },
-            { option: 'sdfsdferfer' },
-            { option: 'wert4yt34t' },
+            { option: 'Онлайн' },
+            { option: 'Москва' },
+            { option: 'Нижний Новгород' },
+            { option: 'Ташкент' },
           ]"
         />
         <div class="wrapper-nav">
