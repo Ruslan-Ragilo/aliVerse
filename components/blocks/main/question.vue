@@ -11,7 +11,7 @@
         <ElementsAccordion v-for="item in questionsData" :key="item.question">
           <template #question>{{ item.question }}</template>
           <template #answer>
-            <div v-html="item.answer"></div>
+            <div class="answer" v-html="item.answer"></div>
           </template>
         </ElementsAccordion>
       </div>
@@ -20,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+// TODO в 4 ответ добавить ссылку
 const questionsData = ref({
   1: {
     question: "Как выиграть мерч?",
@@ -55,6 +56,7 @@ const questionsData = ref({
 .cloud {
   position: absolute;
   right: 0;
+  z-index: -1;
 }
 .accordion-wrapper {
   margin-top: 50px;
@@ -63,9 +65,18 @@ const questionsData = ref({
   gap: 30px;
   padding-bottom: 20px;
 }
-
 .link {
   text-decoration: underline;
   color: #000;
+}
+.wrapper-main p {
+  @include media(670px) {
+    font-size: 26px;
+  }
+}
+.answer {
+  @include media(670px) {
+    font-size: 14px;
+  }
 }
 </style>

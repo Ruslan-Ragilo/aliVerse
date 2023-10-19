@@ -29,8 +29,16 @@ const isActive = ref(false);
   position: relative;
   cursor: pointer;
 
+  @include media(670px) {
+    padding: 22px 22px 0 22px;
+  }
+
   .question {
     padding-bottom: 44px;
+
+    @include media(670px) {
+      padding-bottom: 22px;
+    }
   }
 
   .answers {
@@ -42,6 +50,10 @@ const isActive = ref(false);
       visibility: visible;
       max-height: 400px;
       padding-bottom: 44px;
+
+      @include media(670px) {
+        padding-bottom: 22px;
+      }
     }
   }
 
@@ -53,6 +65,11 @@ const isActive = ref(false);
     &.active {
       transform: rotate(-90deg);
     }
+  }
+}
+.wrapper-item p {
+  @include media(670px) {
+    font-size: 16px;
   }
 }
 </style>
