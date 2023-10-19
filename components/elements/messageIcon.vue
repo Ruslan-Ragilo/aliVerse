@@ -3,6 +3,7 @@
     <div class="window">
       <div class="wrapper-window">
         <slot></slot>
+        <div class="window-tail"></div>
       </div>
     </div>
     <div class="wrapper-alien">
@@ -53,30 +54,37 @@
       width: 170px;
     }
   }
+}
 
-  &::before {
-    content: "";
-    background: url("@/assets/images/svg/messageEnd.svg") no-repeat;
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    bottom: 189px;
-    right: 0;
-    z-index: 3;
+.window-tail {
+  content: "";
+  background: url("@/assets/images/svg/messageEnd.svg") no-repeat;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: -100px;
+  right: 20px;
+  z-index: 3;
 
-    @include media(744px) {
-      width: 60px;
-      height: 60px;
-      bottom: 116px;
-      right: -28px;
-    }
+  @include media(744px) {
+    width: 60px;
+    height: 60px;
+    bottom: -60px;
+    right: 140px;
+  }
 
-    @include media(600px) {
-      width: 60px;
-      height: 60px;
-      bottom: 64px;
-      right: -53px;
-    }
+  @include media(600px) {
+    width: 60px;
+    height: 60px;
+    bottom: -60px;
+    right: 100px;
+  }
+
+  @include media(500px) {
+    width: 60px;
+    height: 60px;
+    bottom: -60px;
+    right: 50px;
   }
 }
 </style>
