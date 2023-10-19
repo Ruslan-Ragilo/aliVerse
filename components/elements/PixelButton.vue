@@ -43,6 +43,10 @@ const attrs = useAttrs();
   /* top: 13px; */
   left: 50%;
   transform: translate(-50%, -60%);
+
+  @include media(450px) {
+    font-size: 20px;
+  }
 }
 
 .mini {
@@ -96,6 +100,16 @@ const attrs = useAttrs();
   @include media(450px) {
     background-image: url("~/assets/images/png/buttons/mini-green.png");
   }
+
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-green.png");
+      width: 295px;
+      p {
+        bottom: 7px;
+      }
+    }
+  }
 }
 .red.large {
   background-image: url("~/assets/images/png/buttons/large-red.png");
@@ -114,6 +128,16 @@ const attrs = useAttrs();
 }
 .purple.large {
   background-image: url("~/assets/images/png/buttons/large-purple.png");
+
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-purple.png");
+      width: 295px;
+      p {
+        bottom: 7px;
+      }
+    }
+  }
 }
 .red.middle:hover {
   background-image: url("~/assets/images/png/buttons/middle-red-hover.png");
@@ -127,6 +151,16 @@ const attrs = useAttrs();
 
   @include media(450px) {
     background-image: url("~/assets/images/png/buttons/mini-green-hover.png");
+  }
+
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-green.png");
+      width: 295px;
+      p {
+        bottom: 7px;
+      }
+    }
   }
 }
 .red.large:hover {
@@ -146,6 +180,16 @@ const attrs = useAttrs();
 }
 .purple.large:hover {
   background-image: url("~/assets/images/png/buttons/large-purple-hover.png");
+
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-purple.png");
+      width: 295px;
+      p {
+        bottom: 7px;
+      }
+    }
+  }
 }
 .red.middle:active:not(:disabled) {
   top: 7px;
@@ -162,6 +206,16 @@ const attrs = useAttrs();
   @include media(450px) {
     background-image: url("~/assets/images/png/buttons/mini-green-active.png");
   }
+
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-green-active.png");
+      width: 295px;
+      p {
+        bottom: 7px;
+      }
+    }
+  }
 }
 .red.large:active:not(:disabled) {
   top: 7px;
@@ -172,7 +226,7 @@ const attrs = useAttrs();
   &.mini-main {
     @include media(450px) {
       background-image: url("~/assets/images/png/buttons/mobi-red-active.png");
-      width: 312px;
+      width: 295px;
       p {
         bottom: 7px;
       }
@@ -182,6 +236,16 @@ const attrs = useAttrs();
 .purple.large:active:not(:disabled) {
   top: 7px;
   background-image: url("~/assets/images/png/buttons/large-purple-active.png");
+
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-purple-active.png");
+      width: 295px;
+      p {
+        bottom: 7px;
+      }
+    }
+  }
 }
 
 .button.mini:disabled {

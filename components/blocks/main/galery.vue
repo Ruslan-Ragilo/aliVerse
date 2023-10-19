@@ -40,7 +40,7 @@
   margin-top: -200px;
 
   @include media(1200px) {
-    margin-top: -130px;
+    margin-top: -100px;
   }
 }
 .bg {

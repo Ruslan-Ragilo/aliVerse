@@ -24,6 +24,7 @@
           <ElementsPixelButton
             color="green"
             size="middle"
+            :is-main-page="true"
             class="alien-button"
             @click="handleModalOpen"
           >

@@ -59,6 +59,7 @@
 .window-tail {
   content: "";
   background: url("@/assets/images/png/message-tail.png") no-repeat;
+  background-size: contain;
   position: absolute;
   width: 100px;
   height: 100px;
