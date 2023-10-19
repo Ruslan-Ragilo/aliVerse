@@ -93,6 +93,7 @@ watch(
   () => gameState.value,
   () => {
     getButtonText();
+    hintText.value = currentQuestion.value.wrong;
   },
 );
 
