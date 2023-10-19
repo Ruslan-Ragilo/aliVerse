@@ -1,9 +1,17 @@
 <template>
   <div class="wrapper-main wrapper">
     <img src="@/assets/images/png/game.png" alt="" />
-    <button class="p">asdas</button>
-    <button class="s">asdasd</button>
-    <button class="t">asdasd</button>
+    <div class="left-button">
+      <ElementsPixelButton color="red" size="mini">Играть</ElementsPixelButton>
+    </div>
+    <div class="middle-button">
+      <ElementsPixelButton color="red" size="mini">Играть</ElementsPixelButton>
+    </div>
+    <div class="right-button">
+      <ElementsPixelButton color="red" size="mini" @click="openShadowsModal">
+        Играть
+      </ElementsPixelButton>
+    </div>
     <ElementsMessageIcon class="alien"
       ><ElementsText transform="upper"
         >Готов разбогатеть? Заходи в любую из мини-игр, зарабатывай Ali Coins и
@@ -11,8 +19,17 @@
         сыграть в мини-игру — не теряй времени, летс гоу!</ElementsText
       ></ElementsMessageIcon
     >
+    <BlocksShadowsModal />
   </div>
 </template>
+
+<script setup lang="ts">
+const shadowsStore = useShadowsStore();
+
+const openShadowsModal = () => {
+  shadowsStore.openModal();
+};
+</script>
 
 <style lang="scss" scoped>
 div.alien {
@@ -30,20 +47,20 @@ div.alien {
     width: 100%;
   }
 
-  button {
+  .left-button {
     position: absolute;
-  }
-
-  .p {
-    left: 24%;
+    left: 17%;
     top: 22%;
   }
-  .s {
+
+  .middle-button {
+    position: absolute;
     top: 14%;
   }
 
-  .t {
-    right: 24%;
+  .right-button {
+    position: absolute;
+    right: 17%;
     top: 22%;
   }
 }

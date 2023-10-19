@@ -31,10 +31,10 @@
     <BlocksMainFortuna />
     <BlocksMainMerch />
     <BlocksMainSwiperProducts />
-    <!-- <BlocksMainGames /> -->
+    <BlocksMainGames />
     <BlocksMainTest />
     <BlocksMainQuestion />
-    <!-- <BlocksMainFooter /> -->
+    <BlocksMainFooter />
   </NuxtLayout>
 </template>
 

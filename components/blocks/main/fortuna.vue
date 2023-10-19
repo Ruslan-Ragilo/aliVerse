@@ -63,7 +63,7 @@ const handleSpin = () => {
   justify-content: space-between;
   gap: 30px;
 
-  @include media(1000px) {
+  @include media(1200px) {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;

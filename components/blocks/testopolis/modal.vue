@@ -1,6 +1,6 @@
 <template>
   <div v-if="isModalOpen" class="wrapper-modal">
-    <BlocksTestopolisBorder />
+    <ElementsPixelBorder />
     <div class="modal">
       <ElementsCloseButton @click="handleClose" />
       <BlocksTestopolisClouds />

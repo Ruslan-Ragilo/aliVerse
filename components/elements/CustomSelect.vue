@@ -6,7 +6,7 @@ defineProps({
   },
 });
 const isActive = ref(false);
-const valueSelect = ref("");
+const valueSelect = ref("Онлайн");
 
 const handleSelect = (value) => {
   isActive.value = false;
@@ -17,22 +17,24 @@ const handleSelect = (value) => {
 
 <template>
   <div class="wrapper-select">
-    <div @click="isActive = !isActive" class="value">
+    <div class="value" @click="isActive = !isActive">
       <img
         src="@/assets/images/svg/caret.svg"
         :class="['caret', { active: isActive }]"
         alt=""
       />
-      <ElementsText>{{ valueSelect }}</ElementsText>
+      <ElementsText transform="upper" size="s">{{ valueSelect }}</ElementsText>
     </div>
     <div :class="['options', { active: isActive }]">
       <div
-        @click="handleSelect(item.option)"
         v-for="item in options"
         :key="item.option"
         class="option"
+        @click="handleSelect(item.option)"
       >
-        <ElementsText>{{ item.option }}</ElementsText>
+        <ElementsText transform="upper" size="s">
+          {{ item.option }}
+        </ElementsText>
       </div>
     </div>
   </div>
@@ -68,8 +70,7 @@ const handleSelect = (value) => {
   }
 
   .options {
-    max-height: 200px;
-    padding-bottom: 10px;
+    max-height: 240px;
     background-color: $white;
     margin-top: 5px;
     display: flex;
@@ -87,7 +88,7 @@ const handleSelect = (value) => {
     }
 
     .option {
-      padding: 10px;
+      padding: 15px 30px;
       cursor: pointer;
       transition: 0.3s;
 
@@ -96,5 +97,9 @@ const handleSelect = (value) => {
       }
     }
   }
+}
+
+.options::-webkit-scrollbar {
+  display: none;
 }
 </style>

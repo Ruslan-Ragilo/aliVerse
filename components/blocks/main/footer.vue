@@ -20,10 +20,12 @@ img {
 .prim {
   left: 0;
   bottom: -22px;
+  z-index: -1;
 }
 
 .second {
   right: 0;
+  z-index: -1;
 }
 .logo {
   position: static;

@@ -18,20 +18,15 @@ const next = ref(null);
       <div class="wrapper-top">
         <ElementsCustomSelect
           :options="[
-            { option: 'asdadwda' },
-            { option: 'ncvkio' },
-            { option: 'cbhtyjyujyu' },
-            { option: 'sdfsdferfer' },
-            { option: 'wert4yt34t' },
+            { option: 'Онлайн' },
+            { option: 'Москва' },
+            { option: 'Нижний Новгород' },
+            { option: 'Ташкент' },
           ]"
         />
         <div class="wrapper-nav">
-          <button ref="prev" class="nav prev">
-            <img src="@/assets/images/swiper/prev.svg" alt="" />
-          </button>
-          <button ref="next" class="nav next">
-            <img src="@/assets/images/swiper/next.svg" alt="" />
-          </button>
+          <button ref="prev" class="nav prev"></button>
+          <button ref="next" class="nav next"></button>
         </div>
       </div>
       <Swiper
@@ -44,7 +39,7 @@ const next = ref(null);
           prevEl: prev,
         }"
       >
-        <SwiperSlide class="slide" v-for="item in 10" :key="item">
+        <SwiperSlide v-for="item in 10" :key="item" class="slide">
           <ElementsSwiperSlide />
         </SwiperSlide>
       </Swiper>
@@ -123,5 +118,27 @@ const next = ref(null);
     opacity: 0.4;
     cursor: auto;
   }
+}
+.nav.prev {
+  width: 100px;
+  height: 63px;
+  background-image: url("~/assets/images/swiper/prev.svg");
+  background-repeat: no-repeat;
+}
+.nav.next {
+  width: 100px;
+  height: 63px;
+  background-image: url("~/assets/images/swiper/next.svg");
+  background-repeat: no-repeat;
+}
+.nav.prev:active:not(:disabled) {
+  position: relative;
+  top: 6px;
+  background-image: url("~/assets/images/swiper/prev-active.svg");
+}
+.nav.next:active:not(:disabled) {
+  position: relative;
+  top: 6px;
+  background-image: url("~/assets/images/swiper/next-active.svg");
 }
 </style>
