@@ -7,7 +7,7 @@ export const useWheelStore = defineStore("wheel", () => {
 
   function handleSpin(wheelElement: HTMLImageElement | undefined) {
     isSpinning.value = true;
-    const spinningTime = Math.random() * (5000 - 1000) + 1000;
+    const spinningTime = Math.random() * (5000 - 1000) + 1000; // TODO запрос на время прокрута
 
     // TODO добавить взаимодествие с беком
 

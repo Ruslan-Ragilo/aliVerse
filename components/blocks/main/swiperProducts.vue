@@ -122,23 +122,27 @@ const next = ref(null);
 .nav.prev {
   width: 100px;
   height: 63px;
-  background-image: url("~/assets/images/swiper/prev.svg");
+  background-image: url("~/assets/images/swiper/prev.png");
   background-repeat: no-repeat;
 }
 .nav.next {
   width: 100px;
   height: 63px;
-  background-image: url("~/assets/images/swiper/next.svg");
+  background-image: url("~/assets/images/swiper/next.png");
   background-repeat: no-repeat;
 }
 .nav.prev:active:not(:disabled) {
   position: relative;
   top: 6px;
-  background-image: url("~/assets/images/swiper/prev-active.svg");
+  background-image: url("~/assets/images/swiper/prev-active.png");
 }
 .nav.next:active:not(:disabled) {
   position: relative;
   top: 6px;
-  background-image: url("~/assets/images/swiper/next-active.svg");
+  background-image: url("~/assets/images/swiper/next-active.png");
+}
+.nav.next:disabled,
+.nav.prev:disabled {
+  opacity: 0.5;
 }
 </style>

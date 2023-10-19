@@ -21,14 +21,49 @@ img {
   left: 0;
   bottom: -22px;
   z-index: -1;
+
+  @include media(1200px) {
+    left: -50px;
+  }
+
+  @include media(700px) {
+    height: 150px;
+  }
+
+  @include media(450px) {
+    height: 100px;
+  }
 }
 
 .second {
   right: 0;
   z-index: -1;
+
+  @include media(1200px) {
+    right: -220px;
+    top: -150px;
+  }
+
+  @include media(700px) {
+    height: 150px;
+    right: -150px;
+  }
+
+  @include media(450px) {
+    height: 100px;
+    right: -100px;
+  }
 }
 .logo {
   position: static;
   padding-bottom: 100px;
+
+  @include media(700px) {
+    height: 250px;
+  }
+
+  @include media(450px) {
+    height: 200px;
+  }
 }
 </style>

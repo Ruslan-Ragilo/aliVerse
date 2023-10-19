@@ -64,30 +64,58 @@ const handleSpin = () => {
   gap: 30px;
 
   @include media(1200px) {
-    flex-direction: column;
+    padding-top: 10.1vw;
+    padding-bottom: 40px;
+    flex-direction: column-reverse;
     justify-content: flex-start;
     align-items: center;
-    gap: 230px;
+  }
+
+  @include media(743px) {
+    padding-top: 40.1vw;
   }
 }
 .planets-wrapper {
   position: relative;
+
+  @include media(1200px) {
+    top: 230px;
+    left: 120px;
+  }
+
+  @include media(850px) {
+    top: 190px;
+    left: 120px;
+  }
+
+  @include media(743px) {
+    top: 40px;
+    left: 0;
+  }
 }
 .letter {
   max-width: 600px;
   width: 100%;
+  z-index: 2;
+
+  @include media(1200px) {
+    position: relative;
+    right: 100px;
+  }
+
+  @include media(850px) {
+    right: 60px;
+  }
+
+  @include media(743px) {
+    top: 0;
+    right: 0;
+  }
 }
 .red-text {
   color: red;
 }
 .spin-button {
   margin-top: 28px;
-}
-.alien-wrapper {
-  p {
-    @include media(744px) {
-      text-align: right;
-    }
-  }
 }
 </style>

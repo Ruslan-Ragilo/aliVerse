@@ -36,12 +36,20 @@
 .letter {
   max-width: 600px;
   width: 100%;
+
   span {
     color: $red-secondary;
   }
 
   @include media(1200px) {
     margin-top: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    p {
+      padding-right: 20px;
+    }
   }
 }
 

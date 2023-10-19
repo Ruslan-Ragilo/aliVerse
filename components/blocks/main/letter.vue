@@ -23,6 +23,7 @@
         >
         <ElementsPixelButton
           color="purple"
+          :is-main-page="true"
           size="large"
           class="alien-button"
           @click="handleModalOpen"
@@ -53,7 +54,7 @@ const handleModalClose = () => {
 <style lang="scss" scoped>
 .letter-container {
   @include media(744px) {
-    margin-top: 100px;
+    margin-top: 250px;
   }
 }
 .content {
@@ -69,7 +70,6 @@ const handleModalClose = () => {
   display: flex;
   flex-direction: column-reverse;
   width: 62vw;
-  overflow-x: hidden;
 
   @include media(1000px) {
     width: 100%;
@@ -101,6 +101,10 @@ const handleModalClose = () => {
       left: -6vw;
       transform: rotate(30deg);
       width: 100%;
+    }
+
+    @include media(500px) {
+      bottom: 74vw;
     }
   }
 }
