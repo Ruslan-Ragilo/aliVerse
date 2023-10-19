@@ -10,6 +10,12 @@
       alt=""
       draggable="false"
     />
+    <a
+      v-if="gameState !== 'default'"
+      class="link"
+      :href="currentQuestion.link"
+      target="_blank"
+    ></a>
   </div>
 </template>
 
@@ -32,6 +38,17 @@ const currentQuestion = computed(
   padding-bottom: 12vh;
 }
 .question-image {
+  max-width: 85vw;
+  max-height: 300px;
+}
+
+.link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -77%);
+  width: 100%;
+  height: 100%;
   max-width: 85vw;
   max-height: 300px;
 }
