@@ -106,7 +106,7 @@ const attrs = useAttrs();
       background-image: url("~/assets/images/png/buttons/mobi-green.png");
       width: 295px;
       p {
-        bottom: 7px;
+        bottom: 10px;
       }
     }
   }
@@ -121,7 +121,7 @@ const attrs = useAttrs();
       background-image: url("~/assets/images/png/buttons/mobi-red.png");
       width: 295px;
       p {
-        bottom: 7px;
+        bottom: 10px;
       }
     }
   }
@@ -134,7 +134,7 @@ const attrs = useAttrs();
       background-image: url("~/assets/images/png/buttons/mobi-purple.png");
       width: 295px;
       p {
-        bottom: 7px;
+        bottom: 10px;
       }
     }
   }
@@ -158,7 +158,7 @@ const attrs = useAttrs();
       background-image: url("~/assets/images/png/buttons/mobi-green.png");
       width: 295px;
       p {
-        bottom: 7px;
+        bottom: 10px;
       }
     }
   }
@@ -173,7 +173,7 @@ const attrs = useAttrs();
       background-image: url("~/assets/images/png/buttons/mobi-red.png");
       width: 295px;
       p {
-        bottom: 7px;
+        bottom: 10px;
       }
     }
   }
@@ -186,7 +186,7 @@ const attrs = useAttrs();
       background-image: url("~/assets/images/png/buttons/mobi-purple.png");
       width: 295px;
       p {
-        bottom: 7px;
+        bottom: 10px;
       }
     }
   }
@@ -212,7 +212,7 @@ const attrs = useAttrs();
       background-image: url("~/assets/images/png/buttons/mobi-green-active.png");
       width: 295px;
       p {
-        bottom: 7px;
+        bottom: 10px;
       }
     }
   }
@@ -228,7 +228,7 @@ const attrs = useAttrs();
       background-image: url("~/assets/images/png/buttons/mobi-red-active.png");
       width: 295px;
       p {
-        bottom: 7px;
+        bottom: 10px;
       }
     }
   }
@@ -242,7 +242,7 @@ const attrs = useAttrs();
       background-image: url("~/assets/images/png/buttons/mobi-purple-active.png");
       width: 295px;
       p {
-        bottom: 7px;
+        bottom: 10px;
       }
     }
   }
