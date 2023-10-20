@@ -1,40 +1,47 @@
 <template>
-  <div class="letter-container">
-    <div class="images">
-      <img class="convert" src="@/assets/images/svg/letterConvert.png" alt="" />
-      <img class="eath" src="@/assets/images/svg/letterEath.svg" alt="" />
-    </div>
-    <div class="wrapper-main content">
-      <ElementsText
-        class="heading-title"
-        size="heading"
-        transform="upper"
-        themes="secondary"
-        >Планета <br />
-        спасибка</ElementsText
-      >
-      <ElementsMessageIcon class="alien-wrapper">
-        <ElementsText transform="upper"
-          >Как часто ты благодаришь коллег за работу над общим проектом, помощь
-          в трудной ситуации, совместную встречу или просто за то, что они у
-          тебя есть? <br /><br />
-          Сейчас самое время это сделать! Заполняй форму и отправляй спасибку
-          любимым коллегам — обещаем, она заставит их улыбнуться!</ElementsText
+  <div class="wrapper-main">
+    <div class="letter-container">
+      <div class="images">
+        <img
+          class="convert"
+          src="@/assets/images/svg/letterConvert.png"
+          alt=""
+        />
+        <img class="eath" src="@/assets/images/svg/letterEath.svg" alt="" />
+      </div>
+      <div class="content">
+        <ElementsText
+          class="heading-title"
+          size="heading"
+          transform="upper"
+          themes="secondary"
+          >Планета <br />
+          спасибка</ElementsText
         >
-        <ElementsPixelButton
-          color="purple"
-          :is-main-page="true"
-          size="large"
-          class="alien-button"
-          @click="handleModalOpen"
-        >
-          Написать спасибку
-        </ElementsPixelButton>
-      </ElementsMessageIcon>
-      <BlocksThanksModal
-        :is-modal-open="isModalOpen"
-        :on-modal-close="handleModalClose"
-      />
+        <ElementsMessageIcon class="alien-wrapper">
+          <ElementsText transform="upper"
+            >Как часто ты благодаришь коллег за работу над общим проектом,
+            помощь в трудной ситуации, совместную встречу или просто за то, что
+            они у тебя есть? <br /><br />
+            Сейчас самое время это сделать! Заполняй форму и отправляй спасибку
+            любимым коллегам — обещаем, она заставит их
+            улыбнуться!</ElementsText
+          >
+          <ElementsPixelButton
+            color="purple"
+            :is-main-page="true"
+            size="large"
+            class="alien-button"
+            @click="handleModalOpen"
+          >
+            Написать спасибку
+          </ElementsPixelButton>
+        </ElementsMessageIcon>
+        <BlocksThanksModal
+          :is-modal-open="isModalOpen"
+          :on-modal-close="handleModalClose"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -59,6 +66,7 @@ const handleModalClose = () => {
 }
 .content {
   padding-top: 22.1vw;
+
   @include media(1000px) {
     padding-top: 76.1vw;
   }

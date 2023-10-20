@@ -35,7 +35,6 @@
 }
 .letter {
   max-width: 600px;
-  width: 100%;
 
   span {
     color: $red-secondary;
