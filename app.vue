@@ -6,7 +6,7 @@ onMounted(async () => {
   try {
     const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
     const data = await res.json();
-    if (!data.completed) {
+    if (/* !data.completed */ location.pathname.includes("auth")) {
       isAuth.value = true;
       // navigateTo("/");
       isLoading.value = false;
@@ -22,8 +22,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <NuxtLayout v-if="!isLoading" :name="isAuth ? 'default' : 'default'">
-    <!-- 'auth' : 'default' -->
+  <NuxtLayout v-if="!isLoading" :name="isAuth ? 'auth' : 'default'">
     <NuxtPage />
   </NuxtLayout>
 </template>
