@@ -39,11 +39,12 @@ const dataForm = ref({
 });
 
 watch(isReadyData, () => {
+  console.log("ISREADY");
   store.registration(
     dataForm.value.email,
     dataForm.value.password.map((el) => el.value).join(""),
     dataForm.value.name,
-    dataForm.value.avatar
+    dataForm.value.avatar,
   );
 });
 const handleMobAvatar = () => {
