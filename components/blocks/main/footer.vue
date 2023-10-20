@@ -15,7 +15,7 @@
 <style lang="scss" scoped>
 footer {
   padding-top: 150px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .wrapper-footer {
