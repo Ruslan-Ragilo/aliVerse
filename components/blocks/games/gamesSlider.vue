@@ -19,30 +19,45 @@
     >
       <SwiperSlide class="slide">
         <div class="left-game game">
+          <BlocksGamesHint v-if="!isFactsAvailable">
+            Откроется 16 ноября
+          </BlocksGamesHint>
           <img
             class="game-image"
             src="~/assets/images/png/games/facts-game.png"
             alt="Сила знаний"
           />
-          <ElementsPixelButton color="red" size="mini" :disabled="true"
+          <ElementsPixelButton
+            color="red"
+            size="mini"
+            :disabled="!isFactsAvailable"
             >Играть</ElementsPixelButton
           >
         </div>
       </SwiperSlide>
       <SwiperSlide class="slide">
         <div class="middle-game game">
+          <BlocksGamesHint v-if="!isFallAvailable">
+            Откроется 8 ноября
+          </BlocksGamesHint>
           <img
             class="game-image"
             src="~/assets/images/png/games/fall-game.png"
             alt="Товаропад"
           />
-          <ElementsPixelButton color="red" size="mini" :disabled="true"
+          <ElementsPixelButton
+            color="red"
+            size="mini"
+            :disabled="!isFallAvailable"
             >Играть</ElementsPixelButton
           >
         </div>
       </SwiperSlide>
       <SwiperSlide class="slide">
         <div class="right-game game">
+          <BlocksGamesHint v-if="!isShadowsAvailable">
+            Откроется 12 ноября
+          </BlocksGamesHint>
           <img
             class="game-image"
             src="~/assets/images/png/games/shadows-game.png"
@@ -51,6 +66,7 @@
           <ElementsPixelButton
             color="red"
             size="mini"
+            :disabled="!isShadowsAvailable"
             @click="openShadowsModal"
           >
             Играть
@@ -75,7 +91,11 @@ const shadowsStore = useShadowsStore();
 const openShadowsModal = () => {
   shadowsStore.openModal();
 };
+
 // TODO добавить логику с датой для disabled
+const isFactsAvailable = ref(false);
+const isFallAvailable = ref(false);
+const isShadowsAvailable = ref(true);
 </script>
 
 <style lang="scss" scoped>

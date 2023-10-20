@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper-games">
     <div class="left-game game">
+      <BlocksGamesHint v-if="!isFactsAvailable">
+        Откроется 16 ноября
+      </BlocksGamesHint>
       <img
         class="game-image"
         src="~/assets/images/png/games/facts-game.png"
@@ -12,11 +15,18 @@
         alt=""
         draggable="false"
       />
-      <ElementsPixelButton color="red" size="mini" :disabled="true">
+      <ElementsPixelButton
+        color="red"
+        size="mini"
+        :disabled="!isFactsAvailable"
+      >
         Играть
       </ElementsPixelButton>
     </div>
     <div class="middle-game game">
+      <BlocksGamesHint v-if="!isFallAvailable">
+        Откроется 8 ноября
+      </BlocksGamesHint>
       <img
         class="game-image"
         src="~/assets/images/png/games/fall-game.png"
@@ -28,11 +38,14 @@
         alt=""
         draggable="false"
       />
-      <ElementsPixelButton color="red" size="mini" :disabled="true">
+      <ElementsPixelButton color="red" size="mini" :disabled="!isFallAvailable">
         Играть
       </ElementsPixelButton>
     </div>
     <div class="right-game game">
+      <BlocksGamesHint v-if="!isShadowsAvailable">
+        Откроется 12 ноября
+      </BlocksGamesHint>
       <img
         class="game-image"
         src="~/assets/images/png/games/shadows-game.png"
@@ -44,7 +57,12 @@
         alt=""
         draggable="false"
       />
-      <ElementsPixelButton color="red" size="mini" @click="openShadowsModal">
+      <ElementsPixelButton
+        color="red"
+        size="mini"
+        :disabled="!isShadowsAvailable"
+        @click="openShadowsModal"
+      >
         Играть
       </ElementsPixelButton>
     </div>
@@ -59,6 +77,9 @@ const openShadowsModal = () => {
 };
 
 // TODO добавить логику с датой для disabled
+const isFactsAvailable = ref(false);
+const isFallAvailable = ref(false);
+const isShadowsAvailable = ref(true);
 </script>
 
 <style lang="scss" scoped>
