@@ -69,6 +69,10 @@ const openShadowsModal = () => {
   flex-direction: column;
   align-items: center;
   gap: 18px;
+
+  button {
+    z-index: 1;
+  }
 }
 .left-game,
 .right-game {
@@ -77,5 +81,6 @@ const openShadowsModal = () => {
 .portal {
   position: absolute;
   top: 100px;
+  z-index: 1;
 }
 </style>

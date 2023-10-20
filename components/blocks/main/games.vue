@@ -1,50 +1,44 @@
 <template>
   <div class="wrapper-main wrapper">
-    <BlocksGamesFull />
-    <div class="moon-wrapper">
+    <BlocksGamesFull v-if="screenSize === 'large'" />
+    <BlocksGamesSlider v-if="screenSize === 'small'" />
+    <BlocksGamesMoon />
+    <div class="message">
       <img
-        class="moon"
-        src="~/assets/images/png/games/moon.png"
+        class="sign"
+        src="~/assets/images/png/games/sign.png"
         alt=""
         draggable="false"
       />
-      <img
-        class="monster-1"
-        src="~/assets/images/png/games/monster-1.png"
-        alt=""
-        draggable="false"
-      />
-      <img
-        class="monster-2"
-        src="~/assets/images/png/games/monster-2.png"
-        alt=""
-        draggable="false"
-      />
+      <ElementsMessageIcon class="alien">
+        <ElementsText transform="upper">
+          Готов разбогатеть? Заходи в любую из мини-игр, зарабатывай Ali Coins и
+          копи на свой приз! Каждый день у тебя будет только 1 попытка, чтобы
+          сыграть в мини-игру — не теряй времени, летс гоу!
+        </ElementsText>
+      </ElementsMessageIcon>
     </div>
-    <img
-      class="sign"
-      src="~/assets/images/png/games/sign.png"
-      alt=""
-      draggable="false"
-    />
-    <img
-      class="space-cowboy"
-      src="~/assets/images/png/games/space-cowboy.png"
-      alt=""
-      draggable="false"
-    />
-    <ElementsMessageIcon class="alien">
-      <ElementsText transform="upper">
-        Готов разбогатеть? Заходи в любую из мини-игр, зарабатывай Ali Coins и
-        копи на свой приз! Каждый день у тебя будет только 1 попытка, чтобы
-        сыграть в мини-игру — не теряй времени, летс гоу!
-      </ElementsText>
-    </ElementsMessageIcon>
     <BlocksShadowsModal />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const screenSize = ref<"large" | "small">("large");
+
+const updateScreenSize = () => {
+  const windowWidth = window.innerWidth;
+  screenSize.value = windowWidth > 1200 ? "large" : "small";
+};
+
+onMounted(() => {
+  updateScreenSize();
+  window.addEventListener("resize", updateScreenSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", updateScreenSize);
+});
+</script>
 
 <style lang="scss" scoped>
 .wrapper {
@@ -59,67 +53,47 @@
   @include media(1200px) {
     padding-bottom: 45vw;
   }
+
+  @include media(500px) {
+    gap: 70px;
+  }
 }
-div.alien {
+.message {
   max-width: 610px;
+  width: 100%;
+  padding: 30px;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -70%);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  @include media(1200px) {
+    transform: translate(-50%, -30%);
+  }
+
+  @include media(600px) {
+    padding: 10px;
+  }
+}
+div.alien {
   gap: 0;
 }
 .sign {
   position: absolute;
-  top: calc(50% - 330px);
-  left: calc(50% - 140px);
-  transform: translate(-50%, -50%);
-}
-.moon-wrapper {
-  position: relative;
-}
-.moon {
-  @include media(1200px) {
-    max-width: 120vw;
-    max-height: 120vw;
-  }
-}
-.monster-1 {
-  max-width: 30%;
-  max-height: 30%;
-  position: absolute;
-  bottom: -70px;
-  right: 35px;
-  z-index: -1;
+  top: -30px;
+  left: 50px;
 
   @include media(1200px) {
-    max-width: 25%;
-    max-height: 25%;
-    bottom: -20px;
-    right: 0;
+    height: 300px;
+    top: -40px;
+    left: 20px;
   }
 
-  @include media(500px) {
-    bottom: -10px;
-  }
-}
-.monster-2 {
-  max-width: 20%;
-  max-height: 20%;
-  position: absolute;
-  bottom: 270px;
-  right: -95px;
-  z-index: -1;
-}
-.space-cowboy {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  max-width: 85vw;
-
-  @include media(1200px) {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+  @include media(600px) {
+    height: 230px;
+    top: 30px;
+    left: 20px;
   }
 }
 </style>

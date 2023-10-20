@@ -68,37 +68,31 @@ const swiperNavigationOptions = {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
-
 .swiper-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
 .photo {
   width: 100%;
   max-width: 70vw;
   max-height: 80vh;
   object-fit: cover;
 }
-
 .swiper-button-prev::after,
 .swiper-button-next::after {
   content: none;
 }
-
 .swiper-button-prev,
 .swiper-button-next {
   height: 50px;
 }
-
 .swiper-button-prev {
   left: 75px;
 
@@ -106,7 +100,6 @@ const swiperNavigationOptions = {
     left: 30px;
   }
 }
-
 .swiper-button-next {
   right: 75px;
 

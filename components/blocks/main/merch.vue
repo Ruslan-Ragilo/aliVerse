@@ -45,7 +45,7 @@
     margin-top: 60vw;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
 
     p {
       padding-right: 20px;
