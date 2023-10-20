@@ -5,10 +5,16 @@ export const useShadowsStore = defineStore("shadows", () => {
   const isFinished = ref(false);
   const gameState = ref<"default" | "right" | "wrong">("default");
   const gameScreen = ref<"welcome" | "rules" | "game" | "finish">("welcome");
-  const gamesRemained = ref(5); // TODO запрос на лимит игры
+  const gamesRemained = ref(5);
+  const currentCoins = ref(0);
   const shadows = ref(shadowsData);
   const todayQuestions = ref<number[]>([]);
   const currentAnswer = ref<string | null>(null);
+
+  function checkAvailability() {
+    // TODO запрос на проверку доступности игры сегодня
+    return true;
+  }
 
   function getTodayQuestions() {
     const maxNumber = Object.keys(shadows.value).length;
@@ -43,16 +49,30 @@ export const useShadowsStore = defineStore("shadows", () => {
     currentAnswer.value = null;
   }
 
+  function decreaseGamesRemained() {
+    if (gamesRemained.value > 0) {
+      gamesRemained.value--;
+    }
+  }
+
   function finishGame() {
     isFinished.value = true;
     gameScreen.value = "finish";
+    // TODO отправлять currentCoins.value на бек
+    // TODO сообщать, что попытка на сегодня завершена
   }
 
   function resetGame() {
+    currentCoins.value = 0;
+    gamesRemained.value = 5;
     isFinished.value = false;
     gameState.value = "default";
     gameScreen.value = "welcome";
     currentAnswer.value = null;
+  }
+
+  function addCoins() {
+    currentCoins.value += 100;
   }
 
   function getCoins() {
@@ -69,6 +89,7 @@ export const useShadowsStore = defineStore("shadows", () => {
     shadows,
     todayQuestions,
     currentAnswer,
+    checkAvailability,
     openModal,
     closeModal,
     resetGame,
@@ -76,7 +97,9 @@ export const useShadowsStore = defineStore("shadows", () => {
     addCurrentAnswer,
     changeGameState,
     nextGame,
+    decreaseGamesRemained,
     finishGame,
+    addCoins,
     getCoins,
   };
 });
