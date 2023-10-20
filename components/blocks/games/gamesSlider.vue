@@ -1,0 +1,163 @@
+<template>
+  <div class="wrapper-games-slider">
+    <img
+      class="portal"
+      src="~/assets/images/png/games/portal.png"
+      alt=""
+      draggable="false"
+    />
+    <Swiper
+      class="swiper"
+      :modules="modules"
+      slides-per-view="auto"
+      :space-between="30"
+      :initial-slide="1"
+      :navigation="{
+        nextEl: next,
+        prevEl: prev,
+      }"
+    >
+      <SwiperSlide class="slide">
+        <div class="left-game game">
+          <img
+            class="game-image"
+            src="~/assets/images/png/games/facts-game.png"
+            alt="Сила знаний"
+          />
+          <ElementsPixelButton color="red" size="mini"
+            >Играть</ElementsPixelButton
+          >
+        </div>
+      </SwiperSlide>
+      <SwiperSlide class="slide">
+        <div class="middle-game game">
+          <img
+            class="game-image"
+            src="~/assets/images/png/games/fall-game.png"
+            alt="Товаропад"
+          />
+          <ElementsPixelButton color="red" size="mini"
+            >Играть</ElementsPixelButton
+          >
+        </div>
+      </SwiperSlide>
+      <SwiperSlide class="slide">
+        <div class="right-game game">
+          <img
+            class="game-image"
+            src="~/assets/images/png/games/shadows-game.png"
+            alt="Тайны галактики"
+          />
+          <ElementsPixelButton
+            color="red"
+            size="mini"
+            @click="openShadowsModal"
+          >
+            Играть
+          </ElementsPixelButton>
+        </div>
+      </SwiperSlide>
+    </Swiper>
+  </div>
+  <div class="wrapper-nav">
+    <button ref="prev" class="nav prev"></button>
+    <button ref="next" class="nav next"></button>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { Navigation } from "swiper/modules";
+const modules = [Navigation];
+const prev = ref(null);
+const next = ref(null);
+
+const shadowsStore = useShadowsStore();
+const openShadowsModal = () => {
+  shadowsStore.openModal();
+};
+</script>
+
+<style lang="scss" scoped>
+.wrapper-games-slider {
+  width: 100%;
+}
+.game {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+
+  button {
+    z-index: 3;
+  }
+}
+.game-image {
+  @include media(500px) {
+    width: 311px;
+  }
+}
+.portal {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+
+  @include media(500px) {
+    top: 100px;
+    height: 530px;
+  }
+}
+.swiper {
+  width: 366px;
+  overflow: visible;
+}
+.wrapper-nav {
+  position: relative;
+  top: -70px;
+  display: flex;
+  gap: 20px;
+  z-index: 3;
+
+  @include media(500px) {
+    top: -30px;
+  }
+}
+.slide:not(.swiper-slide-active) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.nav.prev,
+.nav.next {
+  width: 100px;
+  height: 63px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.nav.prev {
+  background-image: url("~/assets/images/swiper/prev.png");
+  background-repeat: no-repeat;
+}
+.nav.next {
+  background-image: url("~/assets/images/swiper/next.png");
+  background-repeat: no-repeat;
+}
+.nav.prev:active:not(:disabled) {
+  position: relative;
+  top: 6px;
+  background-image: url("~/assets/images/swiper/prev-active.png");
+}
+.nav.next:active:not(:disabled) {
+  position: relative;
+  top: 6px;
+  background-image: url("~/assets/images/swiper/next-active.png");
+}
+.nav.next:disabled,
+.nav.prev:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+</style>
