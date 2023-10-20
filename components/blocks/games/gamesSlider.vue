@@ -24,7 +24,7 @@
             src="~/assets/images/png/games/facts-game.png"
             alt="Сила знаний"
           />
-          <ElementsPixelButton color="red" size="mini"
+          <ElementsPixelButton color="red" size="mini" :disabled="true"
             >Играть</ElementsPixelButton
           >
         </div>
@@ -36,7 +36,7 @@
             src="~/assets/images/png/games/fall-game.png"
             alt="Товаропад"
           />
-          <ElementsPixelButton color="red" size="mini"
+          <ElementsPixelButton color="red" size="mini" :disabled="true"
             >Играть</ElementsPixelButton
           >
         </div>
@@ -75,6 +75,7 @@ const shadowsStore = useShadowsStore();
 const openShadowsModal = () => {
   shadowsStore.openModal();
 };
+// TODO добавить логику с датой для disabled
 </script>
 
 <style lang="scss" scoped>
