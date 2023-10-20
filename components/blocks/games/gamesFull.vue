@@ -12,7 +12,9 @@
         alt=""
         draggable="false"
       />
-      <ElementsPixelButton color="red" size="mini">Играть</ElementsPixelButton>
+      <ElementsPixelButton color="red" size="mini" :disabled="true">
+        Играть
+      </ElementsPixelButton>
     </div>
     <div class="middle-game game">
       <img
@@ -26,7 +28,9 @@
         alt=""
         draggable="false"
       />
-      <ElementsPixelButton color="red" size="mini">Играть</ElementsPixelButton>
+      <ElementsPixelButton color="red" size="mini" :disabled="true">
+        Играть
+      </ElementsPixelButton>
     </div>
     <div class="right-game game">
       <img
@@ -53,6 +57,8 @@ const shadowsStore = useShadowsStore();
 const openShadowsModal = () => {
   shadowsStore.openModal();
 };
+
+// TODO добавить логику с датой для disabled
 </script>
 
 <style lang="scss" scoped>
