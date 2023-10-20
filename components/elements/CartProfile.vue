@@ -1,18 +1,24 @@
+<!-- eslint-disable prettier/prettier -->
 <script setup>
+import { storeToRefs } from "pinia";
+
 defineProps({
   urlImg: {
     type: String,
     default: "svg/iconProfile/defaultAvatar.svg",
   },
 });
+const store = useAuth();
+const { isReadyData } = storeToRefs(store);
 
 const emit = defineEmits(["handle-is-valid", "handle-is-show"]);
 
 const isActive = ref(false);
 const dataForm = ref({
+  avatar: "svg/iconProfile/defaultAvatar.svg",
   name: "",
   email: "",
-  inputsData: [
+  password: [
     {
       name: 1,
       value: "",
@@ -32,6 +38,14 @@ const dataForm = ref({
   ],
 });
 
+watch(isReadyData, () => {
+  store.registration(
+    dataForm.value.email,
+    dataForm.value.password.map((el) => el.value).join(""),
+    dataForm.value.name,
+    dataForm.value.avatar
+  );
+});
 const handleMobAvatar = () => {
   if (window.innerWidth < 1211) {
     emit("handle-is-show", true);
@@ -42,7 +56,7 @@ watch(dataForm.value, (newVal) => {
   if (
     newVal.name &&
     newVal.email &&
-    !newVal.inputsData.some((el) => el.value === "")
+    !newVal.password.some((el) => el.value === "")
   ) {
     emit("handle-is-valid", true);
   } else {
@@ -53,7 +67,7 @@ watch(dataForm.value, (newVal) => {
 const handlePin = (e, index) => {
   const valueInput = e.target.value;
   const inspectNumber = valueInput.replace(/[^\d.-]+/g, ""); // replace letters and symbol
-  const currentInput = dataForm.value.inputsData[index];
+  const currentInput = dataForm.value.password[index];
 
   currentInput.value = inspectNumber;
 
@@ -109,7 +123,7 @@ const handlePin = (e, index) => {
       <div class="left-col">
         <ElementsText themes="red">ВЫБЕРИ АВАТАРКУ</ElementsText>
         <div class="top">
-          <div @click="handleMobAvatar" class="wrapper-avatar">
+          <div class="wrapper-avatar" @click="handleMobAvatar">
             <img :src="getImageUrl(urlImg)" alt="" />
           </div>
           <img class="line" src="@/assets/images/svg/lineDecor.svg" />
@@ -135,7 +149,7 @@ const handlePin = (e, index) => {
           />
           <div class="wrapper">
             <input
-              v-for="(item, index) of dataForm.inputsData"
+              v-for="(item, index) of dataForm.password"
               :key="index"
               v-model="item.value"
               :name="item.name"
