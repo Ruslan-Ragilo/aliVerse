@@ -55,10 +55,6 @@ onBeforeUnmount(() => {
   @include media(1200px) {
     padding-bottom: 45vw;
   }
-
-  @include media(500px) {
-    gap: 70px;
-  }
 }
 .message {
   max-width: 610px;

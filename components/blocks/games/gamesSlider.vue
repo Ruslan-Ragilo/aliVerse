@@ -140,10 +140,6 @@ const isShadowsAvailable = ref(true);
   display: flex;
   gap: 20px;
   z-index: 3;
-
-  @include media(500px) {
-    top: -30px;
-  }
 }
 .slide:not(.swiper-slide-active) {
   opacity: 0.5;
