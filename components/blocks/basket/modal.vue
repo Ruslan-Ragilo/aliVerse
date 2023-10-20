@@ -3,15 +3,15 @@ const store = useModalBasked();
 </script>
 <template>
   <div
-    @click.self="store.setIsOpen(false)"
     :class="['overlay', { active: store.getIsOpen }]"
+    @click.self="store.setIsOpen(false)"
   >
     <div :class="['wrapper', { active: store.getIsOpen }]">
       <img
-        @click="store.setIsOpen(false)"
         class="close"
         src="@/assets/images/svg/closeModal.svg"
         alt=""
+        @click="store.setIsOpen(false)"
       />
       <ElementsText class="headingBasket" transform="upper" size="xxl"
         >корзина</ElementsText

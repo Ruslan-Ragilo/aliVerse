@@ -34,7 +34,7 @@ import "swiper/css/scrollbar";
     </div>
     <div class="wrapper-main wrapper-top">
       <Swiper class="swiper" slides-per-view="auto" :space-between="20">
-        <SwiperSlide class="slide" v-for="item in 5" :key="item">
+        <SwiperSlide v-for="item in 5" :key="item" class="slide">
           <div class="wrapper-card">
             <img src="@/assets/images/png/topDir.png" alt="" />
             <div class="tooltip">
@@ -63,6 +63,9 @@ import "swiper/css/scrollbar";
 
   @include media(1200px) {
     margin-top: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 }
 

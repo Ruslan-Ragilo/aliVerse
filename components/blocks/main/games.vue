@@ -1,24 +1,26 @@
 <template>
   <div class="wrapper-main wrapper">
-    <BlocksGamesFull v-if="screenSize === 'large'" />
-    <BlocksGamesSlider v-if="screenSize === 'small'" />
-    <BlocksGamesMoon />
-    <div class="message">
-      <img
-        class="sign"
-        src="~/assets/images/png/games/sign.png"
-        alt=""
-        draggable="false"
-      />
-      <ElementsMessageIcon class="alien">
-        <ElementsText transform="upper">
-          Готов разбогатеть? Заходи в любую из мини-игр, зарабатывай Ali Coins и
-          копи на свой приз! Каждый день у тебя будет только 1 попытка, чтобы
-          сыграть в мини-игру — не теряй времени, летс гоу!
-        </ElementsText>
-      </ElementsMessageIcon>
+    <div class="games">
+      <BlocksGamesFull v-if="screenSize === 'large'" />
+      <BlocksGamesSlider v-if="screenSize === 'small'" />
+      <BlocksGamesMoon />
+      <div class="message">
+        <img
+          class="sign"
+          src="~/assets/images/png/games/sign.png"
+          alt=""
+          draggable="false"
+        />
+        <ElementsMessageIcon class="alien">
+          <ElementsText transform="upper">
+            Готов разбогатеть? Заходи в любую из мини-игр, зарабатывай Ali Coins
+            и копи на свой приз! Каждый день у тебя будет только 1 попытка,
+            чтобы сыграть в мини-игру — не теряй времени, летс гоу!
+          </ElementsText>
+        </ElementsMessageIcon>
+      </div>
+      <BlocksShadowsModal />
     </div>
-    <BlocksShadowsModal />
   </div>
 </template>
 
@@ -41,7 +43,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+.games {
   position: relative;
   margin-top: 200px;
   display: flex;
@@ -60,7 +62,7 @@ onBeforeUnmount(() => {
 }
 .message {
   max-width: 610px;
-  width: 100%;
+  width: 75%;
   padding: 30px;
   position: absolute;
   left: 50%;
@@ -81,18 +83,18 @@ div.alien {
 }
 .sign {
   position: absolute;
-  top: -30px;
+  top: -240px;
   left: 50px;
 
   @include media(1200px) {
     height: 300px;
-    top: -40px;
+    top: -200px;
     left: 20px;
   }
 
   @include media(600px) {
     height: 230px;
-    top: 30px;
+    top: -170px;
     left: 20px;
   }
 }
