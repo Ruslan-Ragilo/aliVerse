@@ -1,14 +1,24 @@
 <template>
   <footer>
-    <img class="logo" src="@/assets/images/png/logoFooter.png" alt="" />
-    <img class="prim" src="@/assets/images/png/cloudFooterLeft.png" alt="" />
-    <img class="second" src="@/assets/images/png/cloudFooterRight.png" alt="" />
+    <div class="wrapper-main wrapper-footer">
+      <img class="logo" src="@/assets/images/png/logoFooter.png" alt="" />
+      <img class="prim" src="@/assets/images/png/cloudFooterLeft.png" alt="" />
+      <img
+        class="second"
+        src="@/assets/images/png/cloudFooterRight.png"
+        alt=""
+      />
+    </div>
   </footer>
 </template>
 
 <style lang="scss" scoped>
 footer {
-  margin-top: 150px;
+  padding-top: 150px;
+  overflow-x: hidden;
+}
+
+.wrapper-footer {
   position: relative;
   display: flex;
   justify-content: center;
