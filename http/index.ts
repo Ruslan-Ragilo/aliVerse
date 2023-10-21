@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.aliverse.ru/";
+const BASE_URL = "https://api.aliverse.ru";
 
 const $api = axios.create({
   baseURL: BASE_URL,
