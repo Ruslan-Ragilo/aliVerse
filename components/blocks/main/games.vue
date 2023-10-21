@@ -94,5 +94,11 @@ div.alien {
     top: -170px;
     left: 20px;
   }
+
+  @include media(450px) {
+    height: 230px;
+    top: -100px;
+    left: 20px;
+  }
 }
 </style>
