@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <ElementsHeaderCart />
-    <ElementsHeaderProfile name="Иван Алексеев" :coins="1249" :avatar-id="1" />
+    <ElementsHeaderProfile />
   </div>
 </template>
 

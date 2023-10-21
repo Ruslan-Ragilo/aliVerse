@@ -1,6 +1,5 @@
 <script setup>
 const store = useAuth();
-const router = useRouter();
 const inputPinData = ref([
   { name: 1, value: "" },
   { name: 2, value: "" },
@@ -43,10 +42,10 @@ const handleLogin = async () => {
   const email = emailValue.value;
   // eslint-disable-next-line no-useless-escape
   const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (pass?.length === 4 && email.match(regex)) {
+  if (pass?.length === 4 && regex.test(email)) {
     await store.login(email, pass);
     if (store.isLoginSuccess) {
-      router.push("/");
+      navigateTo("/");
     }
   }
 };

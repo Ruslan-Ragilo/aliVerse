@@ -2,26 +2,26 @@
   <button class="wrapper-profile">
     <img
       class="avatar"
-      :src="getImageUrl(`svg/iconProfile/${avatarId}.svg`)"
+      :src="getImageUrl(userStore.userData?.avatarUser)"
       alt="Avatar"
     />
     <div class="profile-info">
       <ElementsText class-name="text" themes="secondary" size="s">
-        {{ name }}
+        {{ userStore.userData?.nameUser }}
       </ElementsText>
       <ElementsText class-name="text" themes="mustard" size="xs">
-        {{ coins }} ALICOINS
+        {{ userStore.userData?.balanceUser }} ALICOINS
       </ElementsText>
     </div>
   </button>
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  name: string;
-  coins: number;
-  avatarId: number;
-}>();
+const userStore = useUserData();
+
+onMounted(async () => {
+  await userStore.fetchUsers();
+});
 </script>
 
 <style scoped lang="scss">
