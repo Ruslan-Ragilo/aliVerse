@@ -1,6 +1,8 @@
+import $api from "~/http";
 import { factsData } from "~/stores/factsData/factsData";
 
 export const useFactsStore = defineStore("facts", () => {
+  const isAvailable = ref(false);
   const isModalOpen = ref(false);
   const isFinished = ref(false);
   const gameState = ref<"default" | "right" | "wrong">("default");
@@ -11,9 +13,24 @@ export const useFactsStore = defineStore("facts", () => {
   const todayQuestions = ref<number[]>([]);
   const currentAnswer = ref<boolean | null>(null);
 
-  function checkAvailability() {
-    // TODO запрос на проверку доступности игры сегодня
-    return true;
+  async function checkAvailability() {
+    const res = await $api.get("/api/event/view", {
+      params: {
+        id: 2,
+      },
+    });
+
+    try {
+      if (res.data.limit > 0) {
+        isAvailable.value = true;
+      } else if (res.data.limit === 0) {
+        isAvailable.value = false;
+      }
+    } catch (error: unknown) {
+      if (isAxiosError(error)) {
+        console.log(`Catched error code "${error.code}".`);
+      }
+    }
   }
 
   function getTodayQuestions() {
@@ -60,6 +77,23 @@ export const useFactsStore = defineStore("facts", () => {
     gameScreen.value = "finish";
     // TODO отправлять currentCoins.value на бек
     // TODO сообщать, что попытка на сегодня завершена
+
+    const formData = new FormData();
+    formData.append("id", "2");
+    formData.append("score", currentCoins.value);
+
+    /*    await $api.post("/api/event/add", {
+      params: {
+        id: 2,
+        score: currentCoins.value,
+      },
+    });
+    const res = await $api.get("/api/event/view", {
+      params: {
+        id: 2,
+      },
+    });
+    console.log(res.data); */
   }
 
   function resetGame() {
@@ -81,6 +115,7 @@ export const useFactsStore = defineStore("facts", () => {
   }
 
   return {
+    isAvailable,
     isModalOpen,
     isFinished,
     gameState,
