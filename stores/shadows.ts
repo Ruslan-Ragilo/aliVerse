@@ -1,6 +1,8 @@
+import $api from "~/http";
 import { shadowsData } from "~/stores/shadowsData/shadowsData";
 
 export const useShadowsStore = defineStore("shadows", () => {
+  const isAvailable = ref(false);
   const isModalOpen = ref(false);
   const isFinished = ref(false);
   const gameState = ref<"default" | "right" | "wrong">("default");
@@ -11,9 +13,25 @@ export const useShadowsStore = defineStore("shadows", () => {
   const todayQuestions = ref<number[]>([]);
   const currentAnswer = ref<string | null>(null);
 
-  function checkAvailability() {
+  async function checkAvailability() {
     // TODO запрос на проверку доступности игры сегодня
-    return true;
+    const res = await $api.get("/api/event/view", {
+      params: {
+        id: 3,
+      },
+    });
+
+    try {
+      if (res.data.limit > 0) {
+        isAvailable.value = true;
+      } else if (res.data.limit === 0) {
+        isAvailable.value = false;
+      }
+    } catch (error: unknown) {
+      if (isAxiosError(error)) {
+        console.log(`Catched error code "${error.code}".`);
+      }
+    }
   }
 
   function getTodayQuestions() {
@@ -81,6 +99,7 @@ export const useShadowsStore = defineStore("shadows", () => {
   }
 
   return {
+    isAvailable,
     isModalOpen,
     isFinished,
     gameState,
