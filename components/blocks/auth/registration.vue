@@ -27,12 +27,14 @@ const setUrlImage = (url) => {
 <template>
   <div class="wrapperRegistration">
     <img
+      v-if="!authStore.getRegisterSuccess"
       :class="['close', { show: isShow }]"
       src="@/assets/images/svg/close.svg"
       alt=""
       @click="isShow = false"
     />
     <ElementsPixelButton
+      v-if="!authStore.getRegisterSuccess"
       :class="['btnSave', { active: isShow }]"
       class-text="btn-registraion"
       size="large"
@@ -41,7 +43,10 @@ const setUrlImage = (url) => {
       @click="isShow = false"
       >сохранить</ElementsPixelButton
     >
-    <div :class="['wrapperImage', { active: isShow }]">
+    <div
+      v-if="!authStore.getRegisterSuccess"
+      :class="['wrapperImage', { active: isShow }]"
+    >
       <img
         v-for="(item, index) of 20"
         :key="item"
@@ -52,14 +57,23 @@ const setUrlImage = (url) => {
       />
     </div>
 
-    <div :class="['wrapperProfile', { none: isShow }]">
+    <div
+      :class="[
+        'wrapperProfile',
+        { none: isShow && !authStore.getRegisterSuccess },
+      ]"
+    >
       <ElementsCartProfile
         :data-form="dataForm"
         :url-img="urlImage"
         @handle-is-valid="handleIsValid"
         @handle-is-show="handleIsShowAvatars"
       />
-      <NuxtLink class="btnReg" to="/auth/registration">
+      <NuxtLink
+        v-if="!authStore.getRegisterSuccess"
+        class="btnReg"
+        to="/auth/registration"
+      >
         <ElementsPixelButton
           class-text="btn-registraion"
           :disabled="!isValidFrom"

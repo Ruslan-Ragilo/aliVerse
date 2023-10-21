@@ -13,7 +13,9 @@ export const useUserData = defineStore("userData", {
       isBlockedUser: "",
     },
   }),
-  getters: {},
+  getters: {
+    getUserData: (state) => state.userData,
+  },
   actions: {
     async fetchUsers() {
       const [

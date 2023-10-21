@@ -11,6 +11,7 @@ export const useAuth = defineStore("auth", {
   }),
   getters: {
     getIsReadyData: (state) => state.isReadyData,
+    getRegisterSuccess: (state) => state.isRegisterSuccess,
   },
   actions: {
     async login(email, password) {
@@ -59,6 +60,11 @@ export const useAuth = defineStore("auth", {
         this.isRegisterSuccess = true;
         // REDIRECT TO SUCCESS PAGE
       }
+    },
+
+    logout() {
+      localStorage.removeItem(storageTokenKey);
+      navigateTo("/auth");
     },
 
     setIsReadyData(value) {
