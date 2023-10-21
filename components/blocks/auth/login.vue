@@ -1,10 +1,15 @@
 <script setup>
+const store = useAuth();
+const router = useRouter();
 const inputPinData = ref([
   { name: 1, value: "" },
   { name: 2, value: "" },
   { name: 3, value: "" },
   { name: 4, value: "" },
 ]);
+
+const emailValue = ref("");
+
 const handlePin = (e, index) => {
   const valueInput = e.target.value;
   const inspectNumber = valueInput.replace(/[^\d.-]+/g, ""); // replace letters and symbol
@@ -32,6 +37,19 @@ const handlePin = (e, index) => {
     return null;
   }
 };
+
+const handleLogin = async () => {
+  const pass = inputPinData.value.map((el) => el?.value).join("");
+  const email = emailValue.value;
+  // eslint-disable-next-line no-useless-escape
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (pass?.length === 4 && email.match(regex)) {
+    await store.login(email, pass);
+    if (store.isLoginSuccess) {
+      router.push("/");
+    }
+  }
+};
 </script>
 <template>
   <div class="content">
@@ -40,8 +58,14 @@ const handlePin = (e, index) => {
       Рады снова приветствовать тебя в нашей вселенной, <br />Заполняй данные и
       погнали!
     </ElementsText>
-    <form action="">
-      <input type="email" class="email" placeholder="ТВОЙ E-MAIL" />
+    <form @submit.prevent="handleLogin">
+      <input
+        v-model="emailValue"
+        pattern="/^([\w-.]+@([\w-]+\.)+[\w-]{2,4})?$/"
+        type="email"
+        class="email"
+        placeholder="ТВОЙ E-MAIL"
+      />
       <div class="wrapper">
         <input
           v-for="(item, index) of inputPinData"
@@ -56,10 +80,10 @@ const handlePin = (e, index) => {
           @input="handlePin($event, index)"
         />
       </div>
+      <ElementsPixelButton type="submit" size="middle" color="red"
+        >войти</ElementsPixelButton
+      >
     </form>
-    <NuxtLink to="#">
-      <ElementsPixelButton size="middle" color="red">войти</ElementsPixelButton>
-    </NuxtLink>
     <div class="wrapperAurhLink">
       <NuxtLink to="/auth/registration">
         <ElementsText transform="upper" themes="secondary"

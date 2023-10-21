@@ -1,28 +1,9 @@
 <script setup>
-const isAuth = ref(null);
-const isLoading = ref(true);
-
-onMounted(async () => {
-  try {
-    const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-    const data = await res.json();
-    if (/* !data.completed */ location.pathname.includes("auth")) {
-      isAuth.value = true;
-      // navigateTo("/");
-      isLoading.value = false;
-    } else {
-      isAuth.value = false;
-      // navigateTo("/auth");
-      isLoading.value = false;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-});
+const authStore = useAuth();
 </script>
 
 <template>
-  <NuxtLayout v-if="!isLoading" :name="isAuth ? 'auth' : 'default'">
+  <NuxtLayout :name="authStore.isAuth ? 'default' : 'auth'">
     <NuxtPage />
   </NuxtLayout>
 </template>
