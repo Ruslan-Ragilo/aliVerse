@@ -1,14 +1,18 @@
 <script setup>
 const authStore = useAuth();
-const userStore = userData();
 
-onMounted(() => {
-  userStore.fetchUsers();
+watch(
+  () => authStore.isAuth,
+  () => setPageLayout(authStore.isAuth ? "default" : "auth"),
+);
+
+definePageMeta({
+  layout: false,
 });
 </script>
 
 <template>
-  <NuxtLayout :name="authStore.isAuth ? 'default' : 'auth'">
+  <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
 </template>
