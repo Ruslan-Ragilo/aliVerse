@@ -31,8 +31,10 @@
             color="red"
             size="mini"
             :disabled="!isFactsAvailable"
-            >Играть</ElementsPixelButton
+            @click="openFactsModal"
           >
+            Играть
+          </ElementsPixelButton>
         </div>
       </SwiperSlide>
       <SwiperSlide class="slide">
@@ -49,8 +51,9 @@
             color="red"
             size="mini"
             :disabled="!isFallAvailable"
-            >Играть</ElementsPixelButton
           >
+            Играть
+          </ElementsPixelButton>
         </div>
       </SwiperSlide>
       <SwiperSlide class="slide">
@@ -87,13 +90,19 @@ const modules = [Navigation];
 const prev = ref(null);
 const next = ref(null);
 
+const factsStore = useFactsStore();
 const shadowsStore = useShadowsStore();
+
+const openFactsModal = () => {
+  factsStore.openModal();
+};
+
 const openShadowsModal = () => {
   shadowsStore.openModal();
 };
 
 // TODO добавить логику с датой для disabled
-const isFactsAvailable = ref(false);
+const isFactsAvailable = ref(true);
 const isFallAvailable = ref(false);
 const isShadowsAvailable = ref(true);
 </script>
@@ -140,10 +149,6 @@ const isShadowsAvailable = ref(true);
   display: flex;
   gap: 20px;
   z-index: 3;
-
-  @include media(500px) {
-    top: -30px;
-  }
 }
 .slide:not(.swiper-slide-active) {
   opacity: 0.5;
