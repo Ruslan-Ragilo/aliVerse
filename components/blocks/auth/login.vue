@@ -1,6 +1,5 @@
 <script setup>
 const store = useAuth();
-const router = useRouter();
 const inputPinData = ref([
   { name: 1, value: "" },
   { name: 2, value: "" },
@@ -46,7 +45,7 @@ const handleLogin = async () => {
   if (pass?.length === 4 && regex.test(email)) {
     await store.login(email, pass);
     if (store.isLoginSuccess) {
-      router.push("/");
+      navigateTo("/");
     }
   }
 };

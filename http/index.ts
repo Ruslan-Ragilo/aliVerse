@@ -1,4 +1,5 @@
 import axios from "axios";
+import { storageTokenKey } from "@/stores/auth";
 
 const BASE_URL = "https://api.aliverse.ru";
 
@@ -7,9 +8,8 @@ const $api = axios.create({
 });
 
 $api.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${JSON.parse(
-    localStorage.getItem(storageTokenKey),
-  )}`;
+  const token = localStorage.getItem(storageTokenKey);
+  config.headers.Authorization = `Bearer ${token ? JSON.parse(token) : null}`;
   return config;
 });
 

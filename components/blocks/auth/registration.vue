@@ -1,5 +1,5 @@
 <script setup>
-const store = useAuth();
+const authStore = useAuth();
 const urlImage = ref("svg/iconProfile/defaultAvatar.svg");
 const indexImage = ref(null);
 const isValidFrom = ref(false);
@@ -66,7 +66,7 @@ const setUrlImage = (url) => {
           size="large"
           color="red"
           :isReadyData="isReadyData"
-          @click="store.setIsReadyData(true)"
+          @click="authStore.setIsReadyData(true)"
           >зарегистрироваться</ElementsPixelButton
         >
       </NuxtLink>
