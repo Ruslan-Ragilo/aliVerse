@@ -52,18 +52,12 @@ export const useAuth = defineStore("auth", {
       if (!res?.data) {
         this.isAuth = false;
         localStorage.removeItem(storageTokenKey);
+        return;
       }
 
-      // HANDLE ERROR
-      console.log(res);
-
-      const token = res?.data?.$user?.token;
-      if (token) {
-        localStorage.setItem(storageTokenKey, JSON.stringify(token));
-        this.isAuth = true;
-      } else {
-        this.isAuth = false;
-        localStorage.removeItem(storageTokenKey);
+      if (res?.data) {
+        this.isRegisterSuccess = true;
+        // REDIRECT TO SUCCESS PAGE
       }
     },
 
