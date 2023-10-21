@@ -1,51 +1,64 @@
 import $api from "@/http";
 
-export const useUserData = defineStore("userData", {
-  state: () => ({
-    userData: {
-      idUser: "",
-      nameUser: "",
-      emailUser: "",
-      avatarUser: "",
-      productsUser: "",
-      balanceUser: "",
-      isSpinUser: "",
-      isBlockedUser: "",
-    },
-  }),
-  getters: {
-    getUserData: (state) => state.userData,
-  },
-  actions: {
-    async fetchUsers() {
-      const [
-        id,
-        name,
-        email,
-        avatar,
-        totalProducts,
-        balance,
-        isSpin,
-        isBlocked,
-      ] = await Promise.allSettled([
-        $api("api/user/get-id"),
-        $api("api/user/get-name"),
-        $api("api/user/get-email"),
-        $api("api/user/get-avatar"),
-        $api("api/user/get-total-products"),
-        $api("api/user/get-balance"),
-        $api("api/user/get-is-spin"),
-        $api("api/user/get-is-blocked"),
-      ]);
+export const useUserData = defineStore("userData", () => {
+  const userData = ref({
+    idUser: "",
+    nameUser: "",
+    emailUser: "",
+    avatarUser: "",
+    productsUser: "",
+    balanceUser: "",
+    isSpinUser: "",
+    isBlockedUser: "",
+  });
 
-      this.userData.idUser = id?.value?.data;
-      this.userData.nameUser = name?.value?.data;
-      this.userData.emailUser = email?.value?.data;
-      this.userData.avatarUser = avatar?.value?.data;
-      this.userData.productsUser = totalProducts?.value?.data;
-      this.userData.balanceUser = balance?.value?.data;
-      this.userData.isSpinUser = isSpin?.value?.data;
-      this.userData.isBlockedUser = isBlocked?.value?.data;
-    },
-  },
+  const cartItems = ref([]);
+
+  const getCart = async () => {
+    const { data } = await $api.get("cart");
+    cartItems.value = data?.cartItems;
+  };
+
+  const addToCart = async (id) => {
+    const formData = new FormData();
+    formData.append("product_id", String(id));
+
+    const res = await $api.post("cart", formData);
+
+    if (res?.data) {
+      await fetchUsers();
+      await getCart();
+    }
+  };
+
+  const deleteCartItem = async (id) => {
+    const res = await $api.delete(`cart/${id}`);
+    console.log(res);
+    if (res?.data) {
+      await fetchUsers();
+      await getCart();
+    }
+  };
+
+  const fetchUsers = async () => {
+    const { data } = await $api.get("user");
+
+    userData.value.idUser = data?.id;
+    userData.value.nameUser = data?.name;
+    userData.value.emailUser = data?.email;
+    userData.value.avatarUser = data?.avatar;
+    userData.value.productsUser = data?.total_products;
+    userData.value.balanceUser = data?.balance;
+    userData.value.isSpinUser = data?.already_spin;
+    userData.value.isBlockedUser = data?.blocked;
+  };
+
+  return {
+    userData,
+    fetchUsers,
+    cartItems,
+    getCart,
+    addToCart,
+    deleteCartItem,
+  };
 });

@@ -5,11 +5,46 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation } from "swiper/modules";
+import $api from "~/http";
 
 const modules = [Navigation];
 
 const prev = ref(null);
 const next = ref(null);
+
+const locations = [
+  {
+    option: "Онлайн",
+    id: 4,
+  },
+  {
+    option: "Москва",
+    id: 1,
+  },
+  {
+    option: "Нижний Новгород",
+    id: 2,
+  },
+  {
+    option: "Ташкент",
+    id: 3,
+  },
+];
+
+const products = ref([]);
+
+const selectedLocation = ref(4);
+
+const selectedProducts = computed(() => {
+  return products.value?.filter(
+    (pr) => String(pr?.location) === String(selectedLocation.value),
+  );
+});
+
+onMounted(async () => {
+  const res = await $api("api/product/show-all");
+  products.value = res?.data?.products ?? [];
+});
 </script>
 
 <template>
@@ -17,12 +52,8 @@ const next = ref(null);
     <div class="wrapper-main wrap">
       <div class="wrapper-top">
         <ElementsCustomSelect
-          :options="[
-            { option: 'Онлайн' },
-            { option: 'Москва' },
-            { option: 'Нижний Новгород' },
-            { option: 'Ташкент' },
-          ]"
+          :options="locations"
+          @selected="(v) => (selectedLocation = v)"
         />
         <div class="wrapper-nav">
           <button ref="prev" class="nav prev"></button>
@@ -39,8 +70,12 @@ const next = ref(null);
           prevEl: prev,
         }"
       >
-        <SwiperSlide v-for="item in 10" :key="item" class="slide">
-          <ElementsSwiperSlide />
+        <SwiperSlide
+          v-for="product in selectedProducts"
+          :key="product"
+          class="slide"
+        >
+          <ElementsSwiperSlide :product="product" />
         </SwiperSlide>
       </Swiper>
     </div>

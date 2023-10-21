@@ -1,20 +1,49 @@
+<script setup lang="ts">
+interface Product {
+  id: number;
+  name: string;
+  image?: string;
+  price: number;
+  ali_price: number;
+  promocode?: string;
+  in_stock?: number;
+  day_limit?: number;
+  location: number;
+  sold: number;
+}
+
+const props = defineProps<{ product: Product }>();
+
+const userStore = useUserData();
+</script>
 <template>
   <div class="wrapper-slide">
     <div class="slide-header">
-      <img src="@/assets/images/swiper/imageSwiper.png" alt="" />
+      <img
+        :src="props.product?.image ?? getImageUrl('swiper/imageSwiper.png')"
+        alt=""
+      />
     </div>
     <div class="slide-footer">
       <div>
-        <ElementsText transform="upper" size="s" class="text-slide"
-          >коврик для мышки</ElementsText
-        >
-        <img src="@/assets/images/swiper/btnCart.svg" alt="" />
+        <ElementsText transform="upper" size="s" class="text-slide">{{
+          props?.product?.name
+        }}</ElementsText>
+        <img
+          title="Добавить в корзину"
+          src="@/assets/images/swiper/btnCart.svg"
+          alt="Добавить в корзину"
+          @click="userStore.addToCart(props.product?.id)"
+        />
       </div>
       <div>
         <ElementsText transform="upper" size="xxs" class="text-slide color"
-          >только онлайн</ElementsText
+          >Только {{ locationsMap[`${props.product?.location}`] }}</ElementsText
         >
-        <ElementsText class="price-points">500</ElementsText>
+
+        <ElementsText class="price-points">{{
+          props?.product?.ali_price
+        }}</ElementsText>
       </div>
     </div>
   </div>

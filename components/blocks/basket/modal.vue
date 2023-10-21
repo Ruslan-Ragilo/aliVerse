@@ -1,28 +1,42 @@
 <script setup>
-const store = useModalBasked();
+const popupStore = useModalBasked();
+
+const userStore = useUserData();
+
+onMounted(async () => {
+  await userStore.getCart();
+});
 </script>
 <template>
   <div
-    :class="['overlay', { active: store.getIsOpen }]"
-    @click.self="store.setIsOpen(false)"
+    :class="['overlay', { active: popupStore.getIsOpen }]"
+    @click.self="popupStore.setIsOpen(false)"
   >
-    <div :class="['wrapper', { active: store.getIsOpen }]">
+    <div :class="['wrapper', { active: popupStore.getIsOpen }]">
       <img
         class="close"
         src="@/assets/images/svg/closeModal.svg"
         alt=""
-        @click="store.setIsOpen(false)"
+        @click="popupStore.setIsOpen(false)"
       />
       <ElementsText class="headingBasket" transform="upper" size="xxl"
         >корзина</ElementsText
       >
       <ElementsText class="totalCoints" transform="upper" size="s"
-        >У тебя: <span>1249 AliCoins</span>
+        >У тебя: <span>{{ userStore.userData?.balanceUser }} alicoins</span>
       </ElementsText>
       <div class="wrapperItems">
-        <BlocksBasketItemBasket v-for="item in 3" :key="item" />
+        <BlocksBasketItemBasket
+          v-for="item in userStore.cartItems"
+          :key="item?.id"
+          :cartItem="item"
+        />
       </div>
-      <ElementsPixelButton class="btnBy" color="red" size="middle"
+      <ElementsPixelButton
+        v-if="userStore.cartItems?.length > 0"
+        class="btnBy"
+        color="red"
+        size="middle"
         >Купить</ElementsPixelButton
       >
     </div>
@@ -73,7 +87,6 @@ const store = useModalBasked();
 
     .wrapperItems {
       height: 80vh;
-      overflow-y: scroll;
     }
     .close {
       cursor: pointer;

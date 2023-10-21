@@ -2,8 +2,14 @@
   <button class="wrapper-profile">
     <img
       class="avatar"
-      :src="getImageUrl(userStore.getUserData?.avatarUser)"
       alt="Avatar"
+      :src="
+        getImageUrl(
+          userStore.userData?.avatarUser
+            ? userStore.userData?.avatarUser
+            : 'svg/iconProfile/defaultAvatar.svg',
+        )
+      "
     />
     <div class="profile-info">
       <ElementsText class-name="text" themes="secondary" size="s">

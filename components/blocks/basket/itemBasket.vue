@@ -1,3 +1,9 @@
+<script setup>
+defineProps(["cartItem"]);
+
+const userStore = useUserData();
+</script>
+
 <template>
   <div class="wrapper-item">
     <div class="wrapperCheckbox">
@@ -14,18 +20,21 @@
     />
     <div class="middleCol">
       <div>
-        <ElementsText transform="upper" size="xs"
-          >коврик для мышки</ElementsText
-        >
+        <ElementsText transform="upper" size="xs">{{
+          cartItem?.product?.name
+        }}</ElementsText>
         <ElementsText style="color: #afafaf" transform="upper" size="xxs"
-          >только онлайн</ElementsText
+          >Только
+          {{ locationsMap[`${cartItem?.product?.location}`] }}</ElementsText
         >
       </div>
-      <ElementsText class="priceCoin" size="xl" themes="mustard"
-        >300</ElementsText
-      >
+      <ElementsText class="priceCoin" size="xl" themes="mustard">{{
+        cartItem?.product?.ali_price
+      }}</ElementsText>
     </div>
-    <img class="trash" src="@/assets/images/svg/trash.svg" alt="" />
+    <button style="all: unset" @click="userStore.deleteCartItem(cartItem?.id)">
+      <img class="trash" src="@/assets/images/svg/trash.svg" alt="" />
+    </button>
   </div>
 </template>
 
