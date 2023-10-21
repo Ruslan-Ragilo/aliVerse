@@ -1,6 +1,6 @@
 import $api from "~/http";
 
-const storageTokenKey = "aliverse_token";
+export const storageTokenKey = "aliverse_token";
 
 export const useAuth = defineStore("auth", {
   state: () => ({
