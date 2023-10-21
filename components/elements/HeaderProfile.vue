@@ -13,10 +13,10 @@
     />
     <div class="profile-info">
       <ElementsText class-name="text" themes="secondary" size="s">
-        {{ userStore.getUserData?.nameUser }}
+        {{ userStore.userData?.nameUser }}
       </ElementsText>
       <ElementsText class-name="text" themes="mustard" size="xs">
-        {{ userStore.getUserData?.balanceUser }} ALICOINS
+        {{ userStore.userData?.balanceUser }} ALICOINS
       </ElementsText>
       <NuxtLink @click="authStore.logout">Выйти</NuxtLink>
     </div>
