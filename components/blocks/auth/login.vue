@@ -1,10 +1,14 @@
 <script setup>
+const store = useAuth();
 const inputPinData = ref([
   { name: 1, value: "" },
   { name: 2, value: "" },
   { name: 3, value: "" },
   { name: 4, value: "" },
 ]);
+
+const emailValue = ref("");
+
 const handlePin = (e, index) => {
   const valueInput = e.target.value;
   const inspectNumber = valueInput.replace(/[^\d.-]+/g, ""); // replace letters and symbol
@@ -32,6 +36,12 @@ const handlePin = (e, index) => {
     return null;
   }
 };
+
+const handleLogin = (email, password) => {
+  if (store.isReadyData) {
+    store.login(email, password);
+  }
+};
 </script>
 <template>
   <div class="content">
@@ -40,8 +50,13 @@ const handlePin = (e, index) => {
       Рады снова приветствовать тебя в нашей вселенной, <br />Заполняй данные и
       погнали!
     </ElementsText>
-    <form action="">
-      <input type="email" class="email" placeholder="ТВОЙ E-MAIL" />
+    <form @submit.prevent="handleLogin">
+      <input
+        v-model="emailValue"
+        type="email"
+        class="email"
+        placeholder="ТВОЙ E-MAIL"
+      />
       <div class="wrapper">
         <input
           v-for="(item, index) of inputPinData"
