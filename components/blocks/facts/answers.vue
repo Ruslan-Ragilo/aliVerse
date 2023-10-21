@@ -65,5 +65,10 @@ const checkAnswer = (answer: boolean) => {
   align-items: center;
   gap: 30px;
   margin-bottom: auto;
+
+  @include media(600px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 </style>

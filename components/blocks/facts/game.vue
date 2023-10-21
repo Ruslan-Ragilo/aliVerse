@@ -13,6 +13,20 @@
       >
         +50
       </ElementsText>
+      <img
+        class="yoda"
+        :class="{ active: gameState === 'right' }"
+        src="~/assets/images/png/facts/yoda-right.png"
+        alt=""
+        draggable="false"
+      />
+      <img
+        class="yoda"
+        :class="{ active: gameState === 'wrong' }"
+        src="~/assets/images/png/facts/yoda-wrong.png"
+        alt=""
+        draggable="false"
+      />
     </div>
   </div>
 </template>
@@ -63,5 +77,20 @@ const gameState = computed(() => store.gameState);
   opacity: 1;
   transform: translate(-50%, -30px);
   transition: all 0.2s;
+}
+.yoda {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(100%, 100%);
+  transition: 0.3s ease-in-out;
+
+  @include media(600px) {
+    width: 180px;
+    height: 180px;
+  }
+}
+.active {
+  transform: translate(0, 0);
 }
 </style>
