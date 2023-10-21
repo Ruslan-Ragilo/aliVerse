@@ -14,16 +14,16 @@ export const useFactsStore = defineStore("facts", () => {
   const currentAnswer = ref<boolean | null>(null);
 
   async function checkAvailability() {
-    const res = await $api.get("/api/event/view", {
+    const limit = await $api.get("/api/user/get-remained-event-limit", {
       params: {
         id: 2,
       },
     });
 
     try {
-      if (res.data.limit > 0) {
+      if (limit.data > 0) {
         isAvailable.value = true;
-      } else if (res.data.limit === 0) {
+      } else if (limit.data === 0) {
         isAvailable.value = false;
       }
     } catch (error: unknown) {
@@ -72,28 +72,23 @@ export const useFactsStore = defineStore("facts", () => {
     }
   }
 
-  function finishGame() {
+  async function finishGame() {
     isFinished.value = true;
     gameScreen.value = "finish";
-    // TODO отправлять currentCoins.value на бек
-    // TODO сообщать, что попытка на сегодня завершена
 
     const formData = new FormData();
-    formData.append("id", "2");
-    formData.append("score", currentCoins.value);
+    formData.append("event_id", "2");
+    formData.append("score", currentCoins.value.toString());
 
-    /*    await $api.post("/api/event/add", {
-      params: {
-        id: 2,
-        score: currentCoins.value,
-      },
-    });
-    const res = await $api.get("/api/event/view", {
+    const limit = await $api.get("/api/user/get-remained-event-limit", {
       params: {
         id: 2,
       },
     });
-    console.log(res.data); */
+
+    if (limit.data > 0) {
+      await $api.post("/api/event/add", formData);
+    }
   }
 
   function resetGame() {
@@ -110,8 +105,7 @@ export const useFactsStore = defineStore("facts", () => {
   }
 
   function getCoins() {
-    // TODO запрос на бек
-    return 300;
+    return currentCoins.value;
   }
 
   return {
