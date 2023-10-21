@@ -13,17 +13,19 @@
     />
     <div class="profile-info">
       <ElementsText class-name="text" themes="secondary" size="s">
-        {{ userStore.userData?.nameUser }}
+        {{ userStore.getUserData?.nameUser }}
       </ElementsText>
       <ElementsText class-name="text" themes="mustard" size="xs">
-        {{ userStore.userData?.balanceUser }} ALICOINS
+        {{ userStore.getUserData?.balanceUser }} ALICOINS
       </ElementsText>
+      <NuxtLink @click="authStore.logout">Выйти</NuxtLink>
     </div>
   </button>
 </template>
 
 <script setup lang="ts">
 const userStore = useUserData();
+const authStore = useAuth();
 
 onMounted(async () => {
   await userStore.fetchUsers();
