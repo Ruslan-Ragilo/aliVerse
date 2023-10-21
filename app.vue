@@ -2,8 +2,8 @@
 const authStore = useAuth();
 
 watch(
-  () => authStore.isAuth,
-  () => setPageLayout(authStore.isAuth ? "default" : "auth"),
+  () => authStore.getIsAuth,
+  () => setPageLayout(authStore.getIsAuth ? "default" : "auth"),
 );
 
 definePageMeta({

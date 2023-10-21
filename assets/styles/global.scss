@@ -1,86 +1,83 @@
 @font-face {
-	font-family: 'Barcade Brawl';
-	src: url('../fonts/BarcadeBrawl/BarcadeBrawlRegular.ttf') format('truetype');
-	font-weight: 400;
-	font-style: normal;
+  font-family: "Barcade Brawl";
+  src: url("../fonts/BarcadeBrawl/BarcadeBrawlRegular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Better Vcr';
-	src: url('../fonts/BetterVcr/BetterVcr-regular.ttf') format('truetype');
-	font-weight: 400;
-	font-style: normal;
+  font-family: "Better Vcr";
+  src: url("../fonts/BetterVcr/BetterVcr-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
 body {
-	font-family: $font-family-main;
-	background-image: url('~/assets/images/svg/bgMain.svg');
-	background-size: contain;
-	background-position: center center;
-	overflow-x: hidden;
-	
+  font-family: $font-family-main;
+  background-image: url("~/assets/images/svg/bgMain.svg");
+  background-size: contain;
+  overflow-x: hidden;
 }
 
 .wrapper-main {
-	max-width: 1440px;
-	padding: 0 75px;
-	width: 100%;
-	margin: 0 auto;	
+  max-width: 1440px;
+  padding: 0 75px;
+  width: 100%;
+  margin: 0 auto;
 
-	@include media(1200px) {
-		padding: 0 10px;
-	}
+  @include media(1200px) {
+    padding: 0 10px;
+  }
 }
 
 p.heading-title {
-@include media(1200px) {
-	font-size: $font-size-xxl;
-	line-height: $line-height-xxl;
-}
-@include media(744px) {
-	font-size: $font-size-l;
-	line-height: $line-height-l;
-}
+  @include media(1200px) {
+    font-size: $font-size-xxl;
+    line-height: $line-height-xxl;
+  }
+  @include media(744px) {
+    font-size: $font-size-l;
+    line-height: $line-height-l;
+  }
 }
 
 .absolute {
-	position: absolute;
+  position: absolute;
 }
 
 .wrapper-window {
-    max-width: 600px;
-    width: 100%;
-    margin-top: 20px;
-	position: relative;
-    z-index: 3;
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+  z-index: 3;
 
-	@include media(744px) {
-		max-width: none;
-	}
+  @include media(744px) {
+    max-width: none;
+  }
 
-    & > p {
-      @include media(1200px) {
-        font-size: $font-size-xxs;
-        line-height: $line-height-xxs;
-      }
+  & > p {
+    @include media(1200px) {
+      font-size: $font-size-xxs;
+      line-height: $line-height-xxs;
     }
   }
-  .btn {
-	cursor: pointer;
-  }
-  .alien-button {
-	margin-top: 28px;
+}
+.btn {
+  cursor: pointer;
+}
+.alien-button {
+  margin-top: 28px;
 
-	p {
-		@include media (450px) {
-			font-size: 20px;
-		}
-	}
+  p {
+    @include media(450px) {
+      font-size: 20px;
+    }
   }
+}

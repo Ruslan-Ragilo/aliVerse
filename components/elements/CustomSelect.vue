@@ -5,13 +5,15 @@ defineProps({
     default: () => [],
   },
 });
+const emits = defineEmits(["selected"]);
 const isActive = ref(false);
 const valueSelect = ref("Онлайн");
 
 const handleSelect = (value) => {
   isActive.value = false;
 
-  valueSelect.value = value;
+  valueSelect.value = value?.option;
+  emits("selected", value?.id);
 };
 </script>
 
@@ -28,9 +30,9 @@ const handleSelect = (value) => {
     <div :class="['options', { active: isActive }]">
       <div
         v-for="item in options"
-        :key="item.option"
+        :key="item?.option"
         class="option"
-        @click="handleSelect(item.option)"
+        @click="handleSelect(item)"
       >
         <ElementsText transform="upper" size="s">
           {{ item.option }}
