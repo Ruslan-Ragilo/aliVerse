@@ -14,17 +14,16 @@ export const useShadowsStore = defineStore("shadows", () => {
   const currentAnswer = ref<string | null>(null);
 
   async function checkAvailability() {
-    // TODO запрос на проверку доступности игры сегодня
-    const res = await $api.get("/api/event/view", {
+    const limit = await $api.get("/api/user/get-remained-event-limit", {
       params: {
-        id: 3,
+        id: 2,
       },
     });
 
     try {
-      if (res.data.limit > 0) {
+      if (limit.data > 0) {
         isAvailable.value = true;
-      } else if (res.data.limit === 0) {
+      } else if (limit.data === 0) {
         isAvailable.value = false;
       }
     } catch (error: unknown) {
