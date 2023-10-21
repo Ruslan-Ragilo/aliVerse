@@ -33,7 +33,7 @@ export const useWheelStore = defineStore("wheel", () => {
     if (isAvailable.value) {
       const fortunaRes = await $api.get("/api/event/fortuna");
 
-      const sectorSpinTime = 200;
+      const sectorSpinTime = 250;
       const spinningSectors = fortunaRes / 50 + 10;
       const spinningTime = spinningSectors * sectorSpinTime;
       isSpinning.value = true;
