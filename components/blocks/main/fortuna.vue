@@ -38,6 +38,7 @@
 
 <script setup lang="ts">
 const store = useWheelStore();
+store.checkAvailability();
 const isAvailable = computed(() => store.isAvailable);
 const isSpinning = computed(() => store.isSpinning);
 

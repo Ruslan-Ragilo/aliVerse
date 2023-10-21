@@ -16,7 +16,7 @@ export const useShadowsStore = defineStore("shadows", () => {
   async function checkAvailability() {
     const limit = await $api.get("/api/user/get-remained-event-limit", {
       params: {
-        id: 2,
+        id: 3,
       },
     });
 
@@ -72,11 +72,23 @@ export const useShadowsStore = defineStore("shadows", () => {
     }
   }
 
-  function finishGame() {
+  async function finishGame() {
     isFinished.value = true;
     gameScreen.value = "finish";
-    // TODO отправлять currentCoins.value на бек
-    // TODO сообщать, что попытка на сегодня завершена
+
+    const formData = new FormData();
+    formData.append("event_id", "3");
+    formData.append("score", currentCoins.value.toString());
+
+    const limit = await $api.get("/api/user/get-remained-event-limit", {
+      params: {
+        id: 3,
+      },
+    });
+
+    if (limit.data > 0) {
+      await $api.post("/api/event/add", formData);
+    }
   }
 
   function resetGame() {
@@ -93,8 +105,7 @@ export const useShadowsStore = defineStore("shadows", () => {
   }
 
   function getCoins() {
-    // TODO запрос на бек
-    return 300;
+    return currentCoins.value;
   }
 
   return {

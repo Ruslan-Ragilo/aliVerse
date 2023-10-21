@@ -33,8 +33,8 @@
 
 <script setup lang="ts">
 const store = useShadowsStore();
+store.checkAvailability();
 const isAvailable = computed(() => store.isAvailable);
-onMounted(() => store.checkAvailability());
 
 const startGame = () => {
   store.gameScreen = "game";
