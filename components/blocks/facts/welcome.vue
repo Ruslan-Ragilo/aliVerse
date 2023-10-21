@@ -2,20 +2,20 @@
   <div class="wrapper-welcome">
     <img
       class="welcome-image"
-      src="~/assets/images/png/shadows/title.png"
-      alt="Тайны галактики"
+      src="~/assets/images/png/facts/facts-logo.png"
+      alt="Сила знаний"
       draggable="false"
     />
     <div class="start-button">
       <ElementsPixelButton color="red" size="middle" @click="startGame">
-        Стартуем!
+        Погнали!
       </ElementsPixelButton>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const store = useShadowsStore();
+const store = useFactsStore();
 
 const startGame = () => {
   store.gameScreen = "rules";

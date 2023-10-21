@@ -3,10 +3,10 @@
     <div class="message-wrapper">
       <div v-if="isAvailable">
         <div class="message">
-          О нет, наш путь преградила Космическая Туманность. Как теперь
-          разглядеть, что за товар скрывается в тени? Попробуй угадать, какой
-          именно товар спрятался в тумане – внимательно рассмотри силуэт и
-          выбери, какому товару с AliExpress он принадлежит
+          Проверить пора, как хорошо знаешь ты AliExpress! Покажу тебе о
+          компании факты, задача твоя – понять, что правда, а что ложь. Поверь в
+          силы свои и помни, что внутри тебя сокрыто всё. Время настало
+          заработать ещё Ali Coins
         </div>
         <ElementsPixelButton color="red" size="middle" @click="startGame">
           Понятно
@@ -23,7 +23,7 @@
       </div>
       <img
         class="alien"
-        src="~/assets/images/svg/alien.svg"
+        src="~/assets/images/png/facts/ali-yoda.png"
         alt=""
         draggable="false"
       />
@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-const store = useShadowsStore();
+const store = useFactsStore();
 const isAvailable = ref(false);
 onMounted(() => (isAvailable.value = store.checkAvailability()));
 

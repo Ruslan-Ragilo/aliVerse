@@ -20,6 +20,7 @@
         </ElementsMessageIcon>
       </div>
       <BlocksShadowsModal />
+      <BlocksFactsModal />
     </div>
   </div>
 </template>
