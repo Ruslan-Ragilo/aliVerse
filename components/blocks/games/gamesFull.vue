@@ -104,7 +104,7 @@ const isShadowsAvailable = ref(true);
   gap: 18px;
 
   button {
-    z-index: 1;
+    z-index: 2;
   }
 }
 .left-game,
