@@ -20,6 +20,7 @@
         </ElementsMessageIcon>
       </div>
       <BlocksShadowsModal />
+      <BlocksFactsModal />
     </div>
   </div>
 </template>
@@ -91,6 +92,12 @@ div.alien {
   @include media(600px) {
     height: 230px;
     top: -170px;
+    left: 20px;
+  }
+
+  @include media(450px) {
+    height: 230px;
+    top: -100px;
     left: 20px;
   }
 }

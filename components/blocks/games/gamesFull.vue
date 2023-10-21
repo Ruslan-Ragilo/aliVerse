@@ -19,6 +19,7 @@
         color="red"
         size="mini"
         :disabled="!isFactsAvailable"
+        @click="openFactsModal"
       >
         Играть
       </ElementsPixelButton>
@@ -70,14 +71,19 @@
 </template>
 
 <script setup lang="ts">
+const factsStore = useFactsStore();
 const shadowsStore = useShadowsStore();
 
 const openShadowsModal = () => {
   shadowsStore.openModal();
 };
 
+const openFactsModal = () => {
+  factsStore.openModal();
+};
+
 // TODO добавить логику с датой для disabled
-const isFactsAvailable = ref(false);
+const isFactsAvailable = ref(true);
 const isFallAvailable = ref(false);
 const isShadowsAvailable = ref(true);
 </script>

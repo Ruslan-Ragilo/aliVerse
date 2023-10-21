@@ -1,15 +1,15 @@
-import { shadowsData } from "~/stores/shadowsData/shadowsData";
+import { factsData } from "~/stores/factsData/factsData";
 
-export const useShadowsStore = defineStore("shadows", () => {
+export const useFactsStore = defineStore("facts", () => {
   const isModalOpen = ref(false);
   const isFinished = ref(false);
   const gameState = ref<"default" | "right" | "wrong">("default");
   const gameScreen = ref<"welcome" | "rules" | "game" | "finish">("welcome");
-  const gamesRemained = ref(5);
+  const gamesRemained = ref(8);
   const currentCoins = ref(0);
-  const shadows = ref(shadowsData);
+  const facts = ref(factsData);
   const todayQuestions = ref<number[]>([]);
-  const currentAnswer = ref<string | null>(null);
+  const currentAnswer = ref<boolean | null>(null);
 
   function checkAvailability() {
     // TODO запрос на проверку доступности игры сегодня
@@ -17,7 +17,7 @@ export const useShadowsStore = defineStore("shadows", () => {
   }
 
   function getTodayQuestions() {
-    const maxNumber = Object.keys(shadows.value).length;
+    const maxNumber = Object.keys(facts.value).length;
     const count = gamesRemained.value;
     const availableNumbers: Set<number> = new Set();
     while (availableNumbers.size < count) {
@@ -27,7 +27,7 @@ export const useShadowsStore = defineStore("shadows", () => {
     todayQuestions.value = [...availableNumbers];
   }
 
-  function addCurrentAnswer(answer: string) {
+  function addCurrentAnswer(answer: boolean) {
     currentAnswer.value = answer;
   }
 
@@ -64,7 +64,7 @@ export const useShadowsStore = defineStore("shadows", () => {
 
   function resetGame() {
     currentCoins.value = 0;
-    gamesRemained.value = 5;
+    gamesRemained.value = 8;
     isFinished.value = false;
     gameState.value = "default";
     gameScreen.value = "welcome";
@@ -72,7 +72,7 @@ export const useShadowsStore = defineStore("shadows", () => {
   }
 
   function addCoins() {
-    currentCoins.value += 60;
+    currentCoins.value += 50;
   }
 
   function getCoins() {
@@ -86,7 +86,7 @@ export const useShadowsStore = defineStore("shadows", () => {
     gameState,
     gameScreen,
     gamesRemained,
-    shadows,
+    facts,
     todayQuestions,
     currentAnswer,
     checkAvailability,
