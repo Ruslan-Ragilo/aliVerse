@@ -3,6 +3,11 @@ export default defineNuxtRouteMiddleware((to) => {
   if (process.server) return;
 
   const authStore = useAuth();
+  authStore.checkIsAuth();
+
+  if (authStore.isAuth) {
+    return;
+  }
 
   if (
     !authStore.isAuth &&

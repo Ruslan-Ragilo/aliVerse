@@ -6,6 +6,8 @@ export const useAuth = defineStore("auth", {
   state: () => ({
     isAuth: false,
     isReadyData: false,
+    isLoginSuccess: false,
+    isRegisterSuccess: false,
   }),
   getters: {
     getIsReadyData: (state) => state.isReadyData,
@@ -20,17 +22,20 @@ export const useAuth = defineStore("auth", {
 
       if (!res?.data) {
         this.isAuth = false;
+        this.isLoginSuccess = false;
         localStorage.removeItem(storageTokenKey);
+        return;
       }
 
       // HANDLE ERROR
-
-      const token = res?.data?.$user?.token;
+      const token = res?.data;
       if (token) {
-        localStorage.setItem(storageTokenKey, JSON.stringify(token));
         this.isAuth = true;
+        this.isLoginSuccess = true;
+        localStorage.setItem(storageTokenKey, JSON.stringify(token));
       } else {
         this.isAuth = false;
+        this.isLoginSuccess = false;
         localStorage.removeItem(storageTokenKey);
       }
     },
@@ -64,6 +69,12 @@ export const useAuth = defineStore("auth", {
 
     setIsReadyData(value) {
       this.isReadyData = value;
+    },
+
+    checkIsAuth() {
+      if (localStorage.getItem(storageTokenKey)) {
+        this.isAuth = true;
+      }
     },
   },
 });
