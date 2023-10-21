@@ -7,8 +7,8 @@ export const useWheelStore = defineStore("wheel", () => {
   const gainedPoints = ref(0);
   const showModal = ref(false);
 
-  function checkAvailability() {
-    /* const limit = await $api.get("/api/user/get-remained-event-limit", {
+  async function checkAvailability() {
+    const limit = await $api.get("/api/user/get-remained-event-limit", {
       params: {
         id: 4,
       },
@@ -24,25 +24,19 @@ export const useWheelStore = defineStore("wheel", () => {
       if (isAxiosError(error)) {
         console.log(`Catched error code "${error.code}".`);
       }
-    } */
-    return true;
+    }
   }
 
-  function handleSpin(wheelElement: HTMLImageElement | undefined) {
+  async function handleSpin(wheelElement: HTMLImageElement | undefined) {
     checkAvailability();
 
     if (isAvailable.value) {
-      isSpinning.value = true;
+      const fortunaRes = await $api.get("/api/event/fortuna");
 
-      // TODO из полученных монет рассчитать время
-      // const fortunaRes = await $api.get("/api/event/fortuna");
-      /*  const fortunaRes = 0;
-      const sectorSpinTime = 300;
-      const spinningSectors = fortunaRes / 50;
+      const sectorSpinTime = 200;
+      const spinningSectors = fortunaRes / 50 + 10;
       const spinningTime = spinningSectors * sectorSpinTime;
-      console.log(spinningTime); */
-
-      const spinningTime = Math.random() * (5000 - 1000) + 1000;
+      isSpinning.value = true;
 
       setTimeout(() => {
         if (wheelElement) {
@@ -56,10 +50,10 @@ export const useWheelStore = defineStore("wheel", () => {
         const points =
           (Math.round((360 - currentRotation.value) / 36) % 10) * 50;
         gainedPoints.value = points;
+        isSpinning.value = false;
       }, spinningTime);
 
       setTimeout(() => {
-        isSpinning.value = false;
         showModal.value = true;
       }, spinningTime + 500);
     }

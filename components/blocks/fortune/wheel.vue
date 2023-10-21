@@ -84,7 +84,7 @@ const handleSpin = () => {
 }
 .spin {
   animation-name: spin;
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
