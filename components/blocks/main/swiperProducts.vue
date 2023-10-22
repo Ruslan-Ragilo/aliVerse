@@ -37,7 +37,7 @@ const selectedLocation = ref(4);
 
 const selectedProducts = computed(() => {
   return products.value?.filter(
-    (pr) => String(pr?.location) === String(selectedLocation.value)
+    (pr) => String(pr?.location) === String(selectedLocation.value),
   );
 });
 
@@ -110,7 +110,7 @@ onMounted(async () => {
   margin-top: 48px;
 }
 .string {
-  background-color: red;
+  background-color: #ff2722;
   padding: 10px 0;
   display: flex;
   align-items: center;

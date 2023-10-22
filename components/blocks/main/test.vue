@@ -51,7 +51,7 @@ const handleModalOpen = () => {
   display: flex;
 }
 .alien {
-  max-width: 600px;
+  max-width: 675px;
   width: 100%;
 
   @include media(1200px) {

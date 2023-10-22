@@ -103,7 +103,7 @@ const setUrlImage = (url) => {
 }
 
 .textAfterReg {
-  color: red;
+  color: #ff2722;
   margin-top: 50px;
 }
 .btnReg {
