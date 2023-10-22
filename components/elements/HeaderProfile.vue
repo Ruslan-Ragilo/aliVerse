@@ -3,7 +3,13 @@
     <img
       class="avatar"
       alt="Avatar"
-      :src="getImageUrl(userStore.userData?.avatarUser)"
+      :src="
+        getImageUrl(
+          userStore.userData?.avatarUser
+            ? userStore.userData?.avatarUser
+            : 'svg/iconProfile/defaultAvatar.svg',
+        )
+      "
     />
     <div class="profile-info">
       <ElementsText class-name="text" themes="secondary" size="s">
