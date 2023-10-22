@@ -37,6 +37,7 @@ onMounted(async () => {
         class="btnBy"
         color="red"
         size="middle"
+        @click="userStore.makeOrder"
         >Купить</ElementsPixelButton
       >
     </div>

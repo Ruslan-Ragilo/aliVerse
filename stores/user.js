@@ -40,6 +40,19 @@ export const useUserData = defineStore("userData", () => {
     }
   };
 
+  const makeOrder = async () => {
+    const formData = new FormData();
+    formData.append("name", userData.value.nameUser);
+    formData.append("email", userData.value.emailUser);
+
+    const res = await $api.post("cart/order", formData);
+
+    if (res?.data) {
+      await fetchUsers();
+      await getCart();
+    }
+  };
+
   const fetchUsers = async () => {
     const { data } = await $api.get("user");
 
@@ -59,6 +72,7 @@ export const useUserData = defineStore("userData", () => {
     cartItems,
     getCart,
     addToCart,
+    makeOrder,
     deleteCartItem,
   };
 });
