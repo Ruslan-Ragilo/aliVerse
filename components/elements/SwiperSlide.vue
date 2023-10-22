@@ -14,10 +14,12 @@ interface Product {
 const props = defineProps<{ product: Product }>();
 
 const userStore = useUserData();
-
-const addToCart = (id: number) => {
-  userStore.addToCart(id);
-};
+const isButtonDisabled = computed(() => {
+  return (
+    Number(userStore.userData.balanceUser) <=
+      Number(props?.product?.ali_price) || userStore.cartItems?.length >= 2
+  );
+});
 </script>
 <template>
   <div class="wrapper-slide">
@@ -36,13 +38,17 @@ const addToCart = (id: number) => {
         <ElementsText transform="upper" size="s" class="text-slide">
           {{ props?.product?.name }}
         </ElementsText>
-        <img
-          title="Добавить в корзину"
-          src="@/assets/images/swiper/btnCart.svg"
-          alt="Добавить в корзину"
-          class="addButton"
-          @click="addToCart(props.product?.id)"
-        />
+        <button
+          class="add-to-cart"
+          :disabled="isButtonDisabled"
+          @click="userStore.addToCart(props.product?.id)"
+        >
+          <img
+            title="Добавить в корзину"
+            src="@/assets/images/swiper/btnCart.svg"
+            alt="Добавить в корзину"
+          />
+        </button>
       </div>
       <div>
         <ElementsText transform="upper" size="xxs" class="text-slide color">
@@ -58,6 +64,14 @@ const addToCart = (id: number) => {
 </template>
 
 <style scoped lang="scss">
+.add-to-cart {
+  all: unset;
+  cursor: pointer;
+  &:disabled {
+    cursor: default;
+    filter: grayscale(100%) brightness(1.5);
+  }
+}
 .wrapper-slide {
   width: 300px !important;
   height: 475px;
