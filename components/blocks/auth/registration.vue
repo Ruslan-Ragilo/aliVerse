@@ -25,16 +25,21 @@ const setUrlImage = (url) => {
 </script>
 
 <template>
-  <div :class="['wrapperRegistration', { wrapperSecond: authStore }]">
+  <div
+    :class="[
+      'wrapperRegistration',
+      { wrapperSecond: authStore.getRegisterSuccess },
+    ]"
+  >
     <img
-      v-if="authStore.getRegisterSuccess"
+      v-if="!authStore.getRegisterSuccess"
       :class="['close', { show: isShow }]"
       src="@/assets/images/svg/close.svg"
       alt=""
       @click="isShow = false"
     />
     <ElementsPixelButton
-      v-if="authStore.getRegisterSuccess"
+      v-if="!authStore.getRegisterSuccess"
       :class="['btnSave', { active: isShow }]"
       class-text="btn-registraion"
       size="large"
@@ -45,7 +50,7 @@ const setUrlImage = (url) => {
       сохранить
     </ElementsPixelButton>
     <div
-      v-if="authStore.getRegisterSuccess"
+      v-if="!authStore.getRegisterSuccess"
       :class="['wrapperImage', { active: isShow }]"
     >
       <img
@@ -61,7 +66,7 @@ const setUrlImage = (url) => {
     <div
       :class="[
         'wrapperProfile',
-        { none: isShow && authStore.getRegisterSuccess },
+        { none: isShow && !authStore.getRegisterSuccess },
         { wrapperRProfileSecond: authStore },
       ]"
     >
@@ -72,7 +77,7 @@ const setUrlImage = (url) => {
         @handle-is-show="handleIsShowAvatars"
       />
       <NuxtLink
-        v-if="authStore.getRegisterSuccess"
+        v-if="!authStore.getRegisterSuccess"
         class="btnReg"
         to="/auth/registration"
       >
@@ -88,7 +93,12 @@ const setUrlImage = (url) => {
         </ElementsPixelButton>
       </NuxtLink>
     </div>
-    <p class="textAfterReg">asdasdasdasssssssssssssssssssssssssssssss</p>
+    <ElementsText
+      v-if="authStore.getRegisterSuccess"
+      themes="secondary"
+      class="textAfterReg"
+      >asdasdasdassss sssssssssss ssssssssssssssss</ElementsText
+    >
   </div>
 </template>
 
@@ -105,6 +115,7 @@ const setUrlImage = (url) => {
 .textAfterReg {
   color: #ff2722;
   margin-top: 50px;
+  text-align: center;
 }
 .btnReg {
   margin-top: 10%;
@@ -117,8 +128,8 @@ const setUrlImage = (url) => {
   // flex-direction: column;
   // justify-content: space-between;
   &.wrapperRProfileSecond {
-    max-width: 588px;
-    width: 100%;
+    max-width: 100%;
+    width: auto;
   }
   @include media(1266px) {
     &.none {
@@ -127,7 +138,7 @@ const setUrlImage = (url) => {
   }
 }
 .wrapperRegistration {
-  padding: 0 20px 0 10px;
+  // padding: 0 20px 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -138,6 +149,8 @@ const setUrlImage = (url) => {
 
   &.wrapperSecond {
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .close {
@@ -158,7 +171,6 @@ const setUrlImage = (url) => {
 
   @include media(1266px) {
     justify-content: center;
-    padding: 0 20px;
   }
 
   @include media(1200px) {
