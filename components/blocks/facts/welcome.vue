@@ -17,6 +17,10 @@
 <script setup lang="ts">
 const store = useFactsStore();
 
+onMounted(() => {
+  store.checkAvailability();
+});
+
 const startGame = () => {
   store.gameScreen = "rules";
 };
