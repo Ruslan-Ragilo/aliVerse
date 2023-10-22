@@ -1,3 +1,7 @@
+<script setup>
+// const storeUser = useUserData();
+</script>
+
 <template>
   <NuxtLayout>
     <BlocksBasketModal />
