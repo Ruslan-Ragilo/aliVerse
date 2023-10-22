@@ -45,7 +45,7 @@ const isButtonDisabled = computed(() => {
         >
           <img
             title="Добавить в корзину"
-            src="@/assets/images/swiper/btnCart.svg"
+            src="@/assets/images/png/bag-red.png"
             alt="Добавить в корзину"
           />
         </button>
