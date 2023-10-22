@@ -41,8 +41,9 @@ const setUrlImage = (url) => {
       color="red"
       :disabled="urlImage === 'svg/iconProfile/defaultAvatar.svg'"
       @click="isShow = false"
-      >сохранить</ElementsPixelButton
     >
+      сохранить
+    </ElementsPixelButton>
     <div
       v-if="!authStore.getRegisterSuccess"
       :class="['wrapperImage', { active: isShow }]"
@@ -79,10 +80,11 @@ const setUrlImage = (url) => {
           :disabled="!isValidFrom"
           size="large"
           color="red"
-          :isReadyData="isReadyData"
+          :is-ready-data="isReadyData"
           @click="authStore.setIsReadyData(true)"
-          >зарегистрироваться</ElementsPixelButton
         >
+          зарегистрироваться
+        </ElementsPixelButton>
       </NuxtLink>
     </div>
   </div>
