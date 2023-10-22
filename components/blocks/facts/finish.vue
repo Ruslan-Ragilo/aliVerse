@@ -14,9 +14,6 @@
 <script setup lang="ts">
 const store = useFactsStore();
 const coins = ref(store.getCoins());
-
-const userStore = useUserData();
-onMounted(() => userStore.fetchUsers());
 </script>
 
 <style scoped lang="scss">
