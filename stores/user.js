@@ -59,8 +59,6 @@ export const useUserData = defineStore("userData", () => {
 
   const fetchUsers = async () => {
     await $api.get("user").then((data) => {
-      userData.value.isLoading = true;
-      console.log(data.data?.avatar);
       userData.value.idUser = data.data?.id;
       userData.value.nameUser = data.data?.name;
       userData.value.emailUser = data.data?.email;

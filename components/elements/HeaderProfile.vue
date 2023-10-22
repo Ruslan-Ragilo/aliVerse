@@ -1,5 +1,5 @@
 <template>
-  <div v-if="userStore.userData?.isLoading" class="wrapper-profile">
+  <div class="wrapper-profile">
     <img
       class="avatar"
       alt="Avatar"
@@ -7,7 +7,7 @@
         getImageUrl(
           userStore.userData?.avatarUser
             ? userStore.userData?.avatarUser
-            : 'svg/iconProfile/defaultAvatar.svg',
+            : 'svg/iconProfile/defaultAvatar.svg'
         )
       "
     />
@@ -30,13 +30,6 @@
 <script setup lang="ts">
 const userStore = useUserData();
 const authStore = useAuth();
-const isReady = ref(false);
-
-onMounted(() => {
-  userStore.fetchUsers().then(() => {
-    isReady.value = true;
-  });
-});
 </script>
 
 <style scoped lang="scss">

@@ -1,18 +1,17 @@
 <script setup>
-// const authStore = useAuth();
+const userStore = useUserData();
+const isLoading = ref(true);
 
-// watch(
-//   () => authStore.getIsAuth,
-//   () => setPageLayout(authStore.getIsAuth ? "default" : "auth"),
-// );
-
-// definePageMeta({
-//   layout: false,
-// });
+onMounted(() => {
+  userStore.fetchUsers().then(() => {
+    isLoading.value = false;
+  });
+});
 </script>
 
 <template>
-  <NuxtLayout>
+  <NuxtLayout v-if="!isLoading">
     <NuxtPage />
   </NuxtLayout>
+  <ElementsSpinner color="red" v-else />
 </template>

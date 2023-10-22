@@ -17,7 +17,7 @@ export default {
     },
     color: {
       type: String,
-      default: "#ffffff",
+      default: "#fff",
     },
     size: {
       type: String,

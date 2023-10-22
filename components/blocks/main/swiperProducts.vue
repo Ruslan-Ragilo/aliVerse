@@ -37,7 +37,7 @@ const selectedLocation = ref(4);
 
 const selectedProducts = computed(() => {
   return products.value?.filter(
-    (pr) => String(pr?.location) === String(selectedLocation.value),
+    (pr) => String(pr?.location) === String(selectedLocation.value)
   );
 });
 
@@ -97,7 +97,7 @@ onMounted(async () => {
 <style scoped lang="scss">
 .wrap {
   position: relative;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
 
   @include media(590px) {
     margin-top: 50px;
@@ -118,6 +118,7 @@ onMounted(async () => {
 }
 .wrapper {
   margin-top: 10vw;
+  padding-top: 10vw;
   background: url("@/assets/images/swiper/bgSwiper.svg") no-repeat;
   background-size: cover;
 
