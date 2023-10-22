@@ -42,7 +42,12 @@ export const useUserData = defineStore("userData", () => {
   const makeOrder = async () => {
     const formData = new FormData();
     formData.append("name", userData.value.nameUser);
+    formData.append("phone", "");
     formData.append("email", userData.value.emailUser);
+    formData.append("office", "");
+    formData.append("city", "");
+    formData.append("index", "");
+    formData.append("address", "");
 
     const res = await $api.post("cart/order", formData);
 

@@ -60,7 +60,6 @@ const handleLogin = async () => {
     <form @submit.prevent="handleLogin">
       <input
         v-model="emailValue"
-        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
         type="email"
         class="email"
         placeholder="ТВОЙ E-MAIL"
