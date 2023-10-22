@@ -51,6 +51,7 @@ export const useWheelStore = defineStore("wheel", () => {
           (Math.round((360 - currentRotation.value) / 36) % 10) * 50;
         gainedPoints.value = points;
         isSpinning.value = false;
+        isAvailable.value = false;
       }, spinningTime);
 
       setTimeout(() => {

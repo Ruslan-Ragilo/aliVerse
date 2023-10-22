@@ -29,7 +29,7 @@ onMounted(async () => {
         <BlocksBasketItemBasket
           v-for="item in userStore.cartItems"
           :key="item?.id"
-          :cartItem="item"
+          :cart-item="item"
         />
       </div>
       <ElementsPixelButton
@@ -104,6 +104,8 @@ onMounted(async () => {
 
     .totalCoints {
       margin-top: 10px;
+      margin-bottom: 50px;
+
       span {
         color: #ffd776;
         text-shadow: 1px 1px #ff2722;

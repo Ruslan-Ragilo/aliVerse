@@ -33,7 +33,6 @@
 
 <script setup lang="ts">
 const store = useShadowsStore();
-store.checkAvailability();
 const isAvailable = computed(() => store.isAvailable);
 
 const startGame = () => {

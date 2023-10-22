@@ -9,19 +9,23 @@ const store = useModalBasked();
 
 <style scoped lang="scss">
 .cart-button {
+  position: fixed;
+  top: 30px;
+  left: 60px;
   width: 60px;
   height: 60px;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  z-index: 4;
 
   @include media(1200px) {
     width: 46px;
     height: 46px;
   }
-  @include media(1200px) {
-    width: 46px;
-    height: 46px;
+
+  @include media(800px) {
+    left: 30px;
   }
 }
 
