@@ -113,6 +113,7 @@ const setUrlImage = (url) => {
 }
 
 .textAfterReg {
+  color: #ff2722;
   margin-top: 50px;
   text-align: center;
 }

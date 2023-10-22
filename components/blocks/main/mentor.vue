@@ -24,9 +24,10 @@ import "swiper/css/scrollbar";
           <ElementsText transform="upper"
             >Чувствуешь, как твоё тело наполняется вдохновением и мотивацией?
             Да, без этого на планете «Менторий» не обойтись. <br /><br />В
-            Ментории мы собрали топовые советы от топов AliExpress! Здесь ты
-            узнаешь, как поддерживать эффективность, соблюдать work-life balance
-            и даже ___! Листай карточки с инсайтами от наших руководителей и
+            Ментории мы собрали <span class="red">топовые</span> советы от
+            <span class="red">топов</span> AliExpress! Здесь ты узнаешь, как
+            поддерживать эффективность, соблюдать work-life balance и даже ___!
+            Листай карточки с инсайтами от наших руководителей и
             заряжайся!</ElementsText
           >
         </ElementsMessageIcon>
@@ -58,7 +59,7 @@ import "swiper/css/scrollbar";
   justify-content: flex-end;
 }
 .alien {
-  max-width: 600px;
+  max-width: 675px;
   width: 100%;
 
   @include media(1200px) {
@@ -72,7 +73,7 @@ import "swiper/css/scrollbar";
 .planet {
   position: absolute;
   left: 0;
-  width: 62vw;
+  width: 70vw;
   z-index: -1;
 
   @include media(1200px) {
@@ -115,5 +116,9 @@ import "swiper/css/scrollbar";
     align-items: center;
     justify-content: center;
   }
+}
+
+.red {
+  color: #ff2722;
 }
 </style>

@@ -34,7 +34,8 @@
   margin-top: 10vw;
 }
 .letter {
-  max-width: 600px;
+  max-width: 675px;
+  position: static;
 
   span {
     color: $red-secondary;
@@ -55,8 +56,16 @@
 .planet {
   position: absolute;
   left: 0;
-  max-width: 80vw;
+  width: 55vw;
+  max-width: 900px;
+  transform: translateY(-10vw);
   z-index: -1;
+
+  @include media(1200px) {
+    max-width: 80vw;
+    width: auto;
+    transform: none;
+  }
 }
 
 .wrapper-top {

@@ -93,7 +93,7 @@ const handleSpin = () => {
   }
 }
 .letter {
-  max-width: 600px;
+  max-width: 675px;
   z-index: 2;
 
   @include media(1200px) {
@@ -111,7 +111,7 @@ const handleSpin = () => {
   }
 }
 .red-text {
-  color: red;
+  color: #ff2722;
 }
 .spin-button {
   margin-top: 28px;

@@ -87,7 +87,10 @@ export const useShadowsStore = defineStore("shadows", () => {
     });
 
     if (limit.data > 0) {
+      const userStore = useUserData();
+
       await $api.post("/api/event/add", formData);
+      await userStore.fetchUsers();
     }
   }
 
