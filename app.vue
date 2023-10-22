@@ -1,14 +1,14 @@
 <script setup>
-const authStore = useAuth();
+// const authStore = useAuth();
 
-watch(
-  () => authStore.getIsAuth,
-  () => setPageLayout(authStore.getIsAuth ? "default" : "auth"),
-);
+// watch(
+//   () => authStore.getIsAuth,
+//   () => setPageLayout(authStore.getIsAuth ? "default" : "auth"),
+// );
 
-definePageMeta({
-  layout: false,
-});
+// definePageMeta({
+//   layout: false,
+// });
 </script>
 
 <template>
