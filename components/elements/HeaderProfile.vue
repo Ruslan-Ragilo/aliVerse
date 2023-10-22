@@ -1,15 +1,9 @@
 <template>
-  <button class="wrapper-profile">
+  <div v-if="userStore.userData?.isLoading" class="wrapper-profile">
     <img
       class="avatar"
       alt="Avatar"
-      :src="
-        getImageUrl(
-          userStore.userData?.avatarUser
-            ? userStore.userData?.avatarUser
-            : 'svg/iconProfile/defaultAvatar.svg',
-        )
-      "
+      :src="getImageUrl(userStore.userData?.avatarUser)"
     />
     <div class="profile-info">
       <ElementsText class-name="text" themes="secondary" size="s">
@@ -24,15 +18,18 @@
         </ElementsText>
       </NuxtLink>
     </div>
-  </button>
+  </div>
 </template>
 
 <script setup lang="ts">
 const userStore = useUserData();
 const authStore = useAuth();
+const isReady = ref(false);
 
-onMounted(async () => {
-  await userStore.fetchUsers();
+onMounted(() => {
+  userStore.fetchUsers().then(() => {
+    isReady.value = true;
+  });
 });
 </script>
 
@@ -43,7 +40,7 @@ onMounted(async () => {
   right: 60px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
   padding: 14px;
   border: 3px solid #fff;
@@ -57,6 +54,12 @@ onMounted(async () => {
   @include media(800px) {
     right: 30px;
   }
+}
+
+.logout {
+  color: white;
+  font-size: 10px;
+  margin-top: 10px;
 }
 
 .avatar {

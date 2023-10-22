@@ -11,11 +11,9 @@ interface Product {
   location: number;
   sold: number;
 }
-
 const props = defineProps<{ product: Product }>();
 
 const userStore = useUserData();
-
 const isButtonDisabled = computed(() => {
   return (
     Number(userStore.userData.balanceUser) <=
@@ -80,6 +78,10 @@ const isButtonDisabled = computed(() => {
   max-height: fit-content;
   display: flex;
   flex-direction: column;
+
+  .addButton {
+    cursor: pointer;
+  }
 
   .slide-header {
     background: url("@/assets/images/swiper/bubble.png") no-repeat;
