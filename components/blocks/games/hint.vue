@@ -18,7 +18,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  background-color: red;
+  background-color: #ff2722;
   border: 4px solid #fff;
 }
 </style>

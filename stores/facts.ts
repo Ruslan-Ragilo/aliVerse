@@ -87,7 +87,10 @@ export const useFactsStore = defineStore("facts", () => {
     });
 
     if (limit.data > 0) {
-      await $api.post("/api/event/add", formData)
+      const userStore = useUserData();
+
+      await $api.post("/api/event/add", formData);
+      await userStore.fetchUsers();
     }
   }
 
