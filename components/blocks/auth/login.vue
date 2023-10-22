@@ -79,7 +79,7 @@ const handleLogin = async () => {
           @input="handlePin($event, index)"
         />
       </div>
-      <ElementsPixelButton type="submit" size="middle" color="red"
+      <ElementsPixelButton class="login" type="submit" size="middle" color="red"
         >войти</ElementsPixelButton
       >
     </form>
@@ -104,6 +104,10 @@ const handleLogin = async () => {
   flex-direction: column;
   gap: 9px;
   align-items: center;
+}
+
+.login {
+  margin-top: 20px;
 }
 
 a {
@@ -155,14 +159,16 @@ input {
   }
 }
 .content {
-  max-height: 700px;
+  // max-height: 700px;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+  padding-top: 4vh;
 
   @include media(710px) {
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
   }
 }

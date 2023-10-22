@@ -1,3 +1,7 @@
+<script setup>
+// const storeUser = useUserData();
+</script>
+
 <template>
   <NuxtLayout>
     <BlocksBasketModal />
@@ -10,7 +14,6 @@
           :avatar-id="1"
         />
       </div>
-
       <div class="wrapper-bg">
         <img class="bgTop" src="@/assets/images/png/bgMainTop.png" alt="" />
       </div>

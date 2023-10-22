@@ -11,7 +11,6 @@
     </div>
   </footer>
 </template>
-
 <style lang="scss" scoped>
 footer {
   padding-top: 150px;

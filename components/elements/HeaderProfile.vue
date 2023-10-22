@@ -1,15 +1,9 @@
 <template>
-  <button class="wrapper-profile">
+  <div v-if="userStore.userData?.isLoading" class="wrapper-profile">
     <img
       class="avatar"
       alt="Avatar"
-      :src="
-        getImageUrl(
-          userStore.userData?.avatarUser
-            ? userStore.userData?.avatarUser
-            : 'svg/iconProfile/defaultAvatar.svg',
-        )
-      "
+      :src="getImageUrl(userStore.userData?.avatarUser)"
     />
     <div class="profile-info">
       <ElementsText class-name="text" themes="secondary" size="s">
@@ -18,17 +12,20 @@
       <ElementsText class-name="text" themes="mustard" size="xs">
         {{ userStore.userData?.balanceUser }} ALICOINS
       </ElementsText>
-      <NuxtLink @click="authStore.logout">Выйти</NuxtLink>
+      <NuxtLink class="logout" @click="authStore.logout">Выйти</NuxtLink>
     </div>
-  </button>
+  </div>
 </template>
 
 <script setup lang="ts">
 const userStore = useUserData();
 const authStore = useAuth();
+const isReady = ref(false);
 
-onMounted(async () => {
-  await userStore.fetchUsers();
+onMounted(() => {
+  userStore.fetchUsers().then(() => {
+    isReady.value = true;
+  });
 });
 </script>
 
@@ -36,12 +33,18 @@ onMounted(async () => {
 .wrapper-profile {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
   padding: 14px;
   border: 3px solid #fff;
   background-color: rgba(12, 2, 45, 0.8);
   cursor: pointer;
+}
+
+.logout {
+  color: white;
+  font-size: 10px;
+  margin-top: 10px;
 }
 
 .avatar {

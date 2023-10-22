@@ -11,10 +11,13 @@ interface Product {
   location: number;
   sold: number;
 }
-
 const props = defineProps<{ product: Product }>();
 
 const userStore = useUserData();
+
+const addToCart = (id: number) => {
+  userStore.addToCart(id);
+};
 </script>
 <template>
   <div class="wrapper-slide">
@@ -33,7 +36,8 @@ const userStore = useUserData();
           title="Добавить в корзину"
           src="@/assets/images/swiper/btnCart.svg"
           alt="Добавить в корзину"
-          @click="userStore.addToCart(props.product?.id)"
+          class="addButton"
+          @click="addToCart(props.product?.id)"
         />
       </div>
       <div>
@@ -52,6 +56,10 @@ const userStore = useUserData();
 <style scoped lang="scss">
 .wrapper-slide {
   width: 300px !important;
+
+  .addButton {
+    cursor: pointer;
+  }
 
   .slide-header {
     background: url("@/assets/images/swiper/bubble.png") no-repeat;

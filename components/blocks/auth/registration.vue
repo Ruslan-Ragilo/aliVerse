@@ -25,16 +25,16 @@ const setUrlImage = (url) => {
 </script>
 
 <template>
-  <div class="wrapperRegistration">
+  <div :class="['wrapperRegistration', { wrapperSecond: authStore }]">
     <img
-      v-if="!authStore.getRegisterSuccess"
+      v-if="authStore.getRegisterSuccess"
       :class="['close', { show: isShow }]"
       src="@/assets/images/svg/close.svg"
       alt=""
       @click="isShow = false"
     />
     <ElementsPixelButton
-      v-if="!authStore.getRegisterSuccess"
+      v-if="authStore.getRegisterSuccess"
       :class="['btnSave', { active: isShow }]"
       class-text="btn-registraion"
       size="large"
@@ -44,7 +44,7 @@ const setUrlImage = (url) => {
       >сохранить</ElementsPixelButton
     >
     <div
-      v-if="!authStore.getRegisterSuccess"
+      v-if="authStore.getRegisterSuccess"
       :class="['wrapperImage', { active: isShow }]"
     >
       <img
@@ -60,7 +60,8 @@ const setUrlImage = (url) => {
     <div
       :class="[
         'wrapperProfile',
-        { none: isShow && !authStore.getRegisterSuccess },
+        { none: isShow && authStore.getRegisterSuccess },
+        { wrapperRProfileSecond: authStore },
       ]"
     >
       <ElementsCartProfile
@@ -70,7 +71,7 @@ const setUrlImage = (url) => {
         @handle-is-show="handleIsShowAvatars"
       />
       <NuxtLink
-        v-if="!authStore.getRegisterSuccess"
+        v-if="authStore.getRegisterSuccess"
         class="btnReg"
         to="/auth/registration"
       >
@@ -85,6 +86,7 @@ const setUrlImage = (url) => {
         >
       </NuxtLink>
     </div>
+    <p class="textAfterReg">asdasdasdasssssssssssssssssssssssssssssss</p>
   </div>
 </template>
 
@@ -97,6 +99,11 @@ const setUrlImage = (url) => {
     }
   }
 }
+
+.textAfterReg {
+  color: red;
+  margin-top: 50px;
+}
 .btnReg {
   margin-top: 10%;
   display: flex;
@@ -107,7 +114,10 @@ const setUrlImage = (url) => {
   // display: flex;
   // flex-direction: column;
   // justify-content: space-between;
-
+  &.wrapperRProfileSecond {
+    max-width: 588px;
+    width: 100%;
+  }
   @include media(1266px) {
     &.none {
       display: none;
@@ -123,6 +133,10 @@ const setUrlImage = (url) => {
   width: 100%;
   margin: 0 auto;
   height: 98vh;
+
+  &.wrapperSecond {
+    justify-content: center;
+  }
 
   .close {
     display: none;

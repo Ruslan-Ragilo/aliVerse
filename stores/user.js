@@ -10,6 +10,7 @@ export const useUserData = defineStore("userData", () => {
     balanceUser: "",
     isSpinUser: "",
     isBlockedUser: "",
+    isLoading: false,
   });
 
   const cartItems = ref([]);
@@ -24,7 +25,6 @@ export const useUserData = defineStore("userData", () => {
     formData.append("product_id", String(id));
 
     const res = await $api.post("cart", formData);
-
     if (res?.data) {
       await fetchUsers();
       await getCart();
@@ -33,7 +33,6 @@ export const useUserData = defineStore("userData", () => {
 
   const deleteCartItem = async (id) => {
     const res = await $api.delete(`cart/${id}`);
-    console.log(res);
     if (res?.data) {
       await fetchUsers();
       await getCart();
@@ -41,16 +40,18 @@ export const useUserData = defineStore("userData", () => {
   };
 
   const fetchUsers = async () => {
-    const { data } = await $api.get("user");
-
-    userData.value.idUser = data?.id;
-    userData.value.nameUser = data?.name;
-    userData.value.emailUser = data?.email;
-    userData.value.avatarUser = data?.avatar;
-    userData.value.productsUser = data?.total_products;
-    userData.value.balanceUser = data?.balance;
-    userData.value.isSpinUser = data?.already_spin;
-    userData.value.isBlockedUser = data?.blocked;
+    await $api.get("user").then((data) => {
+      userData.value.isLoading = true;
+      console.log(data.data?.avatar);
+      userData.value.idUser = data.data?.id;
+      userData.value.nameUser = data.data?.name;
+      userData.value.emailUser = data.data?.email;
+      userData.value.avatarUser = data.data?.avatar;
+      userData.value.productsUser = data.data?.total_products;
+      userData.value.balanceUser = data.data?.balance;
+      userData.value.isSpinUser = data.data?.already_spin;
+      userData.value.isBlockedUser = data.data?.blocked;
+    });
   };
 
   return {
