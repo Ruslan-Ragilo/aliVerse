@@ -56,6 +56,10 @@ const userStore = useUserData();
 <style scoped lang="scss">
 .wrapper-slide {
   width: 300px !important;
+  height: 475px;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
 
   .slide-header {
     background: url("@/assets/images/swiper/bubble.png") no-repeat;
@@ -81,10 +85,15 @@ const userStore = useUserData();
   .text-slide {
     max-width: 145px;
     width: 100%;
+    display: contents;
   }
   .slide-footer {
+    flex-grow: 1;
     padding: 20px 30px;
     background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     div:first-child {
       margin-bottom: 14px;
@@ -93,13 +102,14 @@ const userStore = useUserData();
     & div {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
     }
     .bottom {
       display: flex;
     }
 
     .color {
-      color: #939598;
+      color: #ff2722;
     }
 
     .price-points {

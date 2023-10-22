@@ -32,7 +32,10 @@ const userStore = useUserData();
         {{ cartItem?.product?.ali_price }}
       </ElementsText>
     </div>
-    <button style="all: unset" @click="userStore.deleteCartItem(cartItem?.id)">
+    <button
+      class="delete-button"
+      @click="userStore.deleteCartItem(cartItem?.id)"
+    >
       <img class="trash" src="@/assets/images/svg/trash.svg" alt="" />
     </button>
   </div>
@@ -116,7 +119,7 @@ const userStore = useUserData();
   .middleCol {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 
     @include media(732px) {
       flex-direction: column;
@@ -139,7 +142,10 @@ const userStore = useUserData();
       }
     }
   }
-
+  .delete-button {
+    all: unset;
+    margin: 0 auto;
+  }
   .trash {
     cursor: pointer;
   }
