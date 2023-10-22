@@ -51,8 +51,8 @@ const modalStyle = computed(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 12;
 }
 
 .modal {
