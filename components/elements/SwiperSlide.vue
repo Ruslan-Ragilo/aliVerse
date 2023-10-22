@@ -105,9 +105,12 @@ const isButtonDisabled = computed(() => {
     }
   }
   .text-slide {
-    max-width: 145px;
     width: 100%;
-    display: contents;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .slide-footer {
     flex-grow: 1;
@@ -125,6 +128,7 @@ const isButtonDisabled = computed(() => {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 15px;
     }
     .bottom {
       display: flex;

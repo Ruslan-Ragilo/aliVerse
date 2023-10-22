@@ -6,6 +6,7 @@ const inputPinData = ref([
   { name: 3, value: "" },
   { name: 4, value: "" },
 ]);
+const isActive = ref(false);
 
 const emailValue = ref("");
 
@@ -145,6 +146,10 @@ input {
     caret-color: transparent;
     -moz-appearance: textfield;
     padding: 18px 8.9px;
+
+    &.active::placeholder {
+      color: $red-primary;
+    }
   }
 
   .input-pin::-webkit-outer-spin-button,
