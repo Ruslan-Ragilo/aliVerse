@@ -19,11 +19,11 @@ onMounted(async () => {
         alt=""
         @click="popupStore.setIsOpen(false)"
       />
-      <ElementsText class="headingBasket" transform="upper" size="xxl"
-        >корзина</ElementsText
-      >
-      <ElementsText class="totalCoints" transform="upper" size="s"
-        >У тебя: <span>{{ userStore.userData?.balanceUser }} alicoins</span>
+      <ElementsText class="headingBasket" transform="upper" size="xxl">
+        корзина
+      </ElementsText>
+      <ElementsText class="totalCoints" transform="upper" size="s">
+        У тебя: <span>{{ userStore.userData?.balanceUser }} alicoins</span>
       </ElementsText>
       <div class="wrapperItems">
         <BlocksBasketItemBasket
@@ -32,14 +32,16 @@ onMounted(async () => {
           :cart-item="item"
         />
       </div>
-      <ElementsPixelButton
-        v-if="userStore.cartItems?.length > 0"
-        class="btnBy"
-        color="red"
-        size="middle"
-        @click="userStore.makeOrder"
-        >Купить</ElementsPixelButton
-      >
+      <div class="btn-buy">
+        <ElementsPixelButton
+          v-if="userStore.cartItems?.length > 0"
+          color="red"
+          size="middle"
+          @click="userStore.makeOrder"
+        >
+          Купить
+        </ElementsPixelButton>
+      </div>
     </div>
   </div>
 </template>
@@ -57,7 +59,7 @@ onMounted(async () => {
     display: block;
   }
 
-  .btnBy {
+  .btn-buy {
     position: absolute;
     bottom: 30px;
     left: 50%;
