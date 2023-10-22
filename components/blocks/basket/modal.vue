@@ -32,14 +32,15 @@ onMounted(async () => {
           :cart-item="item"
         />
       </div>
-      <ElementsPixelButton
-        v-if="userStore.cartItems?.length > 0"
-        class="btnBy"
-        color="red"
-        size="middle"
-        @click="userStore.makeOrder"
-        >Купить</ElementsPixelButton
-      >
+      <div class="btnBy">
+        <ElementsPixelButton
+          v-if="userStore.cartItems?.length > 0"
+          color="red"
+          size="middle"
+          @click="userStore.makeOrder"
+          >Купить</ElementsPixelButton
+        >
+      </div>
     </div>
   </div>
 </template>
