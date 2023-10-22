@@ -20,15 +20,19 @@ const userStore = useUserData();
   <div class="wrapper-slide">
     <div class="slide-header">
       <img
-        :src="props.product?.image ?? getImageUrl('swiper/imageSwiper.png')"
+        class="product-image"
+        :src="
+          props.product?.image ??
+          getImageUrl(`png/merch/${props.product?.id}.png`)
+        "
         alt=""
       />
     </div>
     <div class="slide-footer">
       <div>
-        <ElementsText transform="upper" size="s" class="text-slide">{{
-          props?.product?.name
-        }}</ElementsText>
+        <ElementsText transform="upper" size="s" class="text-slide">
+          {{ props?.product?.name }}
+        </ElementsText>
         <img
           title="Добавить в корзину"
           src="@/assets/images/swiper/btnCart.svg"
@@ -37,13 +41,13 @@ const userStore = useUserData();
         />
       </div>
       <div>
-        <ElementsText transform="upper" size="xxs" class="text-slide color"
-          >Только {{ locationsMap[`${props.product?.location}`] }}</ElementsText
-        >
+        <ElementsText transform="upper" size="xxs" class="text-slide color">
+          Только {{ locationsMap[`${props.product?.location}`] }}
+        </ElementsText>
 
-        <ElementsText class="price-points">{{
-          props?.product?.ali_price
-        }}</ElementsText>
+        <ElementsText class="price-points">
+          {{ props?.product?.ali_price }}
+        </ElementsText>
       </div>
     </div>
   </div>
@@ -103,5 +107,10 @@ const userStore = useUserData();
       text-shadow: 1px 1px #ff2722;
     }
   }
+}
+
+.product-image {
+  max-width: 180px;
+  max-height: 180px;
 }
 </style>

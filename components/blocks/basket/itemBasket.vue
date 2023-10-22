@@ -14,23 +14,23 @@ const userStore = useUserData();
     </div>
     <img
       class="imgItem"
-      src="@/assets/images/swiper/imageSwiper.png"
+      :src="getImageUrl(`png/merch/${cartItem.product.id}.png`)"
       alt=""
       srcset=""
     />
     <div class="middleCol">
       <div>
-        <ElementsText transform="upper" size="xs">{{
-          cartItem?.product?.name
-        }}</ElementsText>
-        <ElementsText style="color: #afafaf" transform="upper" size="xxs"
-          >Только
-          {{ locationsMap[`${cartItem?.product?.location}`] }}</ElementsText
-        >
+        <ElementsText transform="upper" size="xs">
+          {{ cartItem?.product?.name }}
+        </ElementsText>
+        <ElementsText style="color: #afafaf" transform="upper" size="xxs">
+          Только
+          {{ locationsMap[`${cartItem?.product?.location}`] }}
+        </ElementsText>
       </div>
-      <ElementsText class="priceCoin" size="xl" themes="mustard">{{
-        cartItem?.product?.ali_price
-      }}</ElementsText>
+      <ElementsText class="priceCoin" size="xl" themes="mustard">
+        {{ cartItem?.product?.ali_price }}
+      </ElementsText>
     </div>
     <button style="all: unset" @click="userStore.deleteCartItem(cartItem?.id)">
       <img class="trash" src="@/assets/images/svg/trash.svg" alt="" />
