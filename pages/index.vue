@@ -1,9 +1,16 @@
 <script setup>
-// const storeUser = useUserData();
+const userStore = useUserData();
+const isLoading = ref(true);
+
+onMounted(() => {
+  userStore.fetchUsers().then(() => {
+    isLoading.value = false;
+  });
+});
 </script>
 
 <template>
-  <NuxtLayout>
+  <NuxtLayout v-if="!isLoading">
     <BlocksBasketModal />
     <div class="wrapper">
       <ElementsHeaderCart />
@@ -33,6 +40,7 @@
     <BlocksMainQuestion />
     <BlocksMainFooter />
   </NuxtLayout>
+  <ElementsSpinner color="red" v-else />
 </template>
 
 <style lang="scss" scoped>
