@@ -33,7 +33,7 @@ export const useWheelStore = defineStore("wheel", () => {
     if (isAvailable.value) {
       const fortunaRes = await $api.get("/api/event/fortuna");
 
-      const sectorSpinTime = 250;
+      const sectorSpinTime = 300;
       const spinningSectors = fortunaRes.data / 50 + 10;
       const spinningTime = spinningSectors * sectorSpinTime;
       isSpinning.value = true;
@@ -52,6 +52,9 @@ export const useWheelStore = defineStore("wheel", () => {
         gainedPoints.value = points;
         isSpinning.value = false;
         isAvailable.value = false;
+
+        const userStore = useUserData();
+        userStore.fetchUsers();
       }, spinningTime);
 
       setTimeout(() => {

@@ -14,6 +14,9 @@
 <script setup lang="ts">
 const store = useShadowsStore();
 const coins = ref(store.getCoins());
+
+const userStore = useUserData();
+onMounted(() => userStore.fetchUsers());
 </script>
 
 <style scoped lang="scss">
