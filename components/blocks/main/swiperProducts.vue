@@ -86,9 +86,9 @@ onMounted(async () => {
       :direction="'reverse'"
     >
       <div class="string">
-        <ElementsText transform="upper" size="xl" themes="secondary"
-          >оформить заказ можно с 17 ноября</ElementsText
-        >
+        <ElementsText transform="upper" size="xl" themes="secondary">
+          оформить заказ можно с 17 ноября
+        </ElementsText>
       </div>
     </Vue3Marquee>
   </div>

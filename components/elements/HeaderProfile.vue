@@ -12,7 +12,11 @@
       <ElementsText class-name="text" themes="mustard" size="xs">
         {{ userStore.userData?.balanceUser }} ALICOINS
       </ElementsText>
-      <NuxtLink class="logout" @click="authStore.logout">Выйти</NuxtLink>
+      <NuxtLink @click="authStore.logout">
+        <ElementsText themes="secondary" size="xs" transform="upper">
+          Выйти
+        </ElementsText>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -31,6 +35,9 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .wrapper-profile {
+  position: fixed;
+  top: 30px;
+  right: 60px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -38,7 +45,15 @@ onMounted(() => {
   padding: 14px;
   border: 3px solid #fff;
   background-color: rgba(12, 2, 45, 0.8);
-  cursor: pointer;
+  z-index: 4;
+
+  a {
+    cursor: pointer;
+  }
+
+  @include media(800px) {
+    right: 30px;
+  }
 }
 
 .logout {

@@ -6,14 +6,8 @@
   <NuxtLayout>
     <BlocksBasketModal />
     <div class="wrapper">
-      <div class="wrapper-header">
-        <ElementsHeaderCart />
-        <ElementsHeaderProfile
-          name="Иван Алексеев"
-          :coins="1249"
-          :avatar-id="1"
-        />
-      </div>
+      <ElementsHeaderCart />
+      <ElementsHeaderProfile />
       <div class="wrapper-bg">
         <img class="bgTop" src="@/assets/images/png/bgMainTop.png" alt="" />
       </div>

@@ -52,6 +52,7 @@ const questionsData = ref({
 <style lang="scss" scoped>
 .wrapper {
   margin-top: 150px;
+  padding: 16px;
 }
 .cloud {
   position: absolute;

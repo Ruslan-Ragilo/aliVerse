@@ -1,13 +1,15 @@
 <template>
   <div class="wrapper-main">
     <div class="letter-container">
-      <div class="images">
-        <img
-          class="convert"
-          src="@/assets/images/svg/letterConvert.png"
-          alt=""
-        />
-        <img class="eath" src="@/assets/images/svg/letterEath.svg" alt="" />
+      <div class="images-wrapper">
+        <div class="images">
+          <img
+            class="convert"
+            src="@/assets/images/svg/letterConvert.png"
+            alt=""
+          />
+          <img class="earth" src="@/assets/images/svg/letterEath.svg" alt="" />
+        </div>
       </div>
       <div class="content">
         <ElementsText
@@ -59,61 +61,77 @@ const handleModalClose = () => {
 </script>
 
 <style lang="scss" scoped>
-.letter-container {
-  @include media(744px) {
-    margin-top: 250px;
-  }
-}
 .content {
-  padding-top: 22.1vw;
+  padding-top: 15.1vw;
+
+  @include media(1500px) {
+    padding-bottom: 150px;
+  }
+
+  @include media(1300px) {
+    width: fit-content;
+  }
+
+  @include media(1100px) {
+    padding-top: 10.1vw;
+  }
 
   @include media(1000px) {
-    padding-top: 76.1vw;
+    padding-top: 660px;
+    padding-bottom: 0;
   }
 }
-
-.images {
+.images-wrapper {
   position: absolute;
   right: 0;
-  display: flex;
-  flex-direction: column-reverse;
-  width: 62vw;
+  width: 100%;
+  height: 100%;
+  overflow-x: clip;
+}
+.images {
+  position: relative;
+}
 
-  @include media(1000px) {
-    width: 100%;
+.earth {
+  position: absolute;
+  right: 0;
+  transform: translateY(-100px);
+  z-index: -11;
+
+  @include media(1300px) {
+    max-width: 700px;
+    transform: translateY(0);
   }
 
-  .eath {
-    position: relative;
-    z-index: -11;
-    @include media(744px) {
-      right: -20vw;
-    }
+  @include media(740px) {
+    right: -20vw;
+    transform: translateY(230px);
+  }
+  @include media(500px) {
+    max-width: 505px;
+    right: -20vw;
+    transform: translateY(270px);
+  }
+}
+
+.convert {
+  position: absolute;
+  right: 0;
+  transform: translateY(450px);
+  z-index: -1;
+
+  @include media(1300px) {
+    max-width: 580px;
+    transform: translateY(400px);
   }
 
-  .convert {
-    width: 47vw;
-    position: absolute;
-    right: 0;
-    bottom: 8vw;
-    z-index: -1;
+  @include media(740px) {
+    z-index: -13;
+    transform: rotate(30deg);
+  }
 
-    @include media(1000px) {
-      width: 75%;
-      bottom: 20vw;
-    }
-
-    @include media(744px) {
-      z-index: -13;
-      bottom: 69vw;
-      left: -6vw;
-      transform: rotate(30deg);
-      width: 100%;
-    }
-
-    @include media(500px) {
-      bottom: 74vw;
-    }
+  @include media(500px) {
+    max-width: 503px;
   }
 }
 </style>

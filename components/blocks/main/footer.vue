@@ -1,34 +1,53 @@
 <template>
   <footer>
     <div class="wrapper-main wrapper-footer">
+      <div class="clouds-wrapper">
+        <div class="clouds">
+          <img
+            class="prim"
+            src="@/assets/images/png/cloudFooterLeft.png"
+            alt=""
+          />
+          <img
+            class="second"
+            src="@/assets/images/png/cloudFooterRight.png"
+            alt=""
+          />
+        </div>
+      </div>
       <img class="logo" src="@/assets/images/png/logoFooter.png" alt="" />
-      <img class="prim" src="@/assets/images/png/cloudFooterLeft.png" alt="" />
-      <img
-        class="second"
-        src="@/assets/images/png/cloudFooterRight.png"
-        alt=""
-      />
     </div>
   </footer>
 </template>
 <style lang="scss" scoped>
 footer {
   padding-top: 150px;
-  overflow: hidden;
 }
 
 .wrapper-footer {
-  position: relative;
   display: flex;
   justify-content: center;
 }
-img {
+.clouds-wrapper {
   position: absolute;
+  width: 100%;
+  height: 300px;
+
+  @include media(450px) {
+    height: 200px;
+  }
+}
+.clouds {
+  position: relative;
+  overflow-x: clip;
+  width: 100%;
+  height: 100%;
 }
 
 .prim {
+  position: absolute;
   left: 0;
-  bottom: -22px;
+  bottom: 0;
   z-index: -1;
 
   @include media(1200px) {
@@ -45,7 +64,9 @@ img {
 }
 
 .second {
+  position: absolute;
   right: 0;
+  top: 0;
   z-index: -1;
 
   @include media(1200px) {

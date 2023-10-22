@@ -23,15 +23,19 @@ const addToCart = (id: number) => {
   <div class="wrapper-slide">
     <div class="slide-header">
       <img
-        :src="props.product?.image ?? getImageUrl('swiper/imageSwiper.png')"
+        class="product-image"
+        :src="
+          props.product?.image ??
+          getImageUrl(`png/merch/${props.product?.id}.png`)
+        "
         alt=""
       />
     </div>
     <div class="slide-footer">
       <div>
-        <ElementsText transform="upper" size="s" class="text-slide">{{
-          props?.product?.name
-        }}</ElementsText>
+        <ElementsText transform="upper" size="s" class="text-slide">
+          {{ props?.product?.name }}
+        </ElementsText>
         <img
           title="Добавить в корзину"
           src="@/assets/images/swiper/btnCart.svg"
@@ -41,13 +45,13 @@ const addToCart = (id: number) => {
         />
       </div>
       <div>
-        <ElementsText transform="upper" size="xxs" class="text-slide color"
-          >Только {{ locationsMap[`${props.product?.location}`] }}</ElementsText
-        >
+        <ElementsText transform="upper" size="xxs" class="text-slide color">
+          Только {{ locationsMap[`${props.product?.location}`] }}
+        </ElementsText>
 
-        <ElementsText class="price-points">{{
-          props?.product?.ali_price
-        }}</ElementsText>
+        <ElementsText class="price-points">
+          {{ props?.product?.ali_price }}
+        </ElementsText>
       </div>
     </div>
   </div>
@@ -56,6 +60,10 @@ const addToCart = (id: number) => {
 <style scoped lang="scss">
 .wrapper-slide {
   width: 300px !important;
+  height: 475px;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
 
   .addButton {
     cursor: pointer;
@@ -85,10 +93,15 @@ const addToCart = (id: number) => {
   .text-slide {
     max-width: 145px;
     width: 100%;
+    display: contents;
   }
   .slide-footer {
+    flex-grow: 1;
     padding: 20px 30px;
     background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     div:first-child {
       margin-bottom: 14px;
@@ -97,13 +110,14 @@ const addToCart = (id: number) => {
     & div {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
     }
     .bottom {
       display: flex;
     }
 
     .color {
-      color: #939598;
+      color: #ff2722;
     }
 
     .price-points {
@@ -111,5 +125,10 @@ const addToCart = (id: number) => {
       text-shadow: 1px 1px #ff2722;
     }
   }
+}
+
+.product-image {
+  max-width: 180px;
+  max-height: 180px;
 }
 </style>
