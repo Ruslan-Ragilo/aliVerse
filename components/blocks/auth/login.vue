@@ -81,19 +81,20 @@ const handleLogin = async () => {
       <ElementsPixelButton class="login" type="submit" size="middle" color="red"
         >войти</ElementsPixelButton
       >
-    </form>
-    <div class="wrapperAurhLink">
-      <NuxtLink to="/auth/registration">
-        <ElementsText transform="upper" themes="secondary"
-          >зарегистрироваться</ElementsText
+      <div class="wrapperAurhLink">
+        <NuxtLink to="/auth/registration">
+          <ElementsText transform="upper" themes="secondary"
+            >зарегистрироваться</ElementsText
+          >
+        </NuxtLink>
+        <NuxtLink to="/auth/forgotPin"
+          ><ElementsText transform="upper" class="lostPin"
+            >забыл pin код</ElementsText
+          ></NuxtLink
         >
-      </NuxtLink>
-      <NuxtLink to="/auth/forgotPin"
-        ><ElementsText transform="upper" class="lostPin"
-          >забыл pin код</ElementsText
-        ></NuxtLink
-      >
-    </div>
+      </div>
+    </form>
+    <div></div>
   </div>
 </template>
 
@@ -109,12 +110,15 @@ const handleLogin = async () => {
   margin-top: 20px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
 a {
-  margin-top: 20px;
   text-decoration: none;
-  @include media(710px) {
-    margin-top: 0;
-  }
 }
 .lostPin {
   color: #676079;
