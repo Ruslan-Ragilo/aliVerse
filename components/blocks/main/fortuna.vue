@@ -74,6 +74,14 @@ const handleSpin = () => {
     padding-top: 40.1vw;
   }
 }
+
+.letter > p {
+  margin-left: 20px;
+
+  @include media(744px) {
+    margin-left: 10px;
+  }
+}
 .planets-wrapper {
   position: relative;
 

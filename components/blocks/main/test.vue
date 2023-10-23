@@ -70,6 +70,13 @@ const handleModalOpen = () => {
   padding-top: 20.1vw;
   display: flex;
 }
+.alien > p {
+  margin-left: 20px;
+
+  @include media(744px) {
+    margin-left: 10px;
+  }
+}
 .comet-1 {
   position: absolute;
   top: -100px;

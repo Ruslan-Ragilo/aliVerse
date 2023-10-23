@@ -46,13 +46,15 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
-    p {
-      padding-right: 20px;
-    }
   }
 }
+.letter > p {
+  margin-right: 20px;
 
+  @include media(744px) {
+    margin-right: 10px;
+  }
+}
 .planet {
   position: absolute;
   left: 0;

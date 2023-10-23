@@ -81,9 +81,11 @@
 
       p {
         margin-right: 20px;
+
+        @include media(744px) {
+          margin-right: 10px;
+        }
       }
-    }
-    @include media(744px) {
     }
   }
 }

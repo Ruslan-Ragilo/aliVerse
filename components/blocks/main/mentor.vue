@@ -58,6 +58,14 @@ import "swiper/css/scrollbar";
   display: flex;
   justify-content: flex-end;
 }
+
+.alien > p {
+  margin-right: 20px;
+
+  @include media(744px) {
+    margin-right: 10px;
+  }
+}
 .alien {
   max-width: 675px;
   width: 100%;

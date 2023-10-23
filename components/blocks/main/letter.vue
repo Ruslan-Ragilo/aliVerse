@@ -81,6 +81,13 @@ const handleModalClose = () => {
     padding-bottom: 0;
   }
 }
+.content > p {
+  margin-left: 20px;
+
+  @include media(744px) {
+    margin-left: 10px;
+  }
+}
 .images-wrapper {
   position: absolute;
   right: 0;
