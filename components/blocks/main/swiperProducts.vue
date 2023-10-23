@@ -120,6 +120,15 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   padding-left: 30px;
+
+  @include media(600px) {
+    padding-left: 10px;
+
+    p {
+      font-size: 16px;
+      text-wrap: nowrap;
+    }
+  }
 }
 .string-wrapper {
   position: relative;
