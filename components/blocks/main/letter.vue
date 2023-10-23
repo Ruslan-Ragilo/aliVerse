@@ -77,7 +77,7 @@ const handleModalClose = () => {
   }
 
   @include media(1000px) {
-    padding-top: 660px;
+    padding-top: 630px;
     padding-bottom: 0;
   }
 }
@@ -112,12 +112,11 @@ const handleModalClose = () => {
 
   @include media(740px) {
     right: -20vw;
-    transform: translateY(230px);
+    transform: translateY(220px);
   }
-  @include media(500px) {
+  @include media(530px) {
     max-width: 505px;
     right: -20vw;
-    transform: translateY(270px);
   }
 }
 
@@ -137,7 +136,7 @@ const handleModalClose = () => {
     transform: rotate(30deg);
   }
 
-  @include media(500px) {
+  @include media(530px) {
     max-width: 503px;
   }
 }

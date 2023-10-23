@@ -63,7 +63,8 @@
   width: 100%;
   height: 100%;
   @include media(744px) {
-    width: 600px;
+    /* width: 600px; */
+    width: 110vw;
   }
 }
 
@@ -71,6 +72,20 @@
   display: flex;
   justify-content: flex-end;
   padding-top: 30vw;
+
+  @include media(750px) {
+    padding-top: 200px;
+  }
+  @include media(650px) {
+    padding-top: 100px;
+  }
+  @include media(530px) {
+    padding-top: 0;
+  }
+  @include media(400px) {
+    padding-top: 0;
+    transform: translateY(-100px);
+  }
 
   .wrapper-alien {
     @include media(1200px) {
