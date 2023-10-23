@@ -1,6 +1,7 @@
 <template>
   <BlocksFortuneModal />
   <div class="wheel-wrapper">
+    <img class="glow" src="~assets/images/png/fortune/glow.png" alt="" />
     <img
       class="sign"
       src="~assets/images/png/fortune/sign.png"
@@ -64,6 +65,23 @@ const handleSpin = () => {
 }
 .message {
   white-space: pre-line;
+}
+.glow {
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @include media(1000px) {
+    width: 950px;
+    height: 950px;
+  }
+
+  @include media(600px) {
+    width: 600px;
+    height: 600px;
+  }
 }
 .sign {
   position: absolute;

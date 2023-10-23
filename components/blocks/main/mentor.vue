@@ -96,6 +96,8 @@ import "swiper/css/scrollbar";
   }
 }
 .planet {
+  width: 100%;
+
   @include media(600px) {
     width: 140vw;
     transform: translate(-20vw, -30vw);

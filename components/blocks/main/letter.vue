@@ -64,6 +64,9 @@ const handleModalClose = () => {
 .letter-container {
   width: 100%;
 }
+.alien-wrapper {
+  max-width: 675px;
+}
 .content {
   padding-top: 15.1vw;
 
