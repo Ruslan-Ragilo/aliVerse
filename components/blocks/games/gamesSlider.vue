@@ -10,7 +10,7 @@
       class="swiper"
       :modules="modules"
       slides-per-view="auto"
-      :space-between="30"
+      :space-between="spaceBetweenSlides"
       :initial-slide="1"
       :navigation="{
         nextEl: next,
@@ -105,6 +105,22 @@ const openShadowsModal = () => {
 const isFactsAvailable = ref(true);
 const isFallAvailable = ref(false);
 const isShadowsAvailable = ref(true);
+
+const spaceBetweenSlides = ref(30);
+
+const updateSpaceBetweenSlides = () => {
+  const windowWidth = window.innerWidth;
+  spaceBetweenSlides.value = windowWidth > 500 ? 30 : 10;
+};
+
+onMounted(() => {
+  updateSpaceBetweenSlides();
+  window.addEventListener("resize", updateSpaceBetweenSlides);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", updateSpaceBetweenSlides);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -118,6 +134,10 @@ const isShadowsAvailable = ref(true);
   align-items: center;
   gap: 18px;
 
+  @include media(500px) {
+    width: 311px;
+  }
+
   button {
     z-index: 3;
   }
@@ -127,6 +147,7 @@ const isShadowsAvailable = ref(true);
     width: 311px;
   }
 }
+
 .portal {
   position: absolute;
   top: 150px;
@@ -142,6 +163,10 @@ const isShadowsAvailable = ref(true);
 .swiper {
   width: 366px;
   overflow: visible;
+
+  @include media(500px) {
+    width: 311px;
+  }
 }
 .wrapper-nav {
   position: relative;
