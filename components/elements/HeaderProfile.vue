@@ -39,7 +39,7 @@ const authStore = useAuth();
   right: 60px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
   padding: 14px;
   border: 3px solid #fff;
@@ -65,11 +65,6 @@ const authStore = useAuth();
 .avatar {
   width: 54px;
   height: 54px;
-
-  @include media(1200px) {
-    width: 40px;
-    height: 40px;
-  }
 }
 
 .profile-info {
