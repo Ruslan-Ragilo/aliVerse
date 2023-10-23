@@ -120,6 +120,11 @@ onMounted(() => {
     display: flex;
   }
 
+  @include media(500px) {
+    width: 70%;
+    margin-top: 100px;
+  }
+
   .frog {
     width: 60%;
     align-self: center;

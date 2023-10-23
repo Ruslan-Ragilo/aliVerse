@@ -84,7 +84,7 @@ const progresTotal = ref(Math.round(100 * (11 / 11)));
 
       @include media(1200px) {
         width: 55px;
-        transform: translatey(-40%);
+        transform: translateY(-40%);
       }
     }
 

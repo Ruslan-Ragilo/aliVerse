@@ -98,6 +98,12 @@
         object-position: top center;
         width: 100%;
         height: 800px;
+
+        @include media(500px) {
+          width: auto;
+          height: 800px;
+          transform: translateX(-57px);
+        }
       }
     }
   }
