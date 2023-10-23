@@ -14,7 +14,7 @@ const progresTotal = ref(Math.round(100 * (11 / 11)));
         <div class="progress-line">
           <img
             :style="{ left: `${progresTotal}%` }"
-            src="@/assets/images/svg/progress/craft.svg"
+            src="@/assets/images/png/progress-craft.png"
             alt=""
             class="craft"
           />
@@ -84,7 +84,7 @@ const progresTotal = ref(Math.round(100 * (11 / 11)));
 
       @include media(1200px) {
         width: 55px;
-        transform: translatey(-40%);
+        transform: translateY(-40%);
       }
     }
 

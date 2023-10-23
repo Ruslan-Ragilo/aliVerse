@@ -30,7 +30,7 @@ const screenSize = ref<"large" | "small">("large");
 
 const updateScreenSize = () => {
   const windowWidth = window.innerWidth;
-  screenSize.value = windowWidth > 1200 ? "large" : "small";
+  screenSize.value = windowWidth > 1150 ? "large" : "small";
 };
 
 onMounted(() => {
@@ -46,7 +46,7 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .games {
   position: relative;
-  margin-top: 200px;
+  margin-top: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,6 +73,7 @@ onBeforeUnmount(() => {
 
   @include media(600px) {
     padding: 10px;
+    transform: translate(-50%, 0);
   }
 }
 div.alien {

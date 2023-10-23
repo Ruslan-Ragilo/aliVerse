@@ -26,7 +26,7 @@
       placeholder="Напиши спасибку"
       required="true"
       :cols="40"
-      :rows="6"
+      :rows="textareaRows"
       :theme="background ? `light` : ``"
     >
       Текст
@@ -55,6 +55,22 @@ const handleSubmit = () => {
     text: "",
   };
 };
+
+const textareaRows = ref(6);
+
+const updateTextareaRows = () => {
+  const windowHeight = window.innerHeight;
+  textareaRows.value = windowHeight > 700 ? 6 : 3;
+};
+
+onMounted(() => {
+  updateTextareaRows();
+  window.addEventListener("resize", updateTextareaRows);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", updateTextareaRows);
+});
 </script>
 
 <style scoped lang="scss">
@@ -62,6 +78,10 @@ const handleSubmit = () => {
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  @include media(450px) {
+    gap: 10px;
+  }
 }
 
 .submit-button {

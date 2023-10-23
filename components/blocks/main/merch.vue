@@ -1,6 +1,8 @@
 <template>
   <div class="letter-container">
-    <img class="planet" src="@/assets/images/png/merch.png" alt="" />
+    <div class="planet-wrapper">
+      <img class="planet" src="@/assets/images/png/merch.png" alt="" />
+    </div>
     <div class="wrapper-main content">
       <div class="letter">
         <ElementsText
@@ -32,6 +34,10 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 10vw;
+
+  @include media(600px) {
+    margin-top: 25vw;
+  }
 }
 .letter {
   max-width: 675px;
@@ -46,25 +52,37 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
-    p {
-      padding-right: 20px;
-    }
   }
 }
+.letter > p {
+  margin-right: 20px;
 
-.planet {
+  @include media(744px) {
+    margin-right: 10px;
+  }
+}
+.planet-wrapper {
   position: absolute;
   left: 0;
   width: 55vw;
-  max-width: 900px;
   transform: translateY(-10vw);
   z-index: -1;
+  overflow-x: clip;
 
   @include media(1200px) {
-    max-width: 80vw;
-    width: auto;
+    width: 80vw;
     transform: none;
+  }
+
+  @include media(600px) {
+    width: 90vw;
+  }
+}
+.planet {
+  width: 100%;
+
+  @include media(600px) {
+    transform: scale(1.3) translate(-15vw, -5vw);
   }
 }
 

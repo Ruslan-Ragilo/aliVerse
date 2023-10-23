@@ -37,7 +37,7 @@ const selectedLocation = ref(4);
 
 const selectedProducts = computed(() => {
   return products.value?.filter(
-    (pr) => String(pr?.location) === String(selectedLocation.value)
+    (pr) => String(pr?.location) === String(selectedLocation.value),
   );
 });
 
@@ -79,18 +79,23 @@ onMounted(async () => {
         </SwiperSlide>
       </Swiper>
     </div>
-    <Vue3Marquee
-      class="run-string"
-      :clone="true"
-      :duration="5"
-      :direction="'reverse'"
-    >
-      <div class="string">
-        <ElementsText transform="upper" size="xl" themes="secondary">
-          оформить заказ можно с 17 ноября
-        </ElementsText>
-      </div>
-    </Vue3Marquee>
+    <div class="string-wrapper">
+      <img class="bubble-1" src="~/assets/images/png/bubble-1.png" alt="" />
+      <img class="bubble-2" src="~/assets/images/png/bubble-2.png" alt="" />
+      <img class="bubble-3" src="~/assets/images/png/bubble-3.png" alt="" />
+      <Vue3Marquee
+        class="run-string"
+        :clone="true"
+        :duration="5"
+        :direction="'reverse'"
+      >
+        <div class="string">
+          <ElementsText transform="upper" size="xl" themes="secondary">
+            оформить заказ можно с 17 ноября
+          </ElementsText>
+        </div>
+      </Vue3Marquee>
+    </div>
   </div>
 </template>
 
@@ -115,6 +120,68 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   padding-left: 30px;
+
+  @include media(600px) {
+    padding-left: 10px;
+
+    p {
+      font-size: 16px;
+      text-wrap: nowrap;
+    }
+  }
+}
+.string-wrapper {
+  position: relative;
+  width: 100%;
+  height: 165px;
+}
+.bubble-1 {
+  position: absolute;
+  left: 0;
+
+  @include media(1000px) {
+    width: 70px;
+    height: 70px;
+    top: 10px;
+  }
+
+  @include media(600px) {
+    width: 50px;
+    height: 50px;
+    top: 20px;
+  }
+}
+.bubble-2 {
+  position: absolute;
+  left: 56%;
+  top: 95px;
+
+  @include media(1000px) {
+    width: 70px;
+    height: 70px;
+  }
+
+  @include media(600px) {
+    width: 50px;
+    height: 50px;
+  }
+}
+.bubble-3 {
+  position: absolute;
+  right: 10%;
+  top: 30px;
+
+  @include media(1000px) {
+    width: 70px;
+    height: 70px;
+    right: 5%;
+  }
+
+  @include media(600px) {
+    width: 50px;
+    height: 50px;
+    right: 2%;
+  }
 }
 .wrapper {
   margin-top: 10vw;

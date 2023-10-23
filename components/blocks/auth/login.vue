@@ -6,7 +6,6 @@ const inputPinData = ref([
   { name: 3, value: "" },
   { name: 4, value: "" },
 ]);
-const isActive = ref(false);
 
 const emailValue = ref("");
 
@@ -71,7 +70,7 @@ const handleLogin = async () => {
           :key="index"
           v-model="item.value"
           :name="item.name"
-          :class="['input-pin', { active: isActive && item.name === 1 }]"
+          class="input-pin"
           placeholder="0"
           :disabled="index !== 0"
           maxlength="1"
@@ -82,19 +81,20 @@ const handleLogin = async () => {
       <ElementsPixelButton class="login" type="submit" size="middle" color="red"
         >войти</ElementsPixelButton
       >
-    </form>
-    <div class="wrapperAurhLink">
-      <NuxtLink to="/auth/registration">
-        <ElementsText transform="upper" themes="secondary"
-          >зарегистрироваться</ElementsText
+      <div class="wrapperAurhLink">
+        <NuxtLink to="/auth/registration">
+          <ElementsText transform="upper" themes="secondary"
+            >зарегистрироваться</ElementsText
+          >
+        </NuxtLink>
+        <NuxtLink to="/auth/forgotPin"
+          ><ElementsText transform="upper" class="lostPin"
+            >забыл pin код</ElementsText
+          ></NuxtLink
         >
-      </NuxtLink>
-      <NuxtLink to="/auth/forgotPin"
-        ><ElementsText transform="upper" class="lostPin"
-          >забыл pin код</ElementsText
-        ></NuxtLink
-      >
-    </div>
+      </div>
+    </form>
+    <div></div>
   </div>
 </template>
 
@@ -110,12 +110,15 @@ const handleLogin = async () => {
   margin-top: 20px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
 a {
-  margin-top: 20px;
   text-decoration: none;
-  @include media(710px) {
-    margin-top: 0;
-  }
 }
 .lostPin {
   color: #676079;
@@ -130,9 +133,10 @@ input {
   margin-top: 40px;
   outline: none;
   color: #710f0d;
-  &.active::placeholder {
-    color: $red-primary;
-  }
+}
+
+input:first-of-type:focus::placeholder {
+  color: $red-primary;
 }
 .btnInto {
   max-width: 430px;
@@ -146,10 +150,6 @@ input {
     caret-color: transparent;
     -moz-appearance: textfield;
     padding: 18px 8.9px;
-
-    &.active::placeholder {
-      color: $red-primary;
-    }
   }
 
   .input-pin::-webkit-outer-spin-button,

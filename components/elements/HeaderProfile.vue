@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper-profile">
+  <div ref="profileRef" class="wrapper-profile">
     <img
       class="avatar"
       alt="Avatar"
@@ -7,7 +7,7 @@
         getImageUrl(
           userStore.userData?.avatarUser
             ? userStore.userData?.avatarUser
-            : 'svg/iconProfile/defaultAvatar.svg'
+            : 'svg/iconProfile/defaultAvatar.svg',
         )
       "
     />
@@ -28,14 +28,30 @@
 </template>
 
 <script setup lang="ts">
+const props = defineProps<{
+  isScrollingUp: boolean;
+}>();
 const userStore = useUserData();
 const authStore = useAuth();
+
+const profileRef = ref();
+
+watch(
+  () => props.isScrollingUp,
+  () => {
+    if (props.isScrollingUp) {
+      profileRef.value.style.top = "30px";
+    } else {
+      profileRef.value.style.top = "-300px";
+    }
+  },
+);
 </script>
 
 <style scoped lang="scss">
 .wrapper-profile {
   position: fixed;
-  top: 30px;
+  top: -300px;
   right: 60px;
   display: flex;
   justify-content: space-between;
@@ -45,6 +61,7 @@ const authStore = useAuth();
   border: 3px solid #fff;
   background-color: rgba(12, 2, 45, 0.8);
   z-index: 4;
+  transition: all 0.3s;
 
   a {
     cursor: pointer;
@@ -52,6 +69,7 @@ const authStore = useAuth();
 
   @include media(800px) {
     right: 30px;
+    padding: 7px 10px;
   }
 }
 
@@ -64,11 +82,6 @@ const authStore = useAuth();
 .avatar {
   width: 54px;
   height: 54px;
-
-  @include media(1200px) {
-    width: 40px;
-    height: 40px;
-  }
 }
 
 .profile-info {
@@ -77,15 +90,22 @@ const authStore = useAuth();
   align-items: flex-start;
   gap: 4px;
 }
+.profile-info p:nth-of-type(1) {
+  @include media(1200px) {
+    font-size: 16px;
+  }
 
-.profile-info p:last-child {
+  @include media(700px) {
+    font-size: 12px;
+  }
+}
+.profile-info p:nth-of-type(2) {
   @include media(1200px) {
     font-size: 14px;
   }
-}
-.profile-info p:first-child {
-  @include media(1200px) {
-    font-size: 16px;
+
+  @include media(700px) {
+    font-size: 10px;
   }
 }
 </style>

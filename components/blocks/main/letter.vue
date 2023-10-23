@@ -8,7 +8,7 @@
             src="@/assets/images/svg/letterConvert.png"
             alt=""
           />
-          <img class="earth" src="@/assets/images/svg/letterEath.svg" alt="" />
+          <img class="earth" src="@/assets/images/png/letterEarth.png" alt="" />
         </div>
       </div>
       <div class="content">
@@ -61,6 +61,9 @@ const handleModalClose = () => {
 </script>
 
 <style lang="scss" scoped>
+.letter-container {
+  width: 100%;
+}
 .content {
   padding-top: 15.1vw;
 
@@ -69,7 +72,7 @@ const handleModalClose = () => {
   }
 
   @include media(1300px) {
-    width: fit-content;
+    width: 100%;
   }
 
   @include media(1100px) {
@@ -77,8 +80,15 @@ const handleModalClose = () => {
   }
 
   @include media(1000px) {
-    padding-top: 660px;
+    padding-top: 630px;
     padding-bottom: 0;
+  }
+}
+.content > p {
+  margin-left: 20px;
+
+  @include media(744px) {
+    margin-left: 10px;
   }
 }
 .images-wrapper {
@@ -105,12 +115,11 @@ const handleModalClose = () => {
 
   @include media(740px) {
     right: -20vw;
-    transform: translateY(230px);
+    transform: translateY(220px);
   }
-  @include media(500px) {
+  @include media(530px) {
     max-width: 505px;
     right: -20vw;
-    transform: translateY(270px);
   }
 }
 
@@ -130,7 +139,7 @@ const handleModalClose = () => {
     transform: rotate(30deg);
   }
 
-  @include media(500px) {
+  @include media(530px) {
     max-width: 503px;
   }
 }

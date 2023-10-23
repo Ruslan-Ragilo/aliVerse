@@ -1,6 +1,8 @@
 <template>
   <div class="letter-container">
-    <img class="planet" src="@/assets/images/png/test.png" alt="" />
+    <div class="planet-wrapper">
+      <img class="planet" src="@/assets/images/png/test.png" alt="" />
+    </div>
     <div class="wrapper-main content">
       <div class="alien">
         <img
@@ -70,6 +72,13 @@ const handleModalOpen = () => {
   padding-top: 20.1vw;
   display: flex;
 }
+.alien > p {
+  margin-left: 20px;
+
+  @include media(744px) {
+    margin-left: 10px;
+  }
+}
 .comet-1 {
   position: absolute;
   top: -100px;
@@ -84,7 +93,7 @@ const handleModalOpen = () => {
   @include media(600px) {
     width: 75px;
     top: -200px;
-    left: 50px;
+    left: 5px;
   }
 }
 .comet-2 {
@@ -98,6 +107,7 @@ const handleModalOpen = () => {
 
   @include media(600px) {
     width: 70px;
+    top: -70px;
     left: -50px;
   }
 }
@@ -136,20 +146,27 @@ const handleModalOpen = () => {
   }
 }
 
-.planet {
+.planet-wrapper {
   position: absolute;
   right: 0;
   width: 60vw;
   max-width: 1000px;
   z-index: -1;
+  overflow-x: clip;
 
   @include media(1200px) {
     width: 70vw;
   }
 
-  @include media(744px) {
-    // width: 100vw;
-    // right: -30vw;
+  @include media(600px) {
+    width: 100vw;
+  }
+}
+.planet {
+  width: 100%;
+
+  @include media(600px) {
+    transform: translate(24vw, -17vw);
   }
 }
 
