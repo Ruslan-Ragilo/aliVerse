@@ -11,14 +11,7 @@
         class="swiper-slide"
         @click.self="closeSwiperModal"
       >
-        <ElementsSpinner v-if="!isLoaded" />
-        <img
-          :style="{ opacity: isLoaded ? 1 : 0 }"
-          :src="photo"
-          alt=""
-          class="photo"
-          @load="load"
-        />
+        <BlocksGallerySliderPhoto :photo-src="photo" />
       </swiper-slide>
     </swiper-container>
     <swiper-button-prev class="swiper-button-prev">
@@ -42,11 +35,6 @@ const props = defineProps<{
 
 const { photos, onSwiperClose } = props;
 const clickedPhotoIndex = computed(() => props.clickedPhotoIndex);
-
-const isLoaded = ref(false);
-const load = () => {
-  isLoaded.value = true;
-};
 
 const closeSwiperModal = () => {
   onSwiperClose();
@@ -78,12 +66,6 @@ const swiperNavigationOptions = {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-.photo {
-  width: 100%;
-  max-width: 70vw;
-  max-height: 80vh;
-  object-fit: cover;
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
