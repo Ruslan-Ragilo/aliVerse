@@ -54,14 +54,17 @@ const handleSpin = () => {
 
 <style lang="scss" scoped>
 .content {
-  max-width: none;
+  max-width: 1440px;
   padding-top: 20.1vw;
   padding-right: 15px;
   padding-bottom: 200px;
-  overflow: hidden;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 30px;
+
+  @include media(1440px) {
+    overflow: hidden;
+  }
 
   @include media(1200px) {
     padding-top: 10.1vw;
