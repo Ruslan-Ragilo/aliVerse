@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper-profile">
+  <div ref="profileRef" class="wrapper-profile">
     <img
       class="avatar"
       alt="Avatar"
@@ -28,14 +28,30 @@
 </template>
 
 <script setup lang="ts">
+const props = defineProps<{
+  isScrollingUp: boolean;
+}>();
 const userStore = useUserData();
 const authStore = useAuth();
+
+const profileRef = ref();
+
+watch(
+  () => props.isScrollingUp,
+  () => {
+    if (props.isScrollingUp) {
+      profileRef.value.style.top = "30px";
+    } else {
+      profileRef.value.style.top = "-300px";
+    }
+  },
+);
 </script>
 
 <style scoped lang="scss">
 .wrapper-profile {
   position: fixed;
-  top: 30px;
+  top: -300px;
   right: 60px;
   display: flex;
   justify-content: space-between;
@@ -45,6 +61,7 @@ const authStore = useAuth();
   border: 3px solid #fff;
   background-color: rgba(12, 2, 45, 0.8);
   z-index: 4;
+  transition: all 0.3s;
 
   a {
     cursor: pointer;

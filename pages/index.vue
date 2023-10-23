@@ -7,14 +7,28 @@ onMounted(() => {
     isLoading.value = false;
   });
 });
+
+const prevOffsetY = ref(window.scrollY);
+const isScrollingUp = ref(false);
+
+window.onscroll = () => {
+  const currentOffsetY = ref(window.scrollY);
+  if (prevOffsetY.value > currentOffsetY.value) {
+    isScrollingUp.value = true;
+  } else {
+    isScrollingUp.value = false;
+  }
+
+  prevOffsetY.value = currentOffsetY.value;
+};
 </script>
 
 <template>
   <NuxtLayout v-if="!isLoading">
     <BlocksBasketModal />
     <div class="wrapper">
-      <ElementsHeaderCart />
-      <ElementsHeaderProfile />
+      <ElementsHeaderCart :is-scrolling-up="isScrollingUp" />
+      <ElementsHeaderProfile :is-scrolling-up="isScrollingUp" />
       <div class="wrapper-bg">
         <img class="bgTop" src="@/assets/images/png/bgMainTop.png" alt="" />
       </div>
