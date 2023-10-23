@@ -40,7 +40,7 @@ onMounted(() => {
     <BlocksMainQuestion />
     <BlocksMainFooter />
   </NuxtLayout>
-  <ElementsSpinner color="red" v-else />
+  <ElementsSpinner v-else color="red" />
 </template>
 
 <style lang="scss" scoped>

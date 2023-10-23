@@ -3,21 +3,37 @@
     <ElementsText themes="mustard-light" size="xl">{{
       questions[currentQuestion].question
     }}</ElementsText>
-    <img
-      class="question-image"
-      :src="getImageUrl(gifs[currentQuestion])"
-      alt=""
-    />
+    <div class="question-image">
+      <img
+        v-show="!isLoading"
+        class="gif"
+        :src="getImageUrl(`gif/testopolis/${currentQuestion}.gif`)"
+        alt=""
+        @load="setIsLoading(false)"
+      />
+      <ElementsSpinner v-if="isLoading" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const store = useTestopolisStore();
+const questions = computed(() => store.questions);
 const currentQuestion: ComputedRef<number> = computed(
   () => store.currentQuestion,
 );
-const questions = computed(() => store.questions);
-const gifs = computed(() => store.gifs);
+
+const isLoading = ref(true);
+const setIsLoading = (value: boolean) => {
+  isLoading.value = value;
+};
+
+watch(
+  () => currentQuestion.value,
+  () => {
+    setIsLoading(true);
+  },
+);
 </script>
 
 <style scoped lang="scss">
@@ -40,10 +56,9 @@ const gifs = computed(() => store.gifs);
   }
 }
 .question-image {
+  position: relative;
   width: 288px;
   aspect-ratio: 3/2;
-  object-fit: cover;
-  object-position: bottom;
   margin-left: 30px;
   margin-right: 110px;
   background-color: #d9d9d9;
@@ -61,5 +76,12 @@ const gifs = computed(() => store.gifs);
   @include media(500px) {
     width: 158px;
   }
+}
+
+.gif {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  object-position: bottom;
 }
 </style>
