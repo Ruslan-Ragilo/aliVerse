@@ -46,7 +46,7 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .games {
   position: relative;
-  margin-top: 200px;
+  margin-top: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;

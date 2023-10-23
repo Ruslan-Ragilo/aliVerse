@@ -6,7 +6,6 @@ const inputPinData = ref([
   { name: 3, value: "" },
   { name: 4, value: "" },
 ]);
-const isActive = ref(false);
 
 const emailValue = ref("");
 
@@ -71,7 +70,7 @@ const handleLogin = async () => {
           :key="index"
           v-model="item.value"
           :name="item.name"
-          :class="['input-pin', { active: isActive && item.name === 1 }]"
+          class="input-pin"
           placeholder="0"
           :disabled="index !== 0"
           maxlength="1"
@@ -130,9 +129,10 @@ input {
   margin-top: 40px;
   outline: none;
   color: #710f0d;
-  &.active::placeholder {
-    color: $red-primary;
-  }
+}
+
+input:first-of-type:focus::placeholder {
+  color: $red-primary;
 }
 .btnInto {
   max-width: 430px;
@@ -146,10 +146,6 @@ input {
     caret-color: transparent;
     -moz-appearance: textfield;
     padding: 18px 8.9px;
-
-    &.active::placeholder {
-      color: $red-primary;
-    }
   }
 
   .input-pin::-webkit-outer-spin-button,
