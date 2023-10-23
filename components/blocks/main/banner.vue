@@ -1,12 +1,12 @@
 <template>
   <img
     class="absolute planetGradient"
-    src="@/assets/images/svg/gradientPlanet.svg"
+    src="@/assets/images/png/gradientPlanet.png"
     alt=""
   />
   <img
     class="absolute crafr"
-    src="@/assets/images/svg/craft.svg"
+    src="@/assets/images/png/craft.png"
     alt=""
     draggable="false"
   />
@@ -18,7 +18,7 @@
   />
   <img
     class="absolute earth"
-    src="@/assets/images/svg/earth.svg"
+    src="@/assets/images/png/earth.png"
     alt=""
     draggable="false"
   />

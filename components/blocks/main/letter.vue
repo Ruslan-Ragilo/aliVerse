@@ -8,7 +8,7 @@
             src="@/assets/images/svg/letterConvert.png"
             alt=""
           />
-          <img class="earth" src="@/assets/images/svg/letterEath.svg" alt="" />
+          <img class="earth" src="@/assets/images/png/letterEarth.png" alt="" />
         </div>
       </div>
       <div class="content">
