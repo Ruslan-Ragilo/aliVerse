@@ -7,7 +7,7 @@
         getImageUrl(
           userStore.userData?.avatarUser
             ? userStore.userData?.avatarUser
-            : 'svg/iconProfile/defaultAvatar.svg'
+            : 'svg/iconProfile/defaultAvatar.svg',
         )
       "
     />
@@ -39,7 +39,7 @@ const authStore = useAuth();
   right: 60px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
   padding: 14px;
   border: 3px solid #fff;
@@ -52,6 +52,7 @@ const authStore = useAuth();
 
   @include media(800px) {
     right: 30px;
+    padding: 7px 10px;
   }
 }
 
@@ -77,15 +78,22 @@ const authStore = useAuth();
   align-items: flex-start;
   gap: 4px;
 }
+.profile-info p:nth-of-type(1) {
+  @include media(1200px) {
+    font-size: 16px;
+  }
 
-.profile-info p:last-child {
+  @include media(700px) {
+    font-size: 12px;
+  }
+}
+.profile-info p:nth-of-type(2) {
   @include media(1200px) {
     font-size: 14px;
   }
-}
-.profile-info p:first-child {
-  @include media(1200px) {
-    font-size: 16px;
+
+  @include media(700px) {
+    font-size: 10px;
   }
 }
 </style>
