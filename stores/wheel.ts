@@ -59,6 +59,7 @@ export const useWheelStore = defineStore("wheel", () => {
 
       setTimeout(() => {
         showModal.value = true;
+        checkAvailability();
       }, spinningTime + 500);
     }
   }

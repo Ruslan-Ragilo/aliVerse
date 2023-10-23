@@ -257,6 +257,7 @@ const attrs = useAttrs();
   background-image: url("~/assets/images/png/buttons/middle-disabled.png");
 
   @include media(450px) {
+    width: 295px;
     background-image: url("~/assets/images/png/buttons/mini-disabled.png");
   }
 }
@@ -264,8 +265,15 @@ const attrs = useAttrs();
   cursor: default;
   background-image: url("~/assets/images/png/buttons/large-disabled.png");
 
-  @include media(450px) {
-    background-image: url("~/assets/images/png/buttons/large-middle-disabled.png");
+  &.mini-main {
+    @include media(450px) {
+      background-image: url("~/assets/images/png/buttons/mobi-purple.png");
+      filter: grayscale(80%) brightness(1.1) contrast(0.9) hue-rotate(-35deg);
+      width: 295px;
+      p {
+        bottom: 10px;
+      }
+    }
   }
 }
 </style>
