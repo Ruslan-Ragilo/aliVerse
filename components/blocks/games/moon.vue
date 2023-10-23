@@ -50,9 +50,16 @@
 }
 .moon {
   z-index: -1;
+
   @include media(1200px) {
     max-width: 120vw;
     max-height: 120vw;
+  }
+
+  @include media(600px) {
+    max-width: 150vw;
+    max-height: 130vw;
+    transform: translateY(-20vw);
   }
 }
 .monster-1 {
@@ -70,8 +77,8 @@
     right: 0;
   }
 
-  @include media(500px) {
-    bottom: -10px;
+  @include media(600px) {
+    bottom: 100px;
   }
 }
 .monster-2 {

@@ -30,7 +30,7 @@ const screenSize = ref<"large" | "small">("large");
 
 const updateScreenSize = () => {
   const windowWidth = window.innerWidth;
-  screenSize.value = windowWidth > 1200 ? "large" : "small";
+  screenSize.value = windowWidth > 1150 ? "large" : "small";
 };
 
 onMounted(() => {
@@ -73,6 +73,7 @@ onBeforeUnmount(() => {
 
   @include media(600px) {
     padding: 10px;
+    transform: translate(-50%, 0);
   }
 }
 div.alien {

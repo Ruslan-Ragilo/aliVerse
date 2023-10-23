@@ -61,6 +61,9 @@ const handleModalClose = () => {
 </script>
 
 <style lang="scss" scoped>
+.letter-container {
+  width: 100%;
+}
 .content {
   padding-top: 15.1vw;
 
@@ -69,7 +72,7 @@ const handleModalClose = () => {
   }
 
   @include media(1300px) {
-    width: fit-content;
+    width: 100%;
   }
 
   @include media(1100px) {

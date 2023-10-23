@@ -44,7 +44,7 @@ const attrs = useAttrs();
   left: 50%;
   transform: translate(-50%, -60%);
 
-  @include media(450px) {
+  @include media(500px) {
     font-size: 20px;
   }
 }
@@ -55,14 +55,14 @@ const attrs = useAttrs();
 .middle {
   width: 312px;
 
-  @include media(450px) {
+  @include media(500px) {
     width: 250px;
   }
 }
 .large {
   width: 424px;
 
-  @include media(450px) {
+  @include media(500px) {
     width: 352px;
     // width: 100%;
   }
@@ -90,19 +90,19 @@ const attrs = useAttrs();
 .red.middle:not(:disabled) {
   background-image: url("~/assets/images/png/buttons/middle-red.png");
 
-  @include media(450px) {
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/mini-red.png");
   }
 }
 .green.middle:not(:disabled) {
   background-image: url("~/assets/images/png/buttons/middle-green.png");
 
-  @include media(450px) {
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/mini-green.png");
   }
 
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-green.png");
       width: 295px;
       p {
@@ -113,11 +113,11 @@ const attrs = useAttrs();
 }
 .red.large:not(:disabled) {
   background-image: url("~/assets/images/png/buttons/large-red.png");
-  @include media(450px) {
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/large-middle-red.png");
   }
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-red.png");
       width: 295px;
       p {
@@ -130,7 +130,7 @@ const attrs = useAttrs();
   background-image: url("~/assets/images/png/buttons/large-purple.png");
 
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-purple.png");
       width: 295px;
       p {
@@ -142,19 +142,19 @@ const attrs = useAttrs();
 .red.middle:hover:not(:disabled) {
   background-image: url("~/assets/images/png/buttons/middle-red-hover.png");
 
-  @include media(450px) {
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/mini-red-hover.png");
   }
 }
 .green.middle:hover:not(:disabled) {
   background-image: url("~/assets/images/png/buttons/middle-green-hover.png");
 
-  @include media(450px) {
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/mini-green-hover.png");
   }
 
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-green.png");
       width: 295px;
       p {
@@ -165,11 +165,11 @@ const attrs = useAttrs();
 }
 .red.large:hover:not(:disabled) {
   background-image: url("~/assets/images/png/buttons/large-red-hover.png");
-  @include media(450px) {
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/large-middle-red-hover.png");
   }
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-red.png");
       width: 295px;
       p {
@@ -182,7 +182,7 @@ const attrs = useAttrs();
   background-image: url("~/assets/images/png/buttons/large-purple-hover.png");
 
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-purple.png");
       width: 295px;
       p {
@@ -195,7 +195,7 @@ const attrs = useAttrs();
   top: 7px;
   background-image: url("~/assets/images/png/buttons/middle-red-active.png");
 
-  @include media(450px) {
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/mini-red-active.png");
   }
 }
@@ -203,12 +203,12 @@ const attrs = useAttrs();
   top: 7px;
   background-image: url("~/assets/images/png/buttons/middle-green-active.png");
 
-  @include media(450px) {
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/mini-green-active.png");
   }
 
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-green-active.png");
       width: 295px;
       p {
@@ -220,11 +220,11 @@ const attrs = useAttrs();
 .red.large:active:not(:disabled) {
   top: 7px;
   background-image: url("~/assets/images/png/buttons/large-red-active.png");
-  @include media(450px) {
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/large-middle-red-active.png");
   }
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-red-active.png");
       width: 295px;
       p {
@@ -238,7 +238,7 @@ const attrs = useAttrs();
   background-image: url("~/assets/images/png/buttons/large-purple-active.png");
 
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-purple-active.png");
       width: 295px;
       p {
@@ -256,8 +256,7 @@ const attrs = useAttrs();
   cursor: default;
   background-image: url("~/assets/images/png/buttons/middle-disabled.png");
 
-  @include media(450px) {
-    width: 295px;
+  @include media(500px) {
     background-image: url("~/assets/images/png/buttons/mini-disabled.png");
   }
 }
@@ -266,7 +265,7 @@ const attrs = useAttrs();
   background-image: url("~/assets/images/png/buttons/large-disabled.png");
 
   &.mini-main {
-    @include media(450px) {
+    @include media(500px) {
       background-image: url("~/assets/images/png/buttons/mobi-purple.png");
       filter: grayscale(80%) brightness(1.1) contrast(0.9) hue-rotate(-35deg);
       width: 295px;

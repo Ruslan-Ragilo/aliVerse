@@ -58,6 +58,11 @@ const questionsData = ref({
   position: absolute;
   right: 0;
   z-index: -1;
+
+  @include media(800px) {
+    width: 30vw;
+    transform: translateY(-60px);
+  }
 }
 .accordion-wrapper {
   margin-top: 50px;

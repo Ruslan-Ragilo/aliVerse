@@ -155,6 +155,11 @@ onBeforeUnmount(() => {
   transform: translateX(-50%);
   z-index: 1;
 
+  @include media(600px) {
+    top: 150px;
+    height: 530px;
+  }
+
   @include media(500px) {
     top: 100px;
     height: 530px;

@@ -8,7 +8,9 @@ import "swiper/css/scrollbar";
 
 <template>
   <div class="letter-container">
-    <img class="planet" src="@/assets/images/png/mentorPlanet.png" alt="" />
+    <div class="planet-wrapper">
+      <img class="planet" src="@/assets/images/png/mentorPlanet.png" alt="" />
+    </div>
     <div class="wrapper-main content">
       <div class="alien">
         <ElementsText
@@ -57,6 +59,10 @@ import "swiper/css/scrollbar";
   padding-top: 20.1vw;
   display: flex;
   justify-content: flex-end;
+
+  @include media(600px) {
+    margin-top: 30.1vw;
+  }
 }
 
 .alien > p {
@@ -78,14 +84,21 @@ import "swiper/css/scrollbar";
   }
 }
 
-.planet {
+.planet-wrapper {
   position: absolute;
   left: 0;
   width: 70vw;
   z-index: -1;
+  overflow-x: clip;
 
   @include media(1200px) {
     width: 100vw;
+  }
+}
+.planet {
+  @include media(600px) {
+    width: 140vw;
+    transform: translate(-20vw, -30vw);
   }
 }
 
