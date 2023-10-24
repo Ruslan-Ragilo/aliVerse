@@ -17,7 +17,7 @@ export default {
     },
     color: {
       type: String,
-      default: "#ffffff",
+      default: "#fff",
     },
     size: {
       type: String,
@@ -29,7 +29,7 @@ export default {
     },
     radius: {
       type: String,
-      default: "100%",
+      default: "0",
     },
   },
   data() {

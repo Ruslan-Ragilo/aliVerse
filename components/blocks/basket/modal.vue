@@ -1,30 +1,47 @@
 <script setup>
-const store = useModalBasked();
+const popupStore = useModalBasked();
+
+const userStore = useUserData();
+
+onMounted(async () => {
+  await userStore.getCart();
+});
 </script>
 <template>
   <div
-    @click.self="store.setIsOpen(false)"
-    :class="['overlay', { active: store.getIsOpen }]"
+    :class="['overlay', { active: popupStore.getIsOpen }]"
+    @click.self="popupStore.setIsOpen(false)"
   >
-    <div :class="['wrapper', { active: store.getIsOpen }]">
+    <div :class="['wrapper', { active: popupStore.getIsOpen }]">
       <img
-        @click="store.setIsOpen(false)"
         class="close"
         src="@/assets/images/svg/closeModal.svg"
         alt=""
+        @click="popupStore.setIsOpen(false)"
       />
-      <ElementsText class="headingBasket" transform="upper" size="xxl"
-        >корзина</ElementsText
-      >
-      <ElementsText class="totalCoints" transform="upper" size="s"
-        >У тебя: <span>1249 AliCoins</span>
+      <ElementsText class="headingBasket" transform="upper" size="xxl">
+        корзина
+      </ElementsText>
+      <ElementsText class="totalCoints" transform="upper" size="s">
+        У тебя: <span>{{ userStore.userData?.balanceUser }} alicoins</span>
       </ElementsText>
       <div class="wrapperItems">
-        <BlocksBasketItemBasket v-for="item in 3" :key="item" />
+        <BlocksBasketItemBasket
+          v-for="item in userStore.cartItems"
+          :key="item?.id"
+          :cart-item="item"
+        />
       </div>
-      <ElementsPixelButton class="btnBy" color="red" size="middle"
-        >Купить</ElementsPixelButton
-      >
+      <div class="btn-buy">
+        <ElementsPixelButton
+          v-if="userStore.cartItems?.length > 0"
+          color="red"
+          size="middle"
+          @click="userStore.makeOrder"
+        >
+          Купить
+        </ElementsPixelButton>
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +59,7 @@ const store = useModalBasked();
     display: block;
   }
 
-  .btnBy {
+  .btn-buy {
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -73,7 +90,6 @@ const store = useModalBasked();
 
     .wrapperItems {
       height: 80vh;
-      overflow-y: scroll;
     }
     .close {
       cursor: pointer;
@@ -91,6 +107,8 @@ const store = useModalBasked();
 
     .totalCoints {
       margin-top: 10px;
+      margin-bottom: 50px;
+
       span {
         color: #ffd776;
         text-shadow: 1px 1px #ff2722;

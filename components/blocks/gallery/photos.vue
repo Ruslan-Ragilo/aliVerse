@@ -1,14 +1,16 @@
 <template>
   <div class="wrapper-photos">
-    <img
+    <div
       v-for="(photoSrc, index) in photos"
       :key="photoSrc"
-      class="photo"
-      :src="photoSrc"
-      alt="photo"
-      draggable="false"
-      @click="handleClick(index)"
-    />
+      class="photo-wrapper"
+    >
+      <BlocksGalleryPhoto
+        :photo-src="photoSrc"
+        :index="index"
+        :on-click="handleClick"
+      />
+    </div>
   </div>
   <BlocksGallerySlider
     :photos="photos"
@@ -93,8 +95,10 @@ const onSwiperClose = () => {
   }
 }
 
-.photo {
+.photo-wrapper {
+  position: relative;
   width: 410px;
+  aspect-ratio: 3/2;
   cursor: pointer;
 
   @include media(1100px) {

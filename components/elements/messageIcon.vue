@@ -38,7 +38,9 @@
 .wrapper-alien {
   position: relative;
   width: fit-content;
+  margin: auto;
   margin-top: -31px;
+  z-index: 3;
 
   @include media(1200px) {
     margin: -31px auto;

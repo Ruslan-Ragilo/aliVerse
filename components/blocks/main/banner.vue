@@ -1,12 +1,12 @@
 <template>
   <img
     class="absolute planetGradient"
-    src="@/assets/images/svg/gradientPlanet.svg"
+    src="@/assets/images/png/gradientPlanet.png"
     alt=""
   />
   <img
-    class="absolute crafr"
-    src="@/assets/images/svg/craft.svg"
+    class="absolute craft"
+    src="@/assets/images/png/craft.png"
     alt=""
     draggable="false"
   />
@@ -18,7 +18,7 @@
   />
   <img
     class="absolute earth"
-    src="@/assets/images/svg/earth.svg"
+    src="@/assets/images/png/earth.png"
     alt=""
     draggable="false"
   />
@@ -76,8 +76,12 @@
   justify-content: center;
   padding-top: 15vw;
 
+  @include media(1200px) {
+    margin-top: 100px;
+  }
+
   @include media(500px) {
-    padding-top: 30%;
+    margin-top: 30%;
   }
 }
 .logo {
@@ -96,9 +100,11 @@
     width: 8vw;
   }
 
-  // @include media(740px) {
-  //   width: 47px;
-  // }
+  @include media(500px) {
+    top: 120px;
+    right: 20vw;
+    left: auto;
+  }
 }
 
 .earth {
@@ -110,17 +116,29 @@
     width: 8vw;
     left: 11%;
   }
+
+  @include media(500px) {
+    top: 350px;
+  }
 }
 
 .greenBall {
   right: 17%;
   top: 48vw;
+
   @include media(1200px) {
     width: 8vw;
+    right: 50px;
+    top: 60vw;
+  }
+
+  @include media(500px) {
+    right: 20px;
+    top: 95vw;
   }
 }
 
-.crafr {
+.craft {
   top: 42vw;
   left: 15%;
 
@@ -129,13 +147,26 @@
     top: 90vw;
     left: 15%;
   }
+
+  @include media(500px) {
+    width: 12vw;
+    top: 150vw;
+    left: 4%;
+  }
 }
 
 .blueComet {
   top: 20vw;
   left: 18%;
+
   @include media(1200px) {
     width: 10vw;
+  }
+
+  @include media(500px) {
+    top: 137vw;
+    left: 24%;
+    transform: rotate(155deg);
   }
 }
 
@@ -146,6 +177,11 @@
   @include media(1200px) {
     width: 20vw;
     top: 19vw;
+  }
+
+  @include media(500px) {
+    width: 35vw;
+    top: 110vw;
   }
 }
 

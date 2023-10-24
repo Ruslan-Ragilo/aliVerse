@@ -1,5 +1,5 @@
 <script setup>
-const store = useAuth();
+const authStore = useAuth();
 const urlImage = ref("svg/iconProfile/defaultAvatar.svg");
 const indexImage = ref(null);
 const isValidFrom = ref(false);
@@ -45,23 +45,34 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="wrapperRegistration">
+  <div
+    :class="[
+      'wrapperRegistration',
+      { wrapperSecond: authStore.getRegisterSuccess },
+    ]"
+  >
     <img
+      v-if="!authStore.getRegisterSuccess"
       :class="['close', { show: isShow }]"
       src="@/assets/images/svg/close.svg"
       alt=""
       @click="isShow = false"
     />
     <ElementsPixelButton
+      v-if="!authStore.getRegisterSuccess"
       :class="['btnSave', { active: isShow }]"
       class-text="btn-registraion"
       size="large"
       color="red"
       :disabled="urlImage === 'svg/iconProfile/defaultAvatar.svg'"
       @click="isShow = false"
-      >сохранить</ElementsPixelButton
     >
-    <div :class="['wrapperImage', { active: isShow }]">
+      сохранить
+    </ElementsPixelButton>
+    <div
+      v-if="!authStore.getRegisterSuccess"
+      :class="['wrapperImage', { active: isShow }]"
+    >
       <img
         v-for="(item, index) of 20"
         :key="item"
@@ -72,25 +83,42 @@ onMounted(() => {
       />
     </div>
 
-    <div :class="['wrapperProfile', { none: isShow }]">
+    <div
+      :class="[
+        'wrapperProfile',
+        { none: isShow && !authStore.getRegisterSuccess },
+        { wrapperRProfileSecond: authStore },
+      ]"
+    >
       <ElementsCartProfile
         :data-form="dataForm"
         :url-img="urlImage"
         @handle-is-valid="handleIsValid"
         @handle-is-show="handleIsShowAvatars"
       />
-      <NuxtLink class="btnReg" to="/auth/registration">
+      <NuxtLink
+        v-if="!authStore.getRegisterSuccess"
+        class="btnReg"
+        to="/auth/registration"
+      >
         <ElementsPixelButton
           class-text="btn-registraion"
           :disabled="!isValidFrom"
           size="large"
           color="red"
-          :isReadyData="isReadyData"
-          @click="store.setIsReadyData(true)"
-          >зарегистрироваться</ElementsPixelButton
+          :is-ready-data="isReadyData"
+          @click="authStore.setIsReadyData(true)"
         >
+          зарегистрироваться
+        </ElementsPixelButton>
       </NuxtLink>
     </div>
+    <ElementsText
+      v-if="authStore.getRegisterSuccess"
+      themes="secondary"
+      class="textAfterReg"
+      >asdasdasdassss sssssssssss ssssssssssssssss</ElementsText
+    >
   </div>
 </template>
 
@@ -103,6 +131,12 @@ onMounted(() => {
     }
   }
 }
+
+.textAfterReg {
+  color: #ff2722;
+  margin-top: 50px;
+  text-align: center;
+}
 .btnReg {
   margin-top: 10%;
   display: flex;
@@ -113,7 +147,10 @@ onMounted(() => {
   // display: flex;
   // flex-direction: column;
   // justify-content: space-between;
-
+  &.wrapperRProfileSecond {
+    max-width: 100%;
+    width: auto;
+  }
   @include media(1266px) {
     &.none {
       display: none;
@@ -121,7 +158,7 @@ onMounted(() => {
   }
 }
 .wrapperRegistration {
-  padding: 0 20px 0 10px;
+  // padding: 0 20px 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,6 +166,12 @@ onMounted(() => {
   width: 100%;
   margin: 0 auto;
   height: 98vh;
+
+  &.wrapperSecond {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .close {
     display: none;
@@ -148,7 +191,6 @@ onMounted(() => {
 
   @include media(1266px) {
     justify-content: center;
-    padding: 0 20px;
   }
 
   @include media(1200px) {

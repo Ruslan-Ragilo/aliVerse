@@ -3,7 +3,7 @@
     <img
       class="welcome-image"
       src="~/assets/images/png/shadows/title.png"
-      alt="Shadows game"
+      alt="Тайны галактики"
       draggable="false"
     />
     <div class="start-button">
@@ -16,6 +16,10 @@
 
 <script setup lang="ts">
 const store = useShadowsStore();
+
+onMounted(() => {
+  store.checkAvailability();
+});
 
 const startGame = () => {
   store.gameScreen = "rules";

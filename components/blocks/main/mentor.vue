@@ -8,7 +8,9 @@ import "swiper/css/scrollbar";
 
 <template>
   <div class="letter-container">
-    <img class="planet" src="@/assets/images/png/mentorPlanet.png" alt="" />
+    <div class="planet-wrapper">
+      <img class="planet" src="@/assets/images/png/mentorPlanet.png" alt="" />
+    </div>
     <div class="wrapper-main content">
       <div class="alien">
         <ElementsText
@@ -24,9 +26,10 @@ import "swiper/css/scrollbar";
           <ElementsText transform="upper"
             >Чувствуешь, как твоё тело наполняется вдохновением и мотивацией?
             Да, без этого на планете «Менторий» не обойтись. <br /><br />В
-            Ментории мы собрали топовые советы от топов AliExpress! Здесь ты
-            узнаешь, как поддерживать эффективность, соблюдать work-life balance
-            и даже ___! Листай карточки с инсайтами от наших руководителей и
+            Ментории мы собрали <span class="red">топовые</span> советы от
+            <span class="red">топов</span> AliExpress! Здесь ты узнаешь, как
+            поддерживать эффективность, соблюдать work-life balance и даже ___!
+            Листай карточки с инсайтами от наших руководителей и
             заряжайся!</ElementsText
           >
         </ElementsMessageIcon>
@@ -34,7 +37,7 @@ import "swiper/css/scrollbar";
     </div>
     <div class="wrapper-main wrapper-top">
       <Swiper class="swiper" slides-per-view="auto" :space-between="20">
-        <SwiperSlide class="slide" v-for="item in 5" :key="item">
+        <SwiperSlide v-for="item in 5" :key="item" class="slide">
           <div class="wrapper-card">
             <img src="@/assets/images/png/topDir.png" alt="" />
             <div class="tooltip">
@@ -56,24 +59,48 @@ import "swiper/css/scrollbar";
   padding-top: 20.1vw;
   display: flex;
   justify-content: flex-end;
+
+  @include media(600px) {
+    margin-top: 30.1vw;
+  }
+}
+
+.alien > p {
+  margin-right: 20px;
+
+  @include media(744px) {
+    margin-right: 10px;
+  }
 }
 .alien {
-  max-width: 600px;
+  max-width: 675px;
   width: 100%;
 
   @include media(1200px) {
     margin-top: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 }
 
-.planet {
+.planet-wrapper {
   position: absolute;
   left: 0;
-  width: 62vw;
+  width: 70vw;
   z-index: -1;
+  overflow-x: clip;
 
   @include media(1200px) {
     width: 100vw;
+  }
+}
+.planet {
+  width: 100%;
+
+  @include media(600px) {
+    width: 140vw;
+    transform: translate(-20vw, -30vw);
   }
 }
 
@@ -112,5 +139,9 @@ import "swiper/css/scrollbar";
     align-items: center;
     justify-content: center;
   }
+}
+
+.red {
+  color: #ff2722;
 }
 </style>

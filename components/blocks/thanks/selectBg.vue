@@ -39,9 +39,12 @@ const selectedBg = ref(null);
   display: flex;
   align-items: center;
   gap: 20px;
+
   @include media(450px) {
     flex-direction: column;
     align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
   }
 }
 

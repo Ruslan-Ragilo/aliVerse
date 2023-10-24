@@ -51,8 +51,8 @@ const modalStyle = computed(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 12;
 }
 
 .modal {
@@ -78,6 +78,10 @@ const modalStyle = computed(() => {
     margin: 0;
     padding: 80px 20px;
   }
+
+  @include media(400px) {
+    padding: 50px 20px;
+  }
 }
 
 .modal-content {
@@ -92,6 +96,7 @@ const modalStyle = computed(() => {
     width: 100%;
     padding: 24px;
     justify-content: center;
+    gap: 10px;
   }
 }
 

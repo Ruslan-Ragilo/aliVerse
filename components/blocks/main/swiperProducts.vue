@@ -5,11 +5,46 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation } from "swiper/modules";
+import $api from "~/http";
 
 const modules = [Navigation];
 
 const prev = ref(null);
 const next = ref(null);
+
+const locations = [
+  {
+    option: "Онлайн",
+    id: 4,
+  },
+  {
+    option: "Москва",
+    id: 1,
+  },
+  {
+    option: "Нижний Новгород",
+    id: 2,
+  },
+  {
+    option: "Ташкент",
+    id: 3,
+  },
+];
+
+const products = ref([]);
+
+const selectedLocation = ref(4);
+
+const selectedProducts = computed(() => {
+  return products.value?.filter(
+    (pr) => String(pr?.location) === String(selectedLocation.value),
+  );
+});
+
+onMounted(async () => {
+  const res = await $api("api/product/show-all");
+  products.value = res?.data?.products ?? [];
+});
 </script>
 
 <template>
@@ -17,12 +52,8 @@ const next = ref(null);
     <div class="wrapper-main wrap">
       <div class="wrapper-top">
         <ElementsCustomSelect
-          :options="[
-            { option: 'Онлайн' },
-            { option: 'Москва' },
-            { option: 'Нижний Новгород' },
-            { option: 'Ташкент' },
-          ]"
+          :options="locations"
+          @selected="(v) => (selectedLocation = v)"
         />
         <div class="wrapper-nav">
           <button ref="prev" class="nav prev"></button>
@@ -39,30 +70,39 @@ const next = ref(null);
           prevEl: prev,
         }"
       >
-        <SwiperSlide v-for="item in 10" :key="item" class="slide">
-          <ElementsSwiperSlide />
+        <SwiperSlide
+          v-for="product in selectedProducts"
+          :key="product"
+          class="slide"
+        >
+          <ElementsSwiperSlide :product="product" />
         </SwiperSlide>
       </Swiper>
     </div>
-    <Vue3Marquee
-      class="run-string"
-      :clone="true"
-      :duration="5"
-      :direction="'reverse'"
-    >
-      <div class="string">
-        <ElementsText transform="upper" size="xl" themes="secondary"
-          >оформить заказ можно с 17 ноября</ElementsText
-        >
-      </div>
-    </Vue3Marquee>
+    <div class="string-wrapper">
+      <img class="bubble-1" src="~/assets/images/png/bubble-1.png" alt="" />
+      <img class="bubble-2" src="~/assets/images/png/bubble-2.png" alt="" />
+      <img class="bubble-3" src="~/assets/images/png/bubble-3.png" alt="" />
+      <Vue3Marquee
+        class="run-string"
+        :clone="true"
+        :duration="5"
+        :direction="'reverse'"
+      >
+        <div class="string">
+          <ElementsText transform="upper" size="xl" themes="secondary">
+            оформить заказ можно с 17 ноября
+          </ElementsText>
+        </div>
+      </Vue3Marquee>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .wrap {
   position: relative;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
 
   @include media(590px) {
     margin-top: 50px;
@@ -75,14 +115,77 @@ const next = ref(null);
   margin-top: 48px;
 }
 .string {
-  background-color: red;
+  background-color: #ff2722;
   padding: 10px 0;
   display: flex;
   align-items: center;
   padding-left: 30px;
+
+  @include media(600px) {
+    padding-left: 10px;
+
+    p {
+      font-size: 16px;
+      text-wrap: nowrap;
+    }
+  }
+}
+.string-wrapper {
+  position: relative;
+  width: 100%;
+  height: 165px;
+}
+.bubble-1 {
+  position: absolute;
+  left: 0;
+
+  @include media(1000px) {
+    width: 70px;
+    height: 70px;
+    top: 10px;
+  }
+
+  @include media(600px) {
+    width: 50px;
+    height: 50px;
+    top: 20px;
+  }
+}
+.bubble-2 {
+  position: absolute;
+  left: 56%;
+  top: 95px;
+
+  @include media(1000px) {
+    width: 70px;
+    height: 70px;
+  }
+
+  @include media(600px) {
+    width: 50px;
+    height: 50px;
+  }
+}
+.bubble-3 {
+  position: absolute;
+  right: 10%;
+  top: 30px;
+
+  @include media(1000px) {
+    width: 70px;
+    height: 70px;
+    right: 5%;
+  }
+
+  @include media(600px) {
+    width: 50px;
+    height: 50px;
+    right: 2%;
+  }
 }
 .wrapper {
   margin-top: 10vw;
+  padding-top: 10vw;
   background: url("@/assets/images/swiper/bgSwiper.svg") no-repeat;
   background-size: cover;
 

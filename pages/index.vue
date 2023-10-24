@@ -1,16 +1,34 @@
+<script setup>
+const userStore = useUserData();
+const isLoading = ref(true);
+
+onMounted(() => {
+  userStore.fetchUsers().then(() => {
+    isLoading.value = false;
+  });
+});
+
+const prevOffsetY = ref(window.scrollY);
+const isScrollingUp = ref(false);
+
+window.onscroll = () => {
+  const currentOffsetY = ref(window.scrollY);
+  if (prevOffsetY.value > currentOffsetY.value) {
+    isScrollingUp.value = true;
+  } else {
+    isScrollingUp.value = false;
+  }
+
+  prevOffsetY.value = currentOffsetY.value;
+};
+</script>
+
 <template>
-  <NuxtLayout>
+  <NuxtLayout v-if="!isLoading">
     <BlocksBasketModal />
     <div class="wrapper">
-      <div class="wrapper-header">
-        <ElementsHeaderCart />
-        <ElementsHeaderProfile
-          name="Иван Алексеев"
-          :coins="1249"
-          :avatar-id="1"
-        />
-      </div>
-
+      <ElementsHeaderCart :is-scrolling-up="isScrollingUp" />
+      <ElementsHeaderProfile :is-scrolling-up="isScrollingUp" />
       <div class="wrapper-bg">
         <img class="bgTop" src="@/assets/images/png/bgMainTop.png" alt="" />
       </div>
@@ -36,6 +54,7 @@
     <BlocksMainQuestion />
     <BlocksMainFooter />
   </NuxtLayout>
+  <ElementsSpinner v-else color="red" />
 </template>
 
 <style lang="scss" scoped>
@@ -113,6 +132,11 @@
 
   @include media(1200px) {
     display: flex;
+  }
+
+  @include media(500px) {
+    width: 70%;
+    margin-top: 100px;
   }
 
   .frog {

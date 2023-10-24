@@ -19,7 +19,7 @@
           font-family="Barcade"
           themes="mustard-dark"
         >
-          +100
+          +60
         </ElementsText>
         {{ hintText }}
       </ElementsText>
@@ -54,7 +54,7 @@ const getButtonText = () => {
   if (gameState.value === "default") {
     buttonText.value = "Выбрать ответ";
   } else if (todayQuestions.value.length === 1) {
-    buttonText.value = " Закончить игру";
+    buttonText.value = "Закончить игру";
   } else {
     if (gameState.value === "right") {
       buttonText.value = "Продолжаем!";
@@ -68,6 +68,7 @@ const getButtonText = () => {
 const checkCorrectAnswer = () => {
   if (currentAnswer.value === currentQuestion.value.name) {
     store.changeGameState("right");
+    store.addCoins();
     hintText.value = currentQuestion.value.right;
   } else {
     store.changeGameState("wrong");
@@ -78,6 +79,7 @@ const checkCorrectAnswer = () => {
 const handleClick = () => {
   if (gameState.value === "default") {
     checkCorrectAnswer();
+    store.decreaseGamesRemained();
   } else if (todayQuestions.value.length > 1) {
     store.nextGame();
     startGame();

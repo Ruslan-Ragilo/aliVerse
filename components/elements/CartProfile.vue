@@ -2,7 +2,7 @@
 <script setup>
 import { storeToRefs } from "pinia";
 
-defineProps({
+const props = defineProps({
   urlImg: {
     type: String,
     default: "svg/iconProfile/defaultAvatar.svg",
@@ -37,6 +37,13 @@ const dataForm = ref({
     },
   ],
 });
+
+watch(
+  () => props.urlImg,
+  () => {
+    dataForm.value.avatar = props.urlImg;
+  }
+);
 
 watch(isReadyData, () => {
   store.registration(

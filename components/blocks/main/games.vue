@@ -1,67 +1,105 @@
 <template>
   <div class="wrapper-main wrapper">
-    <img src="@/assets/images/png/game.png" alt="" />
-    <div class="left-button">
-      <ElementsPixelButton color="red" size="mini">Играть</ElementsPixelButton>
+    <div class="games">
+      <BlocksGamesFull v-if="screenSize === 'large'" />
+      <BlocksGamesSlider v-if="screenSize === 'small'" />
+      <BlocksGamesMoon />
+      <div class="message">
+        <img
+          class="sign"
+          src="~/assets/images/png/games/sign.png"
+          alt=""
+          draggable="false"
+        />
+        <ElementsMessageIcon class="alien">
+          <ElementsText transform="upper">
+            Готов разбогатеть? Заходи в любую из мини-игр, зарабатывай Ali Coins
+            и копи на свой приз! Каждый день у тебя будет только 1 попытка,
+            чтобы сыграть в мини-игру — не теряй времени, летс гоу!
+          </ElementsText>
+        </ElementsMessageIcon>
+      </div>
+      <BlocksShadowsModal />
+      <BlocksFactsModal />
     </div>
-    <div class="middle-button">
-      <ElementsPixelButton color="red" size="mini">Играть</ElementsPixelButton>
-    </div>
-    <div class="right-button">
-      <ElementsPixelButton color="red" size="mini" @click="openShadowsModal">
-        Играть
-      </ElementsPixelButton>
-    </div>
-    <ElementsMessageIcon class="alien"
-      ><ElementsText transform="upper"
-        >Готов разбогатеть? Заходи в любую из мини-игр, зарабатывай Ali Coins и
-        копи на свой приз! Каждый день у тебя будет только 1 попытка, чтобы
-        сыграть в мини-игру — не теряй времени, летс гоу!</ElementsText
-      ></ElementsMessageIcon
-    >
-    <BlocksShadowsModal />
   </div>
 </template>
 
 <script setup lang="ts">
-const shadowsStore = useShadowsStore();
+const screenSize = ref<"large" | "small">("large");
 
-const openShadowsModal = () => {
-  shadowsStore.openModal();
+const updateScreenSize = () => {
+  const windowWidth = window.innerWidth;
+  screenSize.value = windowWidth > 1150 ? "large" : "small";
 };
+
+onMounted(() => {
+  updateScreenSize();
+  window.addEventListener("resize", updateScreenSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", updateScreenSize);
+});
 </script>
 
 <style lang="scss" scoped>
-div.alien {
+.games {
+  position: relative;
+  margin-top: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px;
+  padding-bottom: 200px;
+
+  @include media(1200px) {
+    padding-bottom: 45vw;
+  }
+}
+.message {
   max-width: 610px;
+  width: 75%;
+  padding: 30px;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -70%);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  @include media(1200px) {
+    transform: translate(-50%, -30%);
+  }
+
+  @include media(600px) {
+    padding: 10px;
+    transform: translate(-50%, 0);
+  }
 }
-.wrapper {
-  position: relative;
-  margin-top: 100px;
+div.alien {
+  gap: 0;
+}
+.sign {
+  position: absolute;
+  top: -240px;
+  left: 50px;
 
-  img {
-    width: 100%;
+  @include media(1200px) {
+    height: 300px;
+    top: -200px;
+    left: 20px;
   }
 
-  .left-button {
-    position: absolute;
-    left: 17%;
-    top: 22%;
+  @include media(600px) {
+    height: 230px;
+    top: -170px;
+    left: 20px;
   }
 
-  .middle-button {
-    position: absolute;
-    top: 14%;
-  }
-
-  .right-button {
-    position: absolute;
-    right: 17%;
-    top: 22%;
+  @include media(450px) {
+    height: 230px;
+    top: -100px;
+    left: 20px;
   }
 }
 </style>

@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 const store = useShadowsStore();
-const gamesRemained = computed(() => store.gamesRemained - 1);
+const gamesRemained = computed(() => store.gamesRemained);
 
 const getRemainedText = () => {
   if (gamesRemained.value === 5 || gamesRemained.value === 0) {

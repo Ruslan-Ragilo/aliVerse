@@ -1,10 +1,14 @@
 <script setup>
+const store = useAuth();
 const inputPinData = ref([
   { name: 1, value: "" },
   { name: 2, value: "" },
   { name: 3, value: "" },
   { name: 4, value: "" },
 ]);
+
+const emailValue = ref("");
+
 const handlePin = (e, index) => {
   const valueInput = e.target.value;
   const inspectNumber = valueInput.replace(/[^\d.-]+/g, ""); // replace letters and symbol
@@ -32,6 +36,19 @@ const handlePin = (e, index) => {
     return null;
   }
 };
+
+const handleLogin = async () => {
+  const pass = inputPinData.value.map((el) => el?.value).join("");
+  const email = emailValue.value;
+  // eslint-disable-next-line no-useless-escape
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (pass?.length === 4 && regex.test(email)) {
+    await store.login(email, pass);
+    if (store.isLoginSuccess) {
+      navigateTo("/");
+    }
+  }
+};
 </script>
 <template>
   <div class="content">
@@ -40,15 +57,20 @@ const handlePin = (e, index) => {
       Рады снова приветствовать тебя в нашей вселенной, <br />Заполняй данные и
       погнали!
     </ElementsText>
-    <form action="">
-      <input type="email" class="email" placeholder="ТВОЙ E-MAIL" />
+    <form @submit.prevent="handleLogin">
+      <input
+        v-model="emailValue"
+        type="email"
+        class="email"
+        placeholder="ТВОЙ E-MAIL"
+      />
       <div class="wrapper">
         <input
           v-for="(item, index) of inputPinData"
           :key="index"
           v-model="item.value"
           :name="item.name"
-          :class="['input-pin', { active: isActive && item.name === 1 }]"
+          class="input-pin"
           placeholder="0"
           :disabled="index !== 0"
           maxlength="1"
@@ -56,22 +78,23 @@ const handlePin = (e, index) => {
           @input="handlePin($event, index)"
         />
       </div>
-    </form>
-    <NuxtLink to="#">
-      <ElementsPixelButton size="middle" color="red">войти</ElementsPixelButton>
-    </NuxtLink>
-    <div class="wrapperAurhLink">
-      <NuxtLink to="/auth/registration">
-        <ElementsText transform="upper" themes="secondary"
-          >зарегистрироваться</ElementsText
-        >
-      </NuxtLink>
-      <NuxtLink to="/auth/forgotPin"
-        ><ElementsText transform="upper" class="lostPin"
-          >забыл pin код</ElementsText
-        ></NuxtLink
+      <ElementsPixelButton class="login" type="submit" size="middle" color="red"
+        >войти</ElementsPixelButton
       >
-    </div>
+      <div class="wrapperAurhLink">
+        <NuxtLink to="/auth/registration">
+          <ElementsText transform="upper" themes="secondary"
+            >зарегистрироваться</ElementsText
+          >
+        </NuxtLink>
+        <NuxtLink to="/auth/forgotPin"
+          ><ElementsText transform="upper" class="lostPin"
+            >забыл pin код</ElementsText
+          ></NuxtLink
+        >
+      </div>
+    </form>
+    <div></div>
   </div>
 </template>
 
@@ -83,12 +106,19 @@ const handlePin = (e, index) => {
   align-items: center;
 }
 
-a {
+.login {
   margin-top: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+a {
   text-decoration: none;
-  @include media(710px) {
-    margin-top: 0;
-  }
 }
 .lostPin {
   color: #676079;
@@ -103,9 +133,10 @@ input {
   margin-top: 40px;
   outline: none;
   color: #710f0d;
-  &.active::placeholder {
-    color: $red-primary;
-  }
+}
+
+input:first-of-type:focus::placeholder {
+  color: $red-primary;
 }
 .btnInto {
   max-width: 430px;
@@ -132,14 +163,16 @@ input {
   }
 }
 .content {
-  max-height: 700px;
+  // max-height: 700px;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+  padding-top: 4vh;
 
   @include media(710px) {
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
   }
 }

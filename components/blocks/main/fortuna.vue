@@ -1,45 +1,44 @@
 <template>
-  <div class="letter-container">
-    <div class="wrapper-main content">
-      <div class="letter">
-        <ElementsText
-          class="heading-title"
-          size="heading"
-          transform="upper"
-          themes="secondary"
-          >Планета
-          <br />
-          фортунус</ElementsText
+  <div class="wrapper-main content">
+    <div class="letter">
+      <ElementsText
+        class="heading-title"
+        size="heading"
+        transform="upper"
+        themes="secondary"
+        >Планета
+        <br />
+        фортунус</ElementsText
+      >
+      <ElementsMessageIcon class="alien-wrapper">
+        <ElementsText transform="upper"
+          >Так-так, кто это нарушает скоростной режим? Тормози! Лучше проверим,
+          насколько ты везунчик — мы на планете «Фортунус»! У тебя есть
+          <span class="red-text">1 попытка в день</span>, чтобы испытать судьбу
+          — крути колесо и получай подарки</ElementsText
         >
-        <ElementsMessageIcon class="alien-wrapper">
-          <ElementsText transform="upper"
-            >Так-так, кто это нарушает скоростной режим? Тормози! Лучше
-            проверим, насколько ты везунчик — мы на планете «Фортунус»! У тебя
-            есть <span class="red-text">1 попытка в день</span>, чтобы испытать
-            судьбу — крути колесо и получай подарки</ElementsText
-          >
-          <ElementsPixelButton
-            :is-main-page="true"
-            color="red"
-            size="large"
-            class="spin-button"
-            :disabled="!isAvailable || isSpinning"
-            @click="handleSpin"
-          >
-            Крутануть планету
-          </ElementsPixelButton>
-        </ElementsMessageIcon>
-      </div>
-      <div class="planets-wrapper">
-        <BlocksFortuneComets />
-        <BlocksFortuneWheel :on-mount="getWheelElement" />
-      </div>
+        <ElementsPixelButton
+          :is-main-page="true"
+          color="red"
+          size="large"
+          class="spin-button"
+          :disabled="!isAvailable || isSpinning"
+          @click="handleSpin"
+        >
+          Крутануть планету
+        </ElementsPixelButton>
+      </ElementsMessageIcon>
+    </div>
+    <div class="planets-wrapper">
+      <BlocksFortuneComets />
+      <BlocksFortuneWheel :on-mount="getWheelElement" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const store = useWheelStore();
+store.checkAvailability();
 const isAvailable = computed(() => store.isAvailable);
 const isSpinning = computed(() => store.isSpinning);
 
@@ -55,12 +54,13 @@ const handleSpin = () => {
 
 <style lang="scss" scoped>
 .content {
+  max-width: none;
   padding-top: 20.1vw;
   padding-right: 15px;
   padding-bottom: 200px;
   overflow: hidden;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 30px;
 
   @include media(1200px) {
@@ -73,6 +73,14 @@ const handleSpin = () => {
 
   @include media(743px) {
     padding-top: 40.1vw;
+  }
+}
+
+.letter > p {
+  margin-left: 20px;
+
+  @include media(744px) {
+    margin-left: 10px;
   }
 }
 .planets-wrapper {
@@ -94,8 +102,7 @@ const handleSpin = () => {
   }
 }
 .letter {
-  max-width: 600px;
-  width: 100%;
+  max-width: 675px;
   z-index: 2;
 
   @include media(1200px) {
@@ -113,7 +120,7 @@ const handleSpin = () => {
   }
 }
 .red-text {
-  color: red;
+  color: #ff2722;
 }
 .spin-button {
   margin-top: 28px;
