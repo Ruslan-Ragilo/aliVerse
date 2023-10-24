@@ -107,6 +107,10 @@
     right: 10%;
     top: 35%;
     // width: 3.5%;
+
+    @include media(500px) {
+      display: none;
+    }
   }
 
   .yellowPlanet {
@@ -139,12 +143,20 @@
       left: -40px;
       bottom: 5%;
     }
+
+    @include media(500px) {
+      left: -70px;
+    }
   }
 
   .smalStone {
     bottom: 10%;
     right: 17%;
     // width: 4%;
+
+    @include media(500px) {
+      display: none;
+    }
   }
 
   .bigStone {
@@ -156,6 +168,10 @@
       bottom: 0px;
       left: 15%;
     }
+
+    @include media(500px) {
+      display: none;
+    }
   }
 
   .goldComet {
@@ -166,6 +182,10 @@
     @include media(938px) {
       left: 0px;
       width: 50px;
+    }
+
+    @include media(500px) {
+      display: none;
     }
   }
 
