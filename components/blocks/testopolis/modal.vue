@@ -45,7 +45,7 @@ const handleClose = () => {
   background-image: url("~/assets/images/png/testopolis/testopolisBg.png");
   background-size: cover;
   background-repeat: no-repeat;
-  overflow-y: scroll;
+  overflow-y: hidden;
 
   @include media(800px) {
     width: 100%;

@@ -41,17 +41,24 @@ watch(
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
   gap: 30px;
+  margin-top: auto;
 
   @include media(850px) {
     flex-direction: column-reverse;
     align-items: flex-start;
+    gap: 10px;
   }
 
   @include media(700px) {
     p {
       font-size: 20px;
+    }
+  }
+
+  @media (max-height: 700px) {
+    p {
+      font-size: 16px;
     }
   }
 }
@@ -73,8 +80,12 @@ watch(
     width: 255px;
   }
 
-  @include media(500px) {
+  @include media(700px) {
     width: 158px;
+  }
+
+  @media (max-height: 700px) {
+    width: 120px;
   }
 }
 

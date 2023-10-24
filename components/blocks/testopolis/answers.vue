@@ -32,14 +32,18 @@ const currentAnswers = computed(() => store.currentAnswers);
 <style scoped lang="scss">
 .answers-wrapper {
   width: 100%;
+  height: 100%;
+  max-height: 40vh;
+  margin: auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr 1fr;
   grid-gap: 20px;
 
   @include media(700px) {
     grid-template-columns: none;
     grid-template-rows: repeat(4, 1fr);
+    max-height: 45vh;
   }
 
   @include media(500px) {
@@ -49,6 +53,8 @@ const currentAnswers = computed(() => store.currentAnswers);
 
 .answer {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .input {
@@ -62,26 +68,30 @@ const currentAnswers = computed(() => store.currentAnswers);
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 25px;
+  gap: 2vh;
+  padding: 2vh 30px;
   width: 100%;
   height: 100%;
-  padding: 20px 30px;
   background-color: #ffffff;
   border: 5px solid #ffd776;
   transition: all 0.1s;
   cursor: pointer;
 
-  @include media(500px) {
-    padding: 13px 16px;
+  @include media(800px) {
+    padding: 1vh 16px;
     gap: 5px;
+  }
+
+  @media (max-height: 700px) {
+    padding: 3px 15px;
   }
 }
 
 .label p {
-  font-size: 18px;
+  font-size: 2vh;
 
-  @include media(500px) {
-    font-size: 12px;
+  @include media(800px) {
+    font-size: 3vw;
   }
 }
 
