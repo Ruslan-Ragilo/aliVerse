@@ -48,7 +48,7 @@ const isActive = ref(false);
 
     &.active {
       visibility: visible;
-      max-height: 400px;
+      max-height: none;
       padding-bottom: 44px;
 
       @include media(670px) {
