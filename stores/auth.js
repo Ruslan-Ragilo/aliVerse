@@ -21,9 +21,9 @@ export const useAuth = defineStore("auth", {
       myHeaders.append("Content-Type", "application/json");
 
       const formdata = new FormData();
-      formdata.append("avatar", "svg/iconProfile/defaultAvatar.svg");
-      formdata.append("name", "Ruslan");
-      formdata.append("email", "ruslanragilo7@gmail.com");
+      // formdata.append("avatar", "svg/iconProfile/defaultAvatar.svg");
+      // formdata.append("name", "dany");
+      formdata.append("email", "dany0akopov@gmail.com");
       formdata.append("password", "1111");
 
       const requestOptions = {
@@ -33,7 +33,7 @@ export const useAuth = defineStore("auth", {
         redirect: "follow",
       };
 
-      fetch("http://api.aliverse.ru/auth/register", requestOptions)
+      fetch("https://api.aliverse.ru/auth/login", requestOptions)
         .then((response) => response.text())
         .then((result) => console.log(result))
         .catch((error) => console.log("error", error));

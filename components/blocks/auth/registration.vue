@@ -22,6 +22,26 @@ const handleIsShowAvatars = (value) => {
 const setUrlImage = (url) => {
   urlImage.value = url;
 };
+
+onMounted(() => {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer 4AhgSH4BNNUpvBIc");
+
+  // const formdata = new FormData();
+  // formdata.append("event_id", "3");
+  // formdata.append("score", "1234");
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    // body: formdata,
+    redirect: "follow",
+  };
+
+  fetch("https://api.aliverse.ru/user/event-limit/3", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+});
 </script>
 
 <template>
