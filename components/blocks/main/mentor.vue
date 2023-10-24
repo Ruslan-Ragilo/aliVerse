@@ -102,6 +102,7 @@ import "swiper/css/scrollbar";
 }
 .planet {
   width: 100%;
+  max-width: 1400px;
 
   @include media(600px) {
     width: 140vw;
