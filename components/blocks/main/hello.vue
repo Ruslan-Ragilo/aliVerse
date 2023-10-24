@@ -18,7 +18,11 @@
         </ElementsText>
       </div>
       <div class="wrapper-img">
-        <img src="@/assets/images/png/helloBlock.png" alt="" />
+        <img
+          src="@/assets/images/png/helloBlock.png"
+          alt=""
+          draggable="false"
+        />
       </div>
     </div>
   </div>

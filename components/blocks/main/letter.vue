@@ -7,8 +7,14 @@
             class="convert"
             src="@/assets/images/svg/letterConvert.png"
             alt=""
+            draggable="false"
           />
-          <img class="earth" src="@/assets/images/png/letterEarth.png" alt="" />
+          <img
+            class="earth"
+            src="@/assets/images/png/letterEarth.png"
+            alt=""
+            draggable="false"
+          />
         </div>
       </div>
       <div class="content">

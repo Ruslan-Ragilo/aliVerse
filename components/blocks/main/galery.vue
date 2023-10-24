@@ -1,7 +1,13 @@
 <template>
   <div class="wrapper-galery wrapper-main">
     <div class="bg-wrapper">
-      <img ref="img" class="bg" src="@/assets/images/png/bgGalery.png" alt="" />
+      <img
+        ref="img"
+        class="bg"
+        src="@/assets/images/png/bgGalery.png"
+        alt=""
+        draggable="false"
+      />
     </div>
     <div class="content">
       <div class="wrapper-alien">

@@ -22,6 +22,7 @@ const currentQuestion = computed(() => store.currentQuestion);
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: auto;
 }
 .progress-item {
   width: 15px;

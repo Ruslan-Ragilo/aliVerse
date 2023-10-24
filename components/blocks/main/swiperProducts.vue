@@ -80,9 +80,24 @@ onMounted(async () => {
       </Swiper>
     </div>
     <div class="string-wrapper">
-      <img class="bubble-1" src="~/assets/images/png/bubble-1.png" alt="" />
-      <img class="bubble-2" src="~/assets/images/png/bubble-2.png" alt="" />
-      <img class="bubble-3" src="~/assets/images/png/bubble-3.png" alt="" />
+      <img
+        class="bubble-1"
+        src="~/assets/images/png/bubble-1.png"
+        alt=""
+        draggable="false"
+      />
+      <img
+        class="bubble-2"
+        src="~/assets/images/png/bubble-2.png"
+        alt=""
+        draggable="false"
+      />
+      <img
+        class="bubble-3"
+        src="~/assets/images/png/bubble-3.png"
+        alt=""
+        draggable="false"
+      />
       <Vue3Marquee
         class="run-string"
         :clone="true"

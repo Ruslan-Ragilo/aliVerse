@@ -9,7 +9,12 @@ import "swiper/css/scrollbar";
 <template>
   <div class="letter-container">
     <div class="planet-wrapper">
-      <img class="planet" src="@/assets/images/png/mentorPlanet.png" alt="" />
+      <img
+        class="planet"
+        src="@/assets/images/png/mentorPlanet.png"
+        alt=""
+        draggable="false"
+      />
     </div>
     <div class="wrapper-main content">
       <div class="alien">
