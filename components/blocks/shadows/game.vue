@@ -26,6 +26,7 @@
       <ElementsPixelButton
         color="red"
         size="large"
+        :is-main-page="true"
         :disabled="!currentAnswer"
         @click="handleClick"
       >
