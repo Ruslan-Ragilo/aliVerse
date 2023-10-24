@@ -63,10 +63,15 @@ const gameState = computed(() => store.gameState);
   grid-template-columns: 1fr;
   grid-template-rows: 0.3fr 0.5fr 0.4fr;
   grid-row-gap: 30px;
+  max-height: 75vh;
+
+  @include media(500px) {
+    grid-row-gap: 0;
+  }
 }
 .hint {
   position: absolute;
-  top: 100px;
+  top: 7vh;
   left: 50%;
   transform: translate(-50%, 0);
   opacity: 0;

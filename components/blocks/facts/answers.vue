@@ -69,6 +69,7 @@ const checkAnswer = (answer: boolean) => {
   @include media(600px) {
     flex-direction: column;
     gap: 10px;
+    margin-top: 20px;
   }
 }
 </style>
