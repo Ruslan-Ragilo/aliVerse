@@ -32,5 +32,10 @@ const gameState = computed(() => store.gameState);
   position: absolute;
   height: 100%;
   aspect-ratio: 3/2;
+
+  @include media(500px) {
+    top: -7vh;
+    transform: scale(1.2);
+  }
 }
 </style>

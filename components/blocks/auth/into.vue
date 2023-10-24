@@ -33,15 +33,26 @@
   @include media(710px) {
     justify-content: center;
     gap: 20px;
+    max-height: 100vw;
+
+    @media (max-height: 700px) {
+      max-height: 100vw;
+    }
   }
 }
 .logo {
   @include media(886px) {
     width: 30%;
   }
+
+  @media (max-height: 700px) {
+    width: 20%;
+  }
 }
 .text {
-  margin: 5% 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
   @include media(710px) {
     font-size: 14px;
   }

@@ -27,7 +27,7 @@ watch(
 <style scoped lang="scss">
 .cart-button {
   position: fixed;
-  top: -300px;
+  top: 30px;
   left: 60px;
   width: 60px;
   height: 60px;

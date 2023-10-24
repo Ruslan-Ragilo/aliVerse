@@ -72,7 +72,9 @@ input {
 }
 .text {
   max-width: 480px;
-  margin: 5% 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
   @include media(710px) {
     font-size: 14px;
   }

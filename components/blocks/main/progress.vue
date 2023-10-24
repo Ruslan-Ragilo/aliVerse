@@ -10,6 +10,7 @@ const progresTotal = ref(Math.round(100 * (11 / 11)));
           src="@/assets/images/svg/progress/progressSmoke.svg"
           alt=""
           class="lineSmoke"
+          draggable="false"
         />
         <div class="progress-line">
           <img
@@ -17,6 +18,7 @@ const progresTotal = ref(Math.round(100 * (11 / 11)));
             src="@/assets/images/png/progress-craft.png"
             alt=""
             class="craft"
+            draggable="false"
           />
           <div
             :style="{ width: `${progresTotal}%` }"

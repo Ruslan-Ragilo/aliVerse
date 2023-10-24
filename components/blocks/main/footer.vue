@@ -7,11 +7,13 @@
             class="prim"
             src="@/assets/images/png/cloudFooterLeft.png"
             alt=""
+            draggable="false"
           />
           <img
             class="second"
             src="@/assets/images/png/cloudFooterRight.png"
             alt=""
+            draggable="false"
           />
         </div>
       </div>

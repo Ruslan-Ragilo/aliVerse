@@ -1,7 +1,12 @@
 <template>
   <div class="letter-container">
     <div class="planet-wrapper">
-      <img class="planet" src="@/assets/images/png/test.png" alt="" />
+      <img
+        class="planet"
+        src="@/assets/images/png/test.png"
+        alt=""
+        draggable="false"
+      />
     </div>
     <div class="wrapper-main content">
       <div class="alien">
@@ -9,21 +14,25 @@
           class="comet-1"
           src="@/assets/images/png/testopolis/comet-1.png"
           alt=""
+          draggable="false"
         />
         <img
           class="comet-2"
           src="@/assets/images/png/testopolis/comet-2.png"
           alt=""
+          draggable="false"
         />
         <img
           class="comet-3"
           src="@/assets/images/png/testopolis/comet-3.png"
           alt=""
+          draggable="false"
         />
         <img
           class="spaceship"
           src="@/assets/images/png/testopolis/spaceship.png"
           alt=""
+          draggable="false"
         />
         <ElementsText
           class="heading-title"

@@ -10,11 +10,13 @@ const handleModalOpen = () => {
 onMounted(() => {
   userStore.fetchUsers().then(() => {
     isLoading.value = false;
+    document.querySelector("body").style.backgroundColor = "#17102a";
+    document.querySelector("body").style.backgroundSize = "contain";
   });
 });
 
 const prevOffsetY = ref(window.scrollY);
-const isScrollingUp = ref(false);
+const isScrollingUp = ref(true);
 
 window.onscroll = () => {
   const currentOffsetY = ref(window.scrollY);

@@ -36,10 +36,10 @@ const questionsLength = computed(() => Object.keys(store.questions).length);
 .modal-content {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.3fr 1fr 0.1fr 0.1fr;
-  grid-row-gap: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3vh;
   padding: 10px 34px;
   z-index: 2;
 
@@ -50,13 +50,16 @@ const questionsLength = computed(() => Object.keys(store.questions).length);
   @include media(500px) {
     grid-row-gap: 25px;
   }
+
+  @media (max-height: 700px) {
+    grid-row-gap: 10px;
+  }
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: auto;
   gap: 30px;
 
   @include media(720px) {
