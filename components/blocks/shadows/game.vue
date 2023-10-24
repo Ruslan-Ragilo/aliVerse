@@ -73,6 +73,7 @@ const checkCorrectAnswer = () => {
     hintText.value = currentQuestion.value.right;
   } else {
     store.changeGameState("wrong");
+    store.addCurrentAnswer(currentQuestion.value.name);
     hintText.value = currentQuestion.value.wrong;
   }
 };
