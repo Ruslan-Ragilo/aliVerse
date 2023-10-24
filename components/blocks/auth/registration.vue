@@ -86,6 +86,7 @@ const setUrlImage = (url) => {
           :disabled="!isValidFrom"
           size="large"
           color="red"
+          :is-main-page="true"
           :is-ready-data="isReadyData"
           @click="authStore.setIsReadyData(true)"
         >
