@@ -137,6 +137,7 @@ startGame();
 
   @include media(500px) {
     font-size: 128px;
+    transform: translateY(-7vh);
   }
 }
 .game {
@@ -150,6 +151,7 @@ startGame();
 }
 .hint {
   width: 400px;
+  max-width: 85vw;
   position: absolute;
   top: 45%;
   right: 46px;
@@ -167,6 +169,26 @@ startGame();
     right: 50%;
     transform: translate(50%, 0);
   }
+
+  @include media(500px) {
+    top: 20vh;
+    font-size: 14px;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-height: 650px) {
+    top: 45%;
+    right: 30px;
+    transform: none;
+    font-size: 14px;
+
+    p {
+      font-size: 20px;
+    }
+  }
 }
 .bubble {
   opacity: 1;
@@ -175,6 +197,10 @@ startGame();
 
   @include media(1400px) {
     transform: translate(50%, -50px);
+  }
+
+  @media (max-height: 650px) {
+    transform: translate(0, -50px);
   }
 }
 </style>

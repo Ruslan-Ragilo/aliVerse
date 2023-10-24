@@ -36,12 +36,19 @@ const currentQuestion = computed(
   left: 50%;
   transform: translate(-50%, -50%);
   padding-bottom: 12vh;
+
+  @include media(500px) {
+    top: 43vh;
+  }
 }
 .question-image {
   max-width: 85vw;
-  max-height: 300px;
-}
+  max-height: 30vh;
 
+  @include media(500px) {
+    max-height: 25vh;
+  }
+}
 .link {
   position: absolute;
   top: 50%;

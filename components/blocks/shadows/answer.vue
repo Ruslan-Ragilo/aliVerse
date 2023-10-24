@@ -56,20 +56,35 @@ const currentAnswer = computed(() => store.currentAnswer);
   justify-content: center;
   align-items: center;
   gap: 30px;
+
+  @include media(700px) {
+    gap: 6px;
+  }
+
+  @media (max-height: 900px) {
+    gap: 6px;
+  }
 }
 .answer {
   position: relative;
   width: 326px;
-  height: 140px;
+  height: 13vw;
+  max-height: 150px;
+  min-height: 84px;
 
   @include media(750px) {
     width: 300px;
-    height: 125px;
   }
 
   @include media(500px) {
     width: 260px;
-    height: 84px;
+    min-height: 55px;
+  }
+
+  @media (max-height: 900px) {
+    width: 260px;
+    max-height: 100px;
+    min-height: 55px;
   }
 }
 .input {
@@ -104,7 +119,15 @@ const currentAnswer = computed(() => store.currentAnswer);
   color: #888888;
   transition: 0.1s;
 
-  @include media(500px) {
+  @include media(1000px) {
+    font-size: 2vw;
+  }
+
+  @include media(700px) {
+    font-size: 12px;
+  }
+
+  @media (max-height: 900px) {
     font-size: 12px;
   }
 }

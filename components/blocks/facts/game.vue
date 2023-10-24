@@ -94,6 +94,11 @@ const gameState = computed(() => store.gameState);
     width: 180px;
     height: 180px;
   }
+
+  @include media(450px) {
+    width: 130px;
+    height: 130px;
+  }
 }
 .active {
   transform: translate(0, 0);
