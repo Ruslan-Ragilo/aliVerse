@@ -78,6 +78,7 @@ const isButtonDisabled = computed(() => {
   max-height: fit-content;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   .addButton {
     cursor: pointer;
@@ -86,7 +87,7 @@ const isButtonDisabled = computed(() => {
   .slide-header {
     background: url("@/assets/images/swiper/bubble.png") no-repeat;
     background-size: cover;
-    width: 300px;
+    width: 288px;
     height: 300px;
     display: flex;
     justify-content: center;
