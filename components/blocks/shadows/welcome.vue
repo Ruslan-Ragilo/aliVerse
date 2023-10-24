@@ -39,6 +39,11 @@ const startGame = () => {
 
 .welcome-image {
   max-width: 100%;
+  transform: translateY(-7vh);
+
+  @include media(500px) {
+    transform: translateY(-15vh);
+  }
 }
 
 .start-button {

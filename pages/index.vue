@@ -9,7 +9,7 @@ onMounted(() => {
 });
 
 const prevOffsetY = ref(window.scrollY);
-const isScrollingUp = ref(false);
+const isScrollingUp = ref(true);
 
 window.onscroll = () => {
   const currentOffsetY = ref(window.scrollY);

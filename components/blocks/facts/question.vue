@@ -56,10 +56,16 @@ watch(
 .title {
   margin-top: auto;
   margin-bottom: 20px;
+
+  @include media(450px) {
+    font-size: 20px;
+  }
 }
 .question {
   width: 850px;
   min-height: 280px;
+  max-height: 400px;
+  height: min-content;
   padding: 30px;
   display: flex;
   align-items: center;
@@ -68,6 +74,18 @@ watch(
 
   @include media(1000px) {
     width: 100%;
+  }
+
+  @include media(450px) {
+    min-height: 180px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-height: 600px) {
+    min-height: 150px;
   }
 }
 .fact {

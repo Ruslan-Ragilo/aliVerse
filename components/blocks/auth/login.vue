@@ -115,6 +115,10 @@ form {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+
+  @media (max-height: 850px) {
+    gap: 10px;
+  }
 }
 
 a {
@@ -164,12 +168,13 @@ input:first-of-type:focus::placeholder {
 }
 .content {
   // max-height: 700px;
-  height: 100%;
+  height: 95%;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   padding-top: 4vh;
+  padding-bottom: 4vh;
 
   @include media(710px) {
     justify-content: space-between;

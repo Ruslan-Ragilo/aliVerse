@@ -51,7 +51,7 @@ watch(
 <style scoped lang="scss">
 .wrapper-profile {
   position: fixed;
-  top: -300px;
+  top: 30px;
   right: 60px;
   display: flex;
   justify-content: space-between;

@@ -58,7 +58,8 @@
   flex-direction: column;
   justify-content: center;
   padding: 0 30px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   .absolute {
     position: absolute;
@@ -152,8 +153,8 @@
     // width: 5%;
 
     @include media(800px) {
-      bottom: -20px;
-      left: 10%;
+      bottom: 0px;
+      left: 15%;
     }
   }
 

@@ -121,6 +121,7 @@ onMounted(async () => {
 
   @include media(590px) {
     margin-top: 50px;
+    padding-bottom: 100px;
   }
 }
 .slide {
