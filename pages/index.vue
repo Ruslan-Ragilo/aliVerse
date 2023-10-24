@@ -1,6 +1,11 @@
 <script setup>
 const userStore = useUserData();
 const isLoading = ref(true);
+const store = useFrogStore();
+
+const handleModalOpen = () => {
+  store.openModal();
+};
 
 onMounted(() => {
   userStore.fetchUsers().then(() => {
@@ -36,7 +41,7 @@ window.onscroll = () => {
         <BlocksMainBanner />
       </div>
     </div>
-    <div class="wrapper-frog">
+    <div class="wrapper-frog" @click="handleModalOpen">
       <img class="fullCloud" src="@/assets/images/svg/fullCloud.svg" alt="" />
       <img class="frog" src="@/assets/images/svg/frog.svg" alt="" />
     </div>

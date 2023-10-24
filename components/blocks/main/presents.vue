@@ -173,7 +173,7 @@ const dataPresents = [
         position: absolute;
         top: 3vw;
         left: 20px;
-        z-index: 1111;
+        z-index: 10;
 
         @include media(700px) {
           top: 14px;

@@ -41,7 +41,7 @@
     alt=""
     draggable="false"
   />
-  <div class="wrapper-frog absolute">
+  <div class="wrapper-frog absolute" @click="handleModalOpen">
     <img
       class="fullCloud"
       src="@/assets/images/svg/fullCloud.svg"
@@ -64,7 +64,16 @@
       draggable="false"
     />
   </div>
+  <BlocksFrogModal/>
 </template>
+
+<script setup lang="ts">
+const store = useFrogStore();
+
+const handleModalOpen = () => {
+  store.openModal();
+};
+</script>
 
 <style scoped lang="scss">
 .container {
@@ -191,7 +200,7 @@
   align-items: center;
   right: 0;
   top: 10vw;
-
+  z-index: 2;
   @include media(1200px) {
     display: none;
   }
