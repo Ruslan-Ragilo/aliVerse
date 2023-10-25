@@ -42,7 +42,7 @@ watch(
   () => props.urlImg,
   () => {
     dataForm.value.avatar = props.urlImg;
-  }
+  },
 );
 
 watch(isReadyData, () => {
@@ -50,7 +50,7 @@ watch(isReadyData, () => {
     dataForm.value.email,
     dataForm.value.password.map((el) => el.value).join(""),
     dataForm.value.name,
-    dataForm.value.avatar
+    dataForm.value.avatar,
   );
 });
 const handleMobAvatar = () => {
@@ -159,6 +159,8 @@ const handlePin = (e, index) => {
               v-for="(item, index) of dataForm.password"
               :key="index"
               v-model="item.value"
+              type="tel"
+              inputmode="tel"
               :name="item.name"
               :class="['input-pin', { active: isActive && item.name === 1 }]"
               placeholder="0"
