@@ -69,14 +69,48 @@ const handleModalClose = () => {
   }
 
   @include media(600px) {
-    padding-top: 70px;
+    p:first-of-type {
+      font-size: 24px;
+    }
   }
 
   @include media(500px) {
     gap: 25px;
 
     p:first-of-type {
-      font-size: 36px;
+      font-size: 22px;
+    }
+
+    p:nth-of-type(2) {
+      font-size: 16px;
+    }
+
+    p:nth-of-type(3) {
+      font-size: 14px;
+    }
+  }
+
+  @include media(400px) {
+    p:nth-of-type(2) {
+      font-size: 14px;
+    }
+
+    p:nth-of-type(3) {
+      font-size: 10px;
+    }
+  }
+
+  @media (max-height: 650px) {
+    p:first-of-type {
+      font-size: 24px;
+    }
+
+    p:nth-of-type(2) {
+      font-size: 16px;
+    }
+
+    p:nth-of-type(3) {
+      font-size: 12px;
     }
   }
 }
@@ -87,6 +121,11 @@ const handleModalClose = () => {
   aspect-ratio: 1/1;
   object-fit: cover;
   margin-bottom: 10px;
+
+  @media (max-height: 700px) {
+    min-width: 100px;
+    width: 25vh;
+  }
 }
 
 .result-link {

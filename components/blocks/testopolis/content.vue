@@ -62,9 +62,13 @@ const questionsLength = computed(() => Object.keys(store.questions).length);
   align-items: center;
   gap: 30px;
 
-  @include media(720px) {
+  @include media(700px) {
     flex-direction: column-reverse;
     padding-bottom: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   @include media(500px) {
