@@ -14,6 +14,10 @@ const next = ref(null);
 
 const locations = [
   {
+    option: "Все товары",
+    id: 0,
+  },
+  {
     option: "Онлайн",
     id: 4,
   },
@@ -33,12 +37,16 @@ const locations = [
 
 const products = ref([]);
 
-const selectedLocation = ref(4);
+const selectedLocation = ref(0);
 
 const selectedProducts = computed(() => {
-  return products.value?.filter(
-    (pr) => String(pr?.location) === String(selectedLocation.value),
-  );
+  if (selectedLocation.value > 0) {
+    return products.value?.filter(
+      (pr) => String(pr?.location) === String(selectedLocation.value),
+    );
+  } else {
+    return products.value;
+  }
 });
 
 onMounted(async () => {
@@ -241,24 +249,24 @@ onMounted(async () => {
 .nav.prev {
   width: 100px;
   height: 63px;
-  background-image: url("~/assets/images/swiper/prev.png");
+  background-image: url("~/assets/images/swiper/prev-red.png");
   background-repeat: no-repeat;
 }
 .nav.next {
   width: 100px;
   height: 63px;
-  background-image: url("~/assets/images/swiper/next.png");
+  background-image: url("~/assets/images/swiper/next-red.png");
   background-repeat: no-repeat;
 }
 .nav.prev:active:not(:disabled) {
   position: relative;
   top: 6px;
-  background-image: url("~/assets/images/swiper/prev-active.png");
+  background-image: url("~/assets/images/swiper/prev-red-active.png");
 }
 .nav.next:active:not(:disabled) {
   position: relative;
   top: 6px;
-  background-image: url("~/assets/images/swiper/next-active.png");
+  background-image: url("~/assets/images/swiper/next-red-active.png");
 }
 .nav.next:disabled,
 .nav.prev:disabled {

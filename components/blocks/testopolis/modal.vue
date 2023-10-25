@@ -51,6 +51,10 @@ const handleClose = () => {
     width: 100%;
     height: 100%;
   }
+
+  @include media(500px) {
+    padding: 10px;
+  }
 }
 
 .modal::-webkit-scrollbar {

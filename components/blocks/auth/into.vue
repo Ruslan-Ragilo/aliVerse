@@ -60,5 +60,6 @@
 
 .loginBtn {
   margin-top: 2vw;
+  text-decoration: none;
 }
 </style>
