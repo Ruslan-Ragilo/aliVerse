@@ -23,7 +23,7 @@
   left: -225px;
 
   @include media(800px) {
-    top: 30%;
+    top: 23%;
     left: -200px;
   }
 }

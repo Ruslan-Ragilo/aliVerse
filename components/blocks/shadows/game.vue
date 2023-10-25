@@ -74,6 +74,7 @@ const checkCorrectAnswer = () => {
   } else {
     store.changeGameState("wrong");
     hintText.value = currentQuestion.value.wrong;
+    store.addCurrentAnswer(currentQuestion.value.name);
   }
 };
 
@@ -96,7 +97,11 @@ watch(
   () => gameState.value,
   () => {
     getButtonText();
-    hintText.value = currentQuestion.value.wrong;
+    if (gameState.value === "right") {
+      hintText.value = currentQuestion.value.right;
+    } else if (gameState.value === "wrong") {
+      hintText.value = currentQuestion.value.wrong;
+    }
   },
 );
 

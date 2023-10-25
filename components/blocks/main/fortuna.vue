@@ -60,7 +60,7 @@ const handleSpin = () => {
   padding-bottom: 200px;
   overflow: hidden;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 30px;
 
   @include media(1200px) {

@@ -23,6 +23,11 @@ const currentQuestion = computed(() => store.currentQuestion);
   align-items: center;
   gap: 10px;
   margin-top: auto;
+
+  @include media(700px) {
+    margin-bottom: auto;
+    margin-top: unset;
+  }
 }
 .progress-item {
   width: 15px;

@@ -7,7 +7,7 @@ defineProps({
 });
 const emits = defineEmits(["selected"]);
 const isActive = ref(false);
-const valueSelect = ref("Онлайн");
+const valueSelect = ref("Все товары");
 
 const handleSelect = (value) => {
   isActive.value = false;
@@ -72,7 +72,6 @@ const handleSelect = (value) => {
   }
 
   .options {
-    max-height: 240px;
     background-color: $white;
     margin-top: 5px;
     display: flex;

@@ -33,8 +33,7 @@ const currentAnswers = computed(() => store.currentAnswers);
 .answers-wrapper {
   width: 100%;
   height: 100%;
-  max-height: 40vh;
-  margin: auto;
+  max-height: 45vh;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr 1fr;
@@ -43,11 +42,12 @@ const currentAnswers = computed(() => store.currentAnswers);
   @include media(700px) {
     grid-template-columns: none;
     grid-template-rows: repeat(4, 1fr);
-    max-height: 45vh;
+    max-height: 50vh;
   }
 
   @include media(500px) {
     grid-gap: 5px;
+    max-height: 43vh;
   }
 }
 

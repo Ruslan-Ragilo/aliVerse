@@ -42,7 +42,6 @@ watch(
   justify-content: space-between;
   align-items: center;
   gap: 30px;
-  margin-top: auto;
 
   @include media(850px) {
     flex-direction: column-reverse;
