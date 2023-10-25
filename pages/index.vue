@@ -61,7 +61,7 @@ window.onscroll = () => {
     <BlocksMainQuestion />
     <BlocksMainFooter />
   </NuxtLayout>
-  <ElementsSpinner v-else color="red" />
+  <ElementsSpinner v-else />
 </template>
 
 <style lang="scss" scoped>
