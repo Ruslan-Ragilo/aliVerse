@@ -14,6 +14,10 @@ const next = ref(null);
 
 const locations = [
   {
+    option: "Все товары",
+    id: 0,
+  },
+  {
     option: "Онлайн",
     id: 4,
   },
@@ -33,12 +37,16 @@ const locations = [
 
 const products = ref([]);
 
-const selectedLocation = ref(4);
+const selectedLocation = ref(0);
 
 const selectedProducts = computed(() => {
-  return products.value?.filter(
-    (pr) => String(pr?.location) === String(selectedLocation.value),
-  );
+  if (selectedLocation.value > 0) {
+    return products.value?.filter(
+      (pr) => String(pr?.location) === String(selectedLocation.value),
+    );
+  } else {
+    return products.value;
+  }
 });
 
 onMounted(async () => {
