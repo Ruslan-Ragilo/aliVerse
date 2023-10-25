@@ -52,7 +52,12 @@
             size="mini"
             :disabled="!isFallAvailable"
           >
-            Играть
+            <a
+              href="https://aliexpress-productfall.codenrock.com/"
+              target="_blank"
+            >
+              Играть
+            </a>
           </ElementsPixelButton>
         </div>
       </SwiperSlide>
@@ -103,7 +108,7 @@ const openShadowsModal = () => {
 
 // TODO добавить логику с датой для disabled
 const isFactsAvailable = ref(true);
-const isFallAvailable = ref(false);
+const isFallAvailable = ref(true);
 const isShadowsAvailable = ref(true);
 
 const spaceBetweenSlides = ref(30);
@@ -124,6 +129,9 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
+a {
+  all: unset;
+}
 .wrapper-games-slider {
   width: 100%;
 }

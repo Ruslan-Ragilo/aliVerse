@@ -40,7 +40,9 @@
         draggable="false"
       />
       <ElementsPixelButton color="red" size="mini" :disabled="!isFallAvailable">
-        Играть
+        <a href="https://aliexpress-productfall.codenrock.com/" target="_blank">
+          Играть
+        </a>
       </ElementsPixelButton>
     </div>
     <div class="right-game game">
@@ -84,11 +86,14 @@ const openFactsModal = () => {
 
 // TODO добавить логику с датой для disabled
 const isFactsAvailable = ref(true);
-const isFallAvailable = ref(false);
+const isFallAvailable = ref(true);
 const isShadowsAvailable = ref(true);
 </script>
 
 <style lang="scss" scoped>
+a {
+  all: unset;
+}
 .wrapper-games {
   width: 100%;
   display: flex;
