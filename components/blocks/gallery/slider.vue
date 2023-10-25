@@ -81,12 +81,22 @@ const swiperNavigationOptions = {
   @include media(900px) {
     left: 30px;
   }
+
+  @include media(500px) {
+    left: 10px;
+    transform: scale(0.6);
+  }
 }
 .swiper-button-next {
   right: 75px;
 
   @include media(900px) {
     right: 30px;
+  }
+
+  @include media(500px) {
+    right: 10px;
+    transform: scale(0.6);
   }
 }
 .swiper-button-prev img,

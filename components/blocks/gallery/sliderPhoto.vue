@@ -27,5 +27,9 @@ const setIsLoading = (value: boolean) => {
   max-width: 70vw;
   max-height: 80vh;
   object-fit: cover;
+
+  @include media(500px) {
+    max-width: 80vw;
+  }
 }
 </style>
