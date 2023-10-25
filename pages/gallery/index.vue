@@ -35,7 +35,7 @@ window.onscroll = () => {
       <BlocksGalleryButton />
     </div>
   </NuxtLayout>
-  <ElementsSpinner v-else color="red" />
+  <ElementsSpinner v-else />
 </template>
 
 <style scoped lang="scss">
