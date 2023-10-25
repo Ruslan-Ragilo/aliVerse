@@ -66,6 +66,7 @@ export const useAuth = defineStore("auth", {
     logout() {
       localStorage.removeItem(storageTokenKey);
       navigateTo("/auth");
+      document.querySelector("body").style.backgroundSize = "cover";
     },
 
     setIsReadyData(value) {
