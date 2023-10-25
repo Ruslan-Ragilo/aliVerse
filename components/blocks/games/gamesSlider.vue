@@ -106,10 +106,28 @@ const openShadowsModal = () => {
   shadowsStore.openModal();
 };
 
-// TODO добавить логику с датой для disabled
+// TODO удалить код ниже и раскомментировать следующий!
 const isFactsAvailable = ref(true);
 const isFallAvailable = ref(true);
 const isShadowsAvailable = ref(true);
+
+/* const isToday = (date: Date) => {
+  const today = new Date();
+
+  if (today.toDateString() === date.toDateString()) {
+    return true;
+  }
+
+  return false;
+};
+
+const fallDate = new Date("2023-11-08");
+const shadowsDate = new Date("2023-11-12");
+const factsDate = new Date("2023-11-16");
+
+const isFactsAvailable = ref(isToday(factsDate));
+const isFallAvailable = ref(isToday(fallDate));
+const isShadowsAvailable = ref(isToday(shadowsDate)); */
 
 const spaceBetweenSlides = ref(30);
 

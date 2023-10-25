@@ -1,7 +1,7 @@
 import $api from "~/http";
 
 export const useWheelStore = defineStore("wheel", () => {
-  const isAvailable = ref(true); // TODO запрос на бек с проверкой, можно ли крутить
+  const isAvailable = ref(true);
   const isSpinning = ref(false);
   const currentRotation = ref(0);
   const gainedPoints = ref(0);
