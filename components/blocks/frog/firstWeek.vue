@@ -148,7 +148,7 @@ const svg = ref(null);
 function created(obj) {
   svg.value = obj;
   obj.setBeforePan(beforePan);
-  console.log(svg.value)
+  // console.log(svg.value)
 
 }
 function beforePan(oldPan, newPan) {
@@ -177,7 +177,7 @@ function beforePan(oldPan, newPan) {
   return customPan;
 }
 function findJabka() {
-  console.log("qwe");
+  // console.log("qwe");
   store.finishGame();
 }
 </script>
