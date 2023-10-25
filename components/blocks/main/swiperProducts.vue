@@ -241,24 +241,24 @@ onMounted(async () => {
 .nav.prev {
   width: 100px;
   height: 63px;
-  background-image: url("~/assets/images/swiper/prev.png");
+  background-image: url("~/assets/images/swiper/prev-red.png");
   background-repeat: no-repeat;
 }
 .nav.next {
   width: 100px;
   height: 63px;
-  background-image: url("~/assets/images/swiper/next.png");
+  background-image: url("~/assets/images/swiper/next-red.png");
   background-repeat: no-repeat;
 }
 .nav.prev:active:not(:disabled) {
   position: relative;
   top: 6px;
-  background-image: url("~/assets/images/swiper/prev-active.png");
+  background-image: url("~/assets/images/swiper/prev-red-active.png");
 }
 .nav.next:active:not(:disabled) {
   position: relative;
   top: 6px;
-  background-image: url("~/assets/images/swiper/next-active.png");
+  background-image: url("~/assets/images/swiper/next-red-active.png");
 }
 .nav.next:disabled,
 .nav.prev:disabled {
