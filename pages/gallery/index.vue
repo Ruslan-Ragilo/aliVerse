@@ -6,7 +6,6 @@ onMounted(() => {
   userStore.fetchUsers().then(() => {
     isLoading.value = false;
     document.querySelector("body").style.backgroundColor = "#17102a";
-    document.querySelector("body").style.backgroundSize = "contain";
   });
 });
 

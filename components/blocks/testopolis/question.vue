@@ -52,12 +52,14 @@ watch(
   @include media(700px) {
     p {
       font-size: 20px;
+      text-shadow: 1.5px 0 #fff;
     }
   }
 
   @media (max-height: 700px) {
     p {
       font-size: 16px;
+      text-shadow: 1.5px 0 #fff;
     }
   }
 }

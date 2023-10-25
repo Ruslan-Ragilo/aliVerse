@@ -34,5 +34,9 @@ const setIsLoading = (value: boolean) => {
   @include media(1100px) {
     width: 330px;
   }
+
+  @include media(500px) {
+    width: 275px;
+  }
 }
 </style>
