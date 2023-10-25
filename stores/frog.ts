@@ -44,11 +44,34 @@ export const useFrogStore = defineStore("frog", () => {
     // currentAnswer.value = null;
   }
 
+  async function finishGame() {
+    isFinished.value = true;
+    gameScreen.value = "finish";
+
+    // const formData = new FormData();
+    // formData.append("event_id", "3");
+    // formData.append("score", currentCoins.value.toString());
+
+    // const limit = await $api.get("/api/user/get-remained-event-limit", {
+    //   params: {
+    //     id: 3,
+    //   },
+    // });
+
+    // if (limit.data > 0) {
+    //   const userStore = useUserData();
+
+    //   await $api.post("/api/event/add", formData);
+    //   await userStore.fetchUsers();
+    // }
+  }
+
   return {
     checkAvailability,
     isAvailable,
     isModalOpen,
     isFinished,
+    finishGame,
     results,
     gameScreen,
     openModal,

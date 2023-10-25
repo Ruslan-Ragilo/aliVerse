@@ -17,18 +17,21 @@
         height="712"
         fill="none"
       >
-        <rect width="1242" height="712" fill="url(#pattern0)" />
         <rect
-          x="1206"
-          y="606"
-          width="1"
-          height="40"
-          transform="rotate(90 1206 606)"
-          fill="#F9F9F9"
+          width="1242"
+          height="712"
+          fill="url(#pattern0)"
+          style="user-select: none; pointer-events: none"
         />
-
-        <rect x="30" y="466" width="8" height="10" fill="transparant" />
-
+        <rect
+          x="30"
+          y="466"
+          width="8"
+          height="10"
+          fill="#33333300"
+          style="z-index: 9999; position: relative"
+          @click="findJabka"
+        />
         <defs>
           <pattern
             id="pattern0"
@@ -139,22 +142,22 @@
 
 <script setup>
 import { SvgPanZoom } from "vue-svg-pan-zoom";
+const store = useFrogStore();
 const svg = ref(null);
 function created(obj) {
   svg.value = obj;
   obj.setBeforePan(beforePan);
 }
 function beforePan(oldPan, newPan) {
-  console.log(svg.value)
   const gutterWidth = svg.value.getSizes().width;
   const gutterHeight = svg.value.getSizes().height;
   const sizes = svg.value.getSizes();
-  let leftLimit
-  let rightLimit
+  let leftLimit;
+  let rightLimit;
   if (window.innerWidth < 1300) {
-    leftLimit = -(sizes.width - window.innerWidth) / 2 * sizes.realZoom;
-    rightLimit = (sizes.width - window.innerWidth) / 2 * sizes.realZoom;
-    svg.value.disableZoom()
+    leftLimit = (-(sizes.width - window.innerWidth) / 2) * sizes.realZoom;
+    rightLimit = ((sizes.width - window.innerWidth) / 2) * sizes.realZoom;
+    svg.value.disableZoom();
   } else {
     leftLimit =
       -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth;
@@ -168,6 +171,10 @@ function beforePan(oldPan, newPan) {
   customPan.x = Math.max(leftLimit, Math.min(rightLimit, newPan.x));
   customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y));
   return customPan;
+}
+function findJabka() {
+  console.log("qwe");
+  store.finishGame();
 }
 </script>
 
