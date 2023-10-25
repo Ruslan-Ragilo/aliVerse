@@ -38,9 +38,9 @@ onMounted(() => {
   };
 
   fetch("https://api.aliverse.ru/user/event-limit/3", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
 });
 </script>
 

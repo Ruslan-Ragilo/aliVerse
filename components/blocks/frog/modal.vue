@@ -29,7 +29,7 @@ const handleClose = () => {
   height: 100vh;
   position: fixed;
   z-index: 12;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   top: 0;
   left: 0;
 }
@@ -42,7 +42,6 @@ const handleClose = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 15;
   @media screen and (max-width: 1200px) {
     width: 100%;

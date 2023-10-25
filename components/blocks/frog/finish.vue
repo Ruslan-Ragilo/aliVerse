@@ -142,7 +142,7 @@
         </clipPath>
       </defs>
     </svg>
-     <div class="start-button">
+    <div class="start-button">
       <ElementsPixelButton color="red" size="middle" @click="endFrog">
         класс,Спасибо
       </ElementsPixelButton>
@@ -153,8 +153,8 @@
 <script setup lang="ts">
 const store = useFrogStore();
 function endFrog() {
-  store.resetGame()
-  store.closeModal()
+  store.resetGame();
+  store.closeModal();
 }
 </script>
 
@@ -166,7 +166,7 @@ function endFrog() {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   align-items: center;
   z-index: 1;
 }

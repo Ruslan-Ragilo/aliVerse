@@ -49,7 +49,7 @@ const dataPresents = [
       </div>
       <div class="wrapper-presents">
         <div v-for="item in dataPresents" :key="item.text" class="present">
-          <img :src="`/_nuxt/assets/images/${item.img}`" alt="" />
+          <img :src="getImageUrl(`${item.img}`)" alt="" />
           <ElementsText>{{ item.text }}</ElementsText>
         </div>
       </div>
@@ -65,7 +65,7 @@ const dataPresents = [
         :key="item.text"
         class="present"
       >
-        <img :src="`/_nuxt/assets/images/${item.img}`" alt="" />
+        <img :src="getImageUrl(`${item.img}`)" alt="" />
         <ElementsText>{{ item.text }}</ElementsText>
       </SwiperSlide>
     </Swiper>
