@@ -69,6 +69,8 @@ const handleLogin = async () => {
           v-for="(item, index) of inputPinData"
           :key="index"
           v-model="item.value"
+          type="tel"
+          inputmode="tel"
           :name="item.name"
           class="input-pin"
           placeholder="0"
