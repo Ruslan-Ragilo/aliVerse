@@ -31,6 +31,7 @@
           fill="#33333300"
           style="z-index: 9999; position: relative"
           @click="findJabka"
+          @touchstart="findJabka"
         />
         <defs>
           <pattern
@@ -147,6 +148,8 @@ const svg = ref(null);
 function created(obj) {
   svg.value = obj;
   obj.setBeforePan(beforePan);
+  console.log(svg.value)
+
 }
 function beforePan(oldPan, newPan) {
   const gutterWidth = svg.value.getSizes().width;
@@ -158,6 +161,7 @@ function beforePan(oldPan, newPan) {
     leftLimit = (-(sizes.width - window.innerWidth) / 2) * sizes.realZoom;
     rightLimit = ((sizes.width - window.innerWidth) / 2) * sizes.realZoom;
     svg.value.disableZoom();
+    svg.value.disableDblClickZoom();
   } else {
     leftLimit =
       -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth;
