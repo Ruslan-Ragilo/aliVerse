@@ -58,7 +58,7 @@ watch(
 
   @media (max-height: 700px) {
     p {
-      font-size: 16px;
+      font-size: 22px;
       text-shadow: 1.5px 0 #fff;
     }
   }
@@ -86,7 +86,7 @@ watch(
   }
 
   @media (max-height: 700px) {
-    width: 120px;
+    width: 170px;
   }
 }
 

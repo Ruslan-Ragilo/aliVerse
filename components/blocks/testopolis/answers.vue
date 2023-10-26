@@ -49,6 +49,10 @@ const currentAnswers = computed(() => store.currentAnswers);
     grid-gap: 5px;
     max-height: 43vh;
   }
+
+  @media (max-height: 700px) {
+    max-height: 40vh;
+  }
 }
 
 .answer {
