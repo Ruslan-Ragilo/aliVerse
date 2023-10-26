@@ -9,7 +9,9 @@
       >
       <div class="accordion-wrapper">
         <ElementsAccordion v-for="item in questionsData" :key="item.question">
-          <template #question>{{ item.question }}</template>
+          <template #question>
+            <div class="question" v-html="item.question"></div>
+          </template>
           <template #answer>
             <div class="answer" v-html="item.answer"></div>
           </template>
@@ -78,6 +80,11 @@ const questionsData = ref({
 .wrapper-main p {
   @include media(670px) {
     font-size: 26px;
+  }
+}
+.question {
+  @include media(670px) {
+    font-weight: 700;
   }
 }
 .answer {
