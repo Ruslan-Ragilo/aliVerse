@@ -51,7 +51,7 @@ const currentAnswers = computed(() => store.currentAnswers);
   }
 
   @media (max-height: 700px) {
-    max-height: 40vh;
+    max-height: 35vh;
   }
 }
 
