@@ -67,7 +67,11 @@ input {
 }
 .logo {
   @include media(886px) {
-    width: 30%;
+    width: 300px;
+  }
+
+  @include media(500px) {
+    width: 200px;
   }
 }
 .text {

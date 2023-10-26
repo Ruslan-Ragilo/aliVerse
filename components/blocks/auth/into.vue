@@ -42,11 +42,11 @@
 }
 .logo {
   @include media(886px) {
-    width: 30%;
+    width: 300px;
   }
 
-  @media (max-height: 700px) {
-    width: 20%;
+  @include media(500px) {
+    width: 200px;
   }
 }
 .text {
