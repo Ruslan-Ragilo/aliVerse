@@ -3,7 +3,10 @@
     <div class="modal" :style="modalStyle">
       <ElementsCloseButton class="thanks-close-button" @click="handleClose" />
       <div class="modal-content">
-        <div class="modal-header" :class="background ? `light` : ``">
+        <div
+          class="modal-header"
+          :class="background !== 'white' ? `light` : ``"
+        >
           <ElementsText size="xxxl" transform="upper">Спасибка</ElementsText>
           <BlocksThanksSelectBg :on-bg-change="handleBgChange" />
         </div>
@@ -19,19 +22,23 @@ const { onModalClose } = defineProps<{
   onModalClose: () => void;
 }>();
 
-const background = ref<string | null>(null);
+const background = ref<string>("white");
 
 const handleClose = () => {
   onModalClose();
-  background.value = null;
+  background.value = "white";
 };
 
 const handleBgChange = (value: string) => {
-  background.value = value;
+  if (value !== "white") {
+    background.value = value;
+  } else {
+    background.value = "white";
+  }
 };
 
 const modalStyle = computed(() => {
-  return background.value
+  return background.value !== "white"
     ? {
         backgroundImage: `url(${getImageUrl(
           `png/thanks/${background.value}-full.png`,
@@ -85,7 +92,7 @@ const modalStyle = computed(() => {
 }
 
 .modal-content {
-  width: 660px;
+  width: 740px;
   padding: 33px;
   display: flex;
   flex-direction: column;
@@ -114,7 +121,7 @@ const modalStyle = computed(() => {
   color: #fff;
 }
 .thanks-close-button {
-  @include media(1100px) {
+  @include media(1200px) {
     top: -60px;
     right: 0;
   }

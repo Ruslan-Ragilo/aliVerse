@@ -34,12 +34,14 @@ const updateModelValue = (event: Event) => {
 
 <style scoped lang="scss">
 .wrapper-radio {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   position: relative;
 }
 .label,
 .input {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -53,5 +55,9 @@ const updateModelValue = (event: Event) => {
 
 .input:checked ~ .label {
   box-shadow: 0 0 0 2px #fff;
+}
+
+.input:checked ~ .white-label {
+  box-shadow: 0 0 0 2px #bdbdbd;
 }
 </style>

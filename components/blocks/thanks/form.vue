@@ -6,7 +6,7 @@
       placeholder="Иван Алексеев"
       required="true"
       type="text"
-      :theme="background ? `light` : ``"
+      :theme="background !== 'white' ? `light` : ``"
     >
       Твое имя
     </ElementsCustomInput>
@@ -16,7 +16,7 @@
       placeholder="petrova@mail.ru"
       required="true"
       type="text"
-      :theme="background ? `light` : ``"
+      :theme="background !== 'white' ? `light` : ``"
     >
       Email получателя
     </ElementsCustomInput>
@@ -27,7 +27,7 @@
       required="true"
       :cols="40"
       :rows="textareaRows"
-      :theme="background ? `light` : ``"
+      :theme="background !== 'white' ? `light` : ``"
     >
       Текст
     </ElementsCustomInput>
@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 const { background } = defineProps<{
-  background: string | null;
+  background: string;
 }>();
 
 const formData = ref({
