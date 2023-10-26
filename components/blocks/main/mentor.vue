@@ -4,6 +4,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { Navigation } from "swiper/modules";
+
+const modules = [Navigation];
+const prev = ref(null);
+const next = ref(null);
 </script>
 
 <template>
@@ -40,10 +45,23 @@ import "swiper/css/scrollbar";
       </div>
     </div>
     <div class="wrapper-main wrapper-top">
-      <Swiper class="swiper" slides-per-view="auto" :space-between="20">
-        <SwiperSlide v-for="item in 5" :key="item" class="slide">
+      <Swiper
+        class="swiper"
+        :modules="modules"
+        slides-per-view="auto"
+        :space-between="20"
+        :navigation="{
+          nextEl: next,
+          prevEl: prev,
+        }"
+      >
+        <SwiperSlide v-for="item in 6" :key="item" class="slide">
           <div class="wrapper-card">
-            <img src="@/assets/images/png/topDir.png" alt="" />
+            <img
+              src="@/assets/images/png/topDir.png"
+              alt=""
+              draggable="false"
+            />
             <div class="tooltip">
               <ElementsText align="center" transform="upper"
                 >Александр <br />
@@ -52,13 +70,35 @@ import "swiper/css/scrollbar";
             </div>
           </div>
         </SwiperSlide>
+        <div class="wrapper-nav">
+          <button ref="prev" class="nav prev"></button>
+          <button ref="next" class="nav next"></button>
+        </div>
       </Swiper>
-      <!-- <div v-for="item in 5" :key="item" class="wrapper-card"></div> -->
+      <div class="mentors-desktop">
+        <div v-for="item in 6" :key="item" class="wrapper-card">
+          <img src="@/assets/images/png/topDir.png" alt="" draggable="false" />
+          <div class="tooltip">
+            <ElementsText align="center" transform="upper"
+              >Александр <br />
+              епифанов</ElementsText
+            >
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.mentors-desktop {
+  display: flex;
+  gap: 18px;
+
+  @include media(1200px) {
+    display: none;
+  }
+}
 .content {
   padding-top: 20.1vw;
   display: flex;
@@ -113,10 +153,52 @@ import "swiper/css/scrollbar";
   gap: 22px;
   margin-top: 80px;
 }
+.swiper {
+  display: none;
 
+  @include media(1200px) {
+    display: block;
+  }
+}
 .slide {
   width: 240px;
   padding-bottom: 30px;
+}
+.wrapper-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+}
+.nav.prev {
+  all: unset;
+  cursor: pointer;
+  width: 100px;
+  height: 63px;
+  background-image: url("~/assets/images/swiper/prev-red.png");
+  background-repeat: no-repeat;
+}
+.nav.next {
+  all: unset;
+  cursor: pointer;
+  width: 100px;
+  height: 63px;
+  background-image: url("~/assets/images/swiper/next-red.png");
+  background-repeat: no-repeat;
+}
+.nav.prev:active:not(:disabled) {
+  position: relative;
+  top: 6px;
+  background-image: url("~/assets/images/swiper/prev-red-active.png");
+}
+.nav.next:active:not(:disabled) {
+  position: relative;
+  top: 6px;
+  background-image: url("~/assets/images/swiper/next-red-active.png");
+}
+.nav.next:disabled,
+.nav.prev:disabled {
+  opacity: 0.5;
 }
 
 .wrapper-card {
@@ -128,9 +210,11 @@ import "swiper/css/scrollbar";
   position: relative;
   display: flex;
   justify-content: center;
+  aspect-ratio: 211/300;
 
   img {
     width: 100%;
+    object-fit: cover;
   }
 
   .tooltip {
@@ -139,6 +223,9 @@ import "swiper/css/scrollbar";
     border: 2px solid #c0a76b;
     position: absolute;
     background-color: #fff;
+    background-image: url("~/assets/images/png/mentor-tooltip.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     bottom: -31px;
     display: flex;
     align-items: center;

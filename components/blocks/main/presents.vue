@@ -4,6 +4,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+
+import { Pagination } from "swiper/modules";
 // const glob = import.meta.glob("@/assets/images/png/presents/sneakers.png");
 // console.log(glob);
 const dataPresents = [
@@ -28,6 +30,7 @@ const dataPresents = [
     text: "Строительство",
   },
 ];
+const modules = [Pagination];
 </script>
 
 <template>
@@ -59,6 +62,12 @@ const dataPresents = [
       :modules="modules"
       slides-per-view="auto"
       :space-between="30"
+      :initial-slide="1"
+      :grab-cursor="true"
+      :centered-slides="true"
+      :pagination="{
+        clickable: true,
+      }"
     >
       <SwiperSlide
         v-for="item in dataPresents"
@@ -89,6 +98,11 @@ const dataPresents = [
     width: 130px;
     width: auto;
   }
+}
+:global(.swiper-pagination) {
+  position: static;
+  margin-top: 12px;
+  margin-bottom: 7px;
 }
 .mob {
   display: none;
@@ -142,7 +156,7 @@ const dataPresents = [
       display: flex;
       flex-direction: column;
       gap: 10px;
-      width: 100%;
+      width: 19%;
 
       align-items: center;
       img {
