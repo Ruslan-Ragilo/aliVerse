@@ -92,6 +92,11 @@ const handleModalClose = () => {
     padding-top: 630px;
     padding-bottom: 0;
   }
+
+  @include media(530px) {
+    padding-top: 400px;
+    padding-bottom: 0;
+  }
 }
 .content > p {
   margin-left: 20px;
@@ -126,9 +131,11 @@ const handleModalClose = () => {
     right: -20vw;
     transform: translateY(220px);
   }
+
   @include media(530px) {
     max-width: 505px;
     right: -20vw;
+    transform: translateY(0);
   }
 }
 
@@ -140,7 +147,7 @@ const handleModalClose = () => {
 
   @include media(1300px) {
     max-width: 580px;
-    transform: translateY(400px);
+    transform: translateY(370px);
   }
 
   @include media(740px) {
@@ -149,7 +156,7 @@ const handleModalClose = () => {
   }
 
   @include media(530px) {
-    max-width: 503px;
+    display: none;
   }
 }
 </style>
