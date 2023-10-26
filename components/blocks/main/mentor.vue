@@ -28,15 +28,14 @@ import "swiper/css/scrollbar";
           менторий</ElementsText
         >
         <ElementsMessageIcon class="alien-wrapper">
-          <ElementsText transform="upper"
-            >Чувствуешь, как твоё тело наполняется вдохновением и мотивацией?
-            Да, без этого на планете «Менторий» не обойтись. <br /><br />В
-            Ментории мы собрали <span class="red">топовые</span> советы от
-            <span class="red">топов</span> AliExpress! Здесь ты узнаешь, как
-            поддерживать эффективность, соблюдать work-life balance и даже ___!
-            Листай карточки с инсайтами от наших руководителей и
-            заряжайся!</ElementsText
-          >
+          <ElementsText transform="upper">
+            Чувствуешь, как твоё тело наполняется вдохновением и мотивацией? Да,
+            без этого на планете «Менторий» не обойтись<br /><br />В Ментории мы
+            собрали <span class="red">топовые</span> советы от
+            <span class="red">топов</span> AliExpress! Ты узнаешь, как
+            поддерживать эффективность, соблюдать work-life баланс и даже
+            заглянешь внутрь корзины руководителей
+          </ElementsText>
         </ElementsMessageIcon>
       </div>
     </div>
