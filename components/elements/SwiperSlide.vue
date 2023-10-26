@@ -35,7 +35,12 @@ const isButtonDisabled = computed(() => {
     </div>
     <div class="slide-footer">
       <div>
-        <ElementsText transform="upper" size="s" class="text-slide">
+        <ElementsText
+          transform="upper"
+          size="s"
+          class="text-slide"
+          :class="{ smaller: props.product.id === 33 }"
+        >
           {{ props?.product?.name }}
         </ElementsText>
         <button
@@ -114,6 +119,7 @@ const isButtonDisabled = computed(() => {
     text-overflow: ellipsis;
   }
   .slide-footer {
+    width: 100%;
     flex-grow: 1;
     padding: 20px 30px;
     background-color: $white;
@@ -147,7 +153,11 @@ const isButtonDisabled = computed(() => {
 }
 
 .product-image {
-  max-width: 180px;
-  max-height: 180px;
+  max-width: 250px;
+  max-height: 250px;
+  z-index: 2;
+}
+.smaller {
+  font-size: 16px;
 }
 </style>
