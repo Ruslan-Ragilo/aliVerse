@@ -19,16 +19,16 @@
 <style scoped lang="scss">
 .cloud-left {
   position: absolute;
-  top: -40px;
+  top: -60px;
   left: -225px;
 
   @include media(800px) {
-    top: 23%;
+    top: 30%;
     left: -200px;
   }
 
   @include media(500px) {
-    top: 10%;
+    top: 30%;
     left: -300px;
   }
 }
