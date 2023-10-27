@@ -3,14 +3,17 @@
     <div class="wrapper-alien">
       <ElementsAlienWithRays />
     </div>
-    <ElementsText
-      class="heading-title"
-      size="heading"
-      transform="upper"
-      themes="secondary"
-    >
-      Фотоальбом
-    </ElementsText>
+    <div class="title">
+      <ElementsText
+        class="heading-title"
+        size="heading"
+        transform="upper"
+        themes="secondary"
+      >
+        Фотоальбом
+      </ElementsText>
+      <BlocksGalleryButton class-name="upper-button" />
+    </div>
   </div>
 </template>
 
@@ -25,21 +28,23 @@
   align-items: center;
   padding-right: 170px;
 
-  @include media(1200px) {
+  @include media(1400px) {
     padding-right: 100px;
   }
 
-  @include media(950px) {
+  @include media(1200px) {
     padding-right: 30px;
   }
 
-  @include media(800px) {
+  @include media(1000px) {
+    padding-right: 0;
+
     p {
       font-size: 36px;
     }
   }
 
-  @include media(710px) {
+  @include media(900px) {
     height: 120vw;
     flex-direction: column-reverse;
     justify-content: space-between;
@@ -63,10 +68,19 @@
   left: -500px;
   z-index: -1;
 
-  @include media(710px) {
+  @include media(900px) {
     width: 200%;
     top: -40vw;
     left: -50%;
+  }
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include media(500px) {
+    transform: translateY(45px);
   }
 }
 </style>
