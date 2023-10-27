@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 const store = useShadowsStore();
-const time = ref(10);
+const time = ref(15);
 const gameState = computed(() => store.gameState);
 const todayQuestions = computed(() => store.todayQuestions);
 const questions = computed(() => store.shadows);
@@ -27,7 +27,7 @@ const startTimer = () => {
     clearInterval(interval);
     store.changeGameState("wrong");
     store.addCurrentAnswer(currentQuestion.value.name);
-  }, 10000);
+  }, 15000);
 
   watch(
     () => gameState.value,
