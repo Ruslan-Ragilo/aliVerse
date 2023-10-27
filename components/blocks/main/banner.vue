@@ -64,7 +64,7 @@
       draggable="false"
     />
   </div>
-  <BlocksFrogModal/>
+  <BlocksFrogModal />
 </template>
 
 <script setup lang="ts">

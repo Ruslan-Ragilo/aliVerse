@@ -9,10 +9,8 @@
       alt=""
     />
     <ElementsText themes="secondary" size="s" transform="upper" align="center">
-      Поздравляем, ты -
-      <a class="result-link" :href="results[finalResult].link" target="_blank">
-        {{ results[finalResult].linkText }} </a
-      >{{ results[finalResult].linkDescription }}!
+      Поздравляем, ты - {{ results[finalResult].linkText
+      }}{{ results[finalResult].linkDescription }}!
     </ElementsText>
     <ElementsText
       themes="secondary"
@@ -21,9 +19,21 @@
       align="center"
       >{{ results[finalResult].text }}</ElementsText
     >
-    <ElementsPixelButton color="red" size="middle" @click="handleModalClose">
-      На главную
-    </ElementsPixelButton>
+    <div class="buttons-wrapper">
+      <ElementsPixelButton
+        color="red"
+        size="large"
+        :is-main-page="true"
+        @click="handleModalClose"
+      >
+        На главную
+      </ElementsPixelButton>
+      <a class="result-link" :href="results[finalResult].link" target="_blank">
+        <ElementsPixelButton color="purple" size="large" :is-main-page="true">
+          Посмотреть товар
+        </ElementsPixelButton>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -68,39 +78,56 @@ const handleModalClose = () => {
     padding: 10px 0;
   }
 
+  @include media(500px) {
+    padding: 40px 0;
+  }
+
   @include media(600px) {
     p:first-of-type {
       font-size: 24px;
     }
   }
 
-  @include media(500px) {
-    gap: 25px;
-
+  @media (max-height: 900px) {
     p:first-of-type {
-      font-size: 22px;
+      font-size: 28px;
     }
 
     p:nth-of-type(2) {
+      font-size: 18px;
+    }
+
+    p:nth-of-type(3) {
       font-size: 16px;
     }
+    @include media(500px) {
+      gap: 25px;
 
-    p:nth-of-type(3) {
-      font-size: 14px;
+      p:first-of-type {
+        font-size: 22px;
+      }
+
+      p:nth-of-type(2) {
+        font-size: 16px;
+      }
+
+      p:nth-of-type(3) {
+        font-size: 14px;
+      }
+    }
+
+    @include media(400px) {
+      p:nth-of-type(2) {
+        font-size: 14px;
+      }
+
+      p:nth-of-type(3) {
+        font-size: 10px;
+      }
     }
   }
 
-  @include media(400px) {
-    p:nth-of-type(2) {
-      font-size: 14px;
-    }
-
-    p:nth-of-type(3) {
-      font-size: 10px;
-    }
-  }
-
-  @media (max-height: 650px) {
+  @media (max-height: 700px) {
     p:first-of-type {
       font-size: 24px;
     }
@@ -113,6 +140,20 @@ const handleModalClose = () => {
       font-size: 12px;
     }
   }
+
+  @include media(400px) {
+    p:first-of-type {
+      font-size: 20px;
+    }
+
+    p:nth-of-type(2) {
+      font-size: 14px;
+    }
+
+    p:nth-of-type(3) {
+      font-size: 10px;
+    }
+  }
 }
 
 .result-image {
@@ -122,13 +163,28 @@ const handleModalClose = () => {
   object-fit: cover;
   margin-bottom: 10px;
 
-  @media (max-height: 700px) {
+  @media (max-height: 900px) {
     min-width: 100px;
     width: 25vh;
+  }
+
+  @media (max-height: 900px) {
+    min-width: 100px;
+    width: 20vh;
   }
 }
 
 .result-link {
-  color: #ffffff;
+  text-decoration: none;
+}
+.buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @include media(500px) {
+    gap: 0;
+  }
 }
 </style>

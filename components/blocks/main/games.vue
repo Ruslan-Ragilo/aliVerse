@@ -14,8 +14,9 @@
         <ElementsMessageIcon class="alien">
           <ElementsText transform="upper">
             Готов разбогатеть? Заходи в любую из мини-игр, зарабатывай Ali Coins
-            и копи на свой приз! Каждый день у тебя будет только 1 попытка,
-            чтобы сыграть в мини-игру — не теряй времени, летс гоу!
+            и копи на свой приз! Каждый день у тебя будет
+            <span class="red">только 1 попытка</span>, чтобы сыграть в мини-игру
+            — не теряй времени, летс гоу!
           </ElementsText>
         </ElementsMessageIcon>
       </div>
@@ -101,5 +102,8 @@ div.alien {
     top: -100px;
     left: 20px;
   }
+}
+.red {
+  color: #ff2722;
 }
 </style>

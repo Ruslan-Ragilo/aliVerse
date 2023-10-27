@@ -45,7 +45,14 @@ const selectedProducts = computed(() => {
       (pr) => String(pr?.location) === String(selectedLocation.value),
     );
   } else {
-    return products.value;
+    const uniqueNames = new Set();
+    return products.value.filter((product) => {
+      if (!uniqueNames.has(product.name)) {
+        uniqueNames.add(product.name);
+        return true;
+      }
+      return false;
+    });
   }
 });
 
@@ -58,6 +65,7 @@ onMounted(async () => {
 <template>
   <div class="wrapper">
     <div class="wrapper-main wrap">
+      <ElementsProductModal />
       <div class="wrapper-top">
         <ElementsCustomSelect
           :options="locations"
@@ -114,7 +122,7 @@ onMounted(async () => {
       >
         <div class="string">
           <ElementsText transform="upper" size="xl" themes="secondary">
-            оформить заказ можно с 17 ноября
+            оформить заказ можно с 20 ноября
           </ElementsText>
         </div>
       </Vue3Marquee>

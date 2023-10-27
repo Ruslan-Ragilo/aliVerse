@@ -26,6 +26,11 @@
     top: 23%;
     left: -200px;
   }
+
+  @include media(500px) {
+    top: 10%;
+    left: -300px;
+  }
 }
 
 .cloud-center {

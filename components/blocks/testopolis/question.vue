@@ -58,8 +58,8 @@ watch(
 
   @media (max-height: 700px) {
     p {
-      font-size: 16px;
-      text-shadow: 1.5px 0 #fff;
+      font-size: 24px;
+      text-shadow: 2px 0 #fff;
     }
   }
 }
@@ -85,9 +85,9 @@ watch(
     width: 158px;
   }
 
-  @media (max-height: 700px) {
-    width: 120px;
-  }
+  /*  @media (max-height: 700px) {
+    width: 170px;
+  } */
 }
 
 .gif {

@@ -84,10 +84,18 @@ const openFactsModal = () => {
   factsStore.openModal();
 };
 
-// TODO добавить логику с датой для disabled
+// TODO удалить код ниже и раскомментировать следующий!
 const isFactsAvailable = ref(true);
 const isFallAvailable = ref(true);
 const isShadowsAvailable = ref(true);
+
+/* const fallDate = new Date("2023-11-08");
+const shadowsDate = new Date("2023-11-12");
+const factsDate = new Date("2023-11-16");
+
+const isFactsAvailable = ref(isToday(factsDate));
+const isFallAvailable = ref(isToday(fallDate));
+const isShadowsAvailable = ref(isToday(shadowsDate)); */
 </script>
 
 <style lang="scss" scoped>

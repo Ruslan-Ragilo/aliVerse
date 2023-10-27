@@ -13,8 +13,10 @@
     </div>
     <div class="games-remained">
       <ElementsText transform="upper">Осталось:</ElementsText>
-      <p class="games-text">{{ gamesRemained }}</p>
-      <p class="games-text">{{ getRemainedText() }}</p>
+      <div class="games-text-wrapper">
+        <p class="games-text">{{ gamesRemained }}</p>
+        <p class="games-text">{{ getRemainedText() }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -25,11 +27,11 @@ const gamesRemained = computed(() => store.gamesRemained);
 
 const getRemainedText = () => {
   if (gamesRemained.value === 5 || gamesRemained.value === 0) {
-    return "игр";
+    return "раундов";
   } else if (gamesRemained.value === 1) {
-    return "игра";
+    return "раунд";
   } else {
-    return "игры";
+    return "раунда";
   }
 };
 </script>
@@ -39,7 +41,7 @@ const getRemainedText = () => {
   position: absolute;
   top: 30px;
   left: 45px;
-  width: 220px;
+  width: 250px;
   height: 60px;
   display: flex;
   flex-direction: column;
@@ -47,10 +49,16 @@ const getRemainedText = () => {
   align-items: center;
   z-index: 1;
 
-  @include media(620px) {
+  @include media(750px) {
     left: 22px;
-    width: 137px;
-    height: 37px;
+    width: 220px;
+    height: 50px;
+  }
+
+  @include media(600px) {
+    left: 22px;
+    width: 120px;
+    height: 45px;
   }
 }
 .games-remained {
@@ -62,17 +70,30 @@ const getRemainedText = () => {
   justify-content: center;
   align-items: center;
 
-  @include media(620px) {
+  @include media(750px) {
     width: calc(100% - 10px);
     height: calc(100% - 10px);
+  }
+
+  @include media(600px) {
+    flex-direction: column;
+    gap: 2px;
   }
 
   p {
     font-size: 16px;
 
-    @include media(620px) {
+    @include media(750px) {
+      font-size: 14px;
+    }
+
+    @include media(600px) {
       font-size: 10px;
     }
+  }
+
+  .games-text-wrapper {
+    display: flex;
   }
 
   .games-text {
@@ -101,7 +122,7 @@ const getRemainedText = () => {
   width: calc(100% - 15px);
   height: 100%;
 
-  @include media(620px) {
+  @include media(750px) {
     width: calc(100% - 10px);
     height: 100%;
   }
@@ -111,7 +132,7 @@ const getRemainedText = () => {
   width: calc(100% - 7.5px);
   height: calc(100% - 7.5px);
 
-  @include media(620px) {
+  @include media(750px) {
     width: calc(100% - 5px);
     height: calc(100% - 5px);
   }
@@ -121,7 +142,7 @@ const getRemainedText = () => {
   width: 100%;
   height: calc(100% - 15px);
 
-  @include media(620px) {
+  @include media(750px) {
     width: 100%;
     height: calc(100% - 10px);
   }
@@ -131,7 +152,7 @@ const getRemainedText = () => {
   width: calc(100% - 7.5px);
   height: calc(100% - 15px);
 
-  @include media(620px) {
+  @include media(750px) {
     width: calc(100% - 5px);
     height: calc(100% - 10px);
   }
@@ -141,7 +162,7 @@ const getRemainedText = () => {
   width: calc(100% - 15px);
   height: calc(100% - 7.5px);
 
-  @include media(620px) {
+  @include media(750px) {
     width: calc(100% - 10px);
     height: calc(100% - 5px);
   }
@@ -153,7 +174,7 @@ const getRemainedText = () => {
   position: absolute;
   z-index: 3;
 
-  @include media(620px) {
+  @include media(750px) {
     width: 2.5px;
     height: 2.5px;
   }
@@ -162,7 +183,7 @@ const getRemainedText = () => {
   top: 7.5px;
   left: 7.5px;
 
-  @include media(620px) {
+  @include media(750px) {
     top: 5px;
     left: 5px;
   }
@@ -171,7 +192,7 @@ const getRemainedText = () => {
   top: 7.5px;
   right: 7.5px;
 
-  @include media(620px) {
+  @include media(750px) {
     top: 5px;
     right: 5px;
   }
@@ -180,7 +201,7 @@ const getRemainedText = () => {
   bottom: 7.5px;
   left: 7.5px;
 
-  @include media(620px) {
+  @include media(750px) {
     bottom: 5px;
     left: 5px;
   }
@@ -189,7 +210,7 @@ const getRemainedText = () => {
   bottom: 7.5px;
   right: 7.5px;
 
-  @include media(620px) {
+  @include media(750px) {
     bottom: 5px;
     right: 5px;
   }

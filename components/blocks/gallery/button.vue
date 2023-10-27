@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper-button">
+  <div class="wrapper-button" :class="className">
     <ElementsPixelButton
       color="red"
       :size="buttonSize"
@@ -11,6 +11,10 @@
 </template>
 
 <script setup lang="ts">
+defineProps<{
+  className?: string;
+}>();
+
 const buttonText = ref("");
 const buttonSize = ref<"large" | "middle">("large");
 
@@ -41,5 +45,9 @@ onBeforeUnmount(() => {
   @include media(600px) {
     padding: 35px 20px;
   }
+}
+.upper-button {
+  margin-bottom: 0;
+  padding: 20px 70px 0 70px;
 }
 </style>

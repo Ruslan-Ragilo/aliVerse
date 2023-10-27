@@ -6,7 +6,7 @@
       placeholder="Иван Алексеев"
       required="true"
       type="text"
-      :theme="background ? `light` : ``"
+      :theme="background !== 'white' ? `light` : ``"
     >
       Твое имя
     </ElementsCustomInput>
@@ -16,21 +16,26 @@
       placeholder="petrova@mail.ru"
       required="true"
       type="text"
-      :theme="background ? `light` : ``"
+      :theme="background !== 'white' ? `light` : ``"
     >
       Email получателя
     </ElementsCustomInput>
-    <ElementsCustomInput
-      v-model="formData.text"
-      input-type="textarea"
-      placeholder="Напиши спасибку"
-      required="true"
-      :cols="40"
-      :rows="textareaRows"
-      :theme="background ? `light` : ``"
-    >
-      Текст
-    </ElementsCustomInput>
+    <div class="form-item" :class="background !== 'white' ? `light` : ``">
+      <ElementsText class="sub-text" size="xxs" transform="upper">
+        Текст
+      </ElementsText>
+      <textarea
+        id=""
+        v-model="formData.text"
+        class="textarea"
+        name=""
+        placeholder="Напиши спасибку"
+        required="true"
+        cols="40"
+        :rows="textareaRows"
+        :class="background !== 'white' ? `light` : ``"
+      ></textarea>
+    </div>
     <ElementsPixelButton color="red" size="middle" class="sumbit-button">
       Отправить
     </ElementsPixelButton>
@@ -38,23 +43,33 @@
 </template>
 
 <script setup lang="ts">
-const { background } = defineProps<{
-  background: string | null;
+const props = defineProps<{
+  background: string;
 }>();
 
 const formData = ref({
   name: "",
   email: "",
   text: "",
+  background: props.background,
 });
 
 const handleSubmit = () => {
+  // TODO отправлять форму на бек
   formData.value = {
     name: "",
     email: "",
     text: "",
+    background: "white",
   };
 };
+
+watch(
+  () => props.background,
+  () => {
+    formData.value.background = props.background;
+  },
+);
 
 const textareaRows = ref(6);
 
@@ -88,5 +103,43 @@ onBeforeUnmount(() => {
   @include media(450px) {
     margin: 0 auto;
   }
+}
+
+.textarea {
+  width: 100%;
+  padding: 10px 0 12px;
+  border: none;
+  border-bottom: 3px solid #bdbdbd;
+  text-transform: uppercase;
+  font-family: "Better Vcr";
+  font-size: 16px;
+  line-height: 130.5%;
+  color: #000;
+  background-color: transparent;
+  transition: all 0.1s ease-in;
+  resize: none;
+}
+
+.textarea:focus {
+  outline: none;
+  border-bottom: 3px solid #606060;
+}
+
+.textarea p {
+  color: #bdbdbd;
+}
+
+.light p,
+.light .textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.light .textarea {
+  color: #fff;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.light .textarea:focus {
+  border-bottom: 3px solid rgba(255, 255, 255, 1);
 }
 </style>
