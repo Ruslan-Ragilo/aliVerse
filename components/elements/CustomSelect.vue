@@ -53,7 +53,7 @@ const handleSelect = (value) => {
   .value {
     background-color: $white;
     border: 4px solid $black;
-    padding: 0px 30px;
+    padding: 0px 25px;
     position: relative;
     cursor: pointer;
     display: flex;

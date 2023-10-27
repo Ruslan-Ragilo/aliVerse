@@ -45,7 +45,14 @@ const selectedProducts = computed(() => {
       (pr) => String(pr?.location) === String(selectedLocation.value),
     );
   } else {
-    return products.value;
+    const uniqueNames = new Set();
+    return products.value.filter((product) => {
+      if (!uniqueNames.has(product.name)) {
+        uniqueNames.add(product.name);
+        return true;
+      }
+      return false;
+    });
   }
 });
 
@@ -58,6 +65,7 @@ onMounted(async () => {
 <template>
   <div class="wrapper">
     <div class="wrapper-main wrap">
+      <ElementsProductModal />
       <div class="wrapper-top">
         <ElementsCustomSelect
           :options="locations"

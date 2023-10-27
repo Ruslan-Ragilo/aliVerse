@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface Product {
+export interface Product {
   id: number;
   name: string;
   image?: string;
@@ -14,15 +14,30 @@ interface Product {
 const props = defineProps<{ product: Product }>();
 
 const userStore = useUserData();
+const productStore = useProductStore();
+
 const isButtonDisabled = computed(() => {
   return (
     Number(userStore.userData.balanceUser) <=
-      Number(props?.product?.ali_price) || userStore.cartItems?.length >= 2
+      Number(props?.product?.ali_price) ||
+    userStore.cartItems?.length >= 3 ||
+    !props?.product?.in_stock
   );
 });
+
+// TODO удалить код ниже и раскомментировать следующий!
+const isProductAvailable = ref(true);
+
+/* const saleDate = new Date("2023-11-20");
+const isProductAvailable = ref(isToday(saleDate)); */
 </script>
 <template>
   <div class="wrapper-slide">
+    <div v-if="!isProductAvailable" class="hint">
+      <ElementsText themes="secondary" transform="upper" align="center">
+        Недоступно до 20 ноября
+      </ElementsText>
+    </div>
     <div class="slide-header">
       <img
         class="product-image"
@@ -43,10 +58,15 @@ const isButtonDisabled = computed(() => {
         >
           {{ props?.product?.name }}
         </ElementsText>
+      </div>
+      <div>
+        <ElementsText themes="mustard" size="s" transform="upper">
+          {{ props?.product?.ali_price }}
+        </ElementsText>
         <button
           class="add-to-cart"
-          :disabled="isButtonDisabled"
-          @click="userStore.addToCart(props.product?.id)"
+          :disabled="isButtonDisabled || !isProductAvailable"
+          @click="productStore.openModal(props.product.name)"
         >
           <img
             title="Добавить в корзину"
@@ -54,15 +74,6 @@ const isButtonDisabled = computed(() => {
             alt="Добавить в корзину"
           />
         </button>
-      </div>
-      <div>
-        <ElementsText transform="upper" size="xxs" class="text-slide color">
-          Только {{ locationsMap[`${props.product?.location}`] }}
-        </ElementsText>
-
-        <ElementsText class="price-points">
-          {{ props?.product?.ali_price }}
-        </ElementsText>
       </div>
     </div>
   </div>
@@ -79,7 +90,7 @@ const isButtonDisabled = computed(() => {
 }
 .wrapper-slide {
   width: 300px !important;
-  height: 475px;
+  height: 470px;
   max-height: fit-content;
   display: flex;
   flex-direction: column;
@@ -113,7 +124,7 @@ const isButtonDisabled = computed(() => {
   .text-slide {
     width: 100%;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -144,11 +155,6 @@ const isButtonDisabled = computed(() => {
     .color {
       color: #ff2722;
     }
-
-    .price-points {
-      color: #ffd776;
-      text-shadow: 1px 1px #ff2722;
-    }
   }
 }
 
@@ -159,5 +165,23 @@ const isButtonDisabled = computed(() => {
 }
 .smaller {
   font-size: 16px;
+  -webkit-line-clamp: 3 !important;
+}
+.hint {
+  width: 140px;
+  height: 63px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: #ff2722;
+  border: 4px solid #fff;
+  z-index: 3;
+
+  p {
+    font-size: 12px;
+  }
 }
 </style>

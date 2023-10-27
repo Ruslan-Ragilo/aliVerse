@@ -111,16 +111,7 @@ const isFactsAvailable = ref(true);
 const isFallAvailable = ref(true);
 const isShadowsAvailable = ref(true);
 
-/* const isToday = (date: Date) => {
-  const today = new Date();
-
-  if (today.toDateString() === date.toDateString()) {
-    return true;
-  }
-
-  return false;
-};
-
+/* 
 const fallDate = new Date("2023-11-08");
 const shadowsDate = new Date("2023-11-12");
 const factsDate = new Date("2023-11-16");
