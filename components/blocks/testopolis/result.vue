@@ -160,7 +160,7 @@ const handleModalClose = () => {
   min-width: 216px;
   width: 25%;
   aspect-ratio: 1/1;
-  object-fit: cover;
+  object-fit: contain;
   margin-bottom: 10px;
 
   @media (max-height: 900px) {
