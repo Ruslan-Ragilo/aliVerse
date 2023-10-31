@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -9,6 +9,19 @@ import { Navigation } from "swiper/modules";
 const modules = [Navigation];
 const prev = ref(null);
 const next = ref(null);
+
+const isModalOpen = ref(false);
+const openMentorIndex = ref<number | null>(null);
+
+const openModal = (index: number) => {
+  isModalOpen.value = true;
+  openMentorIndex.value = index;
+};
+
+const closeModal = () => {
+  isModalOpen.value = false;
+  openMentorIndex.value = null;
+};
 </script>
 
 <template>
@@ -55,20 +68,11 @@ const next = ref(null);
           prevEl: prev,
         }"
       >
-        <SwiperSlide v-for="item in 6" :key="item" class="slide">
-          <div class="wrapper-card">
-            <img
-              src="@/assets/images/png/topDir.png"
-              alt=""
-              draggable="false"
-            />
-            <div class="tooltip">
-              <ElementsText align="center" transform="upper"
-                >Александр <br />
-                епифанов</ElementsText
-              >
-            </div>
-          </div>
+        <SwiperSlide v-for="(item, index) in 6" :key="item" class="slide">
+          <BlocksMentorsMentorCard
+            :mentor-index="index"
+            :on-click="openModal"
+          />
         </SwiperSlide>
         <div class="wrapper-nav">
           <button ref="prev" class="nav prev"></button>
@@ -76,18 +80,19 @@ const next = ref(null);
         </div>
       </Swiper>
       <div class="mentors-desktop">
-        <div v-for="item in 6" :key="item" class="wrapper-card">
-          <img src="@/assets/images/png/topDir.png" alt="" draggable="false" />
-          <div class="tooltip">
-            <ElementsText align="center" transform="upper"
-              >Александр <br />
-              епифанов</ElementsText
-            >
-          </div>
-        </div>
+        <BlocksMentorsMentorCard
+          v-for="(item, index) in 6"
+          :key="item"
+          :mentor-index="index"
+          :on-click="openModal"
+        />
       </div>
     </div>
   </div>
+  <BlocksMentorsSlider
+    :clicked-photo-index="openMentorIndex"
+    :on-swiper-close="closeModal"
+  />
 </template>
 
 <style lang="scss" scoped>
@@ -161,7 +166,7 @@ const next = ref(null);
   }
 }
 .slide {
-  width: 240px;
+  width: 200px;
   padding-bottom: 30px;
 }
 .wrapper-nav {
@@ -200,39 +205,6 @@ const next = ref(null);
 .nav.prev:disabled {
   opacity: 0.5;
 }
-
-.wrapper-card {
-  border: 5px solid $white;
-  background-image: url("~/assets/images/svg/bgMain.svg");
-  background-size: cover;
-  background-position: center 10%;
-  padding-top: 10px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  aspect-ratio: 211/300;
-
-  img {
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .tooltip {
-    width: 170px;
-    height: 62px;
-    border: 2px solid #c0a76b;
-    position: absolute;
-    background-color: #fff;
-    background-image: url("~/assets/images/png/mentor-tooltip.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    bottom: -31px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
 .red {
   color: #ff2722;
 }
