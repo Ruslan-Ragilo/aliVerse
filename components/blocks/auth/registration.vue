@@ -104,7 +104,7 @@ onMounted(() => {
         @handle-is-valid="handleIsValid"
         @handle-is-show="handleIsShowAvatars"
       />
-      <div class="agreement">
+      <div v-if="!authStore.getRegisterSuccess" class="agreement">
         <div class="wrapper-сheckbox">
           <label class="container-checkbox">
             <input
@@ -147,13 +147,16 @@ onMounted(() => {
           зарегистрироваться
         </ElementsPixelButton>
       </NuxtLink>
+      <ElementsText
+        v-if="authStore.getRegisterSuccess"
+        themes="secondary"
+        class="textAfterReg"
+      >
+        Поздравляем, теперь у тебя есть космические права!<br />
+        Пристёгивай ремень, педаль в пол и погнали! Нас ждёт увлекательное
+        путешествие
+      </ElementsText>
     </div>
-    <ElementsText
-      v-if="authStore.getRegisterSuccess"
-      themes="secondary"
-      class="textAfterReg"
-      >asdasdasdassss sssssssssss ssssssssssssssss</ElementsText
-    >
   </div>
 </template>
 
@@ -168,9 +171,18 @@ onMounted(() => {
 }
 
 .textAfterReg {
-  color: #ff2722;
+  color: #fff;
   margin-top: 50px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  max-width: 700px;
+  min-height: 94px;
+
+  @include media(400px) {
+    margin-top: 30px;
+    font-size: 12px;
+  }
 }
 .btnReg {
   margin-top: 30px;
