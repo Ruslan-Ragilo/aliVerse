@@ -121,7 +121,7 @@ const next = ref(null);
   width: 100%;
 
   @include media(1200px) {
-    margin-top: 60vw;
+    margin-top: 35vw;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
