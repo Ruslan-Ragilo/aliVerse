@@ -23,7 +23,7 @@ const handleLocationChange = (product: Product) => {
       :key="product.location"
       class="location-option"
     >
-      <div class="wrapperCheckbox">
+      <div class="wrapper-сheckbox">
         <label class="container-checkbox">
           <input
             :id="`${product.location}`"
@@ -55,7 +55,7 @@ const handleLocationChange = (product: Product) => {
   align-items: center;
   gap: 15px;
 }
-.wrapperCheckbox {
+.wrapper-сheckbox {
   width: 22px;
   height: 22px;
 }

@@ -1,4 +1,3 @@
-<!-- eslint-disable prettier/prettier -->
 <script setup>
 import { storeToRefs } from "pinia";
 
