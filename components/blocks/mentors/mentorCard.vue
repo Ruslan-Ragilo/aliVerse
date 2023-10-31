@@ -3,19 +3,40 @@ const props = defineProps<{
   mentorIndex: number;
   onClick: (index: number) => void;
 }>();
+
+const names = [
+  "Елена Грунтова",
+  "Виль Габдуллин",
+  "Марат Сахаутдинов",
+  "Александр Громов",
+  "Толик Орлов",
+  "Сергей Гречин",
+];
+
+const photos = [
+  "png/mentors/Грунтова.png",
+  "png/mentors/Габдуллин.png",
+  "png/mentors/Сахаутдинов.png",
+  "png/mentors/Громов.png",
+  "png/mentors/Орлов.png",
+  "png/mentors/Гречин.png",
+];
 </script>
 
 <template>
   <div class="wrapper-card">
     <div class="tooltip">
-      <ElementsText align="center" transform="upper"
-        >Александр <br />
-        епифанов</ElementsText
-      >
+      <ElementsText align="center" transform="upper">
+        {{ names[props.mentorIndex] }}
+      </ElementsText>
     </div>
     <div class="card-inner">
       <div class="card-front">
-        <img src="@/assets/images/png/topDir.png" alt="" draggable="false" />
+        <img
+          :src="getImageUrl(photos[props.mentorIndex])"
+          alt=""
+          draggable="false"
+        />
       </div>
       <div class="card-back" @click="onClick(props.mentorIndex)">
         <ElementsText size="m" transform="upper" align="center">
@@ -80,6 +101,7 @@ const props = defineProps<{
   min-width: 150px;
   max-width: 170px;
   height: 62px;
+  padding: 20px;
   border: 2px solid #c0a76b;
   position: absolute;
   background-color: #fff;

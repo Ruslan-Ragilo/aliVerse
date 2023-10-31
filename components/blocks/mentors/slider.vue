@@ -13,7 +13,7 @@
       >
         <img
           v-show="!isLoading"
-          :src="photo"
+          :src="getImageUrl(photo)"
           alt="Информация о менторе"
           class="photo"
           @load="setIsLoading(false)"
@@ -32,8 +32,6 @@
 
 <script setup lang="ts">
 import { register } from "swiper/element/bundle";
-import photo1 from "~/assets/images/png/topDir.png";
-
 register();
 
 const props = defineProps<{
@@ -42,7 +40,14 @@ const props = defineProps<{
 }>();
 
 // TODO добавить карточки менторов в массив
-const photos = [photo1, photo1, photo1, photo1, photo1, photo1];
+const photos = [
+  "png/mentors/Грунтова.png",
+  "png/mentors/Габдуллин.png",
+  "png/mentors/Сахаутдинов.png",
+  "png/mentors/Громов.png",
+  "png/mentors/Орлов.png",
+  "png/mentors/Гречин.png",
+];
 const clickedPhotoIndex = computed(() => props.clickedPhotoIndex);
 
 const closeSwiperModal = () => {
@@ -118,5 +123,15 @@ const setIsLoading = (value: boolean) => {
 .swiper-button-next img {
   width: 100%;
   height: 100%;
+}
+.photo {
+  width: 100%;
+  max-width: 70vw;
+  max-height: 80vh;
+  object-fit: cover;
+
+  @include media(500px) {
+    max-width: 80vw;
+  }
 }
 </style>
