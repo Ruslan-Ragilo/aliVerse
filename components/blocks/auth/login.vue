@@ -89,11 +89,11 @@ const handleLogin = async () => {
             >зарегистрироваться</ElementsText
           >
         </NuxtLink>
-        <NuxtLink to="/auth/forgotPin"
+        <!--  <NuxtLink to="/auth/forgotPin"
           ><ElementsText transform="upper" class="lostPin"
             >забыл pin код</ElementsText
           ></NuxtLink
-        >
+        > -->
       </div>
     </form>
     <div></div>
