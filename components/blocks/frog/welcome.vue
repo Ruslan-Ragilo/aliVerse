@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper-welcome">
     <svg
+      v-if="resolution > 1200"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       version="1.1"
@@ -26,7 +27,7 @@
         d="M48.6,7.6l-5,5c-0.8,0.8-0.8,2,0,2.8C44,15.8,44.5,16,45,16s1-0.2,1.4-0.6l3.6-3.6l3.6,3.6C54,15.8,54.5,16,55,16  s1-0.2,1.4-0.6c0.8-0.8,0.8-2,0-2.8l-5-5C50.6,6.8,49.4,6.8,48.6,7.6z"
       />
     </svg>
-    <p>Прилближай картинку на колесико мыши, <br />чтобы точно найти жабку</p>
+    <p>Прилближай картинку, <br />чтобы точно найти жабку</p>
     <div class="start-button">
       <ElementsPixelButton color="red" size="middle" @click="startGame">
         Начать
@@ -37,6 +38,7 @@
 
 <script setup lang="ts">
 const store = useFrogStore();
+const resolution = window.innerWidth;
 
 onMounted(() => {
   store.checkAvailability();
