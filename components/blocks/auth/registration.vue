@@ -25,10 +25,10 @@ const setUrlImage = (url) => {
   urlImage.value = url;
 };
 
-const isAgreementChecked = ref(false);
-
-const handleAgreementChange = (e) => {
-  isAgreementChecked.value = e.target.checked;
+const isRegisterSuccessfull = ref(true);
+const handleSubmit = () => {
+  isRegisterSuccessfull.value = authStore.getRegisterSuccess;
+  authStore.setIsReadyData(true);
 };
 
 onMounted(() => {
@@ -105,30 +105,18 @@ onMounted(() => {
         @handle-is-show="handleIsShowAvatars"
       />
       <div v-if="!authStore.getRegisterSuccess" class="agreement">
-        <div class="wrapper-сheckbox">
-          <label class="container-checkbox">
-            <input
-              id="agreement"
-              type="checkbox"
-              name="location"
-              @input="handleAgreementChange"
-            />
-            <span class="checkmark"></span>
-          </label>
-        </div>
-        <label for="agreement">
-          <ElementsText
-            class="agreement-link-wrapper"
-            size="xs"
-            themes="secondary"
-            transform="upper"
-          >
-            Принять
-            <a class="agreement-link" href="#" target="_blank">
-              пользовательское соглашение
-            </a>
-          </ElementsText>
-        </label>
+        <ElementsText
+          class="agreement-link-wrapper"
+          size="xxs"
+          themes="secondary"
+          transform="upper"
+          align="center"
+        >
+          Нажимая «Зарегистрироваться», я соглашаюсь с
+          <a class="agreement-link" href="#" target="_blank">
+            Пользовательским соглашением
+          </a>
+        </ElementsText>
       </div>
       <NuxtLink
         v-if="!authStore.getRegisterSuccess"
@@ -137,12 +125,12 @@ onMounted(() => {
       >
         <ElementsPixelButton
           class-text="btn-registraion"
-          :disabled="!isValidFrom || !isAgreementChecked"
+          :disabled="!isValidFrom"
           size="large"
           color="red"
           :is-main-page="true"
           :is-ready-data="isReadyData"
-          @click="authStore.setIsReadyData(true)"
+          @click="handleSubmit"
         >
           зарегистрироваться
         </ElementsPixelButton>
@@ -155,6 +143,13 @@ onMounted(() => {
         Поздравляем, теперь у тебя есть космические права!<br />
         Пристёгивай ремень, педаль в пол и погнали! Нас ждёт увлекательное
         путешествие
+      </ElementsText>
+      <ElementsText
+        v-if="!isRegisterSuccessfull"
+        themes="secondary"
+        class="textAfterReg register-error"
+      >
+        Упс, кажется, у тебя нет доступа! Обратись к техподдержке
       </ElementsText>
     </div>
   </div>
@@ -183,6 +178,10 @@ onMounted(() => {
     margin-top: 30px;
     font-size: 12px;
   }
+}
+
+.register-error {
+  margin-top: 10px;
 }
 .btnReg {
   margin-top: 30px;
@@ -294,62 +293,13 @@ onMounted(() => {
   }
 }
 .agreement-link-wrapper {
+  font-size: 14px;
+
   @include media(450px) {
     font-size: 12px;
   }
 }
 .agreement-link {
   color: #fff;
-}
-.wrapper-checkbox {
-  width: 22px;
-  height: 22px;
-}
-
-.container-checkbox {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Hide the browser's default checkbox */
-.container-checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-  visibility: hidden;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 22px;
-  width: 22px;
-  background: url("@/assets/images/svg/borderCheckbox.png");
-  background-size: contain;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-
-/* Show the checkmark when checked */
-.container-checkbox input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container-checkbox .checkmark:after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: url("@/assets/images/svg/checkmark.png") no-repeat;
-  background-size: cover;
 }
 </style>
