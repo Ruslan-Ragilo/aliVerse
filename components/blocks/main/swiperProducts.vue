@@ -118,7 +118,7 @@ onMounted(async () => {
         class="run-string"
         :clone="true"
         :duration="5"
-        :direction="'reverse'"
+        :direction="''"
       >
         <div class="string">
           <ElementsText transform="upper" size="xl" themes="secondary">
