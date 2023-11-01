@@ -1,4 +1,3 @@
-<!-- eslint-disable prettier/prettier -->
 <script setup>
 import { storeToRefs } from "pinia";
 
@@ -191,6 +190,7 @@ const handlePin = (e, index) => {
   padding: 30px;
   background-color: #fff;
   max-width: 588px;
+  margin: 0 auto;
 
   @include media(744px) {
     padding: 30px 10px;

@@ -18,6 +18,9 @@
         </div>
       </div>
       <img class="logo" src="@/assets/images/png/logoFooter.png" alt="" />
+      <ElementsText class="rights" size="xs" themes="secondary" align="center">
+        © ООО «Алибаба.ком (РУ)». Все права защищены
+      </ElementsText>
     </div>
   </footer>
 </template>
@@ -29,15 +32,24 @@ footer {
 .wrapper-footer {
   display: flex;
   justify-content: center;
-}
-.clouds-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 300px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+
+  @include media(700px) {
+    height: 250px;
+  }
 
   @include media(450px) {
     height: 200px;
   }
+}
+
+.clouds-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 300px;
 }
 .clouds {
   position: relative;
@@ -88,14 +100,5 @@ footer {
 }
 .logo {
   position: static;
-  padding-bottom: 100px;
-
-  @include media(700px) {
-    height: 250px;
-  }
-
-  @include media(450px) {
-    height: 200px;
-  }
 }
 </style>

@@ -6,6 +6,8 @@ const isValidFrom = ref(false);
 const isShow = ref(false);
 const isReadyData = false;
 
+// TODO добавить ссылку в пользовательское соглашение
+
 const setActiveImage = (index, urlImg) => {
   indexImage.value = index;
   setUrlImage(urlImg);
@@ -21,6 +23,12 @@ const handleIsShowAvatars = (value) => {
 
 const setUrlImage = (url) => {
   urlImage.value = url;
+};
+
+const isRegisterSuccessfull = ref(true);
+const handleSubmit = () => {
+  isRegisterSuccessfull.value = authStore.getRegisterSuccess;
+  authStore.setIsReadyData(true);
 };
 
 onMounted(() => {
@@ -96,6 +104,20 @@ onMounted(() => {
         @handle-is-valid="handleIsValid"
         @handle-is-show="handleIsShowAvatars"
       />
+      <div v-if="!authStore.getRegisterSuccess" class="agreement">
+        <ElementsText
+          class="agreement-link-wrapper"
+          size="xxs"
+          themes="secondary"
+          transform="upper"
+          align="center"
+        >
+          Нажимая «Зарегистрироваться», я соглашаюсь с
+          <a class="agreement-link" href="#" target="_blank">
+            Пользовательским соглашением
+          </a>
+        </ElementsText>
+      </div>
       <NuxtLink
         v-if="!authStore.getRegisterSuccess"
         class="btnReg"
@@ -108,18 +130,28 @@ onMounted(() => {
           color="red"
           :is-main-page="true"
           :is-ready-data="isReadyData"
-          @click="authStore.setIsReadyData(true)"
+          @click="handleSubmit"
         >
           зарегистрироваться
         </ElementsPixelButton>
       </NuxtLink>
+      <ElementsText
+        v-if="authStore.getRegisterSuccess"
+        themes="secondary"
+        class="textAfterReg"
+      >
+        Поздравляем, теперь у тебя есть космические права!<br />
+        Пристёгивай ремень, педаль в пол и погнали! Нас ждёт увлекательное
+        путешествие
+      </ElementsText>
+      <ElementsText
+        v-if="!isRegisterSuccessfull"
+        themes="secondary"
+        class="textAfterReg register-error"
+      >
+        Упс, кажется, у тебя нет доступа! Обратись к техподдержке
+      </ElementsText>
     </div>
-    <ElementsText
-      v-if="authStore.getRegisterSuccess"
-      themes="secondary"
-      class="textAfterReg"
-      >asdasdasdassss sssssssssss ssssssssssssssss</ElementsText
-    >
   </div>
 </template>
 
@@ -134,14 +166,31 @@ onMounted(() => {
 }
 
 .textAfterReg {
-  color: #ff2722;
+  color: #fff;
   margin-top: 50px;
   text-align: center;
-}
-.btnReg {
-  margin-top: 10%;
   display: flex;
   justify-content: center;
+  max-width: 700px;
+  min-height: 94px;
+
+  @include media(400px) {
+    margin-top: 30px;
+    font-size: 12px;
+  }
+}
+
+.register-error {
+  margin-top: 10px;
+}
+.btnReg {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+
+  @include media(400px) {
+    margin-top: 10px;
+  }
 }
 
 .wrapperProfile {
@@ -232,5 +281,25 @@ onMounted(() => {
       }
     }
   }
+}
+.agreement {
+  margin-top: 40px;
+  display: flex;
+  gap: 40px;
+  padding: 0 20px;
+
+  @include media(400px) {
+    margin-top: 30px;
+  }
+}
+.agreement-link-wrapper {
+  font-size: 14px;
+
+  @include media(450px) {
+    font-size: 12px;
+  }
+}
+.agreement-link {
+  color: #fff;
 }
 </style>
