@@ -67,6 +67,8 @@
 .bg {
   width: 100%;
   height: 100%;
+  max-width: 1200px;
+
   @include media(744px) {
     /* width: 600px; */
     width: 110vw;

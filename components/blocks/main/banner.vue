@@ -41,7 +41,11 @@
     alt=""
     draggable="false"
   />
-  <div class="wrapper-frog absolute" @click="handleModalOpen">
+  <div
+    v-if="isWednesday"
+    class="wrapper-frog absolute"
+    @click="handleModalOpen"
+  >
     <img
       class="fullCloud"
       src="@/assets/images/svg/fullCloud.svg"
@@ -69,6 +73,13 @@
 
 <script setup lang="ts">
 const store = useFrogStore();
+
+// TODO удалить код ниже и раскомментировать следующий!
+const isWednesday = ref(true);
+
+/* const firstWednesday = new Date("2023-11-08");
+const secondWednesday = new Date("2023-11-15");
+const isWednesday = ref(isToday(firstWednesday) || isToday(secondWednesday)); */
 
 const handleModalOpen = () => {
   store.openModal();

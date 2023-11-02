@@ -85,6 +85,7 @@
 }
 .planet {
   width: 100%;
+  max-width: 1200px;
 
   @include media(600px) {
     transform: scale(1.3) translate(-15vw, -5vw);
