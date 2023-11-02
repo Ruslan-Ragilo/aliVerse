@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper-main content">
+  <div class="wrapper-main content" :class="{ grayscale: !isActive }">
     <div class="letter">
       <ElementsText
         class="heading-title"
@@ -11,13 +11,14 @@
         фортунус</ElementsText
       >
       <ElementsMessageIcon class="alien-wrapper">
-        <ElementsText transform="upper"
+        <ElementsText v-if="isActive" transform="upper"
           >Так-так, кто это нарушает скоростной режим? Тормози! Лучше проверим,
           насколько ты везунчик — мы на планете «Фортунус»! У тебя есть
           <span class="red-text">1 попытка в день</span>, чтобы испытать судьбу
           — крути колесо и получай подарки</ElementsText
         >
         <ElementsPixelButton
+          v-if="isActive"
           :is-main-page="true"
           color="red"
           size="large"
@@ -27,6 +28,9 @@
         >
           Крутануть планету
         </ElementsPixelButton>
+        <ElementsText v-if="!isActive" transform="upper" align="center">
+          Планета устала и ушла спать.<br />До новых встреч!
+        </ElementsText>
       </ElementsMessageIcon>
     </div>
     <div class="planets-wrapper">
@@ -37,6 +41,8 @@
 </template>
 
 <script setup lang="ts">
+const isActive = ref(isToday(new Date("2023-11-02"), new Date("2023-11-20")));
+
 const store = useWheelStore();
 store.checkAvailability();
 const isAvailable = computed(() => store.isAvailable);
@@ -74,6 +80,10 @@ const handleSpin = () => {
   @include media(743px) {
     padding-top: 40.1vw;
   }
+}
+
+.grayscale > *:not(.letter) {
+  filter: grayscale(1);
 }
 
 .letter > p {

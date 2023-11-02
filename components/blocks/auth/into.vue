@@ -41,8 +41,9 @@
 </template>
 
 <script setup lang="ts">
-const openingDate = new Date("2023-11-08");
-const isAvailable = ref(isToday(openingDate));
+const isAvailable = ref(
+  isToday(new Date("2023-11-08"), new Date("2023-11-25")),
+);
 </script>
 
 <style scoped lang="scss">

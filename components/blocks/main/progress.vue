@@ -1,9 +1,17 @@
 <script setup>
-const progresTotal = ref(Math.round(100 * (11 / 11)));
+const progresTotal = ref(Math.round(100 * (0 / 11)));
+// Вот тут менять прогресс ракеты (1 из 11 и т.д.)
+
+const isAvailable = ref(
+  isToday(
+    new Date("November 11 2023 10:59:59 GMT+03:00"),
+    new Date("2023-11-18"),
+  ),
+);
 </script>
 
 <template>
-  <div class="wrapper-main">
+  <div v-if="isAvailable" class="wrapper-main">
     <div class="wrapper">
       <div class="wrapper-progress">
         <img
