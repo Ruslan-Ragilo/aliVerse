@@ -22,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-// TODO в 4 ответ добавить ссылку
 const questionsData = ref({
   1: {
     question: "Как выиграть мерч?",
@@ -41,7 +40,7 @@ const questionsData = ref({
   },
   4: {
     question: "Где я могу посмотреть полные правила активации?",
-    answer: `Полные правила активации “Ali Verse” доступны <b><a href="" target="_blank" class="link">по ссылке</a></b>`,
+    answer: `Полные правила активации “Ali Verse” доступны <b><a href="/conditions.pdf" target="_blank" class="link">по ссылке</a></b>`,
   },
   5: {
     question: "К кому я могу обращаться с вопросами по активации?",
