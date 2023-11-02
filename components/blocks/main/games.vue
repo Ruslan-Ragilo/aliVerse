@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper-main wrapper">
-    <div class="games">
+    <div class="games" :class="{ grayscale: !isAvailable }">
       <BlocksGamesFull v-if="screenSize === 'large'" />
       <BlocksGamesSlider v-if="screenSize === 'small'" />
       <BlocksGamesMoon />
@@ -12,11 +12,14 @@
           draggable="false"
         />
         <ElementsMessageIcon class="alien">
-          <ElementsText transform="upper">
+          <ElementsText v-if="isAvailable" transform="upper">
             Готов разбогатеть? Заходи в любую из мини-игр, зарабатывай Ali Coins
             и копи на свой приз! Каждый день у тебя будет
             <span class="red">только 1 попытка</span>, чтобы сыграть в мини-игру
             — не теряй времени, летс гоу!
+          </ElementsText>
+          <ElementsText v-if="!isAvailable" transform="upper" align="center">
+            Планета устала и ушла спать.<br />До новых встреч!
           </ElementsText>
         </ElementsMessageIcon>
       </div>
@@ -27,6 +30,10 @@
 </template>
 
 <script setup lang="ts">
+const isAvailable = ref(
+  isToday(new Date("2023-11-02"), new Date("2023-11-20")),
+);
+
 const screenSize = ref<"large" | "small">("large");
 
 const updateScreenSize = () => {
@@ -57,6 +64,10 @@ onBeforeUnmount(() => {
   @include media(1200px) {
     padding-bottom: 45vw;
   }
+}
+
+.grayscale > *:not(.message) {
+  filter: grayscale(1);
 }
 .message {
   max-width: 610px;

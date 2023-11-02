@@ -47,8 +47,10 @@
 }
 .moon-wrapper {
   position: relative;
+  z-index: -1;
 }
 .moon {
+  position: relative;
   z-index: -1;
 
   @include media(1200px) {
