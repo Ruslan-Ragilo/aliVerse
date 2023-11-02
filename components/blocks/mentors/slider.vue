@@ -3,7 +3,6 @@
     <swiper-container
       class="swiper-container"
       :navigation="swiperNavigationOptions"
-      :initial-slide="clickedPhotoIndex"
     >
       <swiper-slide
         v-for="photo in photos"
@@ -32,6 +31,7 @@
 
 <script setup lang="ts">
 import { register } from "swiper/element/bundle";
+import { mentorsPhotos } from "~/stores/mentorsData/mentorsData";
 register();
 
 const props = defineProps<{
@@ -39,16 +39,22 @@ const props = defineProps<{
   onSwiperClose: () => void;
 }>();
 
-// TODO добавить карточки менторов в массив
-const photos = [
-  "png/mentors/Грунтова.png",
-  "png/mentors/Габдуллин.png",
-  "png/mentors/Сахаутдинов.png",
-  "png/mentors/Громов.png",
-  "png/mentors/Орлов.png",
-  "png/mentors/Гречин.png",
-];
 const clickedPhotoIndex = computed(() => props.clickedPhotoIndex);
+const photos = ref(
+  props.clickedPhotoIndex !== null
+    ? mentorsPhotos[props.clickedPhotoIndex]
+    : [],
+);
+
+watch(
+  () => props.clickedPhotoIndex,
+  () => {
+    photos.value =
+      props.clickedPhotoIndex !== null
+        ? mentorsPhotos[props.clickedPhotoIndex]
+        : [];
+  },
+);
 
 const closeSwiperModal = () => {
   props.onSwiperClose();
@@ -128,7 +134,7 @@ const setIsLoading = (value: boolean) => {
   width: 100%;
   max-width: 70vw;
   max-height: 80vh;
-  object-fit: cover;
+  object-fit: contain;
 
   @include media(500px) {
     max-width: 80vw;
