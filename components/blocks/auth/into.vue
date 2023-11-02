@@ -87,19 +87,30 @@ const isAvailable = ref(isToday(openingDate));
 }
 .reg-button {
   position: relative;
-  margin-top: 70px;
+  margin-top: 60px;
+
+  @include media(500px) {
+    margin-top: 100px;
+  }
 }
 .hint {
-  width: 200px;
-  height: 70px;
-  padding: 10px 32px;
+  width: 100%;
+  height: 100px;
   position: absolute;
-  top: -60px;
+  top: -40px;
+  font-size: 20px;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  background-color: #ff2722;
-  border: 4px solid #fff;
   z-index: 1;
+
+  @include media(500px) {
+    top: -70px;
+    padding: 0 70px;
+  }
+
+  p {
+    font-size: 20px;
+  }
 }
 </style>
