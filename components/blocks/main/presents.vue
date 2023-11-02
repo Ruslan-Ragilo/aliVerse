@@ -31,10 +31,14 @@ const dataPresents = [
   },
 ];
 const modules = [Pagination];
+
+const isAvailable = ref(
+  isToday(new Date("2023-11-12"), new Date("2023-11-18")),
+);
 </script>
 
 <template>
-  <div class="wrapper-main">
+  <div v-if="isAvailable" class="wrapper-main">
     <div class="wrapper">
       <div class="wrapper-img">
         <img class="tab" src="@/assets/images/png/tabPresent.png" alt="" />

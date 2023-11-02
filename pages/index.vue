@@ -46,6 +46,7 @@ window.onscroll = () => {
       <img class="frog" src="@/assets/images/svg/frog.svg" alt="" />
     </div>
     <BlocksMainHello />
+    <BlocksMainCounter />
     <BlocksMainPresents />
     <BlocksMainProgress />
     <BlocksMainGalery />
