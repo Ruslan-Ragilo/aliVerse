@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper-buttons">
-    <button class="button">
+    <!-- <button class="button">
       <img
         class="button-image"
         src="~/assets/images/png/shadows/volume.png"
         alt=""
       />
-    </button>
+    </button> -->
     <button class="button" @click="handleClose">
       <img
         class="button-image"
