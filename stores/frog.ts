@@ -5,12 +5,12 @@ export const useFrogStore = defineStore("frog", () => {
   const isModalOpen = ref(false);
   const isFinished = ref(false);
   const results = ref(null);
-  const gameScreen = ref<"welcome"| "game" | "finish">("welcome");
+  const gameScreen = ref<"welcome" | "game" | "finish">("welcome");
 
   async function checkAvailability() {
     const limit = await $api.get("/api/user/get-remained-event-limit", {
       params: {
-        id: 4,
+        id: 5,
       },
     });
 
@@ -48,22 +48,22 @@ export const useFrogStore = defineStore("frog", () => {
     isFinished.value = true;
     gameScreen.value = "finish";
 
-    // const formData = new FormData();
-    // formData.append("event_id", "3");
-    // formData.append("score", currentCoins.value.toString());
+    const formData = new FormData();
+    formData.append("event_id", "5");
+    formData.append("score", "100");
 
-    // const limit = await $api.get("/api/user/get-remained-event-limit", {
-    //   params: {
-    //     id: 3,
-    //   },
-    // });
+    const limit = await $api.get("/api/user/get-remained-event-limit", {
+      params: {
+        id: 5,
+      },
+    });
 
-    // if (limit.data > 0) {
-    //   const userStore = useUserData();
+    if (limit.data > 0) {
+      const userStore = useUserData();
 
-    //   await $api.post("/api/event/add", formData);
-    //   await userStore.fetchUsers();
-    // }
+      await $api.post("/api/event/add", formData);
+      await userStore.fetchUsers();
+    }
   }
 
   return {
