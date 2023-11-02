@@ -77,9 +77,10 @@ const store = useFrogStore();
 // TODO удалить код ниже и раскомментировать следующий!
 const isWednesday = ref(true);
 
-/* const firstWednesday = new Date("2023-11-08");
-const secondWednesday = new Date("2023-11-15");
-const isWednesday = ref(isToday(firstWednesday) || isToday(secondWednesday)); */
+/* const isWednesday = ref(
+  isToday(new Date("2023-11-08"), new Date("2023-11-09")) ||
+    isToday(new Date("2023-11-15"), new Date("2023-11-16")),
+); */
 
 const handleModalOpen = () => {
   store.openModal();

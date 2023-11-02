@@ -89,13 +89,15 @@ const isFactsAvailable = ref(true);
 const isFallAvailable = ref(true);
 const isShadowsAvailable = ref(true);
 
-/* const fallDate = new Date("2023-11-08");
-const shadowsDate = new Date("2023-11-12");
-const factsDate = new Date("2023-11-16");
-
-const isFactsAvailable = ref(isToday(factsDate));
-const isFallAvailable = ref(isToday(fallDate));
-const isShadowsAvailable = ref(isToday(shadowsDate)); */
+/* const isFactsAvailable = ref(
+  isToday(new Date("2023-11-16"), new Date("2023-11-20")),
+);
+const isFallAvailable = ref(
+  isToday(new Date("2023-11-08"), new Date("2023-11-20")),
+);
+const isShadowsAvailable = ref(
+  isToday(new Date("2023-11-12"), new Date("2023-11-20")),
+); */
 </script>
 
 <style lang="scss" scoped>

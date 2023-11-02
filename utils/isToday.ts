@@ -1,9 +1,7 @@
-export const isToday = (date: Date) => {
+export const isToday = (startDate: Date, endDate: Date) => {
   const today = new Date();
 
-  if (today.toDateString() === date.toDateString()) {
+  if (today >= startDate && today <= endDate) {
     return true;
   }
-
-  return false;
 };
