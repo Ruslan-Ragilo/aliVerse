@@ -87,7 +87,7 @@ const isAvailable = ref(isToday(openingDate));
 }
 .reg-button {
   position: relative;
-  margin-top: 60px;
+  margin-top: 100px;
 
   @include media(500px) {
     margin-top: 100px;
