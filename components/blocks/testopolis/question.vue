@@ -56,10 +56,17 @@ watch(
     }
   }
 
+  @include media(500px) {
+    p {
+      font-size: 16px;
+      text-shadow: 1px 0 #fff;
+    }
+  }
+
   @media (max-height: 700px) {
     p {
-      font-size: 24px;
-      text-shadow: 2px 0 #fff;
+      font-size: 16px;
+      text-shadow: 1px 0 #fff;
     }
   }
 }

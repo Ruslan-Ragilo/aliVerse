@@ -85,12 +85,14 @@ const handleModalClose = () => {
   @include media(600px) {
     p:first-of-type {
       font-size: 24px;
+      text-shadow: 1.5px 0 #ffffff;
     }
   }
 
   @media (max-height: 900px) {
     p:first-of-type {
       font-size: 28px;
+      text-shadow: 1.5px 0 #ffffff;
     }
 
     p:nth-of-type(2) {
@@ -105,6 +107,7 @@ const handleModalClose = () => {
 
       p:first-of-type {
         font-size: 22px;
+        text-shadow: 1px 0 #ffffff;
       }
 
       p:nth-of-type(2) {
@@ -130,6 +133,7 @@ const handleModalClose = () => {
   @media (max-height: 700px) {
     p:first-of-type {
       font-size: 24px;
+      text-shadow: 1.5px 0 #ffffff;
     }
 
     p:nth-of-type(2) {
@@ -144,6 +148,7 @@ const handleModalClose = () => {
   @include media(400px) {
     p:first-of-type {
       font-size: 20px;
+      text-shadow: 1px 0 #ffffff;
     }
 
     p:nth-of-type(2) {
