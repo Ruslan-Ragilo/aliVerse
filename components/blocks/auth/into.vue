@@ -42,7 +42,10 @@
 
 <script setup lang="ts">
 const isAvailable = ref(
-  isToday(new Date("2023-11-08"), new Date("2023-11-25")),
+  isToday(
+    new Date("November 08 2023 07:59:59 GMT+03:00"),
+    new Date("2023-11-25"),
+  ),
 );
 </script>
 
