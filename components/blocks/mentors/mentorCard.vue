@@ -84,6 +84,7 @@ const photos = [
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+  z-index: -1;
 }
 .card-front {
   border: 5px solid #fff;
@@ -112,6 +113,6 @@ const photos = [
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 5;
 }
 </style>
