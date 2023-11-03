@@ -4,6 +4,11 @@
       class="swiper-container"
       :navigation="swiperNavigationOptions"
       :initial-slide="clickedPhotoIndex"
+      :modules="[Zoom, Keyboard]"
+      :zoom="true"
+      :keyboard="{
+        enabled: true,
+      }"
     >
       <swiper-slide
         v-for="photo in photos"
@@ -24,6 +29,7 @@
 </template>
 
 <script setup lang="ts">
+import { Zoom, Keyboard } from "swiper/modules";
 import { register } from "swiper/element/bundle";
 register();
 
