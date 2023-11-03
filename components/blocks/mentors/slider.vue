@@ -20,7 +20,6 @@
             class="photo"
             @load="setIsLoading(false)"
           />
-          <div class="swiper-zoom-target"></div>
         </div>
         <ElementsSpinner v-if="isLoading" />
       </swiper-slide>
@@ -101,15 +100,10 @@ const setIsLoading = (value: boolean) => {
 }
 .swiper-zoom-container {
   width: 100%;
-  height: 100%;
+  max-width: 70vw;
+  max-height: 80vh;
 }
-.swiper-zoom-target {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-}
+
 .swiper-button-prev::after,
 .swiper-button-next::after {
   content: none;
