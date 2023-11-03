@@ -128,9 +128,13 @@ onMounted(() => {
             themes="secondary"
             transform="upper"
           >
-            Принять
+            Я согласен с
             <a class="agreement-link" href="#" target="_blank">
-              пользовательское соглашение
+              Пользовательским соглашением
+            </a>
+            и
+            <a class="agreement-link" href="#" target="_blank">
+              Политикой конфиденциальности
             </a>
           </ElementsText>
         </label>
