@@ -41,7 +41,12 @@
 </template>
 
 <script setup lang="ts">
-const isActive = ref(isToday(new Date("2023-11-02"), new Date("2023-11-20")));
+const isActive = ref(
+  isToday(
+    new Date("2023-11-02"),
+    new Date("November 19 2023 23:59:59 GMT+03:00"),
+  ),
+);
 
 const store = useWheelStore();
 store.checkAvailability();
