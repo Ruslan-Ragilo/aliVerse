@@ -3,6 +3,8 @@
     <swiper-container
       class="swiper-container"
       :navigation="swiperNavigationOptions"
+      :modules="[Zoom]"
+      :zoom="true"
     >
       <swiper-slide
         v-for="photo in photos"
@@ -10,13 +12,16 @@
         class="swiper-slide"
         @click.self="closeSwiperModal"
       >
-        <img
-          v-show="!isLoading"
-          :src="getImageUrl(photo)"
-          alt="Информация о менторе"
-          class="photo"
-          @load="setIsLoading(false)"
-        />
+        <div class="swiper-zoom-container">
+          <img
+            v-show="!isLoading"
+            :src="getImageUrl(photo)"
+            alt="Информация о менторе"
+            class="photo"
+            @load="setIsLoading(false)"
+          />
+          <div class="swiper-zoom-target"></div>
+        </div>
         <ElementsSpinner v-if="isLoading" />
       </swiper-slide>
     </swiper-container>
@@ -31,6 +36,7 @@
 
 <script setup lang="ts">
 import { register } from "swiper/element/bundle";
+import { Zoom } from "swiper/modules";
 import { mentorsPhotos } from "~/stores/mentorsData/mentorsData";
 register();
 
@@ -92,6 +98,17 @@ const setIsLoading = (value: boolean) => {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+.swiper-zoom-container {
+  width: 100%;
+  height: 100%;
+}
+.swiper-zoom-target {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 .swiper-button-prev::after,
 .swiper-button-next::after {
