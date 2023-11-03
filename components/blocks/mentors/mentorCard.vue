@@ -30,6 +30,13 @@ const photos = [
         {{ names[props.mentorIndex] }}
       </ElementsText>
     </div>
+    <div class="card-mobile" @click="onClick(props.mentorIndex)">
+      <img
+        :src="getImageUrl(photos[props.mentorIndex])"
+        alt=""
+        draggable="false"
+      />
+    </div>
     <div class="card-inner">
       <div class="card-front">
         <img
@@ -63,6 +70,7 @@ const photos = [
   }
 }
 .card-inner {
+  display: block;
   position: relative;
   width: 100%;
   height: 100%;
@@ -73,6 +81,10 @@ const photos = [
   background-image: url("~/assets/images/svg/bgMain.svg");
   background-size: cover;
   background-position: center 10%;
+
+  @include media(1200px) {
+    display: none;
+  }
 }
 .wrapper-card:hover .card-inner {
   transform: rotateY(180deg);
@@ -96,6 +108,15 @@ const photos = [
   background-color: #fff;
   transform: rotateY(180deg);
   cursor: pointer;
+}
+.card-mobile {
+  display: none;
+  border: 5px solid #fff;
+  cursor: pointer;
+
+  @include media(1200px) {
+    display: block;
+  }
 }
 
 .tooltip {

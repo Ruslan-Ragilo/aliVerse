@@ -103,8 +103,7 @@ const setIsLoading = (value: boolean) => {
 }
 .swiper-zoom-container {
   width: fit-content;
-  max-width: 70vw;
-  max-height: 80vh;
+  height: fit-content;
 }
 
 .swiper-button-prev::after,
