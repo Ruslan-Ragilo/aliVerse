@@ -133,7 +133,7 @@ onMounted(() => {
               Пользовательским соглашением
             </a>
             и
-            <a class="agreement-link" href="#" target="_blank">
+            <a class="agreement-link" href="/politics.pdf" target="_blank">
               Политикой конфиденциальности
             </a>
           </ElementsText>
