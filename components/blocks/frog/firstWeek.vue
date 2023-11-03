@@ -138,6 +138,68 @@
         </defs>
       </svg>
     </SvgPanZoom>
+    <svg
+      id="svgControls"
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="87"
+      viewBox="0 0 40 87"
+      fill="none"
+    >
+      <g clip-path="url(#clip0_301_77676)">
+        <rect width="40" height="87" rx="10" fill="white" />
+        <rect x="18.7783" y="9.77808" width="2" height="20" fill="#333333" />
+        <rect
+          x="29.7783"
+          y="18.7781"
+          width="2"
+          height="20"
+          transform="rotate(90 29.7783 18.7781)"
+          fill="#333333"
+        />
+        <rect
+          x="29.7783"
+          y="65"
+          width="2"
+          height="20"
+          transform="rotate(90 29.7783 65)"
+          fill="#333333"
+        />
+        <rect
+          x="40"
+          y="43"
+          width="1"
+          height="40"
+          transform="rotate(90 40 43)"
+          fill="#F9F9F9"
+        />
+        <rect
+          id="zoomPlus"
+          @click="zoomIn"
+          x="2"
+          y="4"
+          width="36"
+          height="37"
+          fill="#D9D9D9"
+          fill-opacity="0.05"
+        />
+        <rect
+          id="zoomMinus"
+          @click="zoomOut"
+          x="2"
+          y="46"
+          width="36"
+          height="37"
+          fill="#D9D9D9"
+          fill-opacity="0.05"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_301_77676">
+          <rect width="40" height="87" rx="10" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
   </div>
 </template>
 
@@ -145,11 +207,18 @@
 import { SvgPanZoom } from "vue-svg-pan-zoom";
 const store = useFrogStore();
 const svg = ref(null);
+const basicZoom = ref(null);
+const zoomIn = async () => {
+  svg.value.zoomIn();
+}
+const zoomOut = async () => {
+  svg.value.zoomOut();
+}
 function created(obj) {
   svg.value = obj;
+  console.log(obj.getSizes().realZoom)
   obj.setBeforePan(beforePan);
   // console.log(svg.value)
-
 }
 function beforePan(oldPan, newPan) {
   const gutterWidth = svg.value.getSizes().width;
@@ -158,8 +227,10 @@ function beforePan(oldPan, newPan) {
   let leftLimit;
   let rightLimit;
   if (window.innerWidth < 1300) {
+    // Пошаманить формулу
     leftLimit = (-(sizes.width - window.innerWidth) / 2) * sizes.realZoom;
     rightLimit = ((sizes.width - window.innerWidth) / 2) * sizes.realZoom;
+    // Пошаманить формулу
     svg.value.disableZoom();
     svg.value.disableDblClickZoom();
   } else {
@@ -182,4 +253,10 @@ function findJabka() {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#svgControls {
+  position: absolute;
+  bottom: 41px;
+  right: 41px;
+}
+</style>

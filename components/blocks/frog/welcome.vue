@@ -1,31 +1,7 @@
 <template>
   <div class="wrapper-welcome">
-    <svg
-      v-if="resolution > 1200"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      version="1.1"
-      x="0px"
-      y="0px"
-      viewBox="0 0 100 125"
-      width="80"
-      height="100"
-      style="enable-background: new 0 0 100 100"
-      xml:space="preserve"
-      fill="#FFF"
-    >
-      <path
-        d="M32,41v18c0,9.9,8.1,18,18,18c9.9,0,18-8.1,18-18V41c0-9.9-8.1-18-18-18C40.1,23,32,31.1,32,41z M50,27c7.7,0,14,6.3,14,14  v18c0,7.7-6.3,14-14,14s-14-6.3-14-14V41C36,33.3,42.3,27,50,27z"
-      />
-      <path
-        d="M50,44c1.1,0,2-0.9,2-2v-6c0-1.1-0.9-2-2-2s-2,0.9-2,2v6C48,43.1,48.9,44,50,44z"
-      />
-      <path
-        d="M48.6,92.4C49,92.8,49.5,93,50,93s1-0.2,1.4-0.6l5-5c0.8-0.8,0.8-2,0-2.8s-2-0.8-2.8,0L50,88.2l-3.6-3.6  c-0.8-0.8-2-0.8-2.8,0c-0.8,0.8-0.8,2,0,2.8L48.6,92.4z"
-      />
-      <path
-        d="M48.6,7.6l-5,5c-0.8,0.8-0.8,2,0,2.8C44,15.8,44.5,16,45,16s1-0.2,1.4-0.6l3.6-3.6l3.6,3.6C54,15.8,54.5,16,55,16  s1-0.2,1.4-0.6c0.8-0.8,0.8-2,0-2.8l-5-5C50.6,6.8,49.4,6.8,48.6,7.6z"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64px" height="64px">
+      <path d="M 11 2 L 11 4 L 21 4 L 21 2 L 11 2 z M 21 4 L 21 6 L 23 6 L 23 4 L 21 4 z M 23 6 L 23 16 L 25 16 L 25 6 L 23 6 z M 23 16 L 21 16 L 21 18 L 23 18 L 23 16 z M 21 18 L 11 18 L 11 20 L 15 20 L 15 23 L 14 23 L 14 30 L 18 30 L 18 23 L 17 23 L 17 20 L 21 20 L 21 18 z M 11 18 L 11 16 L 9 16 L 9 18 L 11 18 z M 9 16 L 9 6 L 7 6 L 7 16 L 9 16 z M 9 6 L 11 6 L 11 4 L 9 4 L 9 6 z" fill="#FFF"/>
     </svg>
     <p>Прилближай картинку, <br />чтобы точно найти жабку</p>
     <div class="start-button">
@@ -76,5 +52,9 @@ p {
   /* position: absolute;
   bottom: 15%; */
   margin-top: 30px;
+}
+svg {
+  transform: rotate(-25deg);
+  margin: 0 0 20px;
 }
 </style>
