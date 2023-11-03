@@ -3,8 +3,11 @@
     <swiper-container
       class="swiper-container"
       :navigation="swiperNavigationOptions"
-      :modules="[Zoom]"
+      :modules="[Zoom, Keyboard]"
       :zoom="true"
+      :keyboard="{
+        enabled: true,
+      }"
     >
       <swiper-slide
         v-for="photo in photos"
@@ -35,7 +38,7 @@
 
 <script setup lang="ts">
 import { register } from "swiper/element/bundle";
-import { Zoom } from "swiper/modules";
+import { Zoom, Keyboard } from "swiper/modules";
 import { mentorsPhotos } from "~/stores/mentorsData/mentorsData";
 register();
 

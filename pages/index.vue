@@ -59,11 +59,54 @@ window.onscroll = () => {
     <BlocksMainTest />
     <BlocksMainQuestion />
     <BlocksMainFooter />
+    <div class="hint">
+      <div class="hint-content">
+        <img
+          width="50"
+          height="50"
+          src="~/assets/images/png/rotate.png"
+          alt=""
+        />
+        <ElementsText
+          size="s"
+          themes="secondary"
+          transform="upper"
+          align="center"
+        >
+          Пожалуйста, переверни устройство<br />в вертикальное положение
+        </ElementsText>
+      </div>
+    </div>
   </NuxtLayout>
   <ElementsSpinner v-else />
 </template>
 
 <style lang="scss" scoped>
+.hint {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+
+  @media screen and (orientation: landscape) and (max-height: 425px) and (max-width: 900px) {
+    display: flex;
+  }
+}
+.hint-content {
+  width: 80vw;
+  height: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
 .wrapper-header {
   position: fixed;
   width: 100%;
