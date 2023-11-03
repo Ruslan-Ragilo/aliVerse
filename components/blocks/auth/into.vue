@@ -96,7 +96,6 @@ const isAvailable = ref(
 }
 .hint {
   width: 100%;
-  height: 100px;
   position: absolute;
   top: -40px;
   font-size: 20px;

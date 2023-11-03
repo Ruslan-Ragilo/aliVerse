@@ -23,12 +23,12 @@
   left: -225px;
 
   @include media(800px) {
-    top: 20%;
+    top: 0;
     left: -200px;
   }
 
   @include media(500px) {
-    top: 20%;
+    top: 0;
     left: -300px;
   }
 }

@@ -3,6 +3,8 @@
     <swiper-container
       class="swiper-container"
       :navigation="swiperNavigationOptions"
+      :modules="[Zoom]"
+      :zoom="true"
     >
       <swiper-slide
         v-for="photo in photos"
@@ -10,13 +12,15 @@
         class="swiper-slide"
         @click.self="closeSwiperModal"
       >
-        <img
-          v-show="!isLoading"
-          :src="getImageUrl(photo)"
-          alt="Информация о менторе"
-          class="photo"
-          @load="setIsLoading(false)"
-        />
+        <div class="swiper-zoom-container">
+          <img
+            v-show="!isLoading"
+            :src="getImageUrl(photo)"
+            alt="Информация о менторе"
+            class="photo"
+            @load="setIsLoading(false)"
+          />
+        </div>
         <ElementsSpinner v-if="isLoading" />
       </swiper-slide>
     </swiper-container>
@@ -31,6 +35,7 @@
 
 <script setup lang="ts">
 import { register } from "swiper/element/bundle";
+import { Zoom } from "swiper/modules";
 import { mentorsPhotos } from "~/stores/mentorsData/mentorsData";
 register();
 
@@ -93,6 +98,12 @@ const setIsLoading = (value: boolean) => {
   align-items: center;
   height: 100vh;
 }
+.swiper-zoom-container {
+  width: 100%;
+  max-width: 70vw;
+  max-height: 80vh;
+}
+
 .swiper-button-prev::after,
 .swiper-button-next::after {
   content: none;

@@ -2,11 +2,11 @@
   <div>
     <SvgPanZoom
       style="width: 1250px; height: 100%"
-      :zoomEnabled="true"
-      :controlIconsEnabled="false"
+      :zoom-enabled="true"
+      :control-icons-enabled="false"
       :fit="true"
       :contain="true"
-      :minZoom="1"
+      :min-zoom="1"
       @created="created"
     >
       <svg
@@ -175,23 +175,23 @@
         />
         <rect
           id="zoomPlus"
-          @click="zoomIn"
-          x="2"
-          y="4"
-          width="36"
-          height="37"
+          x="0"
+          y="0"
+          width="43"
+          height="43"
           fill="#D9D9D9"
           fill-opacity="0.05"
+          @click="zoomIn"
         />
         <rect
           id="zoomMinus"
-          @click="zoomOut"
-          x="2"
-          y="46"
-          width="36"
-          height="37"
+          x="0"
+          y="44"
+          width="43"
+          height="43"
           fill="#D9D9D9"
           fill-opacity="0.05"
+          @click="zoomOut"
         />
       </g>
       <defs>
@@ -210,13 +210,13 @@ const svg = ref(null);
 const basicZoom = ref(null);
 const zoomIn = async () => {
   svg.value.zoomIn();
-}
+};
 const zoomOut = async () => {
   svg.value.zoomOut();
-}
+};
 function created(obj) {
   svg.value = obj;
-  console.log(obj.getSizes().realZoom)
+  console.log(obj.getSizes().realZoom);
   obj.setBeforePan(beforePan);
   // console.log(svg.value)
 }
@@ -258,5 +258,10 @@ function findJabka() {
   position: absolute;
   bottom: 41px;
   right: 41px;
+  cursor: pointer;
+}
+#zoomPlus:hover,
+#zoomMinus:hover {
+  filter: brightness(0.1);
 }
 </style>
