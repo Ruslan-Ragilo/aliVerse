@@ -62,7 +62,7 @@ const handleClose = () => {
   overflow: hidden;
   @include media(800px) {
     width: 100%;
-    height: 100%;
+    height: 100vh;
   }
 }
 .modal::-webkit-scrollbar {
