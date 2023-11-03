@@ -117,16 +117,13 @@ const handleSpin = () => {
 
   @include media(1200px) {
     position: relative;
-    right: 100px;
   }
 
   @include media(850px) {
-    right: 60px;
   }
 
   @include media(743px) {
     top: 0;
-    right: 0;
   }
 }
 .red-text {
