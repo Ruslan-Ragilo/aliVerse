@@ -14,12 +14,12 @@ const names = [
 ];
 
 const photos = [
-  "png/mentors/Грунтова.png",
-  "png/mentors/Габдуллин.png",
-  "png/mentors/Сахаутдинов.png",
-  "png/mentors/Громов.png",
-  "png/mentors/Орлов.png",
-  "png/mentors/Гречин.png",
+  "png/mentors/Грунтова.jpg",
+  "png/mentors/Габдуллин.jpg",
+  "png/mentors/Сахаутдинов.jpg",
+  "png/mentors/Громов.jpg",
+  "png/mentors/Орлов.jpg",
+  "png/mentors/Гречин.jpg",
 ];
 </script>
 
@@ -112,6 +112,6 @@ const photos = [
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
 }
 </style>
