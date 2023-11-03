@@ -16,7 +16,9 @@
         class="swiper-slide"
         @click.self="closeSwiperModal"
       >
-        <BlocksGallerySliderPhoto :photo-src="photo" />
+        <div class="swiper-zoom-container">
+          <BlocksGallerySliderPhoto :photo-src="photo" />
+        </div>
       </swiper-slide>
     </swiper-container>
     <swiper-button-prev class="swiper-button-prev">
@@ -66,6 +68,10 @@ const swiperNavigationOptions = {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.swiper-zoom-container {
+  width: fit-content;
+  height: fit-content;
 }
 .swiper-slide {
   display: flex;

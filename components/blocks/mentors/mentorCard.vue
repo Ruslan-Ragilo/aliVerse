@@ -101,6 +101,9 @@ const photos = [
 .tooltip {
   min-width: 150px;
   max-width: 170px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   height: 62px;
   padding: 20px;
   border: 2px solid #c0a76b;
