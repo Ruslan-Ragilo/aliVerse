@@ -1,7 +1,7 @@
 <template>
   <form action="" class="wrapper-form" @submit.prevent="handleSubmit">
     <ElementsCustomInput
-      v-model="formData.name"
+      v-model="formValues.name"
       input-type="input"
       placeholder="Иван Алексеев"
       required="true"
@@ -11,7 +11,7 @@
       Твое имя
     </ElementsCustomInput>
     <ElementsCustomInput
-      v-model="formData.email"
+      v-model="formValues.email"
       input-type="input"
       placeholder="petrova@mail.ru"
       required="true"
@@ -26,7 +26,7 @@
       </ElementsText>
       <textarea
         id=""
-        v-model="formData.text"
+        v-model="formValues.text"
         class="textarea"
         name=""
         placeholder="Напиши спасибку"
@@ -43,20 +43,34 @@
 </template>
 
 <script setup lang="ts">
+import $api from "~/http";
+
 const props = defineProps<{
   background: string;
 }>();
 
-const formData = ref({
+const templates = ["white", "bg1", "bg2", "bg3"];
+
+const formValues = ref({
   name: "",
   email: "",
   text: "",
   background: props.background,
 });
 
-const handleSubmit = () => {
-  // TODO отправлять форму на бек
-  formData.value = {
+const handleSubmit = async () => {
+  const formData = new FormData();
+  formData.append("name", formValues.value.name);
+  formData.append("receiver", formValues.value.email);
+  formData.append(
+    "layout",
+    templates.indexOf(formValues.value.background).toString(),
+  );
+  formData.append("content", formValues.value.text);
+
+  await $api.post("/api/thank/send", formData);
+
+  formValues.value = {
     name: "",
     email: "",
     text: "",
@@ -67,7 +81,7 @@ const handleSubmit = () => {
 watch(
   () => props.background,
   () => {
-    formData.value.background = props.background;
+    formValues.value.background = props.background;
   },
 );
 
