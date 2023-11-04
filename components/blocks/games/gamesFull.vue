@@ -90,13 +90,22 @@ const isFallAvailable = ref(true);
 const isShadowsAvailable = ref(true);
 
 /* const isFactsAvailable = ref(
-  isToday(new Date("2023-11-16"), new Date("2023-11-20")),
+  isToday(
+    new Date("November 16 2023 07:59:59 GMT+03:00"),
+    new Date("November 19 2023 23:59:59 GMT+03:00"),
+  ),
 );
 const isFallAvailable = ref(
-  isToday(new Date("2023-11-08"), new Date("2023-11-20")),
+  isToday(
+    new Date("November 08 2023 07:59:59 GMT+03:00"),
+    new Date("November 19 2023 23:59:59 GMT+03:00"),
+  ),
 );
 const isShadowsAvailable = ref(
-  isToday(new Date("2023-11-12"), new Date("2023-11-20")),
+  isToday(
+    new Date("November 12 2023 07:59:59 GMT+03:00"),
+    new Date("November 19 2023 23:59:59 GMT+03:00"),
+  ),
 ); */
 </script>
 

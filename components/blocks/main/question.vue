@@ -45,7 +45,7 @@ const questionsData = ref({
   5: {
     question: "К кому я могу обращаться с вопросами по активации?",
     answer:
-      "По всем вопросам, связанным с активацией Ali Verse, можно обращаться на почту support@aliverse.ru",
+      "По всем вопросам, связанным с активацией Ali Verse, можно обращаться на почту aer_news@alibaba-inc.com",
   },
 });
 </script>

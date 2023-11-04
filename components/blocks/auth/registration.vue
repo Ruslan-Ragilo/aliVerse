@@ -171,6 +171,7 @@ onMounted(() => {
         class="textAfterReg register-error"
       >
         Упс, кажется, у тебя нет доступа! Обратись к техподдержке
+        aer_news@alibaba-inc.com
       </ElementsText>
     </div>
   </div>
