@@ -3,6 +3,11 @@ const popupStore = useModalBasked();
 
 const userStore = useUserData();
 
+const handleOrder = async () => {
+  await userStore.makeOrder();
+  await userStore.getCart();
+};
+
 onMounted(async () => {
   await userStore.getCart();
 });
@@ -37,7 +42,7 @@ onMounted(async () => {
           v-if="userStore.cartItems?.length > 0"
           color="red"
           size="middle"
-          @click="userStore.makeOrder"
+          @click="handleOrder"
         >
           Купить
         </ElementsPixelButton>

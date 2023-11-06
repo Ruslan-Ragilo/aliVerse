@@ -11,17 +11,44 @@ export interface Product {
   location: number;
   sold: number;
 }
+
+export interface CartItem {
+  cart_form_id: number;
+  date: string;
+  id: number;
+  price: number | null;
+  product: {
+    id: number;
+    name: string;
+    image: string | null;
+    price: number;
+    ali_price: number;
+  };
+  product_id: number;
+  quantity: number | null;
+  user_id: number;
+}
+
 const props = defineProps<{ product: Product }>();
 
 const userStore = useUserData();
 const productStore = useProductStore();
 
 const isButtonDisabled = computed(() => {
+  const cart = ref(userStore.cartItems);
+
+  const itemsInCart = cart.value.filter(
+    (item: CartItem) => item.product.id === props.product.id,
+  );
+
+  const isInStock = props.product!.in_stock! - itemsInCart.length;
+
   return (
     Number(userStore.userData.balanceUser) <=
       Number(props?.product?.ali_price) ||
     userStore.cartItems?.length >= 3 ||
-    !props?.product?.in_stock
+    !isInStock
+    // todo если total products меньше, чем в корзине
   );
 });
 
