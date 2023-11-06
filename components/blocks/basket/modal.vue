@@ -12,7 +12,6 @@ const handleOrder = async () => {
   const cart = ref(userStore.cartItems);
   cart.value.map((item: CartItem) => {
     userStore.deleteCartItem(item.id);
-    console.log(item);
     return null;
   });
 
