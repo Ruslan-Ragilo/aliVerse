@@ -5,7 +5,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation } from "swiper/modules";
-import $api from "~/http";
 
 const modules = [Navigation];
 
@@ -35,30 +34,31 @@ const locations = [
   },
 ];
 
-const products = ref([]);
+const productStore = useProductStore();
 
 const selectedLocation = ref(0);
 
 const selectedProducts = computed(() => {
   if (selectedLocation.value > 0) {
-    return products.value?.filter(
+    return productStore.allProducts?.filter(
       (pr) => String(pr?.location) === String(selectedLocation.value),
     );
   } else {
     const uniqueNames = new Set();
-    return products.value.filter((product) => {
-      if (!uniqueNames.has(product.name)) {
-        uniqueNames.add(product.name);
-        return true;
-      }
-      return false;
-    });
+    if (productStore.allProducts.length) {
+      return productStore.allProducts?.filter((product) => {
+        if (!uniqueNames.has(product.name)) {
+          uniqueNames.add(product.name);
+          return true;
+        }
+        return false;
+      });
+    }
   }
 });
 
 onMounted(async () => {
-  const res = await $api("api/product/show-all");
-  products.value = res?.data?.products ?? [];
+  await productStore.getAllProducts();
 });
 </script>
 
