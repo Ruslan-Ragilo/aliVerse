@@ -32,9 +32,16 @@ const handleAgreementChange = (e) => {
 
 const isRegisterSuccessfull = ref(true);
 const handleSubmit = () => {
-  isRegisterSuccessfull.value = authStore.getRegisterSuccess;
   authStore.setIsReadyData(true);
+  setTimeout(() => {
+    isRegisterSuccessfull.value = authStore.isRegisterSuccess;
+  }, 1000);
 };
+
+watch(
+  () => isRegisterSuccessfull.value,
+  () => {},
+);
 
 onMounted(() => {
   const myHeaders = new Headers();
@@ -161,12 +168,13 @@ onMounted(() => {
         themes="secondary"
         class="textAfterReg"
       >
-        Поздравляем, теперь у тебя есть космические права!<br />
-        Пристёгивай ремень, педаль в пол и погнали! Нас ждёт увлекательное
-        путешествие
+        Совсем скоро у тебя появятся твои космические права.<br />
+        Осталось только подтвердить регистрацию! Перейди по ссылке, которую мы
+        отправили на указанную почту, и готовься к отправке!<br /><br />А если
+        письмо не пришло, сообщи об этом на aer_news@alibaba-inc.com
       </ElementsText>
       <ElementsText
-        v-if="!isRegisterSuccessfull"
+        v-if="!isRegisterSuccessfull && !authStore.getRegisterSuccess"
         themes="secondary"
         class="textAfterReg register-error"
       >
@@ -189,6 +197,7 @@ onMounted(() => {
 
 .textAfterReg {
   color: #fff;
+  margin: 0 auto;
   margin-top: 50px;
   text-align: center;
   display: flex;
@@ -196,7 +205,7 @@ onMounted(() => {
   max-width: 700px;
   min-height: 94px;
 
-  @include media(400px) {
+  @include media(450px) {
     margin-top: 30px;
     font-size: 12px;
   }

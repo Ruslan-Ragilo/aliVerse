@@ -1,7 +1,26 @@
-<script setup>
+<script setup lang="ts">
 const popupStore = useModalBasked();
 
 const userStore = useUserData();
+const isDisabled = ref(false);
+
+const handleOrder = async () => {
+  isDisabled.value = true;
+  await userStore.makeOrder();
+  await userStore.getCart();
+
+  const cart = ref(userStore.cartItems);
+  cart.value.map((item: CartItem) => {
+    userStore.deleteCartItem(item.id);
+    console.log(item);
+    return null;
+  });
+
+  await userStore.getCart();
+  setTimeout(() => {
+    isDisabled.value = false;
+  }, 1000);
+};
 
 onMounted(async () => {
   await userStore.getCart();
@@ -37,7 +56,8 @@ onMounted(async () => {
           v-if="userStore.cartItems?.length > 0"
           color="red"
           size="middle"
-          @click="userStore.makeOrder"
+          :disabled="isDisabled"
+          @click="handleOrder"
         >
           Купить
         </ElementsPixelButton>
