@@ -86,7 +86,6 @@ export const useUserData = defineStore("userData", () => {
       userData.value.isSpinUser = data.data?.already_spin;
       userData.value.isBlockedUser = data.data?.blocked;
       userData.value.totalProducts = data.data?.total_products;
-      console.log(data.data.total_products);
     });
   };
 

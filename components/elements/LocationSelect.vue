@@ -9,7 +9,8 @@ const productStore = useProductStore();
 
 const handleLocationChange = (product: Product) => {
   productStore.setSelectedLocation(product.location);
-  if (product.in_stock) {
+
+  if (product.in_stock > product.sold) {
     productStore.setStock(true);
   } else {
     productStore.setStock(false);

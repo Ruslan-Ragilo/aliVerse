@@ -6,12 +6,12 @@ const userStore = useUserData();
 
 <template>
   <div class="wrapper-item">
-    <div class="wrapperCheckbox">
+    <!--  <div class="wrapperCheckbox">
       <label class="container-checkbox">
         <input type="checkbox" checked="checked" />
         <span class="checkmark"></span>
       </label>
-    </div>
+    </div> -->
     <img
       class="imgItem"
       :src="getImageUrl(`png/merch/${cartItem.product.id}.png`)"
@@ -98,7 +98,7 @@ const userStore = useUserData();
   padding: 30px 0;
   border-bottom: 4px solid #e3e3e3;
   display: grid;
-  grid-template-columns: 1fr 2fr 5fr 1fr;
+  grid-template-columns: 2fr 5fr 1fr;
   align-items: center;
   @include media(732px) {
     gap: 20px;
@@ -120,6 +120,7 @@ const userStore = useUserData();
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
 
     @include media(732px) {
       flex-direction: column;
