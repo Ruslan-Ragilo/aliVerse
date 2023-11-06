@@ -19,8 +19,11 @@ const addToCart = () => {
     const productToOrder = productsArray.value.find(
       (el) => el.location === productStore.selectedLocation,
     );
-    userStore.addToCart(productToOrder?.id);
-    productStore.closeModal();
+
+    if (productToOrder) {
+      userStore.addToCart(productToOrder.id);
+      productStore.closeModal();
+    }
   } else {
     productStore.showHint();
   }

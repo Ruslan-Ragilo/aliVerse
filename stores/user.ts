@@ -1,5 +1,22 @@
 import $api from "@/http";
 
+export interface CartItem {
+  cart_form_id: number;
+  date: string;
+  id: number;
+  price: number | null;
+  product: {
+    id: number;
+    name: string;
+    image: string | null;
+    price: number;
+    ali_price: number;
+  };
+  product_id: number;
+  quantity: number | null;
+  user_id: number;
+}
+
 export const useUserData = defineStore("userData", () => {
   const userData = ref({
     idUser: "",
@@ -13,14 +30,14 @@ export const useUserData = defineStore("userData", () => {
     isLoading: false,
   });
 
-  const cartItems = ref([]);
+  const cartItems = ref<CartItem[]>([]);
 
   const getCart = async () => {
     const { data } = await $api.get("cart");
     cartItems.value = data?.cartItems;
   };
 
-  const addToCart = async (id) => {
+  const addToCart = async (id: number) => {
     const formData = new FormData();
     formData.append("product_id", String(id));
 
@@ -31,7 +48,7 @@ export const useUserData = defineStore("userData", () => {
     }
   };
 
-  const deleteCartItem = async (id) => {
+  const deleteCartItem = async (id: number) => {
     const res = await $api.delete(`cart/${id}`);
     if (res?.data) {
       await fetchUsers();
@@ -67,6 +84,7 @@ export const useUserData = defineStore("userData", () => {
       userData.value.balanceUser = data.data?.balance;
       userData.value.isSpinUser = data.data?.already_spin;
       userData.value.isBlockedUser = data.data?.blocked;
+      console.log(data.data.total_products);
     });
   };
 
