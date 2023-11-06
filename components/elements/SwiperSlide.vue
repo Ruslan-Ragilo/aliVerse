@@ -41,13 +41,15 @@ const isButtonDisabled = computed(() => {
     (item: CartItem) => item.product.id === props.product.id,
   );
 
-  const isInStock = props.product!.in_stock! - itemsInCart.length;
+  const isInStock = props.product.in_stock! - itemsInCart.length;
 
   return (
     Number(userStore.userData.balanceUser) <=
       Number(props?.product?.ali_price) ||
     userStore.cartItems?.length >= 3 ||
-    !isInStock
+    !isInStock ||
+    !props.product.in_stock ||
+    Number(userStore.userData.totalProducts) < userStore.cartItems.length
     // todo если total products меньше, чем в корзине
   );
 });

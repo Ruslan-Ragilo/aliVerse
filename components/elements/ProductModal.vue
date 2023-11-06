@@ -24,6 +24,13 @@ const addToCart = () => {
       userStore.addToCart(productToOrder.id);
       productStore.closeModal();
     }
+  } else if (
+    productsArray.value[0].id === 31 ||
+    productsArray.value[0].id === 32 ||
+    productsArray.value[0].id === 33
+  ) {
+    userStore.addToCart(productsArray.value[0].id);
+    productStore.closeModal();
   } else {
     productStore.showHint();
   }
