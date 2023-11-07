@@ -5,9 +5,7 @@ const indexImage = ref(null);
 const isValidFrom = ref(false);
 const isShow = ref(false);
 const isReadyData = false;
-const router = useRouter()
-
-// TODO добавить ссылку в пользовательское соглашение
+const router = useRouter();
 
 const setActiveImage = (index, urlImg) => {
   indexImage.value = index;
@@ -46,7 +44,7 @@ watch(
 
 onMounted(() => {
   // TODO UNCOMMENT
-  router.push('/')
+  router.push("/");
   // TODO
   const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer 4AhgSH4BNNUpvBIc");
