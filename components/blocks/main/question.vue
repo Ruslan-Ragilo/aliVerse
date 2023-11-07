@@ -3,10 +3,10 @@
   <div class="wrapper">
     <img class="cloud" src="@/assets/images/png/cloudQuestion.png" alt="" />
     <div class="wrapper-main">
-      <ElementsText transform="upper" themes="secondary" size="heading"
-        >Вопросы<br />
-        и ответы</ElementsText
-      >
+      <ElementsText transform="upper" themes="secondary" size="heading">
+        Вопросы<br />
+        и ответы
+      </ElementsText>
       <div class="accordion-wrapper">
         <ElementsAccordion v-for="item in questionsData" :key="item.question">
           <template #question>
@@ -45,7 +45,7 @@ const questionsData = ref({
   5: {
     question: "К кому я могу обращаться с вопросами по активации?",
     answer:
-      "По всем вопросам, связанным с активацией Ali Verse, можно обращаться на почту aer_news@alibaba-inc.com",
+      "По всем вопросам, связанным с активацией Ali Verse, можно обращаться на почту <a href='mailto:aer_news@alibaba-inc.com'>aer_news@alibaba-inc.com</a>",
   },
 });
 </script>

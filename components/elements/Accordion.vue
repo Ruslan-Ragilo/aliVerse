@@ -12,7 +12,7 @@ const isActive = ref(false);
     <ElementsText class="question" transform="upper" size="m">
       <slot name="question" />
     </ElementsText>
-    <div :class="['answers', { active: isActive }]">
+    <div :class="['answers', { active: isActive }]" @click.stop>
       <ElementsText transform="upper">
         <slot name="answer" />
       </ElementsText>
