@@ -190,6 +190,7 @@ const isProductAvailable = ref(true);
 .smaller {
   font-size: 16px;
   -webkit-line-clamp: 3 !important;
+  padding-right: 25px;
 }
 .hint {
   width: 140px;
