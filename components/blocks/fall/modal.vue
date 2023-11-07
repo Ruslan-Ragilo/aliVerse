@@ -1,31 +1,36 @@
 <template>
   <div v-if="isModalOpen" class="wrapper-modal" @click.self="store.closeModal">
     <div class="modal">
-      <iframe :src="src" frameborder="0" width="100%" height="100%"></iframe>
+      <ElementsSpinner v-if="!isLoaded" />
+      <iframe
+        v-show="isLoaded"
+        :src="src"
+        frameborder="0"
+        width="100%"
+        height="100%"
+        @load="handleLoad"
+      ></iframe>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// import $api from "~/http";
-
 const userStore = useUserData();
 const store = useFallStore();
 const isModalOpen = computed(() => store.isModalOpen);
 const token = localStorage.getItem("aliverse_token")?.slice(1, -1);
 const src = "https://aliexpress-productfall.codenrock.com/?token=" + token;
 
+const isLoaded = ref(false);
+
+const handleLoad = () => {
+  isLoaded.value = true;
+};
+
 window.addEventListener("message", () => {
   store.closeModal();
   userStore.fetchUsers();
 });
-
-/* const limit = await $api.get("/api/user/get-remained-event-limit", {
-  params: {
-    id: 1,
-  },
-});
-console.log(limit.data); */
 </script>
 
 <style scoped lang="scss">
