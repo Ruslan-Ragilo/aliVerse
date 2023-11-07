@@ -55,9 +55,14 @@ const isModalOpen = computed(() => fallGameStore.isModalOpen);
         <BlocksMainBanner />
       </div>
     </div>
-    <div v-if="isWednesday" class="wrapper-frog" @click="handleModalOpen">
+    <div v-if="isWednesday" class="wrapper-frog">
       <img class="fullCloud" src="@/assets/images/svg/fullCloud.svg" alt="" />
-      <img class="frog" src="@/assets/images/svg/frog.svg" alt="" />
+      <img
+        class="frog"
+        src="@/assets/images/svg/frog.svg"
+        alt=""
+        @click="handleModalOpen"
+      />
     </div>
     <BlocksMainHello />
     <BlocksMainCounter />

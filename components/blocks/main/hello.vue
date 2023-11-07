@@ -1,12 +1,28 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
+<script setup>
+const isWednesday = ref(
+  isToday(
+    new Date("November 08 2023 07:59:59 GMT+03:00"),
+    new Date("November 08 2023 23:59:59 GMT+03:00"),
+  ) ||
+    isToday(
+      new Date("November 15 2023 07:59:59 GMT+03:00"),
+      new Date("November 15 2023 23:59:59 GMT+03:00"),
+    ),
+);
+</script>
+
 <template>
   <div class="wrapper-main">
-    <div class="wrapper">
+    <div class="wrapper" :class="{ notWednesday: !isWednesday }">
       <div class="wrapper-text">
-        <ElementsText className="heading-text" size="heading" themes="secondary"
+        <ElementsText
+          class-name="heading-text"
+          size="heading"
+          themes="secondary"
           >Привет!</ElementsText
         >
-        <ElementsText themes="secondary" size="xs" className="text">
+        <ElementsText themes="secondary" size="xs" class-name="text">
           А ты знал, что Всемирный день шопинга — распродажа «11.11» — был
           придуман <span class="names">Джеком Ма и Дэниэлом Чжаном</span> в
           далеком 2009 году? А в 2014 году впервые в истории прошла общемировая
@@ -130,6 +146,11 @@
     .boom {
       color: #ffd776;
     }
+  }
+}
+.notWednesday {
+  @include media(540px) {
+    margin-top: 290px;
   }
 }
 </style>
