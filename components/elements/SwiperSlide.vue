@@ -46,14 +46,14 @@ const isButtonDisabled = computed(() => {
 });
 
 // TODO удалить код ниже и раскомментировать следующий!
-const isProductAvailable = ref(true);
+/* const isProductAvailable = ref(true); */
 
-/* const isProductAvailable = ref(
+const isProductAvailable = ref(
   isToday(
     new Date("November 20 2023 07:59:59 GMT+03:00"),
     new Date("November 24 2023 23:59:59 GMT+03:00"),
   ),
-); */
+);
 </script>
 <template>
   <div class="wrapper-slide">
