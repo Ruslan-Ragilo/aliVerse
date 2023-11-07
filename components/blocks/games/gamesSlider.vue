@@ -108,11 +108,11 @@ const openFallModal = () => {
 };
 
 // TODO удалить код ниже и раскомментировать следующий!
-const isFactsAvailable = ref(true);
+/* const isFactsAvailable = ref(true);
 const isFallAvailable = ref(true);
-const isShadowsAvailable = ref(true);
+const isShadowsAvailable = ref(true); */
 
-/* const isFactsAvailable = ref(
+const isFactsAvailable = ref(
   isToday(
     new Date("November 16 2023 07:59:59 GMT+03:00"),
     new Date("November 19 2023 23:59:59 GMT+03:00"),
@@ -129,7 +129,7 @@ const isShadowsAvailable = ref(
     new Date("November 12 2023 07:59:59 GMT+03:00"),
     new Date("November 19 2023 23:59:59 GMT+03:00"),
   ),
-); */
+);
 
 const spaceBetweenSlides = ref(30);
 

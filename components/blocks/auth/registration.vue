@@ -180,15 +180,16 @@ onMounted(() => {
         Совсем скоро у тебя появятся твои космические права.<br />
         Осталось только подтвердить регистрацию! Перейди по ссылке, которую мы
         отправили на указанную почту, и готовься к отправке!<br /><br />А если
-        письмо не пришло, сообщи об этом на aer_news@alibaba-inc.com
+        письмо не пришло, сообщи об этом на
+        <a href="mailto:aer_news@alibaba-inc.com">aer_news@alibaba-inc.com</a>
       </ElementsText>
       <ElementsText
         v-if="!isRegisterSuccessfull && !authStore.getRegisterSuccess"
         themes="secondary"
         class="textAfterReg register-error"
       >
-        Упс, кажется, у тебя нет доступа! Обратись к техподдержке
-        aer_news@alibaba-inc.com
+        Упс, кажется у тебя нет доступа! Напиши на
+        <a href="mailto:aer_news@alibaba-inc.com">aer_news@alibaba-inc.com</a>
       </ElementsText>
     </div>
   </div>
@@ -209,10 +210,12 @@ onMounted(() => {
   margin: 0 auto;
   margin-top: 50px;
   text-align: center;
-  display: flex;
-  justify-content: center;
   max-width: 700px;
   min-height: 94px;
+
+  a {
+    color: #fff;
+  }
 
   @include media(450px) {
     margin-top: 30px;

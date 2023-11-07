@@ -7,6 +7,17 @@ const handleModalOpen = () => {
   store.openModal();
 };
 
+const isWednesday = ref(
+  isToday(
+    new Date("November 08 2023 07:59:59 GMT+03:00"),
+    new Date("November 08 2023 23:59:59 GMT+03:00"),
+  ) ||
+    isToday(
+      new Date("November 15 2023 07:59:59 GMT+03:00"),
+      new Date("November 15 2023 23:59:59 GMT+03:00"),
+    ),
+);
+
 onMounted(() => {
   userStore.fetchUsers().then(() => {
     isLoading.value = false;
@@ -44,7 +55,7 @@ const isModalOpen = computed(() => fallGameStore.isModalOpen);
         <BlocksMainBanner />
       </div>
     </div>
-    <div class="wrapper-frog" @click="handleModalOpen">
+    <div v-if="isWednesday" class="wrapper-frog" @click="handleModalOpen">
       <img class="fullCloud" src="@/assets/images/svg/fullCloud.svg" alt="" />
       <img class="frog" src="@/assets/images/svg/frog.svg" alt="" />
     </div>
