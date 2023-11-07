@@ -47,7 +47,7 @@ const photos = [
       </div>
       <div class="card-back" @click="onClick(props.mentorIndex)">
         <ElementsText size="m" transform="upper" align="center">
-          Узнать инсайды
+          Узнать инсайты
         </ElementsText>
       </div>
     </div>
