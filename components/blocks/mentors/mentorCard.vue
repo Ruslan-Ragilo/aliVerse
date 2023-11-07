@@ -5,21 +5,21 @@ const props = defineProps<{
 }>();
 
 const names = [
+  "Сергей Гречин",
+  "Толик Орлов",
+  "Александр Громов",
   "Лена Грунтова",
   "Виль Габдуллин",
   "Марат Сахаутдинов",
-  "Александр Громов",
-  "Толик Орлов",
-  "Сергей Гречин",
 ];
 
 const photos = [
+  "png/mentors/Гречин.jpg",
+  "png/mentors/Орлов.jpg",
+  "png/mentors/Громов.jpg",
   "png/mentors/Грунтова.jpg",
   "png/mentors/Габдуллин.jpg",
   "png/mentors/Сахаутдинов.jpg",
-  "png/mentors/Громов.jpg",
-  "png/mentors/Орлов.jpg",
-  "png/mentors/Гречин.jpg",
 ];
 </script>
 
