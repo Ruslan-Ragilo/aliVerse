@@ -34,7 +34,7 @@ const modules = [Pagination];
 
 const isAvailable = ref(
   isToday(
-    new Date("November 12 2023 07:59:59 GMT+03:00"),
+    new Date("November 12 2023 11:59:59 GMT+03:00"),
     new Date("November 17 2023 23:59:59 GMT+03:00"),
   ),
 );
