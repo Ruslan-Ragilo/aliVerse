@@ -39,10 +39,13 @@
         alt=""
         draggable="false"
       />
-      <ElementsPixelButton color="red" size="mini" :disabled="!isFallAvailable">
-        <a href="https://aliexpress-productfall.codenrock.com/" target="_blank">
-          Играть
-        </a>
+      <ElementsPixelButton
+        color="red"
+        size="mini"
+        :disabled="!isFallAvailable"
+        @click="openFallModal"
+      >
+        Играть
       </ElementsPixelButton>
     </div>
     <div class="right-game game">
@@ -73,6 +76,7 @@
 </template>
 
 <script setup lang="ts">
+const fallStore = useFallStore();
 const factsStore = useFactsStore();
 const shadowsStore = useShadowsStore();
 
@@ -82,6 +86,10 @@ const openShadowsModal = () => {
 
 const openFactsModal = () => {
   factsStore.openModal();
+};
+
+const openFallModal = () => {
+  fallStore.openModal();
 };
 
 // TODO удалить код ниже и раскомментировать следующий!
