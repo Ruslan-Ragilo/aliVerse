@@ -19,7 +19,7 @@
     />
     <button
       class="play-button"
-      :disabled="!isAvailable || isSpinning"
+      :disabled="!isAvailable || isSpinning || !isActive"
       @click="handleSpin"
     ></button>
   </div>
@@ -29,6 +29,13 @@
 const { onMount } = defineProps<{
   onMount: (el: HTMLImageElement | undefined) => void;
 }>();
+
+const isActive = ref(
+  isToday(
+    new Date("November 08 2023 07:59:59 GMT+03:00"),
+    new Date("November 19 2023 23:59:59 GMT+03:00"),
+  ),
+);
 
 const wheel = ref<HTMLImageElement>();
 const store = useWheelStore();

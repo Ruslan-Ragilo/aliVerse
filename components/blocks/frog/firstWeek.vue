@@ -223,18 +223,17 @@ function beforePan(oldPan, newPan) {
   const gutterWidth = svg.value.getSizes().width;
   const gutterHeight = svg.value.getSizes().height;
   const sizes = svg.value.getSizes();
-  console.log(sizes)
   let leftLimit;
   let rightLimit;
   if (window.innerWidth < sizes.width) {
     // Пошаманить формулу
     leftLimit =
-      -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + window.innerWidth;
-    rightLimit = sizes.width - window.innerWidth - sizes.viewBox.x * sizes.realZoom;
+      -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) +
+      window.innerWidth;
+    rightLimit =
+      sizes.width - window.innerWidth - sizes.viewBox.x * sizes.realZoom;
     // leftLimit = (-(sizes.width * sizes.realZoom - window.innerWidth));
     // rightLimit = ((sizes.width * sizes.realZoom - window.innerWidth) + window.innerWidth);
-    console.log(leftLimit)
-    console.log(rightLimit)
     // Пошаманить формулу
     svg.value.disableZoom();
     svg.value.disableDblClickZoom();
@@ -242,8 +241,6 @@ function beforePan(oldPan, newPan) {
     leftLimit =
       -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth;
     rightLimit = sizes.width - gutterWidth - sizes.viewBox.x * sizes.realZoom;
-    console.log(leftLimit)
-    console.log(rightLimit)
   }
   const topLimit =
     -((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom) + gutterHeight;
