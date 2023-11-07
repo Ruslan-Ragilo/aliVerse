@@ -43,8 +43,15 @@ watch(
 );
 
 onMounted(() => {
+  /*  const isAvailable = ref(
+    isToday(
+      new Date("November 08 2023 07:59:59 GMT+03:00"),
+      new Date("November 24 2023 23:59:59 GMT+03:00"),
+    ),
+  ); */
   // TODO UNCOMMENT
   router.push("/");
+
   // TODO
   const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer 4AhgSH4BNNUpvBIc");

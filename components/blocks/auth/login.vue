@@ -49,6 +49,13 @@ const handleLogin = async () => {
     }
   }
 };
+
+const isAvailable = ref(
+  isToday(
+    new Date("November 08 2023 07:59:59 GMT+03:00"),
+    new Date("November 24 2023 23:59:59 GMT+03:00"),
+  ),
+);
 </script>
 <template>
   <div class="content">
@@ -85,11 +92,11 @@ const handleLogin = async () => {
       >
       <div class="wrapperAurhLink">
         <!-- TODO -->
-        <!-- <NuxtLink to="/auth/registration">
+        <NuxtLink v-if="isAvailable" to="/auth/registration">
           <ElementsText transform="upper" themes="secondary"
             >зарегистрироваться</ElementsText
           >
-        </NuxtLink> -->
+        </NuxtLink>
         <!-- TODO UNCOMMENT -->
         <!--  <NuxtLink to="/auth/forgotPin"
           ><ElementsText transform="upper" class="lostPin"
