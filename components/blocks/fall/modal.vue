@@ -9,6 +9,7 @@
 <script setup lang="ts">
 // import $api from "~/http";
 
+const userStore = useUserData();
 const store = useFallStore();
 const isModalOpen = computed(() => store.isModalOpen);
 const token = localStorage.getItem("aliverse_token")?.slice(1, -1);
@@ -16,6 +17,7 @@ const src = "https://aliexpress-productfall.codenrock.com/?token=" + token;
 
 window.addEventListener("message", () => {
   store.closeModal();
+  userStore.fetchUsers();
 });
 
 /* const limit = await $api.get("/api/user/get-remained-event-limit", {
