@@ -51,9 +51,8 @@ onMounted(() => {
   ); */
   // TODO UNCOMMENT
   router.push("/");
-
   // TODO
-  const myHeaders = new Headers();
+  /*   const myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer 4AhgSH4BNNUpvBIc");
 
   // const formdata = new FormData();
@@ -69,7 +68,7 @@ onMounted(() => {
   fetch("https://api.aliverse.ru/user/event-limit/3", requestOptions)
     .then((response) => response.text())
     .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+    .catch((error) => console.log("error", error)); */
 });
 </script>
 
