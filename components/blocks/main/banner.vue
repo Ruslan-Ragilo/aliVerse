@@ -41,11 +41,7 @@
     alt=""
     draggable="false"
   />
-  <div
-    v-if="isWednesday"
-    class="wrapper-frog absolute"
-    @click="handleModalOpen"
-  >
+  <div class="wrapper-frog absolute">
     <img
       class="fullCloud"
       src="@/assets/images/svg/fullCloud.svg"
@@ -53,10 +49,12 @@
       draggable="false"
     />
     <img
+      v-if="isWednesday"
       class="frog"
       src="@/assets/images/svg/frog.svg"
       alt=""
       draggable="false"
+      @click="handleModalOpen"
     />
   </div>
 
