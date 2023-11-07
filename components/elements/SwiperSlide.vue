@@ -6,7 +6,7 @@ export interface Product {
   price: number;
   ali_price: number;
   promocode?: string;
-  in_stock?: number;
+  in_stock: number;
   day_limit?: number;
   location: number;
   sold: number;
@@ -35,22 +35,13 @@ const userStore = useUserData();
 const productStore = useProductStore();
 
 const isButtonDisabled = computed(() => {
-  const cart = ref(userStore.cartItems);
-
-  const itemsInCart = cart.value.filter(
-    (item: CartItem) => item.product.id === props.product.id,
-  );
-
-  const isInStock = props.product.in_stock! - itemsInCart.length;
+  const cartLength = userStore.cartItems ? userStore.cartItems.length : 0;
 
   return (
     Number(userStore.userData.balanceUser) <=
       Number(props?.product?.ali_price) ||
     userStore.cartItems?.length >= 3 ||
-    !isInStock ||
-    !props.product.in_stock ||
-    Number(userStore.userData.totalProducts) < userStore.cartItems.length
-    // todo если total products меньше, чем в корзине
+    Number(userStore.userData.totalProducts) <= cartLength
   );
 });
 

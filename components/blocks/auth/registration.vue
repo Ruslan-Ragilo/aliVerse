@@ -140,7 +140,7 @@ onMounted(() => {
             transform="upper"
           >
             Я согласен с
-            <a class="agreement-link" href="#" target="_blank">
+            <a class="agreement-link" href="/termsofuse.pdf" target="_blank">
               Пользовательским соглашением
             </a>
             и

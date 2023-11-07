@@ -25,6 +25,7 @@
       </div>
       <BlocksShadowsModal />
       <BlocksFactsModal />
+      <BlocksFallModal />
     </div>
   </div>
 </template>

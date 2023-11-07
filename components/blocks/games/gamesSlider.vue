@@ -51,13 +51,9 @@
             color="red"
             size="mini"
             :disabled="!isFallAvailable"
+            @click="openFallModal"
           >
-            <a
-              href="https://aliexpress-productfall.codenrock.com/"
-              target="_blank"
-            >
-              Играть
-            </a>
+            Играть
           </ElementsPixelButton>
         </div>
       </SwiperSlide>
@@ -95,15 +91,20 @@ const modules = [Navigation];
 const prev = ref(null);
 const next = ref(null);
 
+const fallStore = useFallStore();
 const factsStore = useFactsStore();
 const shadowsStore = useShadowsStore();
+
+const openShadowsModal = () => {
+  shadowsStore.openModal();
+};
 
 const openFactsModal = () => {
   factsStore.openModal();
 };
 
-const openShadowsModal = () => {
-  shadowsStore.openModal();
+const openFallModal = () => {
+  fallStore.openModal();
 };
 
 // TODO удалить код ниже и раскомментировать следующий!

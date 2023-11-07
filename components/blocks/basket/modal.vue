@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const popupStore = useModalBasked();
-
+const productStore = useProductStore();
 const userStore = useUserData();
 const isDisabled = ref(false);
 
@@ -8,14 +8,8 @@ const handleOrder = async () => {
   isDisabled.value = true;
   await userStore.makeOrder();
   await userStore.getCart();
+  await productStore.getAllProducts();
 
-  const cart = ref(userStore.cartItems);
-  cart.value.map((item: CartItem) => {
-    userStore.deleteCartItem(item.id);
-    return null;
-  });
-
-  await userStore.getCart();
   setTimeout(() => {
     isDisabled.value = false;
   }, 1000);

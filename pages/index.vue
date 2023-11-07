@@ -26,6 +26,9 @@ window.onscroll = () => {
 
   prevOffsetY.value = currentOffsetY.value;
 };
+
+const fallGameStore = useFallStore();
+const isModalOpen = computed(() => fallGameStore.isModalOpen);
 </script>
 
 <template>
@@ -59,7 +62,7 @@ window.onscroll = () => {
     <BlocksMainTest />
     <BlocksMainQuestion />
     <BlocksMainFooter />
-    <div class="hint">
+    <div v-if="!isModalOpen" class="hint">
       <div class="hint-content">
         <img
           width="50"
