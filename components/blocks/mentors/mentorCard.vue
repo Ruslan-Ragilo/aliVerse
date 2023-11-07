@@ -137,6 +137,6 @@ const photos = [
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5;
+  z-index: 3;
 }
 </style>
