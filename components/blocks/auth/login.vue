@@ -84,11 +84,13 @@ const handleLogin = async () => {
         >войти</ElementsPixelButton
       >
       <div class="wrapperAurhLink">
-        <NuxtLink to="/auth/registration">
+        <!-- TODO -->
+        <!-- <NuxtLink to="/auth/registration">
           <ElementsText transform="upper" themes="secondary"
             >зарегистрироваться</ElementsText
           >
-        </NuxtLink>
+        </NuxtLink> -->
+        <!-- TODO UNCOMMENT -->
         <!--  <NuxtLink to="/auth/forgotPin"
           ><ElementsText transform="upper" class="lostPin"
             >забыл pin код</ElementsText
