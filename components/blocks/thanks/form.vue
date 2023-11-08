@@ -13,7 +13,7 @@
     <ElementsCustomInput
       v-model="formValues.email"
       input-type="input"
-      placeholder="petrova@mail.ru"
+      placeholder="petrova@aliexpress.ru"
       required="true"
       type="text"
       :theme="background !== 'white' ? `light` : ``"

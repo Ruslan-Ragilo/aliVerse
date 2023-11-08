@@ -151,7 +151,7 @@ const handlePin = (e, index) => {
             v-model="dataForm.email"
             type="email"
             class="input"
-            placeholder="ТВОЙ E-MAIL"
+            placeholder="КОРПОРАТИВНАЯ ПОЧТА"
           />
           <div class="wrapper">
             <input
