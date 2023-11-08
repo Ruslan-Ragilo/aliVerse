@@ -76,14 +76,8 @@ const store = useFrogStore();
 /* const isWednesday = ref(true); */
 
 const isWednesday = ref(
-  isToday(
-    "November 08 2023 07:59:59 GMT+03:00",
-    "November 08 2023 23:59:59 GMT+03:00",
-  ) ||
-    isToday(
-      "November 15 2023 07:59:59 GMT+03:00",
-      "November 15 2023 23:59:59 GMT+03:00",
-    ),
+  (await isToday("11/08/2023 07:59:59", "11/08/2023 23:59:59")) ||
+    (await isToday("11/15/2023 07:59:59", "11/15/2023 23:59:59")),
 );
 
 const handleModalOpen = () => {

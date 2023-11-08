@@ -3,10 +3,7 @@ const progresTotal = ref(Math.round(100 * (0 / 11)));
 // TODO Вот тут менять прогресс ракеты (1 из 11 и т.д.)
 
 const isAvailable = ref(
-  isToday(
-    "November 11 2023 10:59:59 GMT+03:00",
-    "November 17 2023 23:59:59 GMT+03:00",
-  ),
+  await isToday("11/11/2023 10:59:59", "11/17/2023 23:59:59"),
 );
 </script>
 

@@ -49,10 +49,7 @@ const isButtonDisabled = computed(() => {
 /* const isProductAvailable = ref(true); */
 
 const isProductAvailable = ref(
-  isToday(
-    "November 20 2023 07:59:59 GMT+03:00",
-    "November 24 2023 23:59:59 GMT+03:00",
-  ),
+  await isToday("11/20/2023 07:59:59", "11/24/2023 23:59:59"),
 );
 </script>
 <template>
