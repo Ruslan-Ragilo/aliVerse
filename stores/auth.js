@@ -16,6 +16,10 @@ export const useAuth = defineStore("auth", {
   },
   actions: {
     async login(email, password) {
+      if (localStorage.getItem(storageTokenKey) === "null") {
+        localStorage.removeItem(storageTokenKey);
+      }
+
       const formData = new FormData();
       formData.append("email", email);
       formData.append("password", password);
@@ -43,6 +47,10 @@ export const useAuth = defineStore("auth", {
     },
 
     async registration(email, password, name, avatar) {
+      if (localStorage.getItem(storageTokenKey) === "null") {
+        localStorage.removeItem(storageTokenKey);
+      }
+
       const formData = new FormData();
       formData.append("avatar", avatar);
       formData.append("name", name);
