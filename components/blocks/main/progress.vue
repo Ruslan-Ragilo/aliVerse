@@ -4,8 +4,8 @@ const progresTotal = ref(Math.round(100 * (0 / 11)));
 
 const isAvailable = ref(
   isToday(
-    new Date("November 11 2023 10:59:59 GMT+03:00"),
-    new Date("November 17 2023 23:59:59 GMT+03:00"),
+    "November 11 2023 10:59:59 GMT+03:00",
+    "November 17 2023 23:59:59 GMT+03:00",
   ),
 );
 </script>

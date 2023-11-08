@@ -43,8 +43,8 @@
 <script setup lang="ts">
 const isActive = ref(
   isToday(
-    new Date("November 08 2023 07:59:59 GMT+03:00"),
-    new Date("November 19 2023 23:59:59 GMT+03:00"),
+    "November 08 2023 07:59:59 GMT+03:00",
+    "November 19 2023 23:59:59 GMT+03:00",
   ),
 );
 
