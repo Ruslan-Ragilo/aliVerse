@@ -98,22 +98,13 @@ const isFallAvailable = ref(true);
 const isShadowsAvailable = ref(true); */
 
 const isFactsAvailable = ref(
-  isToday(
-    "November 16 2023 07:59:59 GMT+03:00",
-    "November 19 2023 23:59:59 GMT+03:00",
-  ),
+  await isToday("11/16/2023 07:59:59", "11/19/2023 23:59:59"),
 );
 const isFallAvailable = ref(
-  isToday(
-    "November 08 2023 07:59:59 GMT+03:00",
-    "November 19 2023 23:59:59 GMT+03:00",
-  ),
+  await isToday("11/08/2023 07:59:59", "11/19/2023 23:59:59"),
 );
 const isShadowsAvailable = ref(
-  isToday(
-    "November 12 2023 07:59:59 GMT+03:00",
-    "November 19 2023 23:59:59 GMT+03:00",
-  ),
+  await isToday("11/12/2023 07:59:59", "11/19/2023 23:59:59"),
 );
 </script>
 

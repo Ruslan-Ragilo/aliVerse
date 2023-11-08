@@ -51,10 +51,7 @@ const handleLogin = async () => {
 };
 
 const isAvailable = ref(
-  isToday(
-    "November 08 2023 07:59:59 GMT+03:00",
-    "November 24 2023 23:59:59 GMT+03:00",
-  ),
+  await isToday("11/08/2023 07:59:59", "11/24/2023 23:59:59"),
 );
 </script>
 <template>

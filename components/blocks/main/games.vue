@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 const isAvailable = ref(
-  isToday("2023-11-02", "November 19 2023 23:59:59 GMT+03:00"),
+  await isToday("11/08/2023 07:59:59", "11/19/2023 23:59:59"),
 );
 
 const screenSize = ref<"large" | "small">("large");
