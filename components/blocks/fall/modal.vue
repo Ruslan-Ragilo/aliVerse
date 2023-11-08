@@ -27,9 +27,11 @@ const handleLoad = () => {
   isLoaded.value = true;
 };
 
-window.addEventListener("message", () => {
-  store.closeModal();
-  userStore.fetchUsers();
+window.addEventListener("message", (e) => {
+  if (e.data === "close") {
+    store.closeModal();
+    userStore.fetchUsers();
+  }
 });
 </script>
 
