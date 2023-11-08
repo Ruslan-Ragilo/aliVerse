@@ -21,7 +21,7 @@ export const useAuth = defineStore("auth", {
       }
 
       const formData = new FormData();
-      formData.append("email", email);
+      formData.append("email", email.trim());
       formData.append("password", password);
 
       const res = await $api.post("/auth/login", formData);
@@ -54,7 +54,7 @@ export const useAuth = defineStore("auth", {
       const formData = new FormData();
       formData.append("avatar", avatar);
       formData.append("name", name);
-      formData.append("email", email);
+      formData.append("email", email.trim());
       formData.append("password", password);
 
       const res = await $api.post("/auth/register", formData);
