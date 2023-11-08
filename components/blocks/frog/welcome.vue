@@ -12,7 +12,7 @@
           fill="#FFF"
         />
       </svg>
-      <p>Прилближай картинку, <br />чтобы точно найти жабку</p>
+      <p>Приближай картинку, <br />чтобы точно найти жабку</p>
       <div class="start-button">
         <ElementsPixelButton color="red" size="middle" @click="startGame">
           Начать
