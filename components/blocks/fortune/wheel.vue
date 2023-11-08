@@ -17,11 +17,11 @@
       alt="Fortune wheel"
       draggable="false"
     />
-    <button
+    <!-- <button
       class="play-button"
       :disabled="!isAvailable || isSpinning || !isActive"
       @click="handleSpin"
-    ></button>
+    ></button> -->
   </div>
 </template>
 
@@ -30,16 +30,16 @@ const { onMount } = defineProps<{
   onMount: (el: HTMLImageElement | undefined) => void;
 }>();
 
-const isActive = ref(
+/* const isActive = ref(
   isToday(
     new Date("November 08 2023 07:59:59 GMT+03:00"),
     new Date("November 19 2023 23:59:59 GMT+03:00"),
   ),
-);
+); */
 
 const wheel = ref<HTMLImageElement>();
 const store = useWheelStore();
-const isAvailable = computed(() => store.isAvailable);
+// const isAvailable = computed(() => store.isAvailable);
 const isSpinning = computed(() => store.isSpinning);
 const currentRotation = computed(() => store.currentRotation);
 
@@ -47,9 +47,9 @@ onMounted(() => {
   onMount(wheel.value);
 });
 
-const handleSpin = () => {
+/* const handleSpin = () => {
   store.handleSpin(wheel.value);
-};
+}; */
 </script>
 
 <style lang="scss" scoped>
