@@ -5,7 +5,6 @@ const indexImage = ref(null);
 const isValidFrom = ref(false);
 const isShow = ref(false);
 const isReadyData = false;
-const router = useRouter();
 
 const setActiveImage = (index, urlImg) => {
   indexImage.value = index;
@@ -41,35 +40,6 @@ watch(
   () => isRegisterSuccessfull.value,
   () => {},
 );
-
-onMounted(() => {
-  /*  const isAvailable = ref(
-    isToday(
-      new Date("November 08 2023 07:59:59 GMT+03:00"),
-      new Date("November 24 2023 23:59:59 GMT+03:00"),
-    ),
-  ); */
-  // TODO UNCOMMENT
-  router.push("/");
-  // TODO
-  /*   const myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer 4AhgSH4BNNUpvBIc");
-
-  // const formdata = new FormData();
-  // formdata.append("event_id", "3");
-  // formdata.append("score", "1234");
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    // body: formdata,
-    redirect: "follow",
-  };
-
-  fetch("https://api.aliverse.ru/user/event-limit/3", requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error)); */
-});
 </script>
 
 <template>

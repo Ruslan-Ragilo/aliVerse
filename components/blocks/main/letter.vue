@@ -5,7 +5,7 @@
         <div class="images">
           <img
             class="convert"
-            src="@/assets/images/svg/letterConvert.png"
+            src="@/assets/images/spasibka/спасибка.png"
             alt=""
             draggable="false"
           />
