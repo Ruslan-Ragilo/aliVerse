@@ -50,8 +50,8 @@ const isButtonDisabled = computed(() => {
 
 const isProductAvailable = ref(
   isToday(
-    new Date("November 20 2023 07:59:59 GMT+03:00"),
-    new Date("November 24 2023 23:59:59 GMT+03:00"),
+    "November 20 2023 07:59:59 GMT+03:00",
+    "November 24 2023 23:59:59 GMT+03:00",
   ),
 );
 </script>

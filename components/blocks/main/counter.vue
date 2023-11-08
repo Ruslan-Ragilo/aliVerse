@@ -1,13 +1,10 @@
 <script setup>
 const isAvailable = ref(
-  isToday(
-    new Date("2023-11-02"),
-    new Date("November 11 2023 10:59:59 GMT+03:00"),
-  ),
+  isToday("2023-11-02", "November 11 2023 10:59:59 GMT+03:00"),
 );
 
-const today = new Date();
-const deadline = new Date("November 11 2023 10:59:59 GMT+03:00");
+const today = Date.now();
+const deadline = Date.parse("November 11 2023 10:59:59 GMT+03:00");
 const diff = deadline - today;
 </script>
 
