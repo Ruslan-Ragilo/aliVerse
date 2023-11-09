@@ -9,5 +9,7 @@ export const isToday = async (startDate: string, endDate: string) => {
     today <= Date.parse(endDate) / 1000
   ) {
     return true;
+  } else {
+    return false;
   }
 };
