@@ -106,9 +106,9 @@ const isAvailable = ref(
           ></NuxtLink
         > -->
       </div>
-      <div v-if="!isValid" class="login-error">
+      <!--  <div v-if="!isValid" class="login-error">
         Ты не зарегистрирован или не подтвердил на почте
-      </div>
+      </div> -->
     </form>
     <div></div>
   </div>
