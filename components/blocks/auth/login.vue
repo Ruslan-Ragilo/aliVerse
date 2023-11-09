@@ -37,6 +37,8 @@ const handlePin = (e, index) => {
   }
 };
 
+const isValid = ref(true);
+
 const handleLogin = async () => {
   const pass = inputPinData.value.map((el) => el?.value).join("");
   const email = emailValue.value;
@@ -46,6 +48,9 @@ const handleLogin = async () => {
     await store.login(email, pass);
     if (store.isLoginSuccess) {
       navigateTo("/");
+      isValid.value = true;
+    } else {
+      isValid.value = false;
     }
   }
 };
@@ -100,6 +105,9 @@ const isAvailable = ref(
             >забыл pin код</ElementsText
           ></NuxtLink
         > -->
+      </div>
+      <div v-if="!isValid" class="login-error">
+        Ты не зарегистрирован или не подтвердил на почте
       </div>
     </form>
     <div></div>
@@ -204,5 +212,13 @@ input:first-of-type:focus::placeholder {
   @include media(710px) {
     font-size: 14px;
   }
+}
+.login-error {
+  color: #fff;
+  text-align: center;
+  border: 4px solid #ba1c19;
+  padding: 10px 15px;
+  max-width: 400px;
+  margin-bottom: 50px;
 }
 </style>

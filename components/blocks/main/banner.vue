@@ -81,7 +81,9 @@ const isWednesday = ref(
 );
 
 const handleModalOpen = () => {
-  store.openModal();
+  if (isWednesday.value) {
+    store.openModal();
+  }
 };
 </script>
 

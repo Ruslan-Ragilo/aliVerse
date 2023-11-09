@@ -31,7 +31,7 @@
             color="red"
             size="mini"
             :disabled="!isFactsAvailable"
-            @click="openFactsModal"
+            @click="handleFactsClick"
           >
             Играть
           </ElementsPixelButton>
@@ -51,7 +51,7 @@
             color="red"
             size="mini"
             :disabled="!isFallAvailable"
-            @click="openFallModal"
+            @click="handleFallClick"
           >
             Играть
           </ElementsPixelButton>
@@ -71,7 +71,7 @@
             color="red"
             size="mini"
             :disabled="!isShadowsAvailable"
-            @click="openShadowsModal"
+            @click="handleShadowsClick"
           >
             Играть
           </ElementsPixelButton>
@@ -95,32 +95,56 @@ const fallStore = useFallStore();
 const factsStore = useFactsStore();
 const shadowsStore = useShadowsStore();
 
+const isShadowsAvailable = ref(false);
+const isFactsAvailable = ref(false);
+const isFallAvailable = ref(false);
+
 const openShadowsModal = () => {
-  shadowsStore.openModal();
+  if (isShadowsAvailable.value) {
+    shadowsStore.openModal();
+  }
 };
-
 const openFactsModal = () => {
-  factsStore.openModal();
+  if (isFactsAvailable.value) {
+    factsStore.openModal();
+  }
 };
-
 const openFallModal = () => {
-  fallStore.openModal();
+  if (isFallAvailable.value) {
+    fallStore.openModal();
+  }
 };
 
-// TODO удалить код ниже и раскомментировать следующий!
-/* const isFactsAvailable = ref(true);
-const isFallAvailable = ref(true);
-const isShadowsAvailable = ref(true); */
+const handleShadowsClick = () => {
+  if (isShadowsAvailable.value) {
+    openShadowsModal();
+  }
+};
+const handleFactsClick = () => {
+  if (isFactsAvailable.value) {
+    openFactsModal();
+  }
+};
+const handleFallClick = () => {
+  if (isFallAvailable.value) {
+    openFallModal();
+  }
+};
 
-const isFactsAvailable = ref(
-  await isToday("11/16/2023 07:59:59", "11/19/2023 23:59:59"),
-);
-const isFallAvailable = ref(
-  await isToday("11/08/2023 07:59:59", "11/19/2023 23:59:59"),
-);
-const isShadowsAvailable = ref(
-  await isToday("11/12/2023 07:59:59", "11/19/2023 23:59:59"),
-);
+onMounted(async () => {
+  isShadowsAvailable.value = await isToday(
+    "11/12/2023 07:59:59",
+    "11/19/2023 23:59:59",
+  );
+  isFactsAvailable.value = await isToday(
+    "11/16/2023 07:59:59",
+    "11/19/2023 23:59:59",
+  );
+  isFallAvailable.value = await isToday(
+    "11/08/2023 07:59:59",
+    "11/19/2023 23:59:59",
+  );
+});
 
 const spaceBetweenSlides = ref(30);
 
