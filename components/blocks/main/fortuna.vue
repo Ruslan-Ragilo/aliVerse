@@ -24,7 +24,7 @@
           size="large"
           class="spin-button"
           :disabled="!isAvailable || isSpinning"
-          @click="isAvailable ? handleSpin : () => {}"
+          @click="handleSpin"
         >
           Крутануть планету
         </ElementsPixelButton>
