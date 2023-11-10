@@ -60,7 +60,7 @@ const formValues = ref({
 
 const handleSubmit = async () => {
   const formData = new FormData();
-  formData.append("name", formValues.value.name);
+  formData.append("author_name", formValues.value.name);
   formData.append("receiver", formValues.value.email);
   formData.append(
     "layout",
