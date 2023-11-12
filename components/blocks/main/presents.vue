@@ -79,7 +79,7 @@ const isAvailable = ref(
         class="present"
       >
         <img :src="getImageUrl(`${item.img}`)" alt="" />
-        <ElementsText>{{ item.text }}</ElementsText>
+        <ElementsText align="center" size="xxs">{{ item.text }}</ElementsText>
       </SwiperSlide>
     </Swiper>
   </div>
@@ -101,6 +101,9 @@ const isAvailable = ref(
     // padding: 10px;
     width: 130px;
     width: auto;
+    @media screen and (max-width: 744px) {
+      width: 190px;
+    }
   }
 }
 :global(.swiper-pagination) {
