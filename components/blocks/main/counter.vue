@@ -1,6 +1,6 @@
 <script setup>
 const isAvailable = ref(
-  isToday("2023-11-02", "November 11 2023 10:59:59 GMT+03:00"),
+  await isToday("11/08/2023 07:59:59", "11/11/2023 10:59:59"),
 );
 
 const today = Date.now();

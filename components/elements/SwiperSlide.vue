@@ -35,13 +35,11 @@ const userStore = useUserData();
 const productStore = useProductStore();
 
 const isButtonDisabled = computed(() => {
-  const cartLength = userStore.cartItems ? userStore.cartItems.length : 0;
-
   return (
     Number(userStore.userData.balanceUser) <=
       Number(props?.product?.ali_price) ||
     userStore.cartItems?.length >= 3 ||
-    Number(userStore.userData.totalProducts) <= cartLength
+    Number(userStore.userData.totalProducts) === 0
   );
 });
 
@@ -49,10 +47,7 @@ const isButtonDisabled = computed(() => {
 /* const isProductAvailable = ref(true); */
 
 const isProductAvailable = ref(
-  isToday(
-    "November 20 2023 07:59:59 GMT+03:00",
-    "November 24 2023 23:59:59 GMT+03:00",
-  ),
+  await isToday("11/20/2023 07:59:59", "11/24/2023 23:59:59"),
 );
 </script>
 <template>
@@ -90,7 +85,11 @@ const isProductAvailable = ref(
         <button
           class="add-to-cart"
           :disabled="isButtonDisabled || !isProductAvailable"
-          @click="productStore.openModal(props.product.name)"
+          @click="
+            isProductAvailable && !isButtonDisabled
+              ? productStore.openModal(props.product.name)
+              : () => {}
+          "
         >
           <img
             title="Добавить в корзину"

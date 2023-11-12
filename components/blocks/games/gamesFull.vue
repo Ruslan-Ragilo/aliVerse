@@ -1,3 +1,4 @@
+<!-- eslint-disable no-unused-expressions -->
 <template>
   <div class="wrapper-games">
     <div class="left-game game">
@@ -18,8 +19,8 @@
       <ElementsPixelButton
         color="red"
         size="mini"
-        :disabled="!isFactsAvailable.value"
-        @click="openFactsModal"
+        :disabled="!isFactsAvailable"
+        @click="handleFactsClick"
       >
         Играть
       </ElementsPixelButton>
@@ -43,7 +44,7 @@
         color="red"
         size="mini"
         :disabled="!isFallAvailable"
-        @click="openFallModal"
+        @click="handleFallClick"
       >
         Играть
       </ElementsPixelButton>
@@ -67,7 +68,7 @@
         color="red"
         size="mini"
         :disabled="!isShadowsAvailable"
-        @click="openShadowsModal"
+        @click="handleShadowsClick"
       >
         Играть
       </ElementsPixelButton>
@@ -80,40 +81,61 @@ const fallStore = useFallStore();
 const factsStore = useFactsStore();
 const shadowsStore = useShadowsStore();
 
+const isShadowsAvailable = ref(false);
+const isFactsAvailable = ref(false);
+const isFallAvailable = ref(false);
+
 const openShadowsModal = () => {
-  shadowsStore.openModal();
+  if (isShadowsAvailable.value) {
+    shadowsStore.openModal();
+  }
 };
-
 const openFactsModal = () => {
-  factsStore.openModal();
+  if (isFactsAvailable.value) {
+    factsStore.openModal();
+  }
+};
+const openFallModal = () => {
+  if (isFallAvailable.value) {
+    fallStore.openModal();
+  }
 };
 
-const openFallModal = () => {
-  fallStore.openModal();
+const handleShadowsClick = () => {
+  if (isShadowsAvailable.value) {
+    openShadowsModal();
+  }
 };
+const handleFactsClick = () => {
+  if (isFactsAvailable.value) {
+    openFactsModal();
+  }
+};
+const handleFallClick = () => {
+  if (isFallAvailable.value) {
+    openFallModal();
+  }
+};
+
+onMounted(async () => {
+  isShadowsAvailable.value = await isToday(
+    "11/12/2023 07:59:59",
+    "11/19/2023 23:59:59",
+  );
+  isFactsAvailable.value = await isToday(
+    "11/16/2023 07:59:59",
+    "11/19/2023 23:59:59",
+  );
+  isFallAvailable.value = await isToday(
+    "11/08/2023 07:59:59",
+    "11/19/2023 23:59:59",
+  );
+});
 
 // TODO удалить код ниже и раскомментировать следующий!
 /* const isFactsAvailable = ref(true);
 const isFallAvailable = ref(true);
 const isShadowsAvailable = ref(true); */
-
-const isFactsAvailable = ref(
-  isToday("16/11/2023 07:59:59", "19/11/2023 07:59:59"),
-);
-
-const isFallAvailable = ref(
-  isToday(
-    "November 08 2023 07:59:59 GMT+03:00",
-    "November 19 2023 23:59:59 GMT+03:00",
-  ),
-);
-const isShadowsAvailable = ref(
-  isToday(
-    "November 12 2023 07:59:59 GMT+03:00",
-    "November 19 2023 23:59:59 GMT+03:00",
-  ),
-);
-console.log(isToday("16/11/2023 07:59:59", "19/11/2023 07:59:59"))
 </script>
 
 <style lang="scss" scoped>
