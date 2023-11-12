@@ -11,23 +11,23 @@ import { Pagination } from "swiper/modules";
 const dataPresents = [
   {
     img: "png/presents/sneakers.png",
-    text: "Кроссовки",
+    text: "мобильные телефоны ",
   },
   {
     img: "png/presents/phone.png",
-    text: "Смартфоны",
+    text: "электроника для автомобилей ",
   },
   {
     img: "png/presents/bag.png",
-    text: "Туризм",
+    text: "товары для уборки (роботы пылесосы в основном) ",
   },
   {
     img: "png/presents/lego.png",
-    text: "Игрушки",
+    text: "3D принтеры и аксессуары ",
   },
   {
     img: "png/presents/screw.png",
-    text: "Строительство",
+    text: "Компоненты для компьютеров (видеокарты, процессоры и тд)",
   },
 ];
 const modules = [Pagination];
@@ -41,7 +41,7 @@ const isAvailable = ref(
 </script>
 
 <template>
-  <div v-if="isAvailable" class="wrapper-main">
+  <div v-if="!isAvailable" class="wrapper-main">
     <div class="wrapper">
       <div class="wrapper-img">
         <img class="tab" src="@/assets/images/png/tabPresent.png" alt="" />
