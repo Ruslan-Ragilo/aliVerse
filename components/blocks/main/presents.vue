@@ -10,24 +10,24 @@ import { Pagination } from "swiper/modules";
 // console.log(glob);
 const dataPresents = [
   {
-    img: "png/presents/sneakers.png",
+    img: "png/presents/phone.png",
     text: "мобильные телефоны ",
   },
   {
-    img: "png/presents/phone.png",
+    img: "png/presents/camera.png",
     text: "электроника для автомобилей ",
   },
   {
-    img: "png/presents/bag.png",
-    text: "товары для уборки (роботы пылесосы в основном) ",
+    img: "png/presents/robot.png",
+    text: "товары для уборки",
   },
   {
-    img: "png/presents/lego.png",
+    img: "png/presents/printer.png",
     text: "3D принтеры и аксессуары ",
   },
   {
-    img: "png/presents/screw.png",
-    text: "Компоненты для компьютеров (видеокарты, процессоры и тд)",
+    img: "png/presents/pc.png",
+    text: "компоненты для компьютеров",
   },
 ];
 const modules = [Pagination];
@@ -38,7 +38,7 @@ const isAvailable = ref(
 </script>
 
 <template>
-  <div v-if="!isAvailable" class="wrapper-main">
+  <div v-if="isAvailable" class="wrapper-main">
     <div class="wrapper">
       <div class="wrapper-img">
         <img class="tab" src="@/assets/images/png/tabPresent.png" alt="" />
@@ -57,7 +57,7 @@ const isAvailable = ref(
       <div class="wrapper-presents">
         <div v-for="item in dataPresents" :key="item.text" class="present">
           <img :src="getImageUrl(`${item.img}`)" alt="" />
-          <ElementsText>{{ item.text }}</ElementsText>
+          <ElementsText align="center" size="xxs">{{ item.text }}</ElementsText>
         </div>
       </div>
     </div>
