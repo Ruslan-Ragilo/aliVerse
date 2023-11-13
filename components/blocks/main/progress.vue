@@ -1,5 +1,5 @@
 <script setup>
-const progresTotal = ref(Math.round(100 * (0 / 11)));
+const progresTotal = ref(Math.round(100 * (2 / 11)));
 // TODO Вот тут менять прогресс ракеты (1 из 11 и т.д.)
 
 const isAvailable = ref(
@@ -43,7 +43,7 @@ const isAvailable = ref(
 
 <style lang="scss" scoped>
 .wrapper {
-  margin-top: 10px;
+  margin-top: 35px;
   padding: 60px 40px 35px;
   border-radius: 20px;
   background: linear-gradient(90deg, #3b3056 0.01%, #2c204a 99.99%);
