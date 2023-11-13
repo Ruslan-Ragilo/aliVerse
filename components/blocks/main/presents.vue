@@ -168,11 +168,6 @@ const isAvailable = ref(
       align-items: center;
       img {
         width: 100%;
-        border: 1px solid #e3e3e3;
-        border-radius: 20px;
-        aspect-ratio: 180/226;
-        object-fit: contain;
-        transform: scale(1.01);
       }
 
       @include media(744px) {
@@ -188,6 +183,7 @@ const isAvailable = ref(
     background-size: cover !important;
     background-position: top right;
     position: relative;
+    border-radius: 20px;
 
     @include media(1440px) {
       background: none;
