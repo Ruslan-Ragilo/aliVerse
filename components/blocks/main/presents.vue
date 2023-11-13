@@ -11,23 +11,23 @@ import { Pagination } from "swiper/modules";
 const dataPresents = [
   {
     img: "png/presents/phone.png",
-    text: "мобильные телефоны ",
+    text: "Мобильные телефоны",
   },
   {
     img: "png/presents/camera.png",
-    text: "электроника для автомобилей ",
-  },
-  {
-    img: "png/presents/robot.png",
-    text: "товары для уборки",
-  },
-  {
-    img: "png/presents/printer.png",
-    text: "3D принтеры и аксессуары ",
+    text: "Электроника для автомобилей",
   },
   {
     img: "png/presents/pc.png",
-    text: "компоненты для компьютеров",
+    text: "Компоненты для компьютеров",
+  },
+  {
+    img: "png/presents/robot.png",
+    text: "Товары для уборки",
+  },
+  {
+    img: "png/presents/jbl.png",
+    text: "Портативная аудио и видеотехника",
   },
 ];
 const modules = [Pagination];
@@ -168,6 +168,11 @@ const isAvailable = ref(
       align-items: center;
       img {
         width: 100%;
+        border: 1px solid #e3e3e3;
+        border-radius: 20px;
+        aspect-ratio: 180/226;
+        object-fit: contain;
+        transform: scale(1.01);
       }
 
       @include media(744px) {
