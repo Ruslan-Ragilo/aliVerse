@@ -18,15 +18,15 @@ const dataPresents = [
     text: "Электроника для автомобилей",
   },
   {
-    img: "png/presents/pc.png",
-    text: "Компоненты для компьютеров",
-  },
-  {
     img: "png/presents/robot.png",
     text: "Товары для уборки",
   },
   {
-    img: "png/presents/jbl.png",
+    img: "png/presents/pc.png",
+    text: "Компоненты для компьютеров",
+  },
+  {
+    img: "png/presents/headphones.png",
     text: "Портативная аудио и видеотехника",
   },
 ];
