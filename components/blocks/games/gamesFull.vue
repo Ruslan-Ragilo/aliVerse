@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper-games">
     <div class="left-game game">
-      <BlocksGamesHint v-if="!isFactsAvailable.value">
+      <BlocksGamesHint v-if="!isFactsAvailable">
         Откроется 16 ноября
       </BlocksGamesHint>
       <img

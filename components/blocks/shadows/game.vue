@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 const store = useShadowsStore();
-store.getTodayQuestions();
+await store.getTodayQuestions();
 const isFinished = computed(() => store.isFinished);
 const todayQuestions = computed(() => store.todayQuestions);
 const gameState = computed(() => store.gameState);

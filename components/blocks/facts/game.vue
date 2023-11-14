@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 const store = useFactsStore();
-store.getTodayQuestions();
+await store.getTodayQuestions();
 const isFinished = computed(() => store.isFinished);
 const gameState = computed(() => store.gameState);
 </script>
