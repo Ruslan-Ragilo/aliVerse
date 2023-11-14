@@ -1,4 +1,3 @@
-<!-- eslint-disable no-unused-expressions -->
 <template>
   <div class="wrapper-games">
     <div class="left-game game">

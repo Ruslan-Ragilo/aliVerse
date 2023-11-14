@@ -24,9 +24,9 @@
           style="user-select: none; pointer-events: none"
         />
         <rect
-          x="30"
-          y="466"
-          width="8"
+          x="921"
+          y="256"
+          width="12"
           height="10"
           fill="#33333300"
           style="z-index: 9999; position: relative"
@@ -133,7 +133,7 @@
             id="image0_305_197606"
             width="4096"
             height="2416"
-            xlink:href="@/assets/images/png/firstWeekFrog.jpg"
+            xlink:href="@/assets/images/png/SecondWeekFrog.jpg"
           />
         </defs>
       </svg>
