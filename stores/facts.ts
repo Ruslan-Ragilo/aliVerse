@@ -33,15 +33,9 @@ export const useFactsStore = defineStore("facts", () => {
     }
   }
 
-  function getTodayQuestions() {
-    const maxNumber = Object.keys(facts.value).length;
-    const count = gamesRemained.value;
-    const availableNumbers: Set<number> = new Set();
-    while (availableNumbers.size < count) {
-      const randomNum = Math.ceil(Math.random() * maxNumber);
-      availableNumbers.add(randomNum);
-    }
-    todayQuestions.value = [...availableNumbers];
+  async function getTodayQuestions() {
+    const numbersArray = await $api.get("event/array");
+    todayQuestions.value = JSON.parse(numbersArray.data);
   }
 
   function addCurrentAnswer(answer: boolean) {
