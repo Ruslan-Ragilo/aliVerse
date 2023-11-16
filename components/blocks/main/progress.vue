@@ -1,5 +1,5 @@
 <script setup>
-const progresTotal = ref(Math.round(100 * (6 / 11)));
+const progresTotal = ref(Math.round(100 * (8 / 11)));
 // TODO Вот тут менять прогресс ракеты (1 из 11 и т.д.)
 
 const isAvailable = ref(
