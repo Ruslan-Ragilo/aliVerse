@@ -88,10 +88,10 @@ const isAvailable = ref(
 }
 .reg-button {
   position: relative;
-  margin-top: 100px;
+  margin-top: 50px;
 
   @include media(500px) {
-    margin-top: 100px;
+    margin-top: 60px;
   }
 }
 .hint {
