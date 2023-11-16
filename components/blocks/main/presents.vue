@@ -22,12 +22,12 @@ const dataPresents = [
     text: "Компоненты для компьютеров",
   },
   {
-    img: "png/presents/robot.png",
-    text: "Товары для уборки",
-  },
-  {
     img: "png/presents/headphones.png",
     text: "Портативная аудио и видеотехника",
+  },
+  {
+    img: "png/presents/metr.png",
+    text: "Измерительные приборы",
   },
 ];
 const modules = [Pagination];
