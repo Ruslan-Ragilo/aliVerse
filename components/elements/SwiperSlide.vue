@@ -31,6 +31,8 @@ export interface CartItem {
 
 const props = defineProps<{ product: Product }>();
 
+console.log(props.product);
+
 const userStore = useUserData();
 const productStore = useProductStore();
 
@@ -60,10 +62,7 @@ const isProductAvailable = ref(
     <div class="slide-header">
       <img
         class="product-image"
-        :src="
-          props.product?.image ??
-          getImageUrl(`png/merch/${props.product?.id}.png`)
-        "
+        :src="getImageUrl(`png/merch/${props?.product?.id}.png`)"
         alt=""
       />
     </div>
