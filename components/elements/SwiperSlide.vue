@@ -79,7 +79,7 @@ const isProductAvailable = ref(
       </div>
       <div>
         <ElementsText themes="mustard" size="s" transform="upper">
-          {{ props?.product?.ali_price }}
+          {{ props?.product?.price }}
         </ElementsText>
         <button
           class="add-to-cart"
