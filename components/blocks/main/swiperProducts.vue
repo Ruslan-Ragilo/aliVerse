@@ -247,6 +247,7 @@ onMounted(async () => {
 
   .swiper {
     margin-top: 60px;
+    height: 470px;
   }
 
   .swiper-button-disabled {
