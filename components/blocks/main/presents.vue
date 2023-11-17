@@ -33,7 +33,7 @@ const dataPresents = [
 const modules = [Pagination];
 
 const isAvailable = ref(
-  await isToday("11/12/2023 11:59:59", "11/17/2023 23:59:59"),
+  await isToday("11/12/2023 11:59:59", "11/25/2023 23:59:59"),
 );
 </script>
 
