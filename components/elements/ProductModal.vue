@@ -50,24 +50,26 @@ const addToCart = () => {
       <div class="content">
         <img
           class="product-image"
-          :src="
-            productsArray[0]?.image ??
-            getImageUrl(`png/merch/${productsArray[0]?.id}.png`)
-          "
+          :src="getImageUrl(`png/merch/${productsArray[0]?.id}.png`)"
           alt=""
         />
         <div class="info">
           <ElementsText transform="upper" size="xxxl" class="product-name">
             {{ productsArray[0]?.name }}
           </ElementsText>
-          <ElementsText
-            themes="mustard"
-            size="m"
-            transform="upper"
-            class="product-price"
-          >
-            {{ productsArray[0]?.ali_price }} Alicoins
-          </ElementsText>
+          <div class="price-wrapper">
+            <ElementsText themes="light" size="xxs" transform="upper">
+              {{ productsArray[0]?.price }}
+            </ElementsText>
+            <ElementsText
+              themes="mustard"
+              size="m"
+              transform="upper"
+              class="product-price"
+            >
+              {{ productsArray[0]?.ali_price }} Alicoins
+            </ElementsText>
+          </div>
           <ElementsText transform="upper" size="xs" class="location-text">
             {{ productsArray[0]?.location !== 4 ? "Заберу в:" : "" }}
             <ElementsText v-if="productStore.isHintVisible" class="hint">
@@ -119,14 +121,37 @@ const addToCart = () => {
   }
 }
 .close-button {
-  @include media(1200px) {
-    top: -60px;
-    right: 0;
-  }
-
   @include media(450px) {
     top: 16px;
     right: 16px;
+  }
+
+  @media screen and (max-height: 900px) {
+    top: 16px;
+    right: 16px;
+  }
+}
+.price-wrapper {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  p:first-of-type {
+    color: #b0b0b0;
+    position: relative;
+    transform: translateY(-4px);
+  }
+
+  p:first-of-type::before {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 46px;
+    background-color: #b0b0b0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 .content {
@@ -207,6 +232,7 @@ const addToCart = () => {
 
   @include media(530px) {
     font-size: 14px;
+    margin-right: auto;
   }
 }
 .hint {
