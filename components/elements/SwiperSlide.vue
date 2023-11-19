@@ -31,8 +31,6 @@ export interface CartItem {
 
 const props = defineProps<{ product: Product }>();
 
-console.log(props.product);
-
 const userStore = useUserData();
 const productStore = useProductStore();
 
@@ -78,9 +76,14 @@ const isProductAvailable = ref(
         </ElementsText>
       </div>
       <div>
-        <ElementsText themes="mustard" size="s" transform="upper">
-          {{ props?.product?.price }}
-        </ElementsText>
+        <div class="price-wrapper">
+          <ElementsText themes="light" size="xxs" transform="upper">
+            {{ props?.product?.price }}
+          </ElementsText>
+          <ElementsText themes="mustard" size="s" transform="upper">
+            {{ props?.product?.ali_price }}
+          </ElementsText>
+        </div>
         <button
           class="add-to-cart"
           :disabled="isButtonDisabled || !isProductAvailable"
@@ -160,14 +163,10 @@ const isProductAvailable = ref(
     flex-direction: column;
     justify-content: space-between;
 
-    div:first-child {
-      margin-bottom: 14px;
-    }
-
-    & div {
+    & div:not(.price-wrapper) {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: flex-end;
       gap: 15px;
     }
     .bottom {
@@ -179,14 +178,38 @@ const isProductAvailable = ref(
     }
   }
 }
+.price-wrapper {
+  display: flex;
+  flex-direction: column;
 
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  p:first-of-type {
+    color: #b0b0b0;
+    position: relative;
+  }
+
+  p:first-of-type::before {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 46px;
+    background-color: #b0b0b0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
 .product-image {
   max-width: 250px;
   max-height: 250px;
   z-index: 2;
 }
 .smaller {
-  font-size: 16px;
+  font-size: 15px;
   -webkit-line-clamp: 3 !important;
   padding-right: 25px;
 }

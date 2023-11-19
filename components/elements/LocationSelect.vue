@@ -50,6 +50,10 @@ const handleLocationChange = (product: Product) => {
   flex-direction: column;
   gap: 15px;
   margin-bottom: 15px;
+
+  @include media(530px) {
+    margin-right: auto;
+  }
 }
 .location-option {
   display: flex;
