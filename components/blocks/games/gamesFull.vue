@@ -1,9 +1,6 @@
 <template>
   <div class="wrapper-games">
     <div class="left-game game">
-      <BlocksGamesHint v-if="!isFactsAvailable">
-        Откроется 16 ноября
-      </BlocksGamesHint>
       <img
         class="game-image"
         src="~/assets/images/png/games/facts-game.png"
@@ -25,9 +22,6 @@
       </ElementsPixelButton>
     </div>
     <div class="middle-game game">
-      <BlocksGamesHint v-if="!isFallAvailable">
-        Откроется 8 ноября
-      </BlocksGamesHint>
       <img
         class="game-image"
         src="~/assets/images/png/games/fall-game.png"
@@ -49,9 +43,6 @@
       </ElementsPixelButton>
     </div>
     <div class="right-game game">
-      <BlocksGamesHint v-if="!isShadowsAvailable">
-        Откроется 12 ноября
-      </BlocksGamesHint>
       <img
         class="game-image"
         src="~/assets/images/png/games/shadows-game.png"
