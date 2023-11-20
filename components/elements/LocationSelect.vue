@@ -13,7 +13,6 @@ const handleLocationChange = async (product: Product) => {
   productStore.setStock(true);
 
   const { data } = await $api(`product/day-limit/${product.id}`);
-  console.log(data);
   if (product.in_stock > product.sold && data > 0) {
     productStore.setStock(true);
   } else if (product.in_stock > product.sold && data <= 0) {
