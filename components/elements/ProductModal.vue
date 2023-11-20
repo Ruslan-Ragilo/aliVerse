@@ -14,27 +14,47 @@ const productsArray = computed(() =>
   allProducts.value.filter((el) => el.name === productStore.openProduct),
 );
 
-const addToCart = () => {
+const isSoldToday = ref(false);
+
+const addToCart = async () => {
+  isSoldToday.value = false;
+
   if (productStore.selectedLocation) {
     const productToOrder = productsArray.value.find(
       (el) => el.location === productStore.selectedLocation,
     );
 
-    if (productToOrder) {
+    const { data } = await $api(`product/day-limit/${productToOrder?.id}`);
+
+    if (productToOrder && data > 0) {
+      isSoldToday.value = false;
       userStore.addToCart(productToOrder.id);
       productStore.closeModal();
+    } else if (data <= 0) {
+      isSoldToday.value = true;
     }
   } else if (
     productsArray.value[0].id === 31 ||
     productsArray.value[0].id === 32 ||
     productsArray.value[0].id === 33
   ) {
+    isSoldToday.value = false;
     userStore.addToCart(productsArray.value[0].id);
     productStore.closeModal();
   } else {
+    isSoldToday.value = false;
+    productStore.showSoldHint();
     productStore.showHint();
   }
 };
+/* 
+const getSoldForToday = async () => {
+  const { data } = await $api(`product/day-limit/${productsArray.value[0].id}`);
+  console.log(productsArray.value[0].id, data);
+  return data;
+};
+
+const isSoldToday = ref(await getSoldForToday()); */
 </script>
 <template>
   <div
@@ -75,13 +95,29 @@ const addToCart = () => {
             <ElementsText v-if="productStore.isHintVisible" class="hint">
               Выбери локацию
             </ElementsText>
+            <ElementsText
+              v-if="
+                productStore.isSoldHintVisible &&
+                isSoldToday &&
+                productStore.inStock
+              "
+              class="hint sold"
+            >
+              Сегодня товар закончился<br />Приходи завтра
+            </ElementsText>
+            <ElementsText
+              v-if="productStore.isSoldHintVisible && !productStore.inStock"
+              class="hint sold"
+            >
+              Товар закончился
+            </ElementsText>
           </ElementsText>
           <ElementsLocationSelect :products-array="productsArray" />
           <ElementsPixelButton
             color="red"
             size="middle"
             class="cart-button"
-            :disabled="!productStore.inStock"
+            :disabled="false"
             @click="addToCart"
           >
             В корзину
@@ -244,6 +280,9 @@ const addToCart = () => {
   @include media(530px) {
     font-size: 14px;
   }
+}
+.sold {
+  font-size: 12px;
 }
 .cart-button {
   @include media(900px) {

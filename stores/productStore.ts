@@ -6,6 +6,7 @@ export const useProductStore = defineStore("product", () => {
   const openProduct = ref<string | null>(null);
   const selectedLocation = ref<number | null>(null);
   const isHintVisible = ref(false);
+  const isSoldHintVisible = ref(false);
   const inStock = ref(true);
   const allProducts = ref<Product[]>([]);
 
@@ -19,16 +20,22 @@ export const useProductStore = defineStore("product", () => {
     openProduct.value = null;
     selectedLocation.value = null;
     isHintVisible.value = false;
+    isSoldHintVisible.value = false;
     inStock.value = true;
   };
 
   const setSelectedLocation = (value: number) => {
     selectedLocation.value = value;
     isHintVisible.value = false;
+    isSoldHintVisible.value = false;
   };
 
   const showHint = () => {
     isHintVisible.value = true;
+  };
+
+  const showSoldHint = () => {
+    isSoldHintVisible.value = true;
   };
 
   const setStock = (value: boolean) => {
@@ -45,6 +52,7 @@ export const useProductStore = defineStore("product", () => {
     openProduct,
     selectedLocation,
     isHintVisible,
+    isSoldHintVisible,
     inStock,
     allProducts,
     openModal,
@@ -53,5 +61,6 @@ export const useProductStore = defineStore("product", () => {
     showHint,
     setStock,
     getAllProducts,
+    showSoldHint,
   };
 });

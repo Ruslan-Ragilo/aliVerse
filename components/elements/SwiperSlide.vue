@@ -49,8 +49,7 @@ const isButtonDisabled = computed(() => {
     Number(userStore.userData.balanceUser) <=
       Number(props?.product?.ali_price) ||
     userStore.cartItems?.length >= 3 ||
-    Number(userStore.userData.totalProducts) === 0 ||
-    isSoldToday.value <= 0
+    Number(userStore.userData.totalProducts) === 0
   );
 });
 
@@ -72,11 +71,11 @@ const isProductAvailable = ref(
         Товар закончился
       </ElementsText>
     </div>
-    <div v-if="!isSold && isSoldToday <= 0" class="hint">
+    <!--  <div v-if="!isSold && isSoldToday <= 0" class="hint">
       <ElementsText themes="secondary" transform="upper" align="center">
         На сегодня товар закочился Приходи завтра
       </ElementsText>
-    </div>
+    </div> -->
     <div class="slide-header">
       <img
         class="product-image"
