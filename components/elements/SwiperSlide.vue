@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import $api from "~/http";
+
 export interface Product {
   id: number;
   name: string;
@@ -34,13 +36,26 @@ const props = defineProps<{ product: Product }>();
 const userStore = useUserData();
 const productStore = useProductStore();
 
+const getSoldForToday = async () => {
+  const { data } = await $api(`product/day-limit/${props.product.id}`);
+  console.log(props.product.id, data);
+  return data;
+};
+
+const isSoldToday = ref(await getSoldForToday());
+
 const isButtonDisabled = computed(() => {
   return (
     Number(userStore.userData.balanceUser) <=
       Number(props?.product?.ali_price) ||
     userStore.cartItems?.length >= 3 ||
-    Number(userStore.userData.totalProducts) === 0
+    Number(userStore.userData.totalProducts) === 0 ||
+    isSoldToday.value <= 0
   );
+});
+
+const isSold = computed(() => {
+  return props?.product?.sold >= props?.product?.in_stock;
 });
 
 // TODO удалить код ниже и раскомментировать следующий!
@@ -52,9 +67,14 @@ const isProductAvailable = ref(
 </script>
 <template>
   <div class="wrapper-slide">
-    <div v-if="!isProductAvailable" class="hint">
+    <div v-if="isSold" class="hint">
       <ElementsText themes="secondary" transform="upper" align="center">
-        Недоступно до 20 ноября
+        Товар закончился
+      </ElementsText>
+    </div>
+    <div v-if="!isSold && isSoldToday <= 0" class="hint">
+      <ElementsText themes="secondary" transform="upper" align="center">
+        На сегодня товар закочился Приходи завтра
       </ElementsText>
     </div>
     <div class="slide-header">
@@ -214,9 +234,9 @@ const isProductAvailable = ref(
   padding-right: 25px;
 }
 .hint {
-  width: 140px;
-  height: 63px;
-  padding: 10px;
+  width: 160px;
+  height: auto;
+  padding: 7px;
   position: absolute;
   top: 0;
   left: 50%;
