@@ -38,9 +38,17 @@ const addToCart = async () => {
     productsArray.value[0].id === 32 ||
     productsArray.value[0].id === 33
   ) {
-    isSoldToday.value = false;
-    userStore.addToCart(productsArray.value[0].id);
-    productStore.closeModal();
+    const { data } = await $api(
+      `product/day-limit/${productsArray.value[0]?.id}`,
+    );
+    if (data <= 0) {
+      isSoldToday.value = true;
+      productStore.showSoldHint();
+    } else {
+      isSoldToday.value = false;
+      userStore.addToCart(productsArray.value[0].id);
+      productStore.closeModal();
+    }
   } else {
     isSoldToday.value = false;
     productStore.showSoldHint();
