@@ -36,13 +36,13 @@ const props = defineProps<{ product: Product }>();
 const userStore = useUserData();
 const productStore = useProductStore();
 
-const getSoldForToday = async () => {
+/* const getSoldForToday = async () => {
   const { data } = await $api(`product/day-limit/${props.product.id}`);
   console.log(props.product.id, data);
   return data;
 };
 
-const isSoldToday = ref(await getSoldForToday());
+const isSoldToday = ref(await getSoldForToday()); */
 
 const isButtonDisabled = computed(() => {
   return (
@@ -53,9 +53,9 @@ const isButtonDisabled = computed(() => {
   );
 });
 
-const isSold = computed(() => {
+/* const isSold = computed(() => {
   return props?.product?.sold >= props?.product?.in_stock;
-});
+}); */
 
 // TODO удалить код ниже и раскомментировать следующий!
 /* const isProductAvailable = ref(true); */
@@ -66,11 +66,11 @@ const isProductAvailable = ref(
 </script>
 <template>
   <div class="wrapper-slide">
-    <div v-if="isSold" class="hint">
+    <!-- <div v-if="isSold" class="hint">
       <ElementsText themes="secondary" transform="upper" align="center">
         Товар закончился
       </ElementsText>
-    </div>
+    </div> -->
     <!--  <div v-if="!isSold && isSoldToday <= 0" class="hint">
       <ElementsText themes="secondary" transform="upper" align="center">
         На сегодня товар закочился Приходи завтра
