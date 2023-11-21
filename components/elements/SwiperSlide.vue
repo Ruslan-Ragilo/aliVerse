@@ -46,7 +46,7 @@ const isSoldToday = ref(await getSoldForToday()); */
 
 const isButtonDisabled = computed(() => {
   return (
-    Number(userStore.userData.balanceUser) <=
+    Number(userStore.userData.balanceUser) <
       Number(props?.product?.ali_price) ||
     userStore.cartItems?.length >= 3 ||
     Number(userStore.userData.totalProducts) === 0
