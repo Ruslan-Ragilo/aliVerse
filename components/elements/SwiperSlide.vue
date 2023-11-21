@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import $api from "~/http";
-
 export interface Product {
   id: number;
   name: string;
@@ -9,7 +7,8 @@ export interface Product {
   ali_price: number;
   promocode?: string;
   in_stock: number;
-  day_limit?: number;
+  day_limit: number;
+  day_sold: number;
   location: number;
   sold: number;
 }

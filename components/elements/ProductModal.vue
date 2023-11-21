@@ -16,7 +16,7 @@ const productsArray = computed(() =>
 
 const isSoldToday = ref(false);
 
-const addToCart = async () => {
+const addToCart = () => {
   isSoldToday.value = false;
 
   if (productStore.selectedLocation) {
@@ -24,13 +24,14 @@ const addToCart = async () => {
       (el) => el.location === productStore.selectedLocation,
     );
 
-    const { data } = await $api(`product/day-limit/${productToOrder?.id}`);
-
-    if (productToOrder && data > 0) {
+    if (productToOrder && productToOrder.day_sold < productToOrder.day_limit) {
       isSoldToday.value = false;
       userStore.addToCart(productToOrder.id);
       productStore.closeModal();
-    } else if (data <= 0) {
+    } else if (
+      productToOrder &&
+      productToOrder.day_sold >= productToOrder.day_limit
+    ) {
       isSoldToday.value = true;
     }
   } else if (
@@ -38,10 +39,7 @@ const addToCart = async () => {
     productsArray.value[0].id === 32 ||
     productsArray.value[0].id === 33
   ) {
-    const { data } = await $api(
-      `product/day-limit/${productsArray.value[0]?.id}`,
-    );
-    if (data <= 0) {
+    if (productsArray.value[0].day_sold >= productsArray.value[0].day_limit) {
       isSoldToday.value = true;
       productStore.showSoldHint();
     } else {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Product } from "./SwiperSlide.vue";
-import $api from "~/http";
 
 defineProps<{
   productsArray: Product[];
@@ -8,14 +7,17 @@ defineProps<{
 
 const productStore = useProductStore();
 
-const handleLocationChange = async (product: Product) => {
+const handleLocationChange = (product: Product) => {
   productStore.setSelectedLocation(product.location);
   productStore.setStock(true);
 
-  const { data } = await $api(`product/day-limit/${product.id}`);
-  if (product.in_stock > product.sold && data > 0) {
+  // const { data } = await $api(`product/day-limit/${product.id}`);
+  if (product.in_stock > product.sold && product.day_sold < product.day_limit) {
     productStore.setStock(true);
-  } else if (product.in_stock > product.sold && data <= 0) {
+  } else if (
+    product.in_stock > product.sold &&
+    product.day_sold >= product.day_limit
+  ) {
     productStore.setStock(true);
     productStore.showSoldHint();
   } else if (product.in_stock <= product.sold) {
