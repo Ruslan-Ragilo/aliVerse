@@ -21,10 +21,17 @@ window.onscroll = () => {
 
   prevOffsetY.value = currentOffsetY.value;
 };
+
+const isEventFinished = ref(
+  await isToday("11/25/2023 00:00:01", "12/31/2023 23:59:59"),
+);
 </script>
 
 <template>
-  <NuxtLayout v-if="!isLoading">
+  <NuxtLayout v-if="isEventFinished">
+    <BlocksEventFinished />
+  </NuxtLayout>
+  <NuxtLayout v-if="!isLoading && !isEventFinished">
     <div class="wrapper-gallery">
       <ElementsHeaderCart :is-scrolling-up="isScrollingUp" />
       <ElementsHeaderProfile :is-scrolling-up="isScrollingUp" />
@@ -33,7 +40,7 @@ window.onscroll = () => {
       <BlocksGalleryButton />
     </div>
   </NuxtLayout>
-  <ElementsSpinner v-else />
+  <ElementsSpinner v-if="isLoading && !isEventFinished" />
 </template>
 
 <style scoped lang="scss">

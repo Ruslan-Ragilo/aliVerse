@@ -1,5 +1,14 @@
+<script setup>
+const isEventFinished = ref(
+  await isToday("11/25/2023 00:00:01", "12/31/2023 23:59:59"),
+);
+</script>
+
 <template>
-  <div class="wrapper">
+  <div v-if="isEventFinished">
+    <slot />
+  </div>
+  <div v-if="!isEventFinished" class="wrapper">
     <slot />
     <img class="sun absolute" src="~/assets/images/svg/sun.svg" alt="sun" />
     <img

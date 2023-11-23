@@ -34,10 +34,17 @@ window.onscroll = () => {
 
 const fallGameStore = useFallStore();
 const isModalOpen = computed(() => fallGameStore.isModalOpen);
+
+const isEventFinished = ref(
+  await isToday("11/25/2023 00:00:01", "12/31/2023 23:59:59"),
+);
 </script>
 
 <template>
-  <NuxtLayout v-if="!isLoading">
+  <NuxtLayout v-if="isEventFinished">
+    <BlocksEventFinished />
+  </NuxtLayout>
+  <NuxtLayout v-if="!isLoading && !isEventFinished">
     <BlocksBasketModal />
     <div class="wrapper">
       <ElementsHeaderCart :is-scrolling-up="isScrollingUp" />
@@ -91,7 +98,7 @@ const isModalOpen = computed(() => fallGameStore.isModalOpen);
       </div>
     </div>
   </NuxtLayout>
-  <ElementsSpinner v-else />
+  <ElementsSpinner v-if="isLoading && !isEventFinished" />
 </template>
 
 <style lang="scss" scoped>
