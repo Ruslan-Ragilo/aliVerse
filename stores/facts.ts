@@ -2,7 +2,7 @@ import $api from "~/http";
 import { factsData } from "~/stores/factsData/factsData";
 
 export const useFactsStore = defineStore("facts", () => {
-  const isAvailable = ref(false);
+  const isAvailable = ref(true);
   const isModalOpen = ref(false);
   const isFinished = ref(false);
   const gameState = ref<"default" | "right" | "wrong">("default");
@@ -14,11 +14,13 @@ export const useFactsStore = defineStore("facts", () => {
   const currentAnswer = ref<boolean | null>(null);
 
   async function checkAvailability() {
-    const limit = await $api.get("/api/user/get-remained-event-limit", {
-      params: {
-        id: 2,
-      },
-    });
+    // const limit = await $api.get("/api/user/get-remained-event-limit", {
+    //   params: {
+    //     id: 2,
+    //   },
+    // });
+
+    const limit = { data: 200 };
 
     try {
       if (limit.data > 0) {
@@ -34,8 +36,9 @@ export const useFactsStore = defineStore("facts", () => {
   }
 
   async function getTodayQuestions() {
-    const numbersArray = await $api.get("event/array");
-    todayQuestions.value = JSON.parse(numbersArray.data);
+    // const numbersArray = await $api.get("event/array");
+    // todayQuestions.value = JSON.parse(numbersArray.data);
+    todayQuestions.value = [1, 2, 3, 4, 5, 6, 7, 8];
   }
 
   function addCurrentAnswer(answer: boolean) {

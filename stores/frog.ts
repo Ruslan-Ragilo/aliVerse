@@ -1,18 +1,22 @@
 import $api from "~/http";
 
 export const useFrogStore = defineStore("frog", () => {
-  const isAvailable = ref(false);
+  const isAvailable = ref(true);
   const isModalOpen = ref(false);
   const isFinished = ref(false);
   const results = ref(null);
   const gameScreen = ref<"welcome" | "game" | "finish">("welcome");
 
-  async function checkAvailability() {
-    const limit = await $api.get("/api/user/get-remained-event-limit", {
-      params: {
-        id: 5,
-      },
-    });
+  function checkAvailability() {
+    // const limit = await $api.get("/api/user/get-remained-event-limit", {
+    //   params: {
+    //     id: 5,
+    //   },
+    // });
+
+    const limit = {
+      data: 200,
+    };
 
     try {
       if (limit.data > 0) {
@@ -52,11 +56,15 @@ export const useFrogStore = defineStore("frog", () => {
     formData.append("event_id", "5");
     formData.append("score", "100");
 
-    const limit = await $api.get("/api/user/get-remained-event-limit", {
-      params: {
-        id: 5,
-      },
-    });
+    // const limit = await $api.get("/api/user/get-remained-event-limit", {
+    //   params: {
+    //     id: 5,
+    //   },
+    // });
+
+    const limit = {
+      data: 100,
+    };
 
     if (limit.data > 0) {
       const userStore = useUserData();

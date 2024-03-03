@@ -31,9 +31,7 @@
 </template>
 
 <script setup lang="ts">
-const isAvailable = ref(
-  await isToday("11/08/2023 07:59:59", "11/19/2023 23:59:59"),
-);
+const isAvailable = ref(true);
 
 const screenSize = ref<"large" | "small">("large");
 

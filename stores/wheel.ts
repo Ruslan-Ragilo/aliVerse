@@ -8,11 +8,15 @@ export const useWheelStore = defineStore("wheel", () => {
   const showModal = ref(false);
 
   async function checkAvailability() {
-    const limit = await $api.get("/api/user/get-remained-event-limit", {
-      params: {
-        id: 4,
-      },
-    });
+    // const limit = await $api.get("/api/user/get-remained-event-limit", {
+    //   params: {
+    //     id: 4,
+    //   },
+    // });
+
+    const limit = {
+      data: 1,
+    };
 
     try {
       if (limit.data > 0) {
@@ -31,10 +35,8 @@ export const useWheelStore = defineStore("wheel", () => {
     checkAvailability();
 
     if (isAvailable.value) {
-      const fortunaRes = await $api.get("/api/event/fortuna");
-
       const sectorSpinTime = 300;
-      const spinningSectors = fortunaRes.data / 50 + 10;
+      const spinningSectors = 100 / 50 + 10;
       const spinningTime = spinningSectors * sectorSpinTime;
       isSpinning.value = true;
 

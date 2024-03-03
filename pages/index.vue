@@ -1,22 +1,17 @@
 <script setup>
-const userStore = useUserData();
-const isLoading = ref(true);
+// const userStore = useUserData();
 const store = useFrogStore();
 
 const handleModalOpen = () => {
+  console.log("open");
   store.openModal();
 };
 
-const isWednesday = ref(
-  (await isToday("11/08/2023 07:59:59", "11/08/2023 23:59:59")) ||
-    (await isToday("11/15/2023 07:59:59", "11/15/2023 23:59:59")),
-);
-
-onMounted(() => {
-  userStore.fetchUsers().then(() => {
-    isLoading.value = false;
-  });
-});
+// onMounted(() => {
+//   userStore.fetchUsers().then(() => {
+//     isLoading.value = false;
+//   });
+// });
 
 const prevOffsetY = ref(window.scrollY);
 const isScrollingUp = ref(true);
@@ -33,72 +28,24 @@ window.onscroll = () => {
 };
 
 const fallGameStore = useFallStore();
-const isModalOpen = computed(() => fallGameStore.isModalOpen);
-
-const isEventFinished = ref(
-  await isToday("11/25/2023 00:00:01", "12/31/2023 23:59:59"),
-);
 </script>
 
 <template>
-  <NuxtLayout v-if="isEventFinished">
-    <BlocksEventFinished />
-  </NuxtLayout>
-  <NuxtLayout v-if="!isLoading && !isEventFinished">
-    <BlocksBasketModal />
-    <div class="wrapper">
-      <ElementsHeaderCart :is-scrolling-up="isScrollingUp" />
-      <ElementsHeaderProfile :is-scrolling-up="isScrollingUp" />
-      <div class="wrapper-bg">
-        <img class="bgTop" src="@/assets/images/png/bgMainTop.png" alt="" />
-      </div>
-      <div class="container">
-        <BlocksMainBanner />
-      </div>
-    </div>
-    <div v-if="isWednesday" class="wrapper-frog">
-      <img class="fullCloud" src="@/assets/images/svg/fullCloud.svg" alt="" />
-      <img
-        class="frog"
-        src="@/assets/images/svg/frog.svg"
-        alt=""
-        @click="handleModalOpen"
-      />
-    </div>
-    <BlocksMainHello />
-    <BlocksMainCounter />
-    <BlocksMainPresents />
-    <BlocksMainProgress />
-    <BlocksMainGalery />
-    <BlocksMainLetter />
-    <BlocksMainMentor />
-    <BlocksMainFortuna />
-    <BlocksMainMerch />
-    <BlocksMainSwiperProducts />
-    <BlocksMainGames />
-    <BlocksMainTest />
-    <BlocksMainQuestion />
-    <BlocksMainFooter />
-    <div v-if="!isModalOpen" class="hint">
-      <div class="hint-content">
-        <img
-          width="50"
-          height="50"
-          src="~/assets/images/png/rotate.png"
-          alt=""
-        />
-        <ElementsText
-          size="s"
-          themes="secondary"
-          transform="upper"
-          align="center"
-        >
-          Пожалуйста, переверни устройство<br />в вертикальное положение
-        </ElementsText>
-      </div>
-    </div>
-  </NuxtLayout>
-  <ElementsSpinner v-if="isLoading && !isEventFinished" />
+  <BlocksMainGames />
+
+  <BlocksMainFortuna />
+
+  <div class="wrapper-frog">
+    <img class="fullCloud" src="@/assets/images/svg/fullCloud.svg" alt="" />
+    <img
+      class="frog"
+      src="@/assets/images/svg/frog.svg"
+      alt=""
+      @click="handleModalOpen"
+    />
+  </div>
+
+  <BlocksFrogModal />
 </template>
 
 <style lang="scss" scoped>
@@ -194,7 +141,7 @@ const isEventFinished = ref(
   }
 }
 .wrapper-frog {
-  display: none;
+  display: flex;
   flex-direction: column-reverse;
   width: 50%;
   margin-left: auto;
@@ -213,6 +160,8 @@ const isEventFinished = ref(
     align-self: center;
     position: relative;
     top: 50px;
+
+    cursor: pointer;
   }
 }
 </style>

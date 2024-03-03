@@ -1,6 +1,6 @@
 <template>
   <div :class="['foggin', { active: store.isModalOpen }]"></div>
-  <div v-if="isModalOpen" class="wrapper-modal">
+  <div v-if="store.isModalOpen" class="wrapper-modal">
     <ElementsPixelBorder />
     <div class="modal">
       <ElementsCloseButton @click="handleClose" />
@@ -15,7 +15,6 @@
 
 <script setup lang="ts">
 const store = useFrogStore();
-const isModalOpen = computed(() => store.isModalOpen);
 const gameScreen = computed(() => store.gameScreen);
 
 const handleClose = () => {

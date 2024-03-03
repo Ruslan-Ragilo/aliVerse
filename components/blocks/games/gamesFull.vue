@@ -71,9 +71,9 @@ const fallStore = useFallStore();
 const factsStore = useFactsStore();
 const shadowsStore = useShadowsStore();
 
-const isShadowsAvailable = ref(false);
-const isFactsAvailable = ref(false);
-const isFallAvailable = ref(false);
+const isShadowsAvailable = ref(true);
+const isFactsAvailable = ref(true);
+const isFallAvailable = ref(true);
 
 const openShadowsModal = () => {
   if (isShadowsAvailable.value) {
@@ -106,21 +106,6 @@ const handleFallClick = () => {
     openFallModal();
   }
 };
-
-onMounted(async () => {
-  isShadowsAvailable.value = await isToday(
-    "11/12/2023 07:59:59",
-    "11/19/2023 23:59:59",
-  );
-  isFactsAvailable.value = await isToday(
-    "11/16/2023 07:59:59",
-    "11/19/2023 23:59:59",
-  );
-  isFallAvailable.value = await isToday(
-    "11/08/2023 07:59:59",
-    "11/19/2023 23:59:59",
-  );
-});
 
 // TODO удалить код ниже и раскомментировать следующий!
 /* const isFactsAvailable = ref(true);

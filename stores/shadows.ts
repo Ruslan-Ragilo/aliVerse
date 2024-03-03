@@ -14,11 +14,15 @@ export const useShadowsStore = defineStore("shadows", () => {
   const currentAnswer = ref<string | null>(null);
 
   async function checkAvailability() {
-    const limit = await $api.get("/api/user/get-remained-event-limit", {
-      params: {
-        id: 3,
-      },
-    });
+    // const limit = await $api.get("/api/user/get-remained-event-limit", {
+    //   params: {
+    //     id: 3,
+    //   },
+    // });
+
+    const limit = {
+      data: 200,
+    };
 
     try {
       if (limit.data > 0) {
@@ -33,9 +37,8 @@ export const useShadowsStore = defineStore("shadows", () => {
     }
   }
 
-  async function getTodayQuestions() {
-    const numbersArray = await $api.get("event/shadow");
-    todayQuestions.value = JSON.parse(numbersArray.data);
+  function getTodayQuestions() {
+    todayQuestions.value = [1, 2, 3, 4, 5];
   }
 
   function addCurrentAnswer(answer: string) {

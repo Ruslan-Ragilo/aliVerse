@@ -41,9 +41,7 @@
 </template>
 
 <script setup lang="ts">
-const isActive = ref(
-  await isToday("11/08/2023 07:59:59", "11/19/2023 23:59:59"),
-);
+const isActive = ref(true);
 
 const store = useWheelStore();
 store.checkAvailability();
